@@ -1,0 +1,5 @@
+<div>
+    <input type="text" id="datepicker" placeholder="{{$ctrl.placeholder}}" ng-model="$ctrl.date" input-date format="yyyy-mm-dd" months-short="{{ $ctrl.monthShort }}" months-full="{{ $ctrl.month }}" weekdays-full="{{ $ctrl.weekdaysFull }}" weekdays-short="{{ $ctrl.weekdaysShort }}"
+        weekdays-letter="{{ $ctrl.weekdaysLetter }}" today="$ctrl.todayStr" clear="$ctrl.clearStr" close="$ctrl.closeStr" select-years="100" max="{{ $ctrl.maxDate }}">
+    <label for="datepicker" ng-if="$ctrl.labelText">{{$ctrl.labelText}}</label>
+</div>

@@ -1,0 +1,73 @@
+<div class="contenedor_max formIngreso">
+  <div class="title-form ancho_diagnostico">
+
+    <div class="row">
+      <div class="col s12">
+        <h4>{{(patient._id?'EDIT':'NEW') | translate}} {{'PATIENT' | translate}}</h4>
+        <a class="btn-add btn waves-effect waves-light right" ng-click="savePatient(false)"><i class="fa fa-floppy-o" aria-hidden="true" tooltipped data-position="top" data-delay="50" data-tooltip="{{'SAVE' | translate}}"></i></a>
+        <a class="btn-add btn waves-effect waves-light right" ng-click="savePatient(true)"><i class="fa fa-file-text" aria-hidden="true"  tooltipped data-position="top" data-delay="50" data-tooltip="{{'SAVE_AND_NEW_PROCEDURE_REQUEST' | translate}}"></i></a>
+        <a ui-sref="patient_abm" class="btn-add btn waves-effect waves-light right"><i class="fa fa-mail-reply" aria-hidden="true"  tooltipped data-position="top" data-delay="50" data-tooltip="{{'RETURN_TO_LIST' | translate}}"></i></a>
+        <a class="btn-add btn waves-effect waves-light right" ui-sref="procedure_new({patient_id:patient._id})" ng-if="isEnabled('new_request') && patient._id"><i class="fa fa-file-o" aria-hidden="true" tooltipped data-position="top" data-delay="50" data-tooltip="{{'NEW_ORDER'| translate}}"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <div class="ancho_diagnostico">
+        <div class="card-content">
+          <div class="row">
+            <form>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="name" type="text" class="validate" ng-model="patient.name[0].text">
+                  <label for="name">{{'NAME' | translate}}</label>
+                  <span></span>
+                </div>
+                <div class="input-field col s6">
+                  <input id="name" type="text" class="validate" ng-model="patient.identifier[0].value">
+                  <label for="name">{{'PERSONAL_IDENTIFICATION' | translate}}</label>
+                  <span></span>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="input-field col s5">
+                  <label for="date">{{'BIRTHDATE' | translate}}</label>
+                  <span></span>
+                  <!-- <date-picker id="name" date="patient.birthDate" label-text="'BIRTHDATE' | translate"/> -->
+                  <input id="date" type="date" name="birthDate" ng-model="patient.birthDate" ng-blur="blurAge()" />
+                  <span></span>
+                </div>
+                <div class="input-field col s1">
+                  <label for="name">{{'AGE' | translate}}</label>
+                  <span></span>
+                  <input id="age" type="text" name="age" ng-model="patient.name[0].use" readonly/>
+                </div>
+
+                <div class="input-field col s6">
+                  <label for="name">{{'GENDER' | translate}}</label>
+                  <span></span>
+                  <select id="patient-gender" ng-model="patient.gender" material-select watch>
+                                    <option value="M">{{'MALE' | translate}}</option>
+                                    <option value="F">{{'FEMALE' | translate}}</option>
+                                    <option value="O">{{'OTHERS' | translate}}</option>
+                </select>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <div class="card">
+          <div class="ancho_diagnostico">
+            <address-human address="patient.address" ng-cloak></address-human>
+            <span class="msj-error" ng-if="missing_fields"><a href="" class="close"><i class="material-icons">clear</i></a><i class="material-icons">report_problem</i>{{'ONE_OF_THE_REQUIRED_FIELDS_IS_MISSING' | translate}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

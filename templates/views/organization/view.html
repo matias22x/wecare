@@ -1,0 +1,72 @@
+<div class="contenedor_max formIngreso">
+  <div class="title-form">
+  </div>
+  <form>
+    <div class="row">
+      <div class="ancho_diagnostico">
+        <ul>
+          <li>
+            <a class="btn-add btn waves-effect waves-light right" ng-click="cancelOrganization()">
+                <i class="fa fa-mail-reply" aria-hidden="true" class="fa fa-mail-reply ng-scope" aria-hidden="true" tooltipped data-position="top"
+                    data-delay="50" data-tooltip="{{'RETURN_TO_LIST' | translate}}"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="box-top-form">
+        <div class="row top-card-patient ancho_diagnostico">
+          <form>
+            <div class="row ancho_diagnostico vista">
+
+              <div class="input-field col s12 user">
+                <label for="name">{{'NAME' | translate}}</label>
+                <p>{{name}}</p>
+                <span></span>
+              </div>
+
+
+              <div class="input-field col s4">
+                <h4>{{'CONTACT' | translate}}</h4>
+                <span></span>
+                <div class="input-field col s12">
+                  <label for="tel_casa">{{'TELEPHONE_HOME' |translate}}</label>
+                  <p>{{telecom[0].value}}</p>
+                  <span></span>
+                </div>
+                <div class="input-field col s12">
+                  <label for="tel_job">{{'EMAIL' | translate}}</label>
+                  <p>{{telecom[1].value}}</p>
+                </div>
+              </div>
+
+              <div class="input-field col s4">
+                <h4>{{'PART_OF' | translate}}</h4>
+                <span></span>
+                <div class="input-field col s12">
+                  <label for="org">{{'PARENT_ORGANIZATION' | translate}}</label>
+                  <p>{{partOf.display || partOf.reference}}</p>
+                </div>
+              </div>
+
+              <div class="input-field col s4">
+                <h4>{{'TYPE' | translate}}</h4>
+                <span></span>
+                <div class="input-field col s12">
+                  <label for="type">{{'TYPE' | translate}}</label>
+                  <p>{{identifier[0].use}}</p>
+                </div>
+
+              </div>
+
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="clearfix2"></div>
+  </form>
+</div>

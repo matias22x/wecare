@@ -1,0 +1,25 @@
+<div class="col l4 m4 s12">
+    <div class="form-right">
+        <div class="top">
+            {{title || 'Boolean'}}
+        </div>
+        <div class="select-field">
+        </div>
+        <div class="form-body">
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6>{{subtitle || 'Boolean'}}</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <div ng-if="model_name">
+                        <input id="active" type="checkbox" name="text" value="" ng-model="data[model_name]">
+                        <label for="active"></label>
+                    </div>
+                    <div ng-if="!model_name">
+                        <p>model_name required in scope!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

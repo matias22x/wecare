@@ -1,0 +1,30 @@
+<div class="clearfix"></div>
+<div class="row">
+    <div class="input-field col s12" ng-if="$ctrl.organizations.length !== 0">
+        <h6 for="role_organization">{{$ctrl.title || 'ORGANIZATION_NAME' | translate}}</h6>
+        <select id="role_organization" ng-model="$ctrl.selectOrganization" material-select watch ng-if="!$ctrl.readonly">
+          <option value="" selected>{{'SELECT' | translate}}</option>
+          <option ng-repeat="organization in $ctrl.organizations" value="{{organization._id}}">{{organization.name}}</option>
+        </select>
+    </div>
+    <div ng-if="!$ctrl.readonly">
+        <div class="input-field col l4 m4 s6" ng-if="$ctrl.organizations.length === 0">
+            <input id="organization" type="text" class="validate black-text" ng-model="$ctrl.selectOrganization.text">
+            <label for="organization">{{'ORGANIZATION' | translate}}</label>
+            <span></span>
+        </div>
+
+        <div class="input-field col l3 m3 s12">
+            <button class="btn" ng-click="$ctrl.assignToOrganization()">{{'ASSIGN' | translate}}</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <ul class="collection" ng-if="$ctrl.practitionerRole.length > 0 ">
+            <li class="collection-item dismissable" ng-repeat="ref in $ctrl.assignTo">
+                <div>{{ref.display}}<a ng-click="$ctrl.removeAssignOrg(ref.reference)" class="secondary-content"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+            </li>
+        </ul>
+    </div>
+</div>

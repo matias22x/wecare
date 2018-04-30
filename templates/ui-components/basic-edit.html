@@ -1,0 +1,28 @@
+<div ng-if="$ctrl.isArray($ctrl.model)">
+    <li ng-repeat="item in $ctrl.model">
+        <div class="row top-cat no-border">
+            <span class="title-height">{{$ctrl.title || $ctrl.attrname}}</span>
+            <span class="right">
+            <ul>
+              <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+              <li><a ng-click="$ctrl.edit($index)" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+              <li><a ng-click="$ctrl.addElement()" class="waves-effect waves-light add-plus"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+              <li><a href="" class="waves-effect waves-light delete" ng-click="$ctrl.deleteElement($index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+            </ul>
+          </span>
+        </div>
+    </li>
+</div>
+<div ng-if="!$ctrl.isArray($ctrl.model)">
+    <li>
+        <div class="row top-cat no-border">
+            <span class="title-height">{{$ctrl.title || $ctrl.attrname}}</span>
+            <span class="right">
+              <ul>
+                <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                <li><a ng-click="$ctrl.edit()" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+              </ul>
+            </span>
+        </div>
+    </li>
+</div>

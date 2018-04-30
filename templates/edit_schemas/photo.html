@@ -1,0 +1,26 @@
+<div class="col l4 m4 s12">
+    <div class="form-right">
+        <div class="top">
+            {{title || 'Atachment'}}
+        </div>
+        <div class="select-field">
+        </div>
+        <div class="" ng-cloak>
+
+            <div class="row">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        <input type="file" ng-model="file_upload" value="" onload="onLoadFile" base-sixty-four-input>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" ng-model="photo.filename">
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="photo.data">
+                <img class="responsive-img" ng-src="{{photo.data}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>

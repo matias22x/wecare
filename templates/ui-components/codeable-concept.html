@@ -1,0 +1,74 @@
+<div ng-if="$ctrl.isArray($ctrl.codeableConcept)">
+    <li ng-repeat="diagnostic_item in $ctrl.codeableConcept">
+        <div class="row top-cat no-border">
+            <a class="waves-effect waves-light contact-plus show">
+                <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+            </a>
+            <span class="title-height">{{$ctrl.title || $ctrl.attrname}}</span>
+            <span class="right">
+            <ul>
+              <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+
+              <li><a ng-click="$ctrl.editCodeableText($index)" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+              <li><a href="" class="waves-effect waves-light add-plus" ng-click="$ctrl.addCodeableConcept()"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+              <li><a href="" class="waves-effect waves-light delete" ng-click="$ctrl.removeCodeableConcept($index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+
+            </ul>
+          </span>
+        </div>
+        <div class="first-f contact-form relative">
+            <ul>
+                <li ng-repeat="coding in diagnostic_item.coding">
+                    <div class="row top-cat">
+                        <span class="title-height">Coding</span>
+                        <h6>{{coding.code}}</h6>
+                        <span class="right">
+                      <ul>
+                        <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                        <li><a ng-click="$ctrl.editCodeableCoding($index,$parent.$index)" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                        <li><a href="" class="waves-effect waves-light add-plus" ng-click="$ctrl.addCoding($parent.$index)"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="" class="waves-effect waves-light delete" ng-click="$ctrl.deleteCoding($index,$parent.$index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </span>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </li>
+</div>
+<div ng-if="!$ctrl.isArray($ctrl.codeableConcept)">
+    <li>
+        <div class="row top-cat no-border">
+            <a class="waves-effect waves-light contact-plus show">
+                <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+            </a>
+            <span class="title-height">{{$ctrl.title || $ctrl.attrname}}</span>
+            <span class="right">
+            <ul>
+              <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+              <li><a ng-click="$ctrl.editCodeableText()" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+            </ul>
+          </span>
+        </div>
+        <div class="first-f contact-form relative">
+            <ul>
+                <li ng-repeat="coding in $ctrl.codeableConcept.coding">
+                    <div class="row top-cat">
+                        <span class="title-height">Coding</span>
+                        <h6>{{coding.code}}</h6>
+                        <span class="right">
+                      <ul>
+                        <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                        <li><a ng-click="$ctrl.editCodeableCoding($index)" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                        <li><a href="" class="waves-effect waves-light add-plus" ng-click="$ctrl.addCoding()"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="" class="waves-effect waves-light delete" ng-click="$ctrl.deleteCoding($index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+</div>

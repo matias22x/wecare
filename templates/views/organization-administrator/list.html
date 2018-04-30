@@ -1,0 +1,41 @@
+<div class="container">
+    <h4 class="title-page">{{'ORGANIZATION_ADMINISTRATOR' | translate }}</h4>
+    <div class="row rowTable">
+        <div class="tablaAbm center">
+            <div class="topTable">
+                <div class="col-tableAbm-Top">
+                    <input type="checkbox" class="filled-in" id="selectall" />
+                    <label for="selectall" class="labelcheck"></label>
+                </div>
+                <div class="col-tableAbm-Top">Identificador</div>
+                <div class="col-tableAbm-Top">Name</div>
+                <div class="col-tableAbm-Top">Created At</div>
+                <div class="col-tableAbm-Top">Acciones</div>
+            </div>
+            <div class="fila-tableAbm" ng-repeat="item in organization_administrator_list">
+                <div class="col-tableAbm">
+                    <input type="checkbox" class="filled-in case" id="usuario1" name="case" value="1" />
+                    <label for="usuario1" class="labelcheck"></label>
+                </div>
+                <div class="col-tableAbm">{{item._id}}</div>
+                <div class="col-tableAbm">{{item.name.text}}</div>
+                <div class="col-tableAbm">{{item.createdAt}}</div>
+                <div class="col-tableAbm">
+                    <ul class="action">
+                        <li>
+                            <a ui-sref="organization_administrator_add({id:item._id})" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Ver">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="row row-bottom">
+        <a class="btn-add btn waves-effect waves-light" ui-sref="user_type_add({type:'organization_administrator'})"><i class="material-icons">add_circle</i>{{'NEW' | translate}}</a>
+    </div>
+
+</div>

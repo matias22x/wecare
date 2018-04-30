@@ -1,0 +1,241 @@
+<div class="contenedor_max2 formIngreso">
+    <div class="row">
+        <div class="col s12">
+            <div class="card2">
+                <h4>{{(!_id?'NEW':'EDIT') | translate}} {{'DIAGNOSTIC_REPORT' | translate}}</h4>
+                <ul class="row">
+                    <li>
+                        <a class="btn-add btn waves-effect waves-light right ng-binding" ng-click="saveDiagnosticReport()" tooltipped="" data-position="top"
+                            data-delay="50" name="action" data-tooltip="{{'SAVE' | translate}}" class="tooltipped" data-tooltip-id="5e7c885a-f22a-89cd-464b-d6f89ec0d6cd">
+                            <i class="fa fa-floppy-o ng-scope" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn-add btn waves-effect waves-light right ng-binding" ng-click="cancelDiagnosticReport()" tooltipped="" data-position="top"
+                            data-delay="50" data-tooltip="{{'RETURN_TO_LIST' | translate}}" class="tooltipped" data-tooltip-id="76b4a206-fb56-42f4-3404-421a57aaf830">
+                            <i class="fa fa-mail-reply ng-scope" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <form>
+        <div class="row">
+            <div class="col s6">
+                <div class="card2 idem">
+                    <div class="title-form reduce-margin ancho_diagnostico">
+
+                    </div>
+                    <div class="card-content ancho_diagnostico">
+                        <div class="row">
+                            <div class="input-field datos-full col s12">
+                                <div class="input-field col s12" ng-if="request[0].reference">
+                                    <a ui-sref="procedure_request_add({id:request[0].reference})" class="black-text">
+                                        <input id="reference" type="text" ng-model="request[0].reference" readonly/>
+                                        <label for="reference">{{'REQUEST_REFERENCE' | translate}}</label>
+                                        <span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col m6 s12">
+                                <div class="input-field datos-full">
+
+                                    <input id="title" type="text" ng-model="diagnosticOrder.code.text" readonly/>
+                                    <label for="title">{{'REASON' | translate}}</label>
+                                    <span></span>
+
+                                </div>
+                                <div class="input-field datos-full ">
+
+                                    <input id="title" type="text" ng-model="diagnosticOrder.identifier[0].system" readonly/>
+                                    <label for="title">{{'TITLE' | translate}}</label>
+                                    <span></span>
+
+                                </div>
+                            </div>
+                            <div class="col m6 s12">
+                                <div class="input-field datos-full">
+
+                                    <input id="title" type="text" ng-model="diagnosticOrder.subject.age" readonly/>
+                                    <label for="title">{{'AGE' | translate}}</label>
+                                    <span></span>
+
+                                </div>
+                                <div class="input-field datos-full">
+
+                                    <input id="title" type="text" ng-model="diagnosticOrder.subject.gender" readonly/>
+                                    <label for="title">{{'GENDER' | translate}}</label>
+                                    <span></span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col m6 s12">
+                <div class="card2">
+                    <div class="ancho_diagnostico">
+                        <div class="title-form reduce-margin">
+
+                        </div>
+                        <div class="chat_box">
+                            <ul class="collection files-col">
+                                <li class="collection-item avatar prestador" ng-repeat="item in diagnosticOrder.note" ng-if="item.text">
+                                    <span class="title">{{item.authorString}} - {{ {date: item.time.type, type: 'time'} | setViewDate}}</span>
+                                    <p>{{item.text}}</p>
+                                    <div class="flecha-right"></div>
+                                </li>
+                                <li class="collection-item avatar cliente" ng-repeat="item in diagnosticOrder.note" ng-if="item.text">
+                                    <span class="title">{{item.authorString}}</span>
+                                    <p>{{item.text}}</p>
+                                    <div class="flecha-right"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <input-field>
+                                    <textarea id="note" placeholder="{{placeHolderNote}}" class="materialize-textarea chat_text" ng-model="noteinfo.currentNote"
+                                        ng-keydown="$event.keyCode == 13 && sendNote()"></textarea>
+                                </input-field>
+                                <div ng-if="noteError" class="msj-error">
+                                    <a href="" class="close"><i class="material-icons">clear</i></a>
+                                    <p><i class="material-icons">report_problem</i>{{'THERE_ARE_UNSAVED_NOTES' | translate}}</p>
+                                </div>
+                                <button class="waves-effect waves-teal btn-add btn" ng-click="sendNote()" type="submit" name="action">{{commentStr}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card2">
+                    <div class="ancho_diagnostico">
+                        <div class="title-form reduce-margin">
+
+                            <span></span>
+                        </div>
+                        <div ng-if="subjectEnable">
+                            <ul class="collection files-col">
+                                <li class="collection-item" ng-repeat="observation in attachedObservations">
+                                    <span class="title" ng-click="observationDetail(observation)"><a >{{observation.valueString || observation._id}} <i class="fa fa-eye right preview" aria-hidden="true"></i></a></span>
+                                    <p ng-if="subjectEnable">
+                                        <input type="checkbox" ng-model="observationAttached[observation._id]" name="attached" id="{{observation._id}}" />
+                                        <label for="{{observation._id}}">{{'TO_ATTACH' | translate}}</label>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div ng-if="!subjectEnable">
+                            <ul class="collection files-col">
+                                <li class="collection-item" ng-repeat="observation in attachedObservations">
+                                    <span class="title" ng-click="observationDetail(observation)"><a >{{observation.valueString || observation._id}} <i class="fa fa-search-plus right preview" aria-hidden="true"></i></a></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <study-viewer ng-if="currentObservation._id" attachment="currentObservation.attachment" study-name="currentObservation.studyName"
+                            select-attachment="selectAttachment"></study-viewer>
+                        <study-dicom ng-if="currentObservation._id" no-dicom="notIsDicom" current-attachment="currentAttachment" load-attachment="loadAttachment"
+                            attachment="currentObservation.attachment"></study-dicom>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card2">
+                    <div class="ancho_diagnostico">
+                        <div class="title-form reduce-margin">
+
+                            <span></span>
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="use_address" type="text" class="validate" ng-model="result[0].display">
+                                    <label for="use_address">{{'REFERENCE' | translate}}</label>
+                                </div>
+                            </div>
+                            <div ng-if="subject.reference">
+                                <ul class="collection files-col">
+                                    <li class="collection-item" ng-repeat="observation in observations">
+                                        <span class="title" ng-click="observationDetail(observation)"><a >{{observation.valueString || observation._id}} <i class="fa fa-search-plus right preview" aria-hidden="true"></i></a></span>
+                                        <p>
+                                            <input type="checkbox" ng-model="observationAttached[observation._id]" name="attached" id="{{observation._id}}" />
+                                            <label for="{{observation._id}}">{{'TO_ATTACH' | translate}}</label>
+                                        </p>
+                                    </li>
+                                </ul>
+                                <study-viewer ng-if="currentObservation._id" attachment="currentObservation.attachment" study-name="currentObservation.studyName"
+                                    select-attachment="selectAttachment"></study-viewer>
+                                <study-dicom ng-if="currentObservation._id" current-attachment="currentAttachment" load-attachment="loadAttachment"></study-dicom>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="errorMsg" class="card-info">
+          <p class="msj-error"><a href="" class="close"><i class="material-icons">clear</i></a><i class="material-icons">report_problem</i>{{'THE_CONCLUSION_MUST_HAVE_A_MINIMUM_OF_10_CHARACTERS' | translate}}</p>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card2">
+                    <div class="ancho_diagnostico">
+                        <div class="title-form reduce-margin">
+
+                            <span></span>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <div input-field>
+                                    <textarea placeholder="{{placeHolderNote}}" ng-model="data.conclusion" id="note" class="materialize-textarea"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card2">
+                    <div class="ancho_diagnostico">
+                        <div class="title-form reduce-margin">
+                            <h4>{{'MODIFICATIONS' | translate}}</h4>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <div input-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-if="unsaved_notes" class="msj-error">
+                <a href="" class="close"><i class="material-icons">clear</i></a>
+                <p><i class="material-icons">report_problem</i>{{'THERE_ARE_UNSAVED_NOTES' | translate}}</p>
+            </div>
+            <div class="col s12">
+                <div class="card2">
+                    <div>
+                        <div class="title-form reduce-margin down">
+                            <a class="btn-add btn waves-effect waves-light right" ng-click="saveDiagnosticReport()"><i class="fa fa-floppy-o" aria-hidden="true"></i>{{'SAVE' | translate}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

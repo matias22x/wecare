@@ -1,0 +1,105 @@
+<div class="col l4 m4 s12">
+    <div class="form-right">
+        <div class="top">
+            {{title || 'Address'}}
+        </div>
+        <div class="select-field">
+
+        </div>
+        <div class="form-body">
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6 for="text">Use</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <select ng-model="address.use">
+                      <option value="" selected>Select</option>
+                      <option value="Home">Home</option>
+                      <option value="Work">Work</option>
+                      <option value="Temp">Temp</option>
+                      <option value="Old">Old</option>
+                  </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6 for="text">Type</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <select ng-model="address.type">
+                    <option value="" selected>Select</option>
+                      <option value="Postal">Postal</option>
+                      <option value="Physical">Physical</option>
+                      <option value="Both">Both</option>
+                  </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6>Text</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <input type="text" name="text" value="" ng-model="address.text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6>Line</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <input type="text" name="Line" value="" ng-model="address.line">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6>City</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <input type="text" name="City" value="" ng-model="address.city">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6>District</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <input type="text" name="District" value="" ng-model="address.district">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6>State</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <input type="text" name="State" value="" ng-model="address.state">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6>Postal Code</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <input type="text" name="Postal" value="" ng-model="address.postalCode">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6>Country</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <input type="text" name="Country" value="" ng-model="address.contry">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l3 m3 s12">
+                    <h6>Period</h6>
+                </div>
+                <div class="col l9 m9 s12">
+                    <date-picker date="address.period.start" placeholder="'Start'" />
+                    <date-picker date="address.period.end" placeholder="'End'" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

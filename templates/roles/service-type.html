@@ -1,0 +1,36 @@
+<div class="container-fluid formIngreso formAdd">
+    <div class="row">
+        <div class="title-form">
+            <h4>Service Type</h4>
+            <span>Complete los campos para el ingreso</span>
+        </div>
+        <div class="col l8 m8 s12">
+            <div class="list-left">
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <ul class="campo-pcipal">
+
+                                <edit-identifier modelname="'servicetype'" identifier='identifier'></edit-identifier>
+                                <edit-codeable-concept attrname="'diagnosticService'" title="'Diagnostic Service'" modelname="'servicetype'" codeable-concept="diagnosticService"></edit-codeable-concept>
+                                <edit-codeable-concept attrname="'type'" title="'Type'" modelname="'servicetype'" codeable-concept="type"></edit-codeable-concept>
+                                <edit-codeable-concept attrname="'speciality'" title="'Speciality'" modelname="'servicetype'" codeable-concept="speciality"></edit-codeable-concept>
+                                <basic-edit modelname="'servicetype'" model="creditCost" title="'Credit Cost'" attrname="'creditcost'"></basic-edit>
+
+                            </ul>
+                        </div>
+                        <div class="row row-btn">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="saveServiceType()">Aceptar </button>
+                                <button class="btn waves-effect waves-light" type="" name="action">Borrador </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div ui-view="forms"></div>
+    </div>
+</div>
+</div>

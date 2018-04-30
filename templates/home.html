@@ -1,0 +1,51 @@
+<div class="contenedor_max formIngreso">
+  <div class="row title_plus_btn ancho_diagnostico">
+    <div class="row ancho_diagnostico">
+      <div class="home-table">
+        <div class="explicacion3" ng-show="enableExplication">
+          <a href=""><i class="material-icons" ng-click="closeExplication()">clear</i></a>
+          <p>Realice Solicitudes de Diagnóstico para sus Pacientes a otros Profesionales de la Salud y Organizaciones, y reciba el correspondiente Reporte. <br>Visualice a continuación el estado de sus últimos movimientos.</p>
+        </div>
+        <div class="card-content">
+          <h3>{{'LAST_DIAGNOSTIC_ORDERS_AND_DIAGNOSTIC_REPORTS' | translate}}</h3>
+          <div class="tablaAbm center tabla_home">
+            <div class="topTable">
+              <div ng-click="sortBy('identifier[0].system')" class="col-tableAbm-Top">{{'TITLE' | translate}}</a>
+              </div>
+              <div ng-click="sortBy('createdAt')" class="col-tableAbm-Top">{{'CREATED_AT' | translate}}</div>
+              <div class="col-tableAbm-Top">{{'ACTIONS' | translate}}</div>
+              <div class="col-tableAbm-Top"></div>
+            </div>
+            <div class="fila-tableAbm fila_home" ng-repeat="diagnosticOrder in diagnosticOrders | orderBy:propertyName:reverse">
+              <div class="col-tableAbm"><a href="" ui-sref="procedure_request_view({id:diagnosticOrder._id})">{{diagnosticOrder.identifier[0].system || '-'}}</a></div>
+              <div class="col-tableAbm">{{ {date: diagnosticOrder.createdAt, type: 'time'} | setViewDate}}</div>
+              <div class="col-tableAbm">
+                <ul class="action">
+                  <li ng-if="!isEnabled('my_reports')">
+                    <a ui-sref="procedure_request_add({id:diagnosticOrder._id})" data-position="top" data-delay="50" data-tooltip="Editar" tooltipped>
+                                            <img src="img/iconos/editar.png" class="right">
+                                        </a>
+                  </li>
+                  <li ng-if="diagnosticOrder.status === 'requested' || diagnosticOrder.status === 'commented'">
+                    <a ng-if="isEnabled('my_reports')" ui-sref="diagnostic_report_order({diagnostic_order_id:diagnosticOrder._id})" data-position="top" data-delay="50" data-tooltip="Editar" tooltipped="" class="ng-scope tooltipped" data-tooltip-id="f299753d-b470-c8ee-03bc-6cd8f56f400a">
+                      <img src="img/iconos/nuevo.png" class="right ng-scope">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-tableAbm">
+                <p ng-class="determinateClass(diagnosticOrder.status)">{{diagnosticOrder.status | translate}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn_action_home">
+          <a ng-if="isEnabled('new_request')" class="btn-add btn waves-effect waves-light" ui-sref="procedure_new"><i class="material-icons">add</i>{{'CREATE_DIAGNOSTIC' | translate}}</a>
+          <a class="btn-add btn waves-effect waves-light" ui-sref="procedure_request_abm"><img class="inact" src="img/iconos/solicitudes2.png">{{'SEE_REQUESTS' | translate}}</a>
+          <a class="btn-add btn waves-effect waves-light" ui-sref="diagnostic_report_abm"><img class="inact" src="img/iconos/reportes2.png">{{'SEE_REPORTS' | translate}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container-fluid formIngreso formAdd">
+    <div class="row">
+        <div class="title-form">
+            <h4>Organization</h4>
+            <span>Complete los campos para el ingreso</span>
+        </div>
+        <div class="col l8 m8 s12">
+            <div class="list-left">
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <ul class="campo-pcipal">
+
+                                <edit-identifier modelname="'organization'" identifier='identifier'></edit-identifier>
+                                <basic-edit modelname="'organization'" model="address" title="'Address'" attrname="'address'"></basic-edit>
+                                <basic-edit modelname="'organization'" model="name" title="'Name'" attrname="'name'"></basic-edit>
+                                <edit-codeable-concept modelname="'organization'" attrname="'type'" title="'Type'" codeable-concept="type"></edit-codeable-concept>
+                                <basic-edit modelname="'organization'" model="telecom" title="'Telecom'" attrname="'telecom'"></basic-edit>
+                                <basic-edit modelname="'organization'" model="active" title="'Active'" attrname="'active'"></basic-edit>
+                                <li ng-repeat="contact_item in contact">
+                                    <div class="row top-cat no-border">
+                                        <a class="waves-effect waves-light contact-plus show">
+                                            <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                        </a>
+                                        <span class="title-height">Contact</span>
+                                        <span class="right">
+                                          <ul>
+                                            <li><a href="" class="waves-effect waves-light add-plus" ng-click="addContact()"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                                            <li><a href="" class="waves-effect waves-light delete" ng-click="deleteContact($index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                        </span>
+                                    </div>
+
+                                    <div class="first-f contact-form relative">
+                                        <ul>
+                                            <basic-edit modelname="'organization'" model="contact_item.telecom" title="'Telecom'" attrname="'contact.telecom'" parent-index="$index" parent-index-name="'contact_index'"></basic-edit>
+                                            <basic-edit modelname="'organization'" model="contact_item.name" title="'Name'" attrname="'contact.name'" parent-index="$index" parent-index-name="'contact_index'"></basic-edit>
+                                            <basic-edit modelname="'organization'" model="contact_item.address" title="'Adress'" attrname="'contact.address'" parent-index="$index" parent-index-name="'contact_index'"></basic-edit>
+                                            <edit-codeable-concept modelname="'organization'" attrname="'contact.purpose'" title="'Purpose'" codeable-concept="contact_item.purpose" parent-index="$index" parent-index-name="'contact_index'"></edit-codeable-concept>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <basic-edit modelname="'organization'" model="partOf" title="'Part Of'" attrname="'partof'"></basic-edit>
+                            </ul>
+                        </div>
+                        <div class="row row-btn">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="saveOrganization()">Aceptar </button>
+                                <button class="btn waves-effect waves-light" type="" name="action">Borrador </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div ui-view="forms"></div>
+    </div>
+</div>
+</div>

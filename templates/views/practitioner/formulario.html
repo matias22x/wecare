@@ -1,0 +1,91 @@
+<div class="contenedor_max formIngreso">
+  <div class="title-form ancho_diagnostico">
+    <h4>{{'EDIT' | translate}} {{'VIEW_PRACTITIONER' | translate}}</h4>
+    <a ng-click="savePractitioner()" class="btn-add btn waves-effect waves-light right"><i class="fa fa-floppy-o" aria-hidden="true" tooltipped data-position="top"
+        data-delay="50" data-tooltip="{{'SAVE' | translate}}"></i></a>
+    <a ng-click="cancelPractitioner()" class="btn-add btn waves-effect waves-light right"><i class="fa fa-mail-reply" aria-hidden="true"  tooltipped data-position="top"
+        data-delay="50" data-tooltip="{{'BACK' | translate}}"></i></a>
+  </div>
+  <div class="box-top-form">
+    <div class="row">
+      <form class="ancho_diagnostico">
+        <div class="input-field col s9">
+          <input id="name" type="text" class="validate" ng-model="name.text">
+          <label for="name">{{'NAME' |translate}}</label>
+
+        </div>
+        <div class="input-field col s3 vista2" tooltipped="" data-position="center" data-delay="50" data-tooltip="Editar desde Organizaciones"
+          href="#/notifications/list" class="tooltipped" data-tooltip-id="85735b77-7133-b750-e56c-f9182eb8fd55">
+          <label for="name">{{'TYPE' |translate}}</label>
+          <p>Tipo de profesional</p>
+
+        </div>
+        <div class="input-field col s12">
+          <p class="est-label">{{'GENDER' | translate}}</p>
+          <select ng-model="gender" material-select watch>
+            <option value="">Select</option>
+            <option value="M">{{'MALE' | translate}}</option>
+            <option value="F">{{'FEMALE' | translate}}</option>
+            <option value="O">{{'OTHER' | translate}}</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="name" type="text" class="validate" ng-model="identifier[0].value">
+            <label for="name">{{'DESCRIPTION' |translate}}</label>
+
+          </div>
+        </div>
+
+    </div>
+
+    <div class="ancho_diagnostico">
+      <div class="row">
+        <div>
+          <ul tabs class="tab-form" reload="allTabContentLoaded">
+            <li class="tab col s4 tab-form"><a href="#contact_practitioner" class="active">{{'CONTACT' | translate}}</a></li>
+            <li class="tab col s4 tab-form"><a href="#organization_practitioner">{{'ORGANIZATION' | translate}}</a></li>
+            <li class="tab col s4 tab-form"><a href="#address_practitioner">{{'ADDRESS' | translate}}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="clearfix2"></div>
+      <div class="row">
+        <div id="contact_practitioner" class="col s12">
+          <div class="row">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="tel_casa" type="text" class="validate" ng-model="telecom[0].value">
+                <label for="tel_casa">{{'TELEPHONE_HOME' | translate}}</label>
+
+              </div>
+              <div class="input-field col s12">
+                <input id="tel_job" type="text" class="validate" ng-model="telecom[1].value">
+                <label for="tel_job">{{'TELEPHONE_WORK' | translate}}</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="email" type="text" class="validate" ng-model="telecom[2].value">
+                <label for="email">{{'EMAIL' | translate}}</label>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="organization_practitioner" class="col s12">
+          <practitioner-organizations organizations="organizations" practitioner-role="practitionerRole" practitioner-sub-role="qualification[0].code.text"
+            filter-types-organizations="filterTypesOrganizations"></practitioner-organizations>
+        </div>
+        <div id="address_practitioner" class="col s12">
+          <address-human address="address[0]"></address-human>
+        </div>
+      </div>
+    </div>
+    <div ng-if="error_msg" class="msj-error">
+      <a href="" class="close"><i class="material-icons">clear</i></a>
+      <p><i class="material-icons">report_problem</i>{{error_msg}}</p>
+    </div>
+    <div class="separador"></div>
+  </div>
+  </form>
+</div>

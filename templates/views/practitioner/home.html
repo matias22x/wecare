@@ -1,0 +1,33 @@
+<div class="contenedor_max formIngreso">
+    <div class="title-form">
+    </div>
+    <div class="row">
+        <form>
+            <div class="row">
+                <div class="col m12 s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="input-field datos-full col s12">
+                                    <div class="row">
+                                        <div class="col l3 m3 s12">
+                                            <h6 for="text">{{'SELECT_LOGIN_ORGANIZATION' | translate}}</h6>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <select ng-model="currentOrganization.reference" ng-change="selectOrganization()">
+                                              <option ng-repeat="roleItem in practitionerRole" value="{{roleItem.managingOrganization.reference}}">{{roleItem.managingOrganization.display}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row row-bottom">
+            <a class="btn-add btn waves-effect waves-light" ng-click="doneOrganization()"><i class="fa fa-check" aria-hidden="true"></i>{{'DONE' | translate}}</a>
+        </div>
+    </div>
+</div>

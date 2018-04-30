@@ -1,0 +1,39 @@
+<div class="container">
+    <h5 class="title-page">Schedule</h5>
+    <div class="row rowTable">
+
+        <div class="tablaAbm center">
+            <div class="topTable">
+                <div class="col-tableAbm-Top">
+                    <input type="checkbox" class="filled-in" id="selectall" />
+                    <label for="selectall" class="labelcheck"></label>
+                </div>
+                <div class="col-tableAbm-Top">Identifier</div>
+                <div class="col-tableAbm-Top">Comment</div>
+                <div class="col-tableAbm-Top">Created At</div>
+                <div class="col-tableAbm-Top">Actions</div>
+            </div>
+            <div class="fila-tableAbm" ng-repeat="schedule in schedule_list">
+                <div class="col-tableAbm">
+                    <input type="checkbox" class="filled-in case" id="usuario1" name="case" value="1" />
+                    <label for="usuario1" class="labelcheck"></label>
+                </div>
+                <div class="col-tableAbm">{{schedule._id}}</div>
+                <div class="col-tableAbm">{{schedule.comment}}</div>
+                <div class="col-tableAbm">{{schedule.createdAt}}</div>
+                <div class="col-tableAbm">
+                    <ul class="action">
+                        <li><a href="" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Borrar" ng-click="deleteSchedule($index)"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a></li>
+                        <li>
+                            <a ui-sref="schedule.edit({schedule_id:schedule._id})" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Ver"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <a ui-sref="schedule.edit" class="btn-add btn waves-effect waves-light"><i class="material-icons">add_circle</i>New</a>
+
+
+</div>

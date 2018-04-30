@@ -1,0 +1,723 @@
+@import 'materialize';
+@media #{$medium-and-down} {
+    footer,
+    header,
+    main {
+        padding-left: 0;
+    }
+    .row-btn .barra {
+        width: 30%;
+    }
+    .list-left {
+        margin: 20px 0;
+    }
+    .title-form {
+        margin-left: 20px;
+    }
+    .card-head header {
+        padding-left: 20px;
+    }
+    .modal.bottom-sheet {
+        max-height: 70%;
+    }
+    .confirm_dialog {
+        width: 100%;
+    }
+}
+
+@media #{$small-and-down} {
+    .row-btn .barra {
+        width: 100%;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 1680px) {
+    .contenedor-total {
+        width: 1500px;
+    }
+    .toppage {
+        width: 1160px;
+    }
+    main {
+        width: 1160px;
+    }
+    nav .brand-logo.center {
+        left: 88%;
+    }
+    .contenedor_max {
+        width: 95%;
+    }
+    .ancho_diagnostico {
+        width: 95%;
+    }
+    .contenedor-total {
+        top: 0px;
+        margin-bottom: 40px;
+    }
+    .btn {
+        line-height: 37px;
+        padding: 0 1rem;
+        font-size: 10px;
+    }
+    .btn-add {
+        margin-left: 5px;
+        margin-bottom: 5px;
+    }
+    .title-form span {
+        display: block;
+        font-size: 11px;
+        margin-left: 0px;
+    }
+    .new-order {
+        #general {
+            padding: 0px 50px 60px 50px;
+        }
+        #solicitud {
+            padding: 0px 50px 60px 50px;
+        }
+        #examen_fisico {
+            padding: 0px 50px 60px 50px;
+        }
+        #estudios {
+            padding: 0px 50px 60px 50px;
+        }
+        #antecedentes {
+            padding: 0px 50px 60px 50px;
+        }
+        #notas {
+            padding: 0px 50px 60px 50px;
+        }
+    }
+    .nav-side {
+        width: 340px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .contenedor-total {
+        width: 1280px;
+    }
+    .toppage {
+        width: 980px;
+    }
+    main {
+        width: 980px;
+    }
+    .modal.modal-fixed-footer {
+        text-align: left;
+        max-height: 90%;
+        width: 90%;
+        height: auto;
+        bottom: 5%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .formIngreso .title-form .win_up {
+        height: 140px;
+        min-height: 140px;
+        max-height: 200px;
+        overflow-y: scroll;
+        width: 100%;
+        display: block;
+    }
+    .contenedor-total {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .contenedor_login {
+        width: 35%;
+    }
+    .action li {
+        display: inline-block;
+        margin-right: 0px;
+    }
+    .topTable {
+        font-size: 11px;
+    }
+    .waiting {
+        padding: 20px 30px 20px 30px;
+    }
+    .nav-side {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1330px) {
+    .contenedor-total {
+        width: 1150px;
+    }
+    .toppage {
+        width: 900px;
+    }
+    main {
+        width: 900px;
+    }
+    .nav-side {
+        width: 250px;
+    }
+    .nav-side li a {
+        font-size: 10px;
+        padding-left: 22px;
+        height: 48px;
+        line-height: 49px;
+    }
+    body .side-nav .active-side {
+        border-left: solid 5px #ff4081;
+        padding-left: 17px;
+    }
+    .titulo-seccion h4 {
+        padding-top: 37px;
+        font-size: 1.8rem;
+    }
+    .titulo-seccion p {
+        font-size: 13px;
+    }
+    .btn {
+        height: 33px;
+        line-height: 33px;
+        font-size: 10px;
+    }
+    .btn i {
+        font-size: 1rem;
+    }
+    .topTable {
+        font-size: 13px;
+    }
+    .fila-tableAbm {
+        font-size: 13px;
+    }
+    .card .card-content {
+        padding: 0px;
+    }
+    .fa {
+        font-size: 16px;
+    }
+    .title-form h4 {
+        font-size: 20px;
+    }
+    .cont-tables {
+        width: 100%;
+        margin: auto;
+    }
+    .container {
+        padding-right: 20px;
+        font-size: 12px;
+    }
+    .formIngreso .title-form h4 {
+        font-size: 20px;
+    }
+    .btn-floating {
+        height: 30px;
+        line-height: 30px;
+        width: 31px;
+    }
+    .btn-floating i {
+        line-height: 32px;
+    }
+    .card-head .btn_action_home {
+        bottom: -12px;
+        right: 22px;
+    }
+    .action li {
+        margin-right: 0px;
+    }
+    .card2 {
+        padding: 16px 17px 0px 16px;
+    }
+    .tabs .tab a {
+        font-size: 11px;
+    }
+    .collection-item {
+        font-size: 13px;
+    }
+    .pending {
+        font-size: 9px;
+    }
+    .request {
+        font-size: 9px;
+    }
+    .practitioner a i {
+        margin-left: 1px;
+    }
+    .waiting {
+        padding: 20px 30px 20px 30px;
+    }
+    .edit-procedure {
+        width: 100%;
+    }
+    .title-form span {
+        display: inline;
+    }
+}
+
+@media (max-width: 1080px) {
+    .contenedor-total {
+        width: 970px;
+    }
+    .toppage {
+        width: 720px;
+    }
+    main {
+        width: 720px;
+        min-height: 635px;
+    }
+    .title_plus_btn {
+        margin-top: 30px;
+        padding-top: 90px;
+        padding-right: 0px;
+    }
+    .col-tableAbm {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 8px;
+    }
+    .home-table {
+        width: 620px;
+        margin: auto;
+    }
+    .contenedor_max {
+        min-height: 615px;
+    }
+    nav {
+        height: 34px;
+    }
+    .buscador {
+        width: 450px;
+        min-width: auto;
+    }
+    html .contenedor_max .buscador input {
+        width: 300px;
+    }
+    .buscador ul li a {
+        line-height: 36px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .contenedor_login {
+        width: 35%;
+    }
+    .new-order {
+        #general {
+            padding: 0px 40px 60px 40px;
+        }
+        #solicitud {
+            padding: 0px 40px 60px 40px;
+        }
+        #examen_fisico {
+            padding: 0px 40px 60px 40px;
+        }
+        #estudios {
+            padding: 0px 40px 60px 40px;
+        }
+        #antecedentes {
+            padding: 0px 40px 60px 40px;
+        }
+        #notas {
+            padding: 0px 40px 60px 40px;
+        }
+        #reporte {
+            padding: 0px 40px 60px 40px;
+        }
+    }
+    .waiting {
+        padding: 20px 30px 20px 30px;
+    }
+    .title-form2 {
+        margin-bottom: 50px;
+    }
+    .modal.modal-fixed-footer {
+        bottom: 10%;
+    }
+    .formIngreso .title-form .win_up {
+        height: 200px;
+        min-height: 140px;
+        max-height: 200px;
+        overflow-y: scroll;
+        width: 100%;
+        display: block;
+    }
+}
+
+@media (max-width:992px) {
+    .side-nav {
+        position: absolute;
+        height: 100%;
+    }
+    .side-nav.fixed {
+        transform: translateX(-100%);
+        display: block;
+    }
+    .contenedor-total {
+        width: 100%;
+        margin: 0px;
+        top: 0px;
+        border-radius: 0px;
+        height: 100%;
+    }
+    .contenedor_max {
+        min-height: 900px;
+    }
+    .toppage {
+        width: 100%;
+    }
+    main {
+        width: 100%;
+        height: auto;
+        min-height: 100%;
+    }
+    .nav-wrapper {
+        border-radius: 0px;
+    }
+    .side-nav {
+        border-radius: 0px;
+    }
+    header nav a.button-collapse i {
+        color: #929292;
+        height: 44px;
+    }
+    header nav a.button-collapse {
+        height: 45px;
+        line-height: 49px;
+        margin: 0 23px;
+    }
+    .titulo-seccion {
+        padding-left: 0%;
+        position: absolute;
+        left: 24px;
+        top: 10px;
+    }
+    .titulo-seccion h4 {
+        padding-top: 34px;
+        font-size: 2rem;
+    }
+    .contenedor-total {
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    }
+    .fila-tableAbm {
+        font-size: 15px;
+        border-style: solid;
+        border-width: 0px 0px 0.5px 0px;
+        border-color: rgb(222, 222, 222);
+    }
+    .card-head .btn_action_home {
+        bottom: -7px;
+        right: 67px;
+    }
+    ::-webkit-scrollbar {
+        width: 0.3em;
+        height: 0.3em;
+    }
+    .card-content .row {
+        border-style: none;
+    }
+    .select-wrapper input.select-dropdown {
+        height: 39px;
+    }
+    .waiting {
+        padding: 70px 30px 20px 30px;
+    }
+    .explicacion {
+        margin: 0;
+    }
+}
+
+@media (max-width:768px) {
+    .fila-tableAbm {
+        font-size: 13px;
+    }
+    .col-tableAbm {
+        padding: 4px;
+    }
+}
+
+@media (max-width:720px) {
+    .contenedor_max .card-content .tablaAbm {
+        overflow-x: visible;
+        display: block;
+    }
+    .tablaAbm {
+        text-align: -webkit-center;
+        text-align: -moz-center;
+        text-align: -o-center;
+        text-align: -ms-center;
+    }
+    .title_plus_btn {
+        padding-right: 0px;
+    }
+}
+
+@media (max-width:700px) {
+    .contenedor_max .card-content .tablaAbm {
+        overflow-x: scroll;
+        display: block;
+        margin-top: 20px;
+    }
+    .accept {
+        float: left;
+    }
+    .modal-action {
+        padding: 0px 10px 0px 10px;
+        float: left;
+    }
+    .tablaAbm {
+        overflow-x: scroll;
+        display: block;
+        margin-top: 20px;
+    }
+    .buttons-form {
+        ul {
+            li {
+                a {
+                    p {
+                        display: block;
+                        margin-top: 0;
+                        text-align: center;
+                        color: #929292;
+                    }
+                    span {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:640px) {
+    .oculto {
+        display: none;
+    }
+    .titulo-seccion h4 {
+        font-size: 1.7rem;
+    }
+    header h2 {
+        font-size: 20px;
+    }
+    .title-form h4 {
+        font-size: 18px;
+    }
+    header nav .brand-logo.center {
+        left: 82%;
+    }
+    .card-head .btn_action_home {
+        bottom: -7px;
+        right: 43px;
+    }
+    .text-antecedentes {
+        width: 50%;
+    }
+    .waiting {
+        position: absolute;
+        top: -130px;
+        left: 25%;
+        background: #ff4081;
+        padding: 60px 20px 10px 20px;
+        z-index: 999;
+        color: white;
+        font-size: 16px;
+        border-radius: 0px 0px 10px 10px;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.37);
+        animation: waiting 1s;
+        animation-fill-mode: forwards;
+        width: 300px;
+        margin: 0 auto;
+    }
+    [type="checkbox"]+label {
+        height: 19px;
+        line-height: 17px;
+    }
+    .new-order #notas .collection li {
+        padding: 30px 40px 30px 40px;
+    }
+    #notas .msj-chat textarea {
+        width: 300px;
+        height: 9rem;
+    }
+    .buttons-form .tabs {
+        height: 35px;
+    }
+    .home-table {
+        width: 570px;
+        margin: auto;
+    }
+    .tabs .tab a {
+        color: #929292;
+        font-size: 12px;
+        line-height: 36px;
+    }
+    .buttons-form .ileft {
+        top: 100px;
+    }
+    .buttons-form .iright {
+        top: 100px;
+    }
+}
+
+@media (max-width:600px) {
+    .action-top {
+        ul {
+            background: #009688;
+            width: 100%;
+            padding-left: 20px;
+        }
+    }
+    .scroll-card {
+        .card-content {
+            max-height: none;
+        }
+    }
+    .cont-tables {
+        .card .card-content {
+            padding: 5px;
+        }
+        .estructura_list .collapsible-header {
+            font-weight: 500;
+            font-size: 13px;
+        }
+    }
+    .formIngreso .input-field {
+        margin-bottom: 0px;
+    }
+}
+
+@media (max-width:540px) {
+    .titulo-seccion p {
+        font-size: 11px;
+        line-height: 15px;
+    }
+}
+
+@media (max-width:480px) {
+    .collapsible.popout>li {
+        margin: 0px;
+    }
+    .contenedor_max {
+        width: 100%;
+    }
+    header nav .brand-logo.center {
+        left: 78%;
+        top: 27%;
+    }
+    .card-head .btn_action_home {
+        bottom: -7px;
+        right: 29px;
+    }
+    .titulo-seccion h4 {
+        padding-top: 20px;
+        margin-bottom: -5px;
+    }
+    .card-content .row {
+        border-style: none;
+    }
+    .input-field .select-wrapper input.select-dropdown {
+        margin: 0px;
+    }
+    .home-table {
+        width: 390px;
+        margin: auto;
+    }
+    .waiting {
+        left: 0;
+        width: 100%;
+    }
+    .explicacion {
+        float: none;
+        font-size: 14px;
+        width: 100%;
+        line-height: 18px;
+        color: #009688;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    .new-order #reporte {
+        padding: 0px 0px 0px 0px;
+    }
+    html {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
+@media (max-width:400px) {
+    .oculto2 {
+        display: none;
+    }
+    header nav .brand-logo.center {
+        left: 78%;
+        top: 23%;
+    }
+    .collection .collection-item {
+        line-height: 1.2rem;
+        font-size: 0.9rem;
+    }
+    .titulo-seccion h4 {
+        padding-top: 20px;
+        margin-bottom: -5px;
+    }
+    .col-tableAbm {
+        padding: 5px;
+    }
+    .home-table {
+        width: 310px;
+        margin: auto;
+    }
+    .home-table h2 {
+        font-size: 21px;
+        line-height: 125%;
+    }
+    .waiting {
+        left: 0;
+        width: 100%;
+    }
+    .explicacion2 {
+        font-size: 12px;
+    }
+    .section-form {
+        font-size: 20px;
+    }
+    .new-order #notas .collection li {
+        padding: 20px 20px 20px 20px;
+    }
+}
+
+@media (max-width: 375px) {
+    .contenedor_login {
+        width: 100%;
+    }
+    .contenedor_set_password {
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    .contenedor_login {
+        width: 100%;
+    }
+    .contenedor_set_password {
+        width: 100%;
+    }
+}
+
+@media (max-width: 320px) {
+    .contenedor_login {
+        width: 100%;
+        .row {
+            padding: 0 10px;
+            margin-top: 35px;
+        }
+    }
+    .contenedor_set_password {
+        width: 100%;
+        .row {
+            padding: 0 10px;
+            margin-top: 35px;
+        }
+    }
+    .modal h4 {
+        font-size: 22px;
+    }
+}

@@ -1,0 +1,18 @@
+<div class="contenedor_max">
+    <div class="row title_plus_btn">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content ancho_diagnostico">
+                    <div class="row">
+                        <a ng-if="isEnabled('create_user')" class="btn-add btn waves-effect waves-light right" ui-sref="user_type_add({type:'practitioner'})"><i class="material-icons">add</i>{{'NEW' | translate}}</a>
+                    </div>
+                    <table-actions properties="properties" ng-if="practitionerListView.length > 0" list="practitionerListView" view-state="'practitioner_view'" edit-state="isEnabled('practitioner_add') && 'practitioner_add'"
+                        confirm-delete="confirmDelete" type="userType"></table-actions>
+                    <div class="clearfix2"></div>
+                    <p class="explicacion2">• Sólo el Médico Administrador puede agregar Profesionales de la Salud</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

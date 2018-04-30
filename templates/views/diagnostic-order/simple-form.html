@@ -1,0 +1,250 @@
+<div class="contenedor_max formIngreso">
+  <div class="title-form ancho_diagnostico">
+    <div class="explicacion3" ng-show="enableExplication">
+      <a href=""><i class="material-icons" ng-click="closeExplication()">clear</i></a>
+      <p ng-show="explicationText">Ingrese el nombre de un paciente. Complete las secciones del formulario y luego presione Guardar para enviarlo y ser
+        atendido.</p>
+      <p ng-show="sinchronousType">Tipo de solicitud SINCRÓNICO: será redirigido a una videollamada con el médico prestador de servicio.</p>
+      <p ng-show="asinchronousType">Tipo de solicitud ASINCRÓNICO: se le notificará cuando reciba un reporte escrito de su solicitud.</p>
+    </div>
+    <div class="clearfix"></div>
+    <div class="type-request" ng-show="category[0].text"><span>Tipo de solicitud seleccionado: </span><a href="" tooltipped data-position="right" data-delay="50" data-tooltip="Ver explicación">{{category[0].text | translate}}</a></div>
+    <div class="row">
+      <a class="btn-add btn waves-effect waves-light right ng-binding" ng-click="saveDiagnosticOrder()" ng-if="enableSaveButton()"><i class="fa fa-floppy-o ng-scope" aria-hidden="true" tooltipped data-position="top" data-delay="50" data-tooltip="{{'RECORD_AND_SEND' | translate}}"></i></a>
+      <a class="btn-add btn waves-effect waves-light right ng-binding" ng-click="cancelDiagnosticOrder()"><i class="fa fa-mail-reply" aria-hidden="true" tooltipped data-position="top"
+        data-delay="50" data-tooltip="{{'GO_TO_LIST' | translate}}"></i></a>
+    </div>
+  </div>
+  <form>
+    <div class="row">
+      <div class="card-content new-order">
+        <div class="">
+          <div class="row">
+            <div class="buttons-form">
+              <div class="ancho_diagnostico">
+                <ul tabs reload="allTabContentLoaded">
+                  <li ng-class="{disabled: !currentPatient.name}" class="tab col s2"><a ng-click="selectedTab('generalLi')" id="generalLi" href="#general" class="active" tooltipped data-position="top"
+                      data-delay="50" data-tooltip="{{'GENERAL' | translate}}">{{'GENERAL' | translate}} <p>1</p></a></li>
+                  <li ng-class="{disabled: !currentPatient.name}" class="tab col s2"><a ng-click="selectedTab('solicitudLi')" id="solicitudLi" href="#solicitud" tooltipped data-position="top"
+                      data-delay="50" data-tooltip="{{'REQUEST' | translate}}">{{'REQUEST' | translate}}<p>2</p></a></li>
+                  <li ng-class="{disabled: !currentPatient.name}" class="tab col s2"><a ng-click="selectedTab('examen_fisicoLi')" id="examen_fisicoLi" href="#examen_fisico" tooltipped data-position="top"
+                      data-delay="50" data-tooltip="{{'PHYSICAL_EXAM' | translate}}">{{'PHYSICAL_EXAM' | translate}} <p>3</p></a></li>
+                  <li ng-class="{disabled: !currentPatient.name}" class="tab col s2"><a ng-click="selectedTab('estudiosLi')" id="estudiosLi" href="#estudios" tooltipped data-position="top"
+                      data-delay="50" data-tooltip="{{'STUDIES' | translate}}">{{'STUDIES' | translate}}<p>4</p></a></li>
+                  <li ng-class="{disabled: !currentPatient.name}" class="tab col s2"><a ng-click="selectedTab('antecedentesLi')" id="antecedentesLi" href="#antecedentes" tooltipped data-position="top"
+                      data-delay="50" data-tooltip="{{'BACKGROUND' | translate}}">{{'BACKGROUND' | translate}}<p>5</p></a></li>
+                  <li ng-class="{disabled: !currentPatient.name}" class="tab col s2"><a ng-click="selectedTab('notasLi')" id="notasLi" href="#notas" tooltipped data-position="top" data-delay="50"
+                      data-tooltip="{{'NOTES' | translate}}">{{'NOTES' | translate}}<p>6</p></a></li>
+                </ul>
+
+              </div>
+              <a ng-if="initPosition !== 0" class="ileft" ng-click="chevron({position: initPosition - 1})" href=""><i class="material-icons">chevron_left</i></a>
+              <a ng-if="initPosition !== (chevronOptions.length -1)" class="iright" ng-click="chevron({position: initPosition + 1})" href=""><i class="material-icons">chevron_right</i></a>
+            </div>
+          </div>
+          <div ng-show="loading" class="center-align">
+            <loader loading-text="'Cargando...'"></loader>
+          </div>
+          <div id="general" class="col s12">
+            <div class="col s12 search-box search-form formIngreso" ng-if="!subject.reference && !loading" ng-cloak>
+              <div class="input-field buscador">
+                <input type="text" name="Search" class="header-search-input z-depth-2" ng-model="identifier[0].value" placeholder="{{'SEARCH_BY_NAME_OR_DNI_MINIMUN_3_CHARACTERES' | translate}}"
+                  ng-keydown="($event.keyCode == 13 || $event.keyCode == 9) && searchPatient({dni:identifier[0].value})" />
+                <ul>
+                  <li>
+                    <a class="btn-add btn waves-effect waves-light" ng-click="searchPatient({dni:identifier[0].value})"><i class="fa fa-search" style="top: 6%;"></i></a>
+                  </li>
+                  <li>
+                    <a class="btn-add btn waves-effect waves-light ng-scope" ng-click="cancelSearch()"><i class="fa fa-remove" style="top: 6%;"></i></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col s12 m12 l6" ng-if="!subject.reference" ng-cloak>
+                <ul class="collection list-patient-select" ng-if="patients.length > 0">
+                  <a ng-repeat="patient in patients" ng-if="$index < 5" ng-click="selectPatient({patient:patient})" class="collection-item">{{patient.name}} - {{patient.identifier[0].value}}</a>
+                  <a href="" class="more-result" ng-if="searched && thereAreMorePatients" ui-sref="patient_abm({search: identifier[0].value})">+ {{'MORE_RESULTS' | translate}}</a>
+                </ul>
+                <div class="msj-error" ng-if="patients.length==0"><a href="" class="close"><i class="material-icons">clear</i></a><i class="material-icons">report_problem</i>{{'NO_PATIENTS_WERE_FOUND'
+                  | translate}}
+                  <a ui-sref="patient_abm"><i class="material-icons">add</i>{{'SEE_PATIENTS' | translate}}</a></div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="col s12">
+                <a ng-if="searched" class="waves-effect waves-teal btn-add btn initial" ui-sref="patient_add" name="add_patient"><i class="material-icons">add</i>{{'CREATE' | translate}} {{'NEW' | translate}} {{'PATIENT' | translate}}</a>
+              </div>
+            </div>
+            <div class="card-content" ng-show="currentPatient._id && !loading">
+              <div class="row">
+                <div class="col m12 s12">
+                  <div class="input-field col l6 m6 s6">
+                    <input id="subject" type="text" class="validate" ng-model="subject.display" readonly />
+                    <label for="reference">{{'PATIENT' |translate}}</label>
+                    <a ng-if="subject.reference" ng-click="removePatient()" class="remove-patient"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+                  </div>
+                  <div class="input-field  col l6 m6 s6">
+                    <input id="subject" type="text" class="validate" ng-model="currentPatient.identifier[0].value" readonly />
+                    <label for="reference">{{'PERSONAL_IDENTIFICATION' |translate}}</label>
+                  </div>
+                  <div class="input-field col l6 m6 s6" style="margin-top: 0px !important">
+                    <input id="subject" type="text" class="validate" ng-model="subject.age" readonly />
+                    <label for="reference">{{'AGE' | translate}}</label>
+                  </div>
+                  <div class="input-field col l6 m6 s6" style="margin-top: 0px !important">
+                    <input id="subject" type="text" class="validate" ng-model="currentPatient.gender" readonly/>
+                    <label for="reference">{{'GENDER' | translate}}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="solicitud" class="col s12">
+
+            <div class="form">
+              <div class="input-field col m6 s12">
+                <input id="title" type="text" class="validate" ng-model="identifier[0].system" />
+                <label for="title">{{'TITLE' | translate}}</label>
+                <div ng-if="msg" class="msj-error">
+                  <a href="" class="close"><i class="material-icons">clear</i></a>>
+                  <p><i class="material-icons">report_problem</i>{{'TITLE_IS_REQUIRED' | translate}}</p>
+                </div>
+              </div>
+              <div class="input-field col m6 s12">
+                <input id="email" type="text" class="validate" ng-model="code.text" />
+                <label for="email">{{'REASON_OPTIONAL' | translate}}</label>
+                <span></span>
+              </div>
+            </div>
+            <div class="col m6 s12">
+              <div class="input-field sincronica select-type">
+                <select id="type-request" material-select watch ng-model="category[0].text" ng-change="setPriority()">
+                      <option value="ASYNCHRONOUS_CONSULTATION" option-untranslate="ASYNCHRONOUS" data-icon="img/iconos/reporte-icon.png">{{'ASYNCHRONOUS' | translate}}</option>
+                      <option value="SPONTANEOUS_SYNCHRONOUS_CONSULTATION" option-untranslate="SYNCHRONOUS" data-icon="img/iconos/llamada-icon.png">{{'SYNCHRONOUS' | translate}} ({{'INCLUDES_VIDEO_CALL' | translate}})</option>
+                </select>
+                <label>{{'TYPE' | translate}}</label>
+              </div>
+            </div>
+            <div class="col m6 s12">
+              <div class="input-field sincronica">
+                <input id="status-request" type="text" class="validate" ng-value="status | translate" readonly/>
+                <label>{{'STATUS' | translate}}</label>
+              </div>
+            </div>
+            <div class="col m6 s12">
+              <div class="input-field">
+                <select id="patient-gender" ng-model="performer.reference" ng-change="selectOrganization()" material-select watch>
+                        <option ng-repeat="organizationItem in organizationList" value="{{organizationItem._id}}">{{organizationItem.name}}</option>
+                  </select>
+                <label>{{'DESTINATION_ORGANIZATION' | translate}}</label>
+              </div>
+            </div>
+            <div class="col m6 s12">
+              <div class="input-field">
+                <select id="specialty" ng-model="performerType.text" material-select watch>
+                        <option ng-repeat="specialty in specialtyList" value="{{specialty.value.text}}" >{{specialty.value.text}}</option>
+                  </select>
+                <label>{{'ASSIGN_SPECIALTY' | translate}}</label>
+              </div>
+            </div>
+          </div>
+          <div id="examen_fisico" class="col s12">
+            <physical-exam enable-edit="EnableEdit" entry="entry" physical-exam="physicalExam"></physical-exam>
+          </div>
+          <div id="estudios" class="col s12">
+
+            <div class="col m6 s12">
+              <p>{{'IN_THIS_SECTION_YOU_CAN_ATTACH_ALL_PATIENT_STUDIES_RELEVANT_TO_THE_APPLICATION_AND_OR_THE_POSSIBILITY_OF_GENERATING_STUDIES_IF_WORKING_FROM_A_CDM'
+                | translate}} <br><br> <span>{{'ALL_FILES_CORRESPONDING_TO_THE_SAME_STUDY_MUST_BE_OF_THE_SAME_TYPE_AND_SIZE' | translate}}</span></p>
+              <span></span>
+            </div>
+            <div class="col m6 s12">
+              <div ng-if="!subject.reference">
+                <p>{{'YOU_MUST_SELECT_A_PATIENT_BEFORE_UPLOADING_A_STUDY' | translate}}</p>
+              </div>
+              <div class="actions">
+                <a href="" class="btn-add btn waves-effect waves-light" tooltipped data-position="top" data-delay="50" data-tooltip="Inhabilitado, No se encontro el dispositivo CDM"><i class="fa fa-plus" aria-hidden="true"></i>{{'CREATE_NEW_STUDIE' | translate}}</a>
+                <a ng-if="subject.reference" class="btn-add btn waves-effect waves-light" data-target='modal-study' modal open="modalStatus.open"><i class="fa fa-paperclip" aria-hidden="true"></i>{{'TO_ATTACH' | translate}}</a>
+                <p><span></span></p>
+              </div>
+            </div>
+            <div class="col s12" ng-if="subject.reference">
+              <ul class="collection files-col">
+                <li class="readed-studies" ng-repeat="observation in observations" ng-click="observationDetail(observation)">
+                    <span class="title" ><a >{{observation.valueString || observation._id}}</a></span>
+                    <span class="right cancel_study" ng-click="removeObservation(observation)"> <a><img src="img/iconos/delete.png" class="cruz" aria-hidden="true"></a></span>
+                </li>
+              </ul>
+              <study-dicom ng-if="currentObservation._id" current-attachment="currentObservation.attachment[0]" no-dicom="notIsDicom" attachment="currentObservation.attachment"></study-dicom>
+            </div>
+
+            <file-modal attachment="attachment" class="cont-modal-add" save="saveAttachment" type="'multiple'" study-name="studyName"
+              accept-callback="saveNewStudy" status="modalStatus"></file-modal>
+          </div>
+          <div id="antecedentes">
+            <background enable-edit="EnableEdit" entry="entry" toxic-habits="toxicHabits" psysiologic-habits='psysiologicHabits' chillhood-diseases='chillhoodDiseases'
+              horizontal-transmition-diseases='horizontalTransmitionDiseases' adult-diseases='adultDiseases'></background>
+          </div>
+          <div id="notas" class="col s12">
+            <ul class="collection files-col">
+              <li class="collection-item avatar cliente" ng-repeat="item in note" ng-if="item.text">
+                <span class="title">{{item.authorString}} - {{ {date: currentDate, type: 'time'} | setViewDate}}</span>
+                <p>{{item.text}}</p>
+              </li>
+            </ul>
+            <div class="row">
+              <div class="msj-chat">
+                <input-field>
+                  <textarea id="note" placeholder="{{placeHolderNote}}" maxlength="140" class="filled-in" ng-model="noteinfo.currentNote" ng-keydown="$event.keyCode == 13 && sendNote() "></textarea>
+                </input-field>
+                <a id="sendNote" class="waves-effect waves-teal btn-add btn" ng-click="sendNote()" tooltipped data-delay="50" data-position="top" data-tooltip="{{'THIS_ACTION_WILL_SEND_THE_NOTE_FOR_CLARIFICATION_WITHOUT_GENERATING_A_REPORT' | translate}}"><i class="fa fa-commenting" aria-hidden="true"></i>{{commentStr}}</a>
+              </div>
+              <div class="clearfix"></div>
+              <div ng-if="unsaved_notes" class="msj-error">
+                <a href="" class="close"><i class="material-icons">clear</i></a>
+                <p><i class="material-icons">report_problem</i>{{'THERE_ARE_UNSAVED_NOTES' | translate}}</p>
+              </div>
+              <div id="notas" class="col s12">
+                <h4 class="section-form">{{'NOTESMAY' | translate}}</h4>
+                <p class="explicacion2"> • {{'IF_NECESSARY_ADD_A_NOTE_TO_THE_MEDICAL_PROVIDER' | translate}}</p>
+                <ul class="collection files-col">
+                  <li class="collection-item avatar cliente" ng-repeat="item in note" ng-if="item.text">
+                    <span class="title">{{item.authorString}} - {{ {date: item.time.type, type: 'time'} | setViewDate}}</span>
+                    <p>{{item.text}}</p>
+                  </li>
+                </ul>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <label for="reference">{{REPORT_LIST | translate}} </label>
+                  </div>
+                  <div class="input-field col s12" ng-repeat="report in reports">
+                    <a ui-sref="diagnostic_report_add({id:report._id})" class="black-text">
+                        <input id="reference" type="text" ng-model="report._id" readonly/>
+                        <span></span>
+                      </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div id="modal10" class="modal modal10">
+  <div class="modal-content">
+    <p class="text-in-box">{{'THE_REQUEST_WAS_RECORDED_AND_SENT_TO_THE_RECEIVER' | translate}} ({{performer.display}}, {{performerType.text}}),
+      {{'IT_WILL_BE_ANSWERED_AS_SOON_AS_POSSIBLE' | translate}}</p>
+  </div>
+  <div class="modal-footer">
+    <a id="acept_modal" href="#!" class="modal-action modal-close waves-effect waves-light btn btn-add" ui-sref="procedure_request_abm">{{'ACCEPT' | translate}}</a>
+  </div>
+</div>
+<div id="modal-discard" class="modal modal-discard">
+  <div class="modal-content">
+    <p class="text-in-box">{{'EXITING_THIS_SCREEN_WILL_CAUSE_CANCELLATION_IN_THE_COURSE_DO_YOU_CONFIRM_THE_EXIT' | translate}}</p>
+  </div>
+  <div class="modal-footer">
+    <a id="acept_modal_redirec" class="modal-action waves-effect waves-light btn btn-add button-draft" ng-click="gotoMenu()" tooltipped data-position="top" data-delay="50" data-tooltip="{{'EXIT' | translate}}">{{'YES' | translate}}</a>
+    <a id="cancel_modal_redirec" class="modal-action modal-close waves-effect waves-light btn btn-add button-draft" ng-click="returntoForm()"  tooltipped data-position="top" data-delay="50" data-tooltip="{{'CANCEL_AND_RETURN_TO_THE_REQUEST' | translate}}">{{'NO' | translate}}</a>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="contenedor_max formIngreso">
+    <div class="title-form ancho_diagnostico">
+        <a ui-sref="patient_abm" class="btn-add btn waves-effect waves-light right"><i class="fa fa-mail-reply" aria-hidden="true"  class="btn-add btn waves-effect waves-light right sinchronous_button" tooltipped data-position="top" data-delay="50" data-tooltip="{{'RETURN_TO_LIST' | translate}}"></i></a>
+    </div>
+    <div class="box-top-form">
+        <div class="row top-card-patient ancho_diagnostico">
+            <form>
+                <div class="row ancho_diagnostico vista">
+                    <div class="input-field col s12 user">
+                        <label for="name">{{'NAME' | translate}}</label>
+                        <p>{{patient.name[0].text}}</p>
+                        <span></span>
+                    </div>
+                    <div class="input-field col s4">
+                        <label for="name">{{'PERSONAL_IDENTIFICATION' | translate}}</label>
+                        <p>{{patient.identifier[0].value}}</p>
+                        <span></span>
+                    </div>
+                    <div class="input-field col s4">
+                        <label for="name">{{'BIRTHDATE' | translate}}</label>
+                        <p>{{patient.birthDateFormat}}</p>
+                        <span></span>
+                    </div>
+                    <div class="input-field col s4">
+                        <label for="gender">{{'GENDER' |translate}}</label><br>
+                        <p>{{getGender(patient.gender)}}</p>
+                    </div>
+                </div>
+              </form>
+        </div>
+
+        <div class="row ancho_diagnostico" ng-show="$scope.isVoid">
+            <div id="address_patient" class="col s12 ancho_diagnostico">
+                <address-human address="patient.address[0]" readonly="true"></address-human>
+            </div>
+        </div>
+    </div>
+</div>

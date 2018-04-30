@@ -1,0 +1,287 @@
+<div class="container-fluid formIngreso formAdd">
+    <div class="row">
+        <div class="title-form">
+            <h4>Observation</h4>
+            <span>Complete los campos para el ingreso</span>
+        </div>
+        <div class="col l8 m8 s12">
+            <div class="list-left">
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <ul class="campo-pcipal">
+                                <edit-identifier modelname="'observation'" identifier='identifier'></edit-identifier>
+                                <edit-codeable-concept attrname="'code'" title="'Code'" modelname="'observation'" codeable-concept="code"></edit-codeable-concept>
+                                <edit-codeable-concept attrname="'interpretation'" title="'Interpretation'" modelname="'observation'" codeable-concept="interpretation"></edit-codeable-concept>
+                                <basic-edit attrname="'issued'" title="'Issued'" modelname="'observation'" model="issued"></basic-edit>
+
+                                <li ng-repeat="related_item in related">
+                                    <div class="row top-cat no-border">
+                                        <a class="waves-effect waves-light contact-plus show">
+                                            <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                        </a>
+                                        <span class="title-height">Related</span>
+                                        <span class="right">
+                                          <ul>
+                                            <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                                            <li><a ui-sref="observation.edit.related.text({related_index:$index})" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                                            <li><a href="" class="waves-effect waves-light add-plus" ng-click="addRelated()"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                                            <li><a href="" class="waves-effect waves-light delete" ng-click="deleteFromArray(related,$index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                        </span>
+                                    </div>
+                                    <div class="first-f contact-form relative">
+                                        <ul>
+                                            <basic-edit attrname="'related.references'" title="'References'" modelname="'observation'" model="references" parent-index="$index" parent-index-name="'related_index'"></basic-edit>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <basic-edit attrname="'performer'" title="'Performer'" modelname="'observation'" model="performer"></basic-edit>
+                                <edit-codeable-concept attrname="'bodysite'" title="'Body Site'" modelname="'observation'" codeable-concept="bodySite"></edit-codeable-concept>
+                                <edit-codeable-concept attrname="'dataabsentreason'" title="'Data Absent Reason'" modelname="'observation'" codeable-concept="dataAbsentReason"></edit-codeable-concept>
+                                <basic-edit attrname="'subject'" title="'Subject'" modelname="'observation'" model="subject"></basic-edit>
+                                <edit-codeable-concept attrname="'category'" title="'Category'" modelname="'observation'" codeable-concept="category"></edit-codeable-concept>
+                                <basic-edit attrname="'comments'" title="'Comments'" modelname="'observation'" model="comments"></basic-edit>
+                                <basic-edit attrname="'effectivedatetime'" title="'Effective DateTime'" modelname="'observation'" model="effectiveDateTime"></basic-edit>
+                                <edit-codeable-concept attrname="'method'" title="'Method'" modelname="'observation'" codeable-concept="method"></edit-codeable-concept>
+                                <basic-edit attrname="'valuestring'" title="'Value String'" modelname="'observation'" model="observationValueString"></basic-edit>
+                                <basic-edit attrname="'status'" title="'Status'" modelname="'observation'" model="status"></basic-edit>
+                                <edit-codeable-concept attrname="'valuecodeableconcept'" title="'Value CodeableConcept'" modelname="'observation'" codeable-concept="valueCodeableConcept"></edit-codeable-concept>
+                                <basic-edit attrname="'specimen'" title="'Specimen'" modelname="'observation'" model="specimen"></basic-edit>
+                                <basic-edit attrname="'effectiveperiod'" title="'Effective Period'" modelname="'observation'" model="effectivePeriod"></basic-edit>
+                                <li ng-repeat="component_item in component">
+                                    <div class="row top-cat no-border">
+                                        <a class="waves-effect waves-light contact-plus show">
+                                            <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                        </a>
+                                        <span class="title-height">Component</span>
+                                        <span class="right">
+                                          <ul>
+                                            <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                                            <li><a ui-sref="observation.edit.component.text({component_index:$index})" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                                            <li><a href="" class="waves-effect waves-light add-plus" ng-click="addComponent()"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                                            <li><a href="" class="waves-effect waves-light delete" ng-click="deleteFromArray(component,$index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+                                          </ul>
+                                        </span>
+                                    </div>
+                                    <div class="first-f contact-form relative">
+                                        <ul>
+                                            <edit-codeable-concept modelname="'observation'" codeable-concept="component_item.valueCodeableConcept" title="'Value CodeableConcept'" attrname="'component.valuecodeableconcept'" parent-index="$index" parent-index-name="'component_index'"></edit-codeable-concept>
+                                            <basic-edit modelname="'observation'" model="component_item.valueTime" title="'Value Time'" attrname="'component.valuetime'" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+                                            <basic-edit modelname="'observation'" model="component_item.valueTime" title="'Value Time'" attrname="'component.valuetime'" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+                                            <basic-edit modelname="'observation'" model="component_item.valueAttachment" title="'Value Attachment'" attrname="'component.valueattachment'" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+
+
+                                            <li ng-repeat="reference_range_item in component_item.referenceRange">
+                                                <div class="row top-cat">
+                                                    <a class="waves-effect waves-light contact-plus show">
+                                                        <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                                    </a>
+                                                    <span class="title-height">Reference Range</span>
+                                                    <span class="right">
+                                                      <ul>
+                                                        <li><a href="" class="waves-effect waves-light add-plus" ng-click="addComponentReferenceRage($parent.$index)"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                                                        <li><a href="" class="waves-effect waves-light delete" ng-click="deleteFromArray(component_item.referenceRange,$index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+                                                      </ul>
+                                                    </span>
+                                                </div>
+                                                <div class="second-f contact-form">
+                                                    <ul>
+
+                                                        <basic-edit modelname="'observation'" model="reference_range_item.high" title="'High'" attrname="'component.referencerange.high'" parent-index="$index" parent-index-name="'reference_range_index'" parent-parent-index="$parent.$index" parent-parent-index-name="'component_index'"></basic-edit>
+                                                        <basic-edit modelname="'observation'" model="reference_range_item.low" title="'Low'" attrname="'component.referencerange.low'" parent-index="$index" parent-index-name="'reference_range_index'" parent-parent-index="$parent.$index" parent-parent-index-name="'component_index'"></basic-edit>
+                                                        <li>
+                                                            <div class="row top-cat">
+                                                                <a class="waves-effect waves-light contact-plus show">
+                                                                    <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                                                </a>
+                                                                <span class="title-height">Age</span>
+                                                                <span class="right">
+
+                                                                </span>
+                                                            </div>
+                                                            <div class="second-f contact-form">
+                                                                <ul>
+                                                                    <basic-edit modelname="'observation'" model="reference_range_item.age.high" title="'High'" attrname="'component.referencerange.age.high'" parent-index="$index" parent-index-name="'reference_range_index'" parent-parent-index="$parent.$index" parent-parent-index-name="'component_index'"></basic-edit>
+                                                                    <basic-edit modelname="'observation'" model="reference_range_item.age.low" title="'Low'" attrname="'component.referencerange.age.low'" parent-index="$index" parent-index-name="'reference_range_index'" parent-parent-index="$parent.$index" parent-parent-index-name="'component_index'"></basic-edit>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                        <basic-edit modelname="'observation'" model="reference_range_item.text" title="'Text'" attrname="'component.referencerange.text'" parent-index="$index" parent-index-name="'reference_range_index'" parent-parent-index="$parent.$index" parent-parent-index-name="'component_index'"></basic-edit>
+
+                                                        <edit-codeable-concept modelname="'observation'" codeable-concept="reference_range_item.meaning" title="'Meaning'" attrname="'component.referencerange.meaning'" parent-index="$index" parent-index-name="'reference_range_index'" parent-parent-index="$parent.$index"
+                                                            parent-parent-index-name="'component_index'"></edit-codeable-concept>
+
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <basic-edit modelname="'observation'" model="component_item.valueQuantity" title="'Value Quantity'" attrname="'component.valuequantity'" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+
+                                            <li>
+                                                <div class="row top-cat">
+                                                    <a class="waves-effect waves-light contact-plus show">
+                                                        <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                                    </a>
+                                                    <span class="title-height">Value Ratio</span>
+                                                    <span class="right">
+                                                      <ul>
+                                                      </ul>
+                                                    </span>
+                                                </div>
+                                                <div class="second-f contact-form">
+                                                    <ul>
+                                                      <basic-edit modelname="'observation'" model="component_item.valueRatio.denominator" title="'Denominator'" attrname="'component.valueratio.denominator'" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+                                                      <basic-edit modelname="'observation'" model="component_item.valueRatio.numerator" title="'Numerator'" attrname="'component.valueratio.numerator'" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <basic-edit attrname="'component.valueperiod'" title="'Value Period'" modelname="'observation'" model="component_item.valuePeriod" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+                                            <li>
+                                                <div class="row top-cat">
+                                                    <a class="waves-effect waves-light contact-plus show">
+                                                        <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                                    </a>
+                                                    <span class="title-height">Value Range</span>
+                                                    <span class="right">
+                                                      <ul>
+                                                      </ul>
+                                                    </span>
+                                                </div>
+                                                <div class="second-f contact-form">
+                                                    <ul>
+                                                        <basic-edit attrname="'component.valuerange.high'" title="'High'" modelname="'observation'" model="component_item.valueRange.high" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+                                                        <basic-edit attrname="'component.valuerange.low'" title="'Low'" modelname="'observation'" model="component_item.valueRange.low" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <basic-edit attrname="'component.valuedatetime'" title="'Value Datetime'" modelname="'observation'" model="component_item.valueDateTime" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+                                            <edit-codeable-concept attrname="'component.dataabsentreason'" title="'Data Absent Reason'" modelname="'observation'" codeable-concept="component_item.dataAbsentReason" parent-index="$index" parent-index-name="'component_index'"></edit-codeable-concept>
+                                            <basic-edit attrname="'component.valuestring'" title="'Value String'" modelname="'observation'" model="component_item.valueString" parent-index="$index" parent-index-name="'component_index'"></basic-edit>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row top-cat no-border">
+                                        <a class="waves-effect waves-light contact-plus show">
+                                            <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                        </a>
+                                        <span class="title-height">Value Range</span>
+                                        <span class="right">
+                                          <ul>
+                                          </ul>
+                                        </span>
+                                    </div>
+                                    <div class="first-f contact-form relative">
+                                        <ul>
+                                            <basic-edit modelname="'observation'" model="valueRange.high" title="'High'" attrname="'observationvaluerange.high'"></basic-edit>
+                                            <basic-edit modelname="'observation'" model="valueRange.low" title="'Low'" attrname="'observationvaluerange.low'"></basic-edit>
+                                        </ul>
+                                    </div>
+
+                                </li>
+
+                                <basic-edit modelname="'observation'" model="device" title="'Device'" attrname="'device'"></basic-edit>
+
+                                <basic-edit modelname="'observation'" model="valueDateTime" title="'Value DateTime'" attrname="'valuedatetime'"></basic-edit>
+
+                                <basic-edit modelname="'observation'" model="encounter" title="'Encounter'" attrname="'encounter'"></basic-edit>
+
+                                <li>
+                                    <div class="row top-cat no-border">
+                                        <a class="waves-effect waves-light contact-plus show">
+                                            <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                        </a>
+                                        <span class="title-height">Value SampleData</span>
+                                        <span class="right">
+                                          <ul>
+                                            <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                                            <li><a ui-sref="observation.edit.valuesampledata" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                                          </ul>
+                                        </span>
+                                    </div>
+                                    <div class="first-f contact-form relative">
+                                        <ul>
+                                            <basic-edit modelname="'observation'" model="valueSampleData.quantity" title="'Quantity'" attrname="'valuesampledata.quantity'"></basic-edit>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <basic-edit modelname="'observation'" model="valueTime" title="'Value Time'" attrname="'valuetime'"></basic-edit>
+
+                                <basic-edit modelname="'observation'" model="valuePeriod" title="'Value Period'" attrname="'valueperiod'"></basic-edit>
+
+                                <li ng-repeat="reference_range_item in referenceRange">
+                                    <div class="row top-cat no-border">
+                                        <a class="waves-effect waves-light contact-plus show">
+                                            <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                        </a>
+                                        <span class="title-height">Reference Range</span>
+                                        <span class="right">
+                                          <ul>
+                                            <li><a href="" class="waves-effect waves-light add-plus" ng-click="addReferenceRange()"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                                            <li><a href="" class="waves-effect waves-light delete" ng-click="deleteFromArray(referenceRange,$index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+                                          </ul>
+                                        </span>
+                                    </div>
+                                    <div class="first-f contact-form relative">
+                                        <ul>
+                                            <basic-edit modelname="'observation'" model="reference_range_item.high" title="'High'" attrname="'referencerange.high'" parent-index="$index" parent-index-name="'range_index'"></basic-edit>
+                                            <basic-edit modelname="'observation'" model="reference_range_item.low" title="'Low'" attrname="'referencerange.low'" parent-index="$index" parent-index-name="'range_index'"></basic-edit>
+                                            <li>
+                                                <div class="row top-cat">
+                                                    <a class="waves-effect waves-light contact-plus show">
+                                                        <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                                    </a>
+                                                    <span class="title-height">Age</span>
+                                                    <span class="right">
+
+                                                    </span>
+                                                </div>
+                                                <div class="second-f contact-form">
+                                                    <ul>
+                                                        <basic-edit modelname="'observation'" model="reference_range_item.age.high" title="'High'" attrname="'referencerange.age.high'" parent-index="$index" parent-index-name="'range_index'"></basic-edit>
+                                                        <basic-edit modelname="'observation'" model="reference_range_item.age.low" title="'Low'" attrname="'referencerange.age.low'" parent-index="$index" parent-index-name="'range_index'"></basic-edit>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <basic-edit modelname="'observation'" model="reference_range_item.text" title="'Text'" attrname="'referencerange.text'" parent-index="$index" parent-index-name="'range_index'"></basic-edit>
+                                            <edit-codeable-concept modelname="'observation'" codeable-concept="reference_range_item.meaning" title="'Meaning'" attrname="'referencerange.meaning'" parent-index="$index" parent-index-name="'range_index'"></edit-codeable-concept>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <basic-edit modelname="'observation'" model="valueQuantity" title="'Value Quantity'" attrname="'valuequantity'"></basic-edit>
+                                <li>
+                                    <div class="row top-cat no-border">
+                                        <a class="waves-effect waves-light contact-plus show">
+                                            <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                                        </a>
+                                        <span class="title-height">Value Ratio</span>
+                                        <span class="right">
+                                          <ul>
+                                          </ul>
+                                        </span>
+                                    </div>
+                                    <div class="second-f contact-form">
+                                        <ul>
+                                            <basic-edit modelname="'observation'" model="valueRatio.numerator" title="'Numerator'" attrname="'valueratio.numerator'"></basic-edit>
+                                            <basic-edit modelname="'observation'" model="valueRatio.denominator" title="'Denominator'" attrname="'valueratio.denominator'"></basic-edit>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <basic-edit modelname="'observation'" model="valueAttachment" title="'Value Attachment'" attrname="'valueattachment'"></basic-edit>
+                            </ul>
+                        </div>
+                        <div class="row row-btn">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="saveObservation()">Aceptar </button>
+                                <button class="btn waves-effect waves-light" type="" name="action">Borrador </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div ui-view="forms"></div>
+    </div>
+</div>

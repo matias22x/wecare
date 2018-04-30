@@ -1,0 +1,12 @@
+<div class="contenedor_max formIngreso">
+    <div class="row title_plus_btn">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content ancho_diagnostico">
+                        <a ng-if="isEnabled('new_request')" class="btn-add btn waves-effect waves-light right" ui-sref="procedure_new"><i class="material-icons">add</i>{{'NEW_DIAGNOSTIC_ORDER' | translate}}</a>
+                    <table-actions ng-if="procedureRequestListView.length > 0" search="searchData" seeker="'seeker'" properties="properties" list="procedureRequestListView" edit-state="!isEnabled('practitioner_report') && 'procedure_request_add'" view-state="'procedure_request_view'" user-data="userData" report-state="isEnabled('practitioner_report') && 'diagnostic_report_order'" confirm-delete="confirmDelete" current-user="currentUser._id" order-default="'Created At'" orientation-list="true" type="type"></table-actions>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

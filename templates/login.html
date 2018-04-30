@@ -1,0 +1,37 @@
+
+    <div class="contenedor_login">
+        <div class="row">
+            <div class="card">
+                <div class="card-content z-depth-4">
+                    <form>
+                        <div class="row">
+                            <img src="img/exo-verde.png" alt class="responsive-img">
+                            <div class="col s12">
+                                <div class="center-login">
+                                    <h5 class="left-align login-title">{{'LOGIN' | translate}}</h5>
+                                </div>
+                                <div class="input-login">
+                                    <div class="input-field">
+                                      <input id="identificador" name="identificador" type="text" data-tooltip="{{'THIS_FIELD_IS_CASE_SENSITIVE' |translate}}. {{'MINIMUM_LENGTH_4_CHARACTERS' | translate}}" ng-model="login_data.username" class="validate" autocomplete="off">
+                                      <label for="identificador">{{'USERNAME' | translate}}</label>
+                                    </div>
+                                    <div class="input-field">
+                                      <input id="password_login" name="password" type="text" tooltipped data-position="right" data-tooltip="{{'THIS_FIELD_IS_CASE_SENSITIVE' |translate}}. {{'MINIMUM_LENGTH_8_CHARACTERS' | translate}}" ng-model="login_data.password" class="validate" autocomplete="off">
+                                      <label for="password_login">{{'PASSWORD' | translate}}</label>
+                                    </div>
+                                    <p class="login-error center-align"><span>{{error_msg}}</span></p>
+                                </div>
+                                <div class="center-login">
+                                    <button class="btn waves-effect waves-light login-button" type="submit" name="action" ng-click="login()">{{'SEND' | translate}}<i class="material-icons">forward</i></button>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="center-login copyright-login">
+                                    <span class="right">© {{version}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,32 @@
+<div class="input-field col s12">
+    <div class="file-field input-field">
+        <div class="btn waves-effect waves-light" ng-if="$ctrl.type === 'multiple'">
+            <span>{{'SELECT_FILES' | translate}}</span>
+            <input type="file" ng-model="$ctrl.file_upload" ng-change="$ctrl.loadFileNames()" nv-file-select uploader="$ctrl.uploader" multiple>
+        </div>
+        <div class="btn waves-effect waves-light" ng-if="$ctrl.type !== 'multiple'">
+            <span>{{'SELECT_FILE' | translate}}</span>
+            <input type="file" ng-model="$ctrl.file_upload" ng-change="$ctrl.loadFileNames()" nv-file-select uploader="$ctrl.uploader">
+        </div>
+        <div class="file-path-wrapper">
+            <input class="black-text file-path validate" type="text" ng-model="$ctrl.filenames">
+        </div>
+    </div>
+</div>
+<div class="input-field col s12">
+    <button class="btn" ng-if="$ctrl.attachment.length > 0 && $ctrl.acceptCallback" ng-click="$ctrl.acceptCallback()">{{'ACCEPT' | translate}}</button>
+</div>
+<div class="input-field col s12">
+    <input id="studyName" type="text" ng-model="$ctrl.studyName" class="validate">
+    <label for="studyName">{{'STUDY_NAME' | translate}}</label>
+</div>
+<div class="input-field col s12" ng-if="$ctrl.attachment.length > 0">
+
+    <ul class="collection files-col">
+        <li class="collection-item avatar" ng-repeat="item in $ctrl.attachment" ng-click="$ctrl.selectAttachment(item)">
+            <i class="material-icons circle">folder</i>
+            <span>{{item.title}}</span>
+            <i class="fa fa-search-plus right preview" aria-hidden="true"></i>
+        </li>
+    </ul>
+</div>

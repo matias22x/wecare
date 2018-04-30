@@ -1,0 +1,5 @@
+<div class="input-field col s12" ng-cloak>
+  <div ng-if="$ctrl.photo.length">
+    <img ng-repeat="photo in $ctrl.photo" ng-src="{{$ctrl.imgUrl+photo.url}}" alt="" />
+  </div>
+</div>

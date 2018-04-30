@@ -1,0 +1,107 @@
+<div class="cont-tables">
+    <div class="row rowTable">
+        <div class="tablaAbm">
+            <div class="col s12">
+                <div class="card">
+                   <div class="row title_plus_btn ancho_diagnostico"></div>
+                    <div class="card-content">
+                        <ul class="collapsible popout estructura_list ancho_diagnostico" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header active"><i class="fa fa-sticky-note-o"></i>{{'DIAGNOSTIC_ORDERS'| translate}}</div>
+                                <div class="collapsible-body">
+                                    <p>Estructura del recurso DiagnosticOrder.Se trata del recurso utilizado para la generación de los pedidos de Orden De Diagnóstico. Es un registro de un pedido para un set de investigaciones diagnósticas a ser realizadas
+                                        e incluye cualquier dato útil y/o imágenes relevantes al tratamiento del individuo.</p>
+                                    <div class="table-cont">
+                                        <table class="striped bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre </th>
+                                                    <th>Descripción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Sujeto</td>
+                                                    <td>Sobre qué, o quién, es el diagnostico, o la segunda opinión, solicitada.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Emisor</td>
+                                                    <td>Quien generó el pedido.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Identificador</td>
+                                                    <td>Identificador asignado a esta orden.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tipo</td>
+                                                    <td>Aquí se especifica qué tipo de Orden de Diagnostico se solicita, pudiendo ser, Asincrónica, Sincrónica, programada, Sincrónica, Espontanea, Urgente, Etc.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Encuentro</td>
+                                                    <td>Puede relacionarse con un encuentro o visita médica.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Motivo</td>
+                                                    <td>La explicación / justificación para el pedido del diagnóstico o segunda opinión.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Datos Adjuntos</td>
+                                                    <td>Información clínica adicional (Todos los documentos que viajan junto al pedido).</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Foto</td>
+                                                    <td>Foto de la persona.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Espécimen</td>
+                                                    <td>Si el pedido se refiere a muestras específicas.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Estado</td>
+                                                    <td>El estado del pedido, como por ejemplo: Borrador, Solicitado, Recibido, Aceptado, En-progreso, Revisado, Completado, Cancelado, Rechazado Etc.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Prioridad</td>
+                                                    <td>La urgencia con la que se solicita, como por ejemplo: Rutina, ASAP, Urgente, STAT, Etc.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Evento</td>
+                                                    <td>Subestructura para el manejo del ciclo de vida de la Orden de Diagnostico.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Item</td>
+                                                    <td>Subestructura para el manejo de los especímenes.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Notas</td>
+                                                    <td>Notas y/o comentarios que podrán producirse por parte del solicitante y el proveedor.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Organización solicitante</td>
+                                                    <td>Organización a la cual pertenece la orden de diagnóstico y la cual mantiene los registros médicos del paciente.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Asignado a</td>
+                                                    <td>Especifica a quien se le va a asignar orden de diagnostico.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div ui-sref="structure.practitioner" class="collapsible-header"><i class="fa fa-user-md"></i>{{'PRACTITIONERS' | translate}}</div>
+                            </li>
+                            <li>
+                                <div ui-sref="structure.diagnostic_report" class="collapsible-header"><i class="fa fa-file-o"></i>{{'DIAGNOSTIC_REPORTS'| translate}}</div>
+                            </li>
+                            <li>
+                                <div ui-sref="structure.extension" class="collapsible-header"><i class="fa fa-video-camera"></i>{{'SHARE_SCREEN'| translate}}</div>
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

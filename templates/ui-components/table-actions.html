@@ -1,0 +1,74 @@
+<div class="input-field buscador" ng-if="$ctrl.seeker">
+    <input type="text" placeholder="{{'SEARCH' | translate}}" ng-model="$ctrl.searchWordInInput">
+    <a class="btn-add btn waves-effect waves-light" ng-click="$ctrl.functionSearch($ctrl.searchWordInInput)"><i class="fa fa-search"></i></a>
+    <a ng-if="$ctrl.clearSearching" class="btn-add btn waves-effect waves-light" ng-click="$ctrl.clearSearch()"><i class="fa fa-remove"></i></a>
+</div>
+<div class="tablaAbm center" ng-if="$ctrl.list.length > 0">
+  <div class="topTable">
+    <div class="col-tableAbm-Top" ng-repeat="prop in $ctrl.properties" ng-click="$ctrl.sortBy(prop)">{{$ctrl.translateProp(prop)}} <i ng-show="$ctrl.camelize($ctrl.propertyName) === $ctrl.camelize(prop)"></i></div>
+    <div class="col-tableAbm-Top" ng-if="!self.viewState && !self.editState">{{'ACTIONS' | translate}}</div>
+  </div>
+  <div class="fila-tableAbm" ng-repeat="item in $ctrl.paginatedList">
+    <div class="col-tableAbm" ng-repeat="prop in $ctrl.properties" ng-class="item.active ? 'active-readed' : ''">
+      <a ng-if="item.sref[$ctrl.camelize(prop)]" ui-sref="{{item.sref[$ctrl.camelize(prop)].state}}({{item.sref[$ctrl.camelize(prop)].params}})">{{item[$ctrl.camelize(prop)] || '-'}} </a>
+      <div class="cursor-pointer" ng-click="$ctrl.viewRedirect(item._id)" ng-if="$ctrl.enableRedirect(item, prop)" tooltipped data-position="top" data-delay="10" data-tooltip="{{'VIEW' | translate}}">{{item[$ctrl.camelize(prop)] || '-'}}</div>
+    </div>
+    <div ng-class="item.active ? 'active-readed' : ''" class="col-tableAbm" ng-if="!self.viewState && !self.editState">
+      <ul class="action">
+        <li ng-if="$ctrl.editState">
+          <a ng-if="$ctrl.userData.type !== 'Node Administrator'" id="editRedirect" ng-click="$ctrl.editRedirect(item._id)" tooltipped data-position="top" data-delay="50" data-tooltip="{{'EDIT'|translate}}">
+            <img ng-src="{{$ctrl.front_url}}img/iconos/editar.png" class="right">
+          </a>
+        </li>
+        <li ng-if="$ctrl.viewState && !item.redirectTo">
+          <a class="viewRedirect" ng-click="$ctrl.viewRedirect(item._id)" tooltipped data-position="top" data-delay="50" data-tooltip="{{'VIEW'|translate}}">
+              <img ng-src="{{$ctrl.front_url}}img/iconos/vista.png" class="right">
+          </a>
+        </li>
+        <li ng-if="$ctrl.reportState && item.status === 'Solicitado'">
+          <a ng-click="$ctrl.reportRedirect(item._id)" tooltipped data-position="top" data-delay="50" data-tooltip="{{'NEW_REPORT'|translate}}">
+              <img ng-src="{{$ctrl.front_url}}img/iconos/nuevo.png" class="right">
+          </a>
+        </li>
+        <li ng-if="$ctrl.isAdmin || $ctrl.isCreator(item)">
+          <a ng-click="$ctrl.selectedToDelete(item)" tooltipped data-position="top" data-delay="50" data-tooltip="{{$ctrl.deletedOrHide}}"
+            data-target="deleteModal" modal>
+            <img ng-src="{{$ctrl.front_url}}img/iconos/delete.png" class="right">
+          </a>
+        </li>
+        <li ng-if="$ctrl.orderState">
+          <a ng-click="$ctrl.orderRedirect(item._id)" tooltipped data-position="top" data-delay="50" data-tooltip="{{'NEW_ORDER'|translate}}">
+              <img ng-src="{{$ctrl.front_url}}img/iconos/nuevo.png" class="right">
+          </a>
+        </li>
+        <li ng-if="$ctrl.validateAction && $ctrl.isAdmin">
+          <i ng-show="!item.active" class="material-icons icon-green-teal" ng-click="$ctrl.validateAction(item)" tooltipped data-position="top"
+            data-delay="50" data-tooltip="Validar">check_box_outline_blank</i>
+          <i ng-show="item.active" class="material-icons icon-green-teal" ng-click="$ctrl.validateAction(item)" tooltipped data-position="top"
+            data-delay="50" data-tooltip="Invalidar">check</i>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div ng-show="$ctrl.list.length == 0" class="card-info">
+  <p class="msj-error"><a href="" class="close"><i class="material-icons">clear</i></a><i class="material-icons">report_problem</i>{{'NO_RECORDS_FOUND'
+    | translate}}</p>
+</div>
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <h4>{{$ctrl.deletedOrHideQuestion}}</h4>
+    <p>{{$ctrl.deletedOrHideDescription}}</p>
+  </div>
+  <div class="modal-footer">
+    <a href="" class="modal-action modal-close btn-add btn waves-effect waves-light right" ng-click="$ctrl.deleteRegistryOfList()">{{'ACCEPT'|translate}}</a>
+    <a href="" class="modal-action modal-close btn-add btn waves-effect waves-light right">{{'CANCEL'|translate}}</a>
+  </div>
+</div>
+<ul class="pagination center-align">
+    <li><a ng-click="$ctrl.moveToPage($ctrl.activePage - 1)" href=""><i class="material-icons">chevron_left</i></a></li>
+    <li ng-class="$ctrl.activePage === ($index) ?'teal lighten-2':''" ng-repeat="page in $ctrl.arrayPages track by $index">
+      <a ng-click="$ctrl.getDiagnosticPerPage($index)" href="">{{$index + 1}}</a>
+    </li>
+    <li><a ng-click="$ctrl.moveToPage($ctrl.activePage + 1)" href=""><i class="material-icons">chevron_right</i></a></li>
+</ul>

@@ -1,0 +1,20 @@
+<div class="title-form form-greenBox">
+  <h5>{{'DICOM_VIEWER' | translate}}</h5>
+</div>
+<div class="row">
+  <div class="col l9 s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <div id="dwv">
+          <div class="layerContainer">
+            <canvas class="imageLayer"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="input-field col s12">
+        <button id="restart" class="btn-add btn waves-effect waves-light">{{'RESTART' | translate}}</button>
+        <buttton class="btn-add btn waves-effect waves-light" ng-click="$ctrl.loadAttachments()" ng-if="enableButtons">{{'DICOM_FILES'}}</buttton>
+      </div>
+    </div>
+  </div>
+</div>

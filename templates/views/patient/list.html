@@ -1,0 +1,18 @@
+<div class="contenedor_max formIngreso">
+    <div class="row title_plus_btn">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content ancho_diagnostico">
+                  <div class="explicacion3" ng-show="enableExplication">
+                      <a href=""><i class="material-icons" ng-click="closeExplication()">clear</i></a>
+                        <p>A partir de la creación de un Nuevo Paciente se podrán generar solicitudes de diagnóstico y recibir
+                        los correspondientes reportes para ese paciente.</p>
+                  </div>
+                  <a ng-if="!isPractitionerLender() && !isPractitionerCallcenter()" class="btn-add btn waves-effect waves-light right" ui-sref="patient_add"><i class="material-icons">add</i>{{'NEW' | translate}} {{'PATIENT' | translate}}</a>
+
+                  <table-actions confirm-delete="deletePatient" search="searchPatient" search-word="searchWord" seeker="true" properties="properties" validate-action="validaPatient" ng-if="patientListView.length > 0" list="patientListView" view-state="'patient_view'" edit-state="!isPractitionerLender() && !isPractitionerCallcenter() && 'patient_add'" order-state="isEnabled('new_request') && 'procedure_new'" type="type"></table-actions>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

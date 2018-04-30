@@ -1,0 +1,18 @@
+<div class="contenedor_max formIngreso">
+   <div class="row title_plus_btn ancho_diagnostico"></div>
+    <div class="row ancho_diagnostico">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-head style-primary card-inicio">
+                    <header>
+                        <h2>{{'NOTIFICATIONS' | translate}}</h2>
+                        <p>{{'LATEST_NOTIFICATIONS_RECEIVED' | translate}}</p><p ng-if="thereAreUnreadNotifications">{{'UNREADED' | translate}} - {{cantNotificationsUnreaded}}</p>
+                    </header>
+                </div>
+                <div class="card-content">
+                  <notification-callcenter cant-notifications-unreaded="cantNotificationsUnreaded"></notification-callcenter>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

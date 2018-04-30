@@ -1,0 +1,13 @@
+
+<!-- <p class="explicacion2"> • {{'COMPLETE_WITH_A_SHORT_TEXT_ONLY_THE_FIELDS_THAT_REQUIRE_IT' | translate}}</p> -->
+<div ng-repeat="indexPhysicalExam in $ctrl.physicalExam">
+  <p class="col m6 s12">
+    <label for="{{indexPhysicalExam}}" class="labelcheck">{{ indexPhysicalExam | translate}}</label>
+    <span ng-if="!$ctrl.entry[indexPhysicalExam].version && !$ctrl.editField" class="explicacion2">Sin datos</span>
+    <span ng-if="$ctrl.entry[indexPhysicalExam].version && !$ctrl.editField" class="explicacion2">{{$ctrl.entry[indexPhysicalExam].version}}</span>
+    <textarea ng-if="$ctrl.entry[indexPhysicalExam].display || $ctrl.editField" ng-readonly="!$ctrl.editField" class="examen filled-in" ng-keypress="$ctrl.generateFlagWithKeypress({item: indexPhysicalExam, flag: 'physicalExam'})" ng-click="$ctrl.click(indexPhysicalExam)" maxlength="400" type="text" id="{{indexPhysicalExam}}" ng-model="$ctrl.entry[indexPhysicalExam].version"
+      cols="30" rows="10"></textarea>
+    <label ng-readonly="!$ctrl.editField" ng-show="$ctrl.entry[indexPhysicalExam].display || $ctrl.editField" ng-if="$ctrl.arrayToFilterDCMStudy.indexOf(indexPhysicalExam) >= 0" for="">{{'CDM_STUDY' | translate}}</label>
+    <input ng-readonly="!$ctrl.editField" ng-show="$ctrl.entry[indexPhysicalExam].display || $ctrl.editField" ng-if="$ctrl.arrayToFilterDCMStudy.indexOf(indexPhysicalExam) >= 0" ng-model="$ctrl.entry[indexPhysicalExam].display" placeholder="Estudio relacionado a CDM" disabled>
+  </p>
+</div>

@@ -1,0 +1,46 @@
+<div class="clearfix"></div>
+<div class="row" ng-show=!$ctrl.readonly>
+    <div class="input-field col s12 ">
+        <p class="est-label" for="role_organization">{{$ctrl.title || 'ROLE' | translate}}</p>
+        <select id="sub_role_organization" ng-model="$ctrl.selectSubRole" ng-change="$ctrl.addSubRol()" material-select watch ng-if="!$ctrl.readonly">
+          <option value="NONE">{{'NONE_M' | translate}}</option>
+          <option value="CLIENT">{{'CLIENT' | translate}}</option>
+          <option value="LENDER">{{'LENDER' | translate}}</option>
+          <option value="BOTH">{{'BOTH' | translate}}</option>
+          <option value="CALLCENTER">{{'CALLCENTER' | translate}}</option>
+        </select>
+    </div>
+    <div class="input-field col s12 ">
+        <p class="est-label" for="role_organization">{{$ctrl.title || 'ORGANIZATION_NAME' | translate}}</p>
+        <select id="role_organization" ng-model="$ctrl.selectOrganization" material-select watch ng-if="!$ctrl.readonly">
+          <option ng-repeat="organization in $ctrl.organizations" value="{{organization._id}}">{{organization.name}} ({{organization.identifier[0].use | translate}})</option>
+        </select>
+    </div>
+    <div ng-if="!$ctrl.readonly">
+        <div class="input-field col s12 " ng-if="$ctrl.specialityIpt && $ctrl.specialities.length > 0" ng-cloak>
+            <p class="est-label" for="role_organization">{{'SPECIALITY' | translate}}</p>
+            <select ng-model="$ctrl.selectSpeciality" material-select watch multiple ng-if="!$ctrl.readonly">
+              <option value disabled selected>{{'SELECT' | translate}} {{'SPECIALITY' | translate}}</option>
+              <option ng-repeat="speciality in $ctrl.specialities" value="{{speciality}}">{{speciality.value.text}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="input-field col s12 " ng-if="!$ctrl.readonly && $ctrl.specialityIpt && $ctrl.organizations.length !== 0">
+    <button class="btn-add btn waves-effect waves-light right" ng-click="$ctrl.addOrganization()">{{'ADD' | translate}}</button>
+</div>
+<div class="input-field col s12 " ng-if="!$ctrl.specialityIpt">
+    <button class="btn" ng-click="$ctrl.assignToOrganization()">{{'ASSIGN' | translate}}</button>
+</div>
+<div class="row">
+    <div class="col s12">
+        <ul class="collection" ng-if="$ctrl.practitionerRole.length > 0 ">
+            <li class="collection-item dismissable" ng-repeat="ref in $ctrl.practitionerRole" ng-if="$ctrl.specialityIpt && ref.organization">
+                <span ng-if="$index === 0">{{'SPECIALITY' | translate}} {{'PRINCIPAL' | translate}}</span>
+                <div>{{ref.organization.display}} - {{ref.specialty[0].text}}
+                <a ng-if="!$ctrl.readonly" ng-click="$ctrl.removeOrgRef(ref)" class="secondary-content"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="clearfix2"></div>

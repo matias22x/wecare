@@ -1,0 +1,16 @@
+{
+  "short_name": "WECARE",
+  "name": "WECARE",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./",
+  "version": "0.2",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

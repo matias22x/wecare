@@ -1,0 +1,55 @@
+<li ng-repeat="identifier_item in $ctrl.identifier">
+    <div class="row top-cat no-border">
+        <a class="waves-effect waves-light contact-plus show">
+            <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+        </a>
+        <span class="title-height">Identifier</span>
+        <span class="right">
+          <ul>
+            <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+            <li><a ng-click="$ctrl.editIdentifier($index)" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+            <li><a href="" class="waves-effect waves-light add-plus" ng-click="$ctrl.addIdentifier()"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+            <li><a href="" class="waves-effect waves-light delete" ng-click="$ctrl.deleteIdentifier($index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+          </ul>
+        </span>
+    </div>
+    <div class="first-f contact-form relative">
+        <ul>
+            <li>
+                <div class="row top-cat">
+                    <a class="waves-effect waves-light contact-plus show">
+                        <i class="fa fa-chevron-right arrow-form" aria-hidden="true"></i>
+                    </a>
+                    <span class="title-height">Type</span>
+                    <span class="right">
+                      <ul>
+                        <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                        <li><a ng-click="$ctrl.editType($index)" class="waves-effect waves-light edit-icon"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </span>
+                </div>
+                <div class="second-f contact-form" id="four-f">
+                    <ul>
+                        <li ng-repeat="coding in identifier_item.type.coding">
+                            <div class="row top-cat">
+                                <span class="title-height">Coding</span>
+                                <h6>{{coding.code}}</h6>
+                                <span class="right">
+                                  <ul>
+                                    <li><a href="" class="waves-effect waves-light"> <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                                    <li><a ng-click="$ctrl.editCodeableCoding($index,$parent.$index)" class="waves-effect waves-light edit-icon"> <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                                    <li><a href="" class="waves-effect waves-light add-plus" ng-click="$ctrl.addCoding($parent.$index)"> <i class="fa fa-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="" class="waves-effect waves-light delete" ng-click="$ctrl.deleteCoding($parent.$index,$index)"> <i class="fa fa-times" aria-hidden="true"></i></a></li>
+                                  </ul>
+                                </span>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
+</li>

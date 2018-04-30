@@ -1,0 +1,51 @@
+<div class="contenedor_max formIngreso">
+  <div class="row title_plus_btn ancho_diagnostico">
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content ancho_diagnostico">
+          <form>
+            <div class="row">
+              <div class="col s12">
+                <div class="row vista">
+                  <div class="input-field col s12 user">
+                    <label for="identificador">{{'USERNAME' | translate}}</label>
+                    <p>{{user_data.username}}</p>
+                  </div>
+                  <div class="input-field col s4">
+                    <label for="email">{{'EMAIL' | translate}}</label>
+                    <p>{{user_data.email}}</p>
+                  </div>
+                  <div ng-if="state == 'users-edit'" class="input-field col s4">
+                    <select id="rol" ng-model="user_data.type" material-select watch disabled>
+                      <option value="">{{'SELECT_TYPE' | translate}}</option>
+                      <option value="Coordinator">{{'COORDINATOR' | translate}}</option>
+                      <option value="Node Administrator">{{'NODE_ADMINISTRATOR' | translate}}</option>
+                      <option value="Organization Administrator">{{'ORGANIZATION_ADMINISTRATOR' | translate}}</option>
+                      <option value="Practitioner">{{'PRACTITIONER' | translate}}</option>
+                      <option value="Auxiliar">{{'AUXILIAR' | translate}}</option>
+                      <option value="Admin">{{'ADMIN' | translate}}</option>
+                    </select>
+                    <label for="rol">{{'ROLE' | translate}}</label>
+                  </div>
+                  <div class="input-field col s4">
+                    <div ng-if="state == 'users-view'">
+                      <label for="rol">{{'ROLE' | translate}}</label>
+                      <p>{{user_data.type}}</p>
+                    </div>
+                    <div ng-if="user_data.type == 'Practitioner'" class="input-field col s12">
+                      <label for="subrol">{{'SUBROLE' | translate}}</label>
+                      <p>{{subRolTranslate}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

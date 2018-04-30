@@ -1,0 +1,179 @@
+<link rel="stylesheet" href="stylesheets/printView.css">
+
+<div class="content-print">
+  <div class="background-exo ng-scope">
+    <img src="img/background-logo-500.png" alt="">
+  </div>
+  <div class="row actions-print">
+    <a ng-click="printDiv()" class="btn-add btn waves-effect waves-light right ng-binding" tooltipped data-position="bottom" data-delay="50" data-tooltip="Imprimir"><i class="fa fa-print" aria-hidden="true"></i>{{'PRINT' | translate}}</a>
+    <a class="btn-add btn waves-effect waves-light right ng-binding" ui-sref="diagnostic_report_view({id:_id})" tooltipped data-position="bottom" data-delay="50" data-tooltip="{{'BACK_TO_REPORT' | translate}}"><i class="fa fa-mail-reply" aria-hidden="true"></i>{{'BACK' | translate}}</a>
+  </div>
+  <div id="divToPrint" class="page first-page">
+    <header class="head-border">
+      <div class="row firstRow">
+        <div class="col s4">
+          <div class="brandPrint">
+            <h1>Logo</h1>
+          </div>
+        </div>
+        <div class="col s4">
+          <ul class="datos_empresa">
+            <li>
+              <span>{{'ORGANIZATION' | translate}}: </span> {{procedureRequest.requester.onBehalfOf.display}}
+            </li>
+            <li>
+              <span>{{'PHONE' | translate}}: </span> {{organization.telecom[0].value}}
+            </li>
+            <li>
+              <span>{{'EMAIL' | translate}}: </span> {{organization.telecom[1].value}}
+            </li>
+          </ul>
+        </div>
+        <div class="col s4">
+          <div class="codigo">
+            <ul>
+              <li>
+                <span>{{'PROCEDURE_DATE' | translate}}: </span><span class="valor_c">{{procedureRequest.createdAt}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row cards-print">
+        <div class="col s4">
+          <div class="">
+            <div class="">
+              <header>{{'TITLE' | translate}}</header>
+            </div>
+            <div class="tipog">
+              {{procedureRequest.identifier[0].system}}
+            </div>
+          </div>
+        </div>
+        <div class="col s4">
+          <div class="">
+            <div class="">
+              <header>{{'PROCEDURE_TYPE' | translate}}</header>
+            </div>
+            <div class="tipog">
+              {{procedureRequest.category[0].text}}
+            </div>
+          </div>
+        </div>
+        <div class="col s4">
+          <div class="">
+            <div class="">
+              <header>{{'STATUS' | translate}}</header>
+            </div>
+            <div class="tipog">
+              {{procedureRequest.status}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+
+    <article class="cont-print">
+      <div class="">
+        <div class="row">
+          <div class="col m12 s12">
+            <div class="col m4 s4 no-padding">
+              <p class="note-author">{{'PRACTITIONER' | translate}}</p>
+              <p class="note-text">{{procedureRequest.requester.agent.display}}</p>
+            </div>
+            <div class="col m4 s4">
+              <p class="note-author">{{'LENDER_ORGANIZATION' | translate}}</p>
+              <p class="note-text">{{procedureRequest.performer.display}}</p>
+            </div>
+            <div class="col m4 s4">
+              <p class="note-author">{{'REQUESTED_SPECIALITY' | translate}}</p>
+              <p class="note-text">{{procedureRequest.performerType.text}}</p>
+            </div>
+            <div class="clearfix"></div>
+            <div>
+              <p class="conc-print"><span>{{'PROCEDURE_REASON' | translate}}:</span> {{procedureRequest.code.text}}</p>
+            </div>
+
+            <div>
+              <h6>{{'PATIENT_GENERAL_DATA' | translate}}</h6>
+            </div>
+
+            <div class="col s2 m2 l2 no-padding">
+              <p id="use_address" type="text" class="validate not-border" ng-value="diagnosticOrder.createdAt" readonly>{{'AGE' | translate}}: {{patient.age}}</p>
+            </div>
+            <div class="col s2 m2 l2">
+              <p>{{'GENDER' | translate}}: {{patient.gender}}</p>
+            </div>
+
+
+            <div class="clearfix"></div>
+            <div>
+              <h6>{{'MODIFICATIONS' | translate}}</h6>
+            </div>
+
+            <div>
+              <div>
+                <p id="use_address" type="text" class="validate not-border note-author" value="Solicitado" readonly>{{procedureRequest.requester.agent.display}} - {{ {date: proceduRerequest.createdAt, type: 'time'} | setViewDate}} - Estado:{{'CREATED' | translate}}</p>
+              </div>
+              <div>
+                <p class="note-text">{{'PROCEDURE_CREATION' | translate}}</p>
+              </div>
+            </div>
+            <div ng-if="diagnosticReport.performer[1].actor.display">
+              <div>
+                <p id="use_address" type="text" class="validate not-border note-author" value="Solicitado" readonly>{{diagnosticReport.performer[1].actor.display}} - {{ {date: diagnosticReport.createdAt, type: 'time'} | setViewDate}} - Estado:{{'REPORT_GENERATED' | translate}}</p>
+              </div>
+              <div>
+                <p class="note-text">{{'PROCEDURE_RESPONSE' | translate}}</p>
+              </div>
+            </div>
+            <div ng-if="procedureRequest.createdAt !== procedureRequest.updatedAt">
+              <div>
+                <p id="use_address" type="text" class="validate not-border note-author" value="Solicitado" readonly>{{procedureRequest.requester.agent.display}} - {{ {date: procedureRequest.updatedAt, type: 'time'} | setViewDate}} - Estado:{{procedureRequest.status | translate}}</p>
+              </div>
+              <div>
+                <p class="note-text">{{'PROCEDURE_REFRESH' | translate}}</p>
+              </div>
+            </div>
+
+            <div>
+              <h6>{{'NOTES' | translate}}</h6>
+            </div>
+
+            <div ng-repeat="note in procedureRequest.note">
+              <div>
+                <p type="text" class="validate not-border note-author" readonly>{{note.authorString}} - {{ {date: note.time.type, type: 'time'} | setViewDate}}</p>
+              </div>
+              <div>
+                <p type="text" class="validate not-border truncate note-text" readonly>{{note.text}}</p>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+    </article>
+
+    <footer>
+      <div class="row">
+        <div class="left">
+          <ul>
+            <li>
+              <span>{{managingOrganization.display}}</span>
+            </li>
+            <li>
+              {{currentOrganization.telecom[0].value}}
+            </li>
+            <li>
+              {{currentOrganization.telecom[1].value}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

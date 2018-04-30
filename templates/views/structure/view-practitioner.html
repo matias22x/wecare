@@ -1,0 +1,91 @@
+<div class="cont-tables">
+    <div class="row rowTable">
+        <div class="tablaAbm">
+            <div class="col s12">
+                <div class="card">
+                   <div class="row title_plus_btn ancho_diagnostico"></div>
+                    <div class="card-content">
+                        <ul class="collapsible popout estructura_list ancho_diagnostico" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header active"><i class="fa fa-user-md"></i>{{'PRACTITIONERS' | translate}}</div>
+                                <div class="collapsible-body">
+                                    <p>Usado para los agentes de salud – Principalmente médicos y técnicos, aunque también incluirá a aquellos que usuarios que cumplan cualquier tipo de servicio de salud dentro del sistema, aunque sea administrativo, como
+                                        por ejemplo, el de tipiar los reportes.</p>
+                                    <div class="table-cont">
+                                        <table class="striped bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Descripción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Identificador</td>
+                                                    <td>El identificador único dentro del sistema.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Activo</td>
+                                                    <td>Define si está activo o inactivo.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nombre</td>
+                                                    <td>Un nombre asociado a la persona.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Contacto</td>
+                                                    <td>Los detalles de contacto del practitioner (teléfono, email, etc.).</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dirección</td>
+                                                    <td>Donde el practitioner puede ser encontrado /ubicado /visitado -(la dirección física).</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Género</td>
+                                                    <td>Masculino / Femenino / Otro / Desconocido.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Fecha de Nacimiento</td>
+                                                    <td>La fecha de nacimiento del practitioner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Foto</td>
+                                                    <td>Foto de la persona</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Idiomas</td>
+                                                    <td>El/los idiomas que el practitioner maneja en el tratamiento de los pacientes.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Rol del agente</td>
+                                                    <td>Subestructura que definen el/los rol(es) que cumple el practitioner como por ejemplo, para que organización trabaja, la especialidad que cubre, si se trata de un experto y hasta su curriculum.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Calificaciones</td>
+                                                    <td>Subestructura utilizada para listar calificaciones obtenidas por entrenamiento y certificaciones.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>User Id</td>
+                                                    <td>Identificador del usuario del sistema (User) al que hace referencia.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div ui-sref="structure.diagnostic_order" class="collapsible-header"><i class="fa fa-sticky-note-o"></i>{{'DIAGNOSTIC_ORDERS'| translate}}</div>
+                            </li>
+                            <li>
+                                <div ui-sref="structure.diagnostic_report" class="collapsible-header"><i class="fa fa-file-o"></i>{{'DIAGNOSTIC_REPORTS'| translate}}</div>
+                            </li>
+                            <li>
+                                <div ui-sref="structure.extension" class="collapsible-header"><i class="fa fa-video-camera"></i>{{'SHARE_SCREEN'| translate}}</div>
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
