@@ -49,7 +49,7 @@ var adistalApp = angular.module('adistalApp', ['satellizer', 'ui.router', 'ui.ma
     'angular-web-notification'
 ]);
 adistalApp.constant('config', {
-    api_url: 'https://api.adistal.grava.digital',
+    api_url: 'http://159.65.176.157:3000/',
     front_url: '/',
     webrtc_url: 'https://exo-webrtc.exoservices.com.ar',
     user_validation: new RegExp('^(([A-z0-9]){4,20})$'),
