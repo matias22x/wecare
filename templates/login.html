@@ -1,37 +1,45 @@
+<center>
+<h5> Bienvenido a la Plataforma </h5>
+  <img class="responsive-img" style="width: 180px;" src="img/logo.jpg" />
 
-    <div class="contenedor_login">
-        <div class="row">
-            <div class="card">
-                <div class="card-content z-depth-4">
-                    <form>
-                        <div class="row">
-                            <img src="img/exo-verde.png" alt class="responsive-img">
-                            <div class="col s12">
-                                <div class="center-login">
-                                    <h5 class="left-align login-title">{{'LOGIN' | translate}}</h5>
-                                </div>
-                                <div class="input-login">
-                                    <div class="input-field">
-                                      <input id="identificador" name="identificador" type="text" data-tooltip="{{'THIS_FIELD_IS_CASE_SENSITIVE' |translate}}. {{'MINIMUM_LENGTH_4_CHARACTERS' | translate}}" ng-model="login_data.username" class="validate" autocomplete="off">
-                                      <label for="identificador">{{'USERNAME' | translate}}</label>
-                                    </div>
-                                    <div class="input-field">
-                                      <input id="password_login" name="password" type="text" tooltipped data-position="right" data-tooltip="{{'THIS_FIELD_IS_CASE_SENSITIVE' |translate}}. {{'MINIMUM_LENGTH_8_CHARACTERS' | translate}}" ng-model="login_data.password" class="validate" autocomplete="off">
-                                      <label for="password_login">{{'PASSWORD' | translate}}</label>
-                                    </div>
-                                    <p class="login-error center-align"><span>{{error_msg}}</span></p>
-                                </div>
-                                <div class="center-login">
-                                    <button class="btn waves-effect waves-light login-button" type="submit" name="action" ng-click="login()">{{'SEND' | translate}}<i class="material-icons">forward</i></button>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="center-login copyright-login">
-                                    <span class="right">© {{version}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
+
+  <div class="section"></div>
+
+  <div class="container">
+    <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+      <form class="col s12" method="post">
+        <div class='row'>
+          <div class='col s12'>
+          </div>
         </div>
+
+        <div class='row'>
+          <div class='input-field col s12'>
+            <input class='validate' type='text'/>
+            <label for='name'>Usuario</label>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='input-field col s12'>
+            <input class='validate' type='password' name='password' id='password' />
+            <label for='password'>Contraseña</label>
+          </div>
+          <label style='float: right;'>
+            <a class='pink-text' href='#!'><b>Olvidó su contraseña?</b></a>
+          </label>
+        </div>
+
+        <br />
+        <center>
+          <div class='row'>
+            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect boton'>Ingresar</button>
+          </div>
+        </center>
+      </form>
     </div>
+  </div>
+
+</center>
