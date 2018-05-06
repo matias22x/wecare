@@ -11,7 +11,6 @@ var wecareApp = angular.module('wecareApp', ['satellizer', 'ui.router', 'ui.mate
 wecareApp.constant('config', {
     api_url: 'http://159.65.176.157:3000/',
     front_url: '/',
-    webrtc_url: 'https://exo-webrtc.exoservices.com.ar',
     user_validation: new RegExp('^(([A-z0-9]){4,20})$'),
     pass_validation: new RegExp('^(([A-z0-9@]){8,20})$')
 });
@@ -19,7 +18,7 @@ wecareApp.factory('userData', function(store) {
     return store.getNamespacedStore('userData');
 });
 wecareApp.config(function(config, $stateProvider, $authProvider, $urlRouterProvider, $translateProvider) {
-    $authProvider.loginUrl = config.api_url + '/api/login';
+    $authProvider.loginUrl = config.api_url + '/login';
     $authProvider.signupUrl = config.api_url + '/api/signup';
     $authProvider.tokenName = 'token';
 
