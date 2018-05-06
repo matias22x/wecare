@@ -9,7 +9,7 @@ var wecareApp = angular.module('wecareApp', ['satellizer', 'ui.router', 'ui.mate
     'angular-web-notification'
 ]);
 wecareApp.constant('config', {
-    api_url: 'http://159.65.176.157:3000/',
+    api_url: 'http://159.65.176.157:3000',
     front_url: '/',
     user_validation: new RegExp('^(([A-z0-9]){4,20})$'),
     pass_validation: new RegExp('^(([A-z0-9@]){8,20})$')
