@@ -6,7 +6,8 @@ var wecareApp = angular.module('wecareApp', ['satellizer', 'ui.router', 'ui.mate
     'angularFileUpload',
     'Materialize',
     'ngSanitize',
-    'angular-web-notification'
+    'angular-web-notification',
+    'wecareRouter'
 ]);
 wecareApp.constant('config', {
     api_url: 'http://159.65.176.157:3000',
@@ -48,5 +49,7 @@ wecareApp.config(function(config, $stateProvider, $authProvider, $urlRouterProvi
 });
 
 wecareApp.run(function($rootScope, $state, $log, $auth) {
-
+  $rootScope.isAuthenticated = function() {
+      return $auth.isAuthenticated();
+  };
 });

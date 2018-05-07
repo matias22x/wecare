@@ -26,15 +26,17 @@
   <script src="/wecare/javascripts/materialize/materialize.js"></script>
 
   <script src="/wecare/javascripts/app.js"></script>
-  <!-- <script src="/wecare/javascripts/components/components.js"></script> -->
   <script src="/wecare/javascripts/controllers/user-controller.js"></script>
+  <script src="/wecare/javascripts/controllers/especialista-controller.js"></script>
+  <script src="/wecare/javascripts/routers/wecare-router.js"></script>
+
 
 </head>
 
 <body ng-app="wecareApp">
   <main ui-view="login" ng-show="!isAuthenticated()" ng-cloak></main>
-      <!-- <main ui-view>
-      </main> -->
+  <main ui-view ng-show="isAuthenticated()">
+  </main>
 </body>
 
 </html>
