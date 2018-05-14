@@ -26,14 +26,37 @@
   <script src="/wecare/javascripts/materialize/materialize.js"></script>
 
   <script src="/wecare/javascripts/app.js"></script>
+  <script src="/wecare/javascripts/routers/wecare-router.js"></script>
   <script src="/wecare/javascripts/controllers/user-controller.js"></script>
   <script src="/wecare/javascripts/controllers/especialista-controller.js"></script>
-  <script src="/wecare/javascripts/routers/wecare-router.js"></script>
-
 
 </head>
 
 <body ng-app="wecareApp">
+  <nav class="nav-center">
+
+         <div class="nav-wrapper">
+         <a href="#" class="brand-logo center">WeCare</a>
+
+         <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
+
+         <ul class="hide-on-med-and-down">
+         <li><a href="#!">Inicio</a></li>
+         <li><a href="#!">Link</a></li>
+         <li><a href="#!">Link</a></li>
+         <li><a href="#!">Link</a></li>
+         <li><a href="#!">Link</a></li>
+         </ul>
+         </div>
+      </nav>
+
+      <ul class="sidenav" id="mobile-nav">
+         <li><a href="#!">Link</a></li>
+         <li><a href="#!">Link</a></li>
+         <li><a href="#!">Link</a></li>
+         <li><a href="#!">Link</a></li>
+         <li><a href="#!">Link</a></li>
+         </ul>
   <main ui-view="login" ng-show="!isAuthenticated()" ng-cloak></main>
   <main ui-view ng-show="isAuthenticated()">
   </main>

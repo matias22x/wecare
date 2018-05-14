@@ -34,3 +34,109 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5pt;
  }
+
+ /*************************************************************/
+
+ .botonClear {
+   background-color: #00a9ff;
+ }
+
+.btn-floating:hover {
+ background-color: rgba(0,0,0,0.3);
+}
+
+.botonVer {
+  background-color: #00a9ff;
+}
+
+.botonEdit {
+  background-color: #ff8500;
+}
+
+.fondo {
+  background-color: rgba(0,0,0,0.05);
+}
+.fondo th {
+ color: rgba(0,0,0,0.4);
+}
+
+.botonAgregar {
+background-color: #ff8500 !important;
+float: right;
+margin-bottom: 20px;
+}
+
+/******************************************/
+
+
+
+nav {
+ background-color:  #00a9ff;
+ height: 50%;
+}
+
+nav.nav-center ul {
+   text-align: center;
+   padding-top: 4%;
+}
+nav.nav-center ul li {
+   display: inline;
+   float: none;
+}
+nav.nav-center ul li a {
+   display: inline-block;
+}
+
+/***************************************/
+
+.datepicker-date-display {
+ background-color: #ff8500 !important;
+}
+
+.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done {
+   color: #ff8500 !important;
+   }
+
+   .datepicker-table td.is-today {
+ color: #ff8500 !important;
+}
+
+.datepicker-table td.is-selected {
+   background-color:#ff8500 !important;
+   }
+
+/************************************/
+
+.dropdown-content li > a, .dropdown-content li > span {
+
+   color: black;
+ }
+
+ .input-field input[type=date]:focus, .input-field input[type=text]:focus, .input-field input[type=email]:focus, .input-field input[type=password]:focus {
+   border-bottom: 2px solid #ff8500 !important;
+   }
+
+/******************************/
+
+.modal { width: 50% !important;
+   height: 50% !important; }
+
+.modal-content h5
+{
+ padding-top: 12px;
+ color: #00a9ff !important;
+}
+
+.modal-content p {
+ padding-top: 2px;
+}
+
+.modal {
+ position: absolute;
+ top: 0;
+bottom: 1px;
+ left: 0;
+ z-index: 10040;
+ overflow: auto;
+ overflow-y: auto;
+}

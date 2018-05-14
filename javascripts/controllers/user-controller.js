@@ -1,11 +1,12 @@
 'use strict';
 angular.module('wecareApp')
     .controller('loginController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config) {
+
       $scope.login = function() {
           var userType = '';
           $auth.login($scope.login_data).then(function(response) {
             $state.go('listado_especialistas');
-
+            console.log('response', response);
               // if (response.data && response.data.user) {
               //   console.log('aca dentro');
               //     userData.set('user', response.data.user);
