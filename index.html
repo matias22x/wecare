@@ -29,34 +29,33 @@
   <script src="/wecare/javascripts/routers/wecare-router.js"></script>
   <script src="/wecare/javascripts/controllers/user-controller.js"></script>
   <script src="/wecare/javascripts/controllers/especialista-controller.js"></script>
-
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body ng-app="wecareApp">
-  <nav class="nav-center">
+  <nav class="nav-center" ng-show="isAuthenticated()" ng-cloak >
 
          <div class="nav-wrapper">
          <a href="#" class="brand-logo center">WeCare</a>
 
-         <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
+         <!-- <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a> -->
 
          <ul class="hide-on-med-and-down">
          <li><a href="#!">Inicio</a></li>
-         <li><a href="#!">Link</a></li>
-         <li><a href="#!">Link</a></li>
-         <li><a href="#!">Link</a></li>
-         <li><a href="#!">Link</a></li>
+         <li><a ui-sref="listado_especialistas">Especialistas</a></li>
+         <li><a ui-sref="logout">Cerrar sesion</a></li>
          </ul>
          </div>
-      </nav>
+    </nav>
 
-      <ul class="sidenav" id="mobile-nav">
+      <!-- <ul class="sidenav" id="mobile-nav">
          <li><a href="#!">Link</a></li>
          <li><a href="#!">Link</a></li>
          <li><a href="#!">Link</a></li>
          <li><a href="#!">Link</a></li>
          <li><a href="#!">Link</a></li>
-         </ul>
+         </ul> -->
   <main ui-view="login" ng-show="!isAuthenticated()" ng-cloak></main>
   <main ui-view ng-show="isAuthenticated()">
   </main>

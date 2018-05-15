@@ -19,4 +19,8 @@ angular.module('wecareApp')
               $log.error('Error: ', err);
           });
       };
-    });
+    }).controller('logoutController', function($auth, $state, userData, $rootScope) {
+      $auth.logout();
+      userData.remove('user');
+      $state.go('home');
+  });
