@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script src="index.js"></script>
+	</head>
+
+	<body ng-app="primerApp">
+		
+
+		<div ng-controller="abmControlador">
+			<p>Usuario : <input type="text" ng-model="nuevoUsuario.usuario"></p>
+			<p>Clave : <input type="text" ng-model="nuevoUsuario.clave"></p>
+			<button ng-click="agregarUsuario()">Crear usuario</button>
+			<ul>
+				<li ng-repeat="usuario in usuarios track by $index">
+					<b>{{usuario.usuario}}</b> - clave: {{usuario.clave}}  <button data-ng-click="eliminarUsuario($index)">Eliminar</button>  
+					<button
+					data-ng-click="mostrarModificar($index)" >Modificar</button>
+				</li>
+			</ul>
+
+			<div ng-show="divModificar">
+				<p>Usuario : <input type="text" ng-model="usuarioModificado.usuario"></p>
+				<p>Clave : <input type="text" ng-model="usuarioModificado.clave"></p>
+				<button ng-click="modificarUsuario()">modificar usuario</button>
+			</div>
+		</div>
+	</body>
+
+</html>
