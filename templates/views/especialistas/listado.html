@@ -2,7 +2,7 @@
 <div class="container">
 <div class="section">
 <div class="section">
-<a class="waves-effect waves-light btn-small botonAgregar" href="listadoEspecialistasAgregar.html"><i class="material-icons left">add</i>Agregar paciente</a>
+<a class="waves-effect waves-light btn-small botonAgregar" ui-sref="agregar_especialista"><i class="material-icons left">add</i>Agregar paciente</a>
 </div>
 
    <table class="highlight centered">
@@ -21,10 +21,10 @@
             <td>{{especialista.dni}}</td>
             <td>{{especialista.nombre}}</td>
             <td>{{especialista.direccion}}</td>
-            <td>{{especialista.fechaNacimiento}}</td>
+            <td>{{especialista.fechaNacimiento | date:'dd-MM-yyyy'}}</td>
             <td>
             <a class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">visibility</i></a>
-            <a class="waves-effect waves-light btn-small btn-floating botonEdit" href="listadoEspecialistasEditar.html"><i class="material-icons">edit</i></a>
+            <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="editar_especialista({ ID: $index })"><i class="material-icons">edit</i></a>
             <a class="waves-effect waves-light btn-small btn-floating botonClear modal-trigger" data-toggle="modal" data-target="#modal{{especialista.indexKey}}"><i class="material-icons">clear</i></a>
 
 
@@ -49,26 +49,5 @@
         </tbody>
       </table>
             </div>
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+            
     </center>

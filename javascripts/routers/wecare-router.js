@@ -15,7 +15,7 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
         })
         .state('editar_especialista', {
             cache: false,
-            url: '/editar_especialista', // url que va arriba
+            url: '/editar_especialista/:ID', // url que va arriba
             templateUrl: 'templates/views/especialistas/editar.html', //ubicacion del html
             controller: 'editarEspecialistasController' //nombre controller
         });
