@@ -2,7 +2,7 @@
 <div class="container">
 <div class="section">
 <div class="section">
-<a class="waves-effect waves-light btn-small botonAgregar" ui-sref="agregar_especialista"><i class="material-icons left">add</i>Agregar paciente</a>
+<a class="waves-effect waves-light btn-small botonAgregar" ui-sref="agregar_especialista"><i class="material-icons left">add</i>Agregar especialista</a>
 </div>
 
    <table class="highlight centered">
@@ -25,7 +25,7 @@
             <td>
             <a class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">visibility</i></a>
             <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="editar_especialista({ ID: $index })"><i class="material-icons">edit</i></a>
-            <a class="waves-effect waves-light btn-small btn-floating botonClear modal-trigger" data-toggle="modal" data-target="#modal{{especialista.indexKey}}"><i class="material-icons">clear</i></a>
+            <a class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="eliminar_especialista({ ID: $index })"><i class="material-icons">clear</i></a>
 
 
   <!-- Modal Structure -->

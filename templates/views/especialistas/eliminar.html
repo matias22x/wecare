@@ -1,0 +1,52 @@
+  <div class="section">
+    <center>
+
+<div class="container" style="width: 50%;">
+
+<div class="row editCuadro">
+    <form class="col s12">
+
+        <div class="input-field col s12">
+          <p><b>DNI</b></p>
+          <p id="dni">{{especialistaElegido.dni}}</p>
+          
+        </div>
+
+        <div class="input-field col s12">
+          <p><b>NOMBRE</b></p>
+          <p id="nombre">{{especialistaElegido.nombre}}</p>
+         
+        </div>
+
+        <div class="input-field col s12">
+          <p><b>DIRECCION</b></p>
+          <p id="direccion">{{especialistaElegido.direccion}}</p>
+         
+        </div>
+
+        <div class="input-field col s12">
+          <p><b>FECHA DE NACIMIENTO</b></p>
+          <p id="fechaNacimiento">{{especialistaElegido.fechaNacimiento}}</p>
+          
+        </div>
+
+     <div class="container" style="width: 250px">
+     <center>
+        <p style="color: red;">¿Seguro desea eliminar el especialistas?</p>
+        <br>
+        <button ng-click="volver()" class='col s6 btn btn-small waves-effect boton' style="margin: 5px;">No</button>
+        <button ng-click="eliminarUsuario()" class='col s6 btn btn-small waves-effect boton' style="margin: 5px;">Si</button>
+     </center>
+    </div>
+
+      <div ng-show="mensajeErrorIncompleto" class="col s12">
+        <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
+      </div>
+
+    </form>
+
+    </div>
+
+    </center>
+
+    </div>

@@ -1,0 +1,55 @@
+    <center>
+<div class="container">
+<div class="section">
+<div class="section">
+<a class="waves-effect waves-light btn-small botonAgregar" ui-sref="agregar_alumno"><i class="material-icons left">add</i>Agregar alumno</a>
+</div>
+
+   <table class="highlight centered">
+        <thead >
+          <tr class="fondo">
+              <th>DNI</th>
+              <th>NOMBRE</th>
+              <th>CURSO</th>
+              <th>DIRECCION</th>
+              <th>FECHA DE NACIMIENTO</th>
+              <th>ACCIONES</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="alumno in alumnos track by $index">
+            <td>{{alumno.dni}}</td>
+            <td>{{alumno.nombre}}</td>
+            <td>{{alumno.curso}}</td>
+            <td>{{alumno.direccion}}</td>
+            <td>{{alumno.fechaNacimiento | date:'dd-MM-yyyy'}}</td>
+            <td>
+            <a class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">visibility</i></a>
+            <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="editar_alumno({ ID: $index })"><i class="material-icons">edit</i></a>
+            <a class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="eliminar_alumno({ ID: $index })"><i class="material-icons">clear</i></a>
+
+
+  <!-- Modal Structure -->
+  <div id="modal{{alumno.indexKey}}" class="modal modal-fixed-footer fade"  role="dialog">
+    <div class="modal-content">
+      <h5>¿Está seguro que lo desea eliminar?</h5>
+      <p>{{alumno.dni}}</p>
+      <p>{{alumno.nombre}}</p>
+      <p>{{alumno.direccion}}</p>
+      <p>{{alumno.fechaNacimiento}}</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
+  </div>
+
+            </td>
+          </tr>
+         
+        </tbody>
+      </table>
+            </div>
+            
+    </center>

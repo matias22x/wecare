@@ -7,6 +7,18 @@ angular.module('wecareApp')
 		if(!$scope.usuarios){
 			$scope.usuarios=[
 					{
+                                    "username": "martin",
+                                    "password": "5678",
+                                    "email": "martin@wecare.com",
+                                    "tipo": "alumno"
+                              },
+                              {
+                                    "username": "juanita",
+                                    "password": "8765",
+                                    "email": "juanita@wecare.com",
+                                    "tipo": "alumno"
+                              },
+                              {
 						"username": "lorena",
 						"password": "5678",
 						"email": "lorena@wecare.com",
@@ -132,7 +144,7 @@ angular.module('wecareApp')
       		sessionStorage.setItem('especialistas', JSON.stringify($scope.especialistas));
       		console.log($scope.especialistas);
       		
-      		//$location.path("/listado_especialistas");
+      		$location.path("/listado_especialistas");
       	}else{
       		$scope.mensajeErrorIncompleto = true;
       	}
@@ -173,6 +185,51 @@ angular.module('wecareApp')
       $scope.esconderError = function(){
       	$scope.mensajeErrorIncompleto = false;
       }
+
+    })
+    .controller('eliminarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate,$stateParams,$location, config) {
+      console.log('eliminar');
+      $scope.id = $stateParams.ID;
+      console.log($scope.id);
+      
+      $scope.especialistas = JSON.parse(sessionStorage.getItem('especialistas'));
+      
+      //$scope.especialistas[$scope.id].fechaNacimiento = new Date($scope.especialistas[$scope.id].fechaNacimiento);
+      
+      $scope.especialistaElegido =  $scope.especialistas[$scope.id];
+      console.log($scope.especialistaElegido);
+
+      $scope.eliminarUsuario = function(){
+            var esp = $scope.especialistaElegido;
+            var indexUsuario = esp.indexUsuario;
+            var indexEspecialistaDatos = esp.indexEspecialistaDatos;
+
+
+            $scope.usuarios = JSON.parse(sessionStorage.getItem('usuarios'));
+            $scope.especialistasDatos = JSON.parse(sessionStorage.getItem('especialistasDatos'));
+            $scope.especialistas = JSON.parse(sessionStorage.getItem('especialistas'));
+
+            $scope.especialistas.splice($scope.id, 1);
+            sessionStorage.setItem('especialistas', JSON.stringify($scope.especialistas));
+
+            $scope.especialistasDatos.splice(indexEspecialistaDatos, 1);
+            sessionStorage.setItem('especialistasDatos', JSON.stringify($scope.especialistasDatos));
+
+            $scope.usuarios.splice(indexUsuario, 1);
+            sessionStorage.setItem('usuarios', JSON.stringify($scope.usuarios));
+
+            $location.path("/listado_especialistas");
+
+           
+      }
+
+      $scope.volver = function(){
+           
+            $location.path("/listado_especialistas");
+
+      }
+
+
 
     });
      

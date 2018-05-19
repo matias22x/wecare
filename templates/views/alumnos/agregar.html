@@ -1,0 +1,72 @@
+      <div class="section">
+    <center>
+
+<div class="container" style="width: 50%;">
+
+<div class="row editCuadro">
+    <form class="col s12">
+
+        <div class="input-field col s12">
+          <input id="username" type="text" class="validate" ng-model="alumnoNuevo.username" ng-focus="esconderError()">
+          <label for="username">USERNAME</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="email" type="text" class="validate" ng-model="alumnoNuevo.email" ng-focus="esconderError()">
+          <label for="email">EMAIL</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="dni" type="text" class="validate" ng-model="alumnoNuevo.dni" ng-focus="esconderError()">
+          <label for="dni">DNI</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="nombre" type="text" class="validate" ng-model="alumnoNuevo.nombre" ng-focus="esconderError()">
+          <label for="nombre">NOMBRE</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="curso" type="text" class="validate" ng-model="alumnoNuevo.curso" ng-focus="esconderError()">
+          <label for="nombre">CURSO</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="direccion" type="text" class="validate" ng-model="alumnoNuevo.direccion" ng-focus="esconderError()">
+          <label for="direccion">DIRECCION</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="fechaNacimiento" type="date" class="validate" ng-model="alumnoNuevo.fechaNacimiento" ng-focus="esconderError()">
+          <label for="fechaNacimiento">FECHA DE NACIMIENTO</label>
+        </div>
+        <!--
+        <div class="input-field col s12">
+          <select>
+            <option value="1">Activo</option>
+            <option value="2">Desactivado</option>
+          </select>
+          <label>Estado</label>
+        </div>
+        -->
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate"ng-model="alumnoNuevo.password" ng-focus="esconderError()">
+          <label for="password">CONTRASEÑA</label>
+        </div>
+
+     <div class="container" style="width: 250px">
+     <center>
+        <button ng-click="crearAlumno()" class='col s12 btn btn-large waves-effect boton'>Guardar Especialista</button>
+     </center>
+    </div>
+
+      <div ng-show="mensajeErrorIncompleto" class="col s12">
+        <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
+      </div>
+    </form>
+
+    </div>
+
+    </center>
+
+    </div>
