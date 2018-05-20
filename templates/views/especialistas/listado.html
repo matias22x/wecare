@@ -17,15 +17,15 @@
         </thead>
 
         <tbody>
-          <tr ng-repeat="especialista in especialistas track by $index">
+          <tr ng-repeat="especialista in listadoEspecialistas">
             <td>{{especialista.dni}}</td>
             <td>{{especialista.nombre}}</td>
             <td>{{especialista.direccion}}</td>
-            <td>{{especialista.fechaNacimiento | date:'dd-MM-yyyy'}}</td>
+            <td>{{especialista.fecha_nacimiento | date:'dd-MM-yyyy'}}</td>
             <td>
             <a class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">visibility</i></a>
-            <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="editar_especialista({ ID: $index })"><i class="material-icons">edit</i></a>
-            <a class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="eliminar_especialista({ ID: $index })"><i class="material-icons">clear</i></a>
+            <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="editar_especialista({id: especialista._id})"><i class="material-icons">edit</i></a>
+            <a class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="eliminar_especialista({id: especialista._id})"><i class="material-icons">clear</i></a>
 
 
   <!-- Modal Structure -->
@@ -35,7 +35,7 @@
       <p>{{especialista.dni}}</p>
       <p>{{especialista.nombre}}</p>
       <p>{{especialista.direccion}}</p>
-      <p>{{especialista.fechaNacimiento}}</p>
+      <p>{{especialista.fecha_nacimiento}}</p>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
@@ -45,9 +45,9 @@
 
             </td>
           </tr>
-         
+
         </tbody>
       </table>
             </div>
-            
+
     </center>
