@@ -15,15 +15,9 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
         })
         .state('editar_especialista', {
             cache: false,
-            url: '/editar_especialista/:ID', // url que va arriba
+            url: '/editar_especialista/:id?', // url que va arriba
             templateUrl: 'templates/views/especialistas/editar.html', //ubicacion del html
             controller: 'editarEspecialistasController' //nombre controller
-        })
-        .state('eliminar_especialista', {
-            cache: false,
-            url: '/eliminar_especialista/:ID', // url que va arriba
-            templateUrl: 'templates/views/especialistas/eliminar.html', //ubicacion del html
-            controller: 'eliminarEspecialistasController' //nombre controller
         }).state('listado_alumnos', {
             cache: false,
             url: '/listado_alumnos', // url que va arriba
@@ -38,14 +32,8 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
         })
         .state('editar_alumno', {
             cache: false,
-            url: '/editar_alumno/:ID', // url que va arriba
+            url: '/editar_alumno/:id?', // url que va arriba
             templateUrl: 'templates/views/alumnos/editar.html', //ubicacion del html
             controller: 'editarAlumnosController' //nombre controller
-        })
-        .state('eliminar_alumno', {
-            cache: false,
-            url: '/eliminar_alumno/:ID', // url que va arriba
-            templateUrl: 'templates/views/alumnos/eliminar.html', //ubicacion del html
-            controller: 'eliminarAlumnosController' //nombre controller
         });
 });
