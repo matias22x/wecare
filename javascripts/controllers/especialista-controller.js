@@ -1,11 +1,28 @@
 'use strict';
 angular.module('wecareApp')
-  .controller('listadoEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService) {
+  .controller('listadoEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
         especialistaService.getAllEspecialistas()
         .then(function(especialistas) {
             $scope.listadoEspecialistas = especialistas.data;
             console.log($scope.listadoEspecialistas);
         }).catch($log.error);
+
+        $scope.borrarEspecialista = function(especialistaIndex) {
+            var id = $scope.listadoEspecialistas[especialistaIndex]._id;
+            especialistaService.deleteEspecialistaById(id)
+            .then(function() {
+                var userId = $scope.listadoEspecialistas[especialistaIndex].user;
+                console.log('userId', userId);
+                $scope.listadoEspecialistas.splice(especialistaIndex, 1);
+                return userService.deleteUserById(userId);
+            })
+            .then(function(userEliminado) {
+                console.log(userEliminado.data);
+            })
+            .catch($log.error);
+
+        };
+
   })
   .controller('agregarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, $location, config, especialistaService, userService, moment) {
     $scope.especialistaNuevo = {};
