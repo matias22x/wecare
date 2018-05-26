@@ -35,5 +35,11 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             url: '/editar_alumno/:id?', // url que va arriba
             templateUrl: 'templates/views/alumnos/editar.html', //ubicacion del html
             controller: 'editarAlumnosController' //nombre controller
+        })
+        .state('actividades', {
+            cache: false,
+            url: '/actividades', // url que va arriba
+            templateUrl: 'templates/views/seguimiento/actividades.html', //ubicacion del html
+            controller: 'actividadesController' //nombre controller
         });
 });
