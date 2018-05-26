@@ -1,7 +1,6 @@
 bower_components
 .sass-cache
 **/.sass-cache
-stylesheets/
 node_modules
 components
 !javascripts/components

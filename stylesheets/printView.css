@@ -1,0 +1,176 @@
+.footer-copyright,
+.page-footer,
+.side-nav,
+nav {
+  display: none; }
+
+footer,
+header,
+main {
+  padding-left: 0; }
+
+header {
+  width: 100%;
+  left: 0; }
+
+.firstRow {
+  margin: 0; }
+
+html body {
+  overflow-y: hidden; }
+
+.page {
+  height: 27.9cm;
+  margin: 0px auto;
+  overflow: hidden;
+  width: 21.6cm;
+  padding: 1cm 1.5cm 0.4cm;
+  position: relative;
+  box-sizing: border-box;
+  background: #FFF;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 5px 11px 0px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 5px 11px 0px rgba(0, 0, 0, 0.18);
+  page-break-before: always;
+  margin-bottom: 40px; }
+
+.actions-print {
+  padding: 20px 0px 10px 0px;
+  width: 21.6cm; }
+
+.first-page {
+  page-break-before: auto;
+  position: relative; }
+
+.brandPrint {
+  width: 100%;
+  height: 109px;
+  position: relative; }
+  .brandPrint h1 {
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0; }
+  .brandPrint img {
+    margin: 20px; }
+
+.datos_empresa {
+  margin-top: 0px;
+  font-size: 14px; }
+
+.datos_empresa li span {
+  color: #009688; }
+
+.codigo ul {
+  margin-top: 0;
+  font-size: 14px; }
+  .codigo ul li .top_c {
+    background: #009688;
+    color: white;
+    padding: 4px 4px 4px 7px;
+    display: block; }
+  .codigo ul li .valor_c {
+    display: block; }
+
+.head-border {
+  padding: 20px 0px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #e4e4e4;
+  border-radius: 5px; }
+
+.cards-print {
+  margin-bottom: 0;
+  padding-top: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #dedede; }
+  .cards-print .card-head {
+    line-height: 20px;
+    min-height: 0; }
+    .cards-print .card-head header {
+      border: none;
+      margin-bottom: 0;
+      padding: 8px;
+      font-size: 16px; }
+  .cards-print .card {
+    border: solid 1px #e0e0e0;
+    box-shadow: none;
+    margin: 0rem; }
+
+.conc-print {
+  padding: 10px;
+  border-radius: 3px;
+  min-height: 120px;
+  margin-top: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dedede; }
+
+.tipog {
+  font-family: 'FuturaMedium';
+  line-height: 17px;
+  font-size: 14px; }
+
+.content-print {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: white;
+  background-image: url(../img/background.png);
+  background-size: cover;
+  overflow-y: scroll; }
+
+.content-print footer {
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid #d0d0d0;
+  padding: 20px;
+  text-align: right;
+  font-size: 75%;
+  bottom: 0px;
+  left: 0; }
+
+.cards-print header {
+  color: black;
+  color: #009688;
+  text-transform: uppercase;
+  font-family: 'FuturaMedium'; }
+
+footer {
+  width: 86%;
+  padding-top: 0.4cm;
+  text-align: right;
+  font-size: 75%;
+  bottom: 35px; }
+  footer .brand_footer {
+    width: 121px;
+    height: 55px;
+    background: #009688;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle; }
+    footer .brand_footer h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      font-size: 20px;
+      color: white; }
+  footer ul {
+    display: inline-block;
+    margin: 0;
+    text-align: left;
+    margin-left: 10px;
+    vertical-align: middle; }
+  footer .info_page {
+    margin-top: 10px; }
+    footer .info_page p {
+      margin: 0;
+      font-size: 13px; }
