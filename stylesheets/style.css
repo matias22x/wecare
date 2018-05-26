@@ -7,7 +7,7 @@ main {
   flex: 1 0 auto; }
 
 body {
-  background: red; }
+  background: #fff; }
 
 .input-field input[type=date]:focus + label,
 .input-field input[type=text]:focus + label,
