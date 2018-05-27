@@ -18,6 +18,16 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             url: '/editar_especialista/:id?', // url que va arriba
             templateUrl: 'templates/views/especialistas/editar.html', //ubicacion del html
             controller: 'editarEspecialistasController' //nombre controller
+        }).state('ver_especialista', {
+            cache: false,
+            url: '/ver_especialista/:id?', // url que va arriba
+            templateUrl: 'templates/views/especialistas/ver.html', //ubicacion del html
+            controller: 'verEspecialistasController' //nombre controller
+        }).state('borrar_especialista', {
+            cache: false,
+            url: '/borrar_especialista/:id?', // url que va arriba
+            templateUrl: 'templates/views/especialistas/borrar.html', //ubicacion del html
+            controller: 'borrarEspecialistasController' //nombre controller
         }).state('listado_alumnos', {
             cache: false,
             url: '/listado_alumnos', // url que va arriba

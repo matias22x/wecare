@@ -28,7 +28,10 @@
 
      <div class="container" style="width: 250px">
      <center>
-        <button ng-click="modificarUsuario()" class='col s12 btn btn-large waves-effect boton'>Guardar Cambios</button>
+       <div class="col s12"><b>¿esta seguro de modificar el especialista?</b></div>
+       <a class="col s5 btn btn-large waves-effect botonAgregar" ui-sref="listado_especialistas">volver</a>
+       <div class="col s2"></div>
+       <button ng-click="modificarUsuario()" class='col s5 btn btn-large waves-effect boton'>modificar</button>
      </center>
     </div>
 

@@ -7,22 +7,6 @@ angular.module('wecareApp')
             console.log($scope.listadoEspecialistas);
         }).catch($log.error);
 
-        $scope.borrarEspecialista = function(especialistaIndex) {
-            var id = $scope.listadoEspecialistas[especialistaIndex]._id;
-            especialistaService.deleteEspecialistaById(id)
-            .then(function() {
-                var userId = $scope.listadoEspecialistas[especialistaIndex].user;
-                console.log('userId', userId);
-                $scope.listadoEspecialistas.splice(especialistaIndex, 1);
-                return userService.deleteUserById(userId);
-            })
-            .then(function(userEliminado) {
-                console.log(userEliminado.data);
-            })
-            .catch($log.error);
-
-        };
-
   })
   .controller('agregarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, $location, config, especialistaService, userService, moment) {
     $scope.especialistaNuevo = {};
@@ -79,4 +63,48 @@ angular.module('wecareApp')
         $location.path("/listado_especialistas");
       }).catch($log.error);
     }
+  })
+  .controller('verEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
+    var id = $stateParams.id;
+
+    especialistaService.getEspecialista(id)
+    .then(function(especialista){
+        $scope.especialista = especialista.data;
+        $scope.especialista.fecha_nacimiento = new Date ($scope.especialista.fecha_nacimiento);
+
+        userService.getUser($scope.especialista.user)
+        .then(function(user){
+            $scope.user = user.data;
+            $scope.user.createdAt = new Date ($scope.user.createdAt);
+            $scope.user.updatedAt = new Date ($scope.user.updatedAt);
+        }).catch($log.error);
+    }).catch($log.error);
+
+  })
+  .controller('borrarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
+
+    var id = $stateParams.id;
+
+    especialistaService.getEspecialista(id)
+    .then(function(especialistaABorrar){
+        $scope.especialista = especialistaABorrar.data;
+        $scope.especialista.fecha_nacimiento = new Date ($scope.especialista.fecha_nacimiento);
+    }).catch($log.error);
+
+    $scope.borrarEspecialista = function() {
+        var id = $scope.especialista._id;
+        var userId = $scope.especialista.user;
+        especialistaService.deleteEspecialistaById(id)
+        .then(function() {
+            console.log('userId', userId);
+            return userService.deleteUserById(userId);
+        })
+        .then(function(userEliminado) {
+            console.log(userEliminado.data);
+            console.log('LISTO', userEliminado);
+            $location.path("/listado_especialistas");
+        })
+        .catch($log.error);
+
+    };
   });
