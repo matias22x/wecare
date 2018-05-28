@@ -18,17 +18,20 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             url: '/editar_especialista/:id?', // url que va arriba
             templateUrl: 'templates/views/especialistas/editar.html', //ubicacion del html
             controller: 'editarEspecialistasController' //nombre controller
-        }).state('ver_especialista', {
+        })
+        .state('ver_especialista', {
             cache: false,
             url: '/ver_especialista/:id?', // url que va arriba
             templateUrl: 'templates/views/especialistas/ver.html', //ubicacion del html
             controller: 'verEspecialistasController' //nombre controller
-        }).state('borrar_especialista', {
+        })
+        .state('borrar_especialista', {
             cache: false,
             url: '/borrar_especialista/:id?', // url que va arriba
             templateUrl: 'templates/views/especialistas/borrar.html', //ubicacion del html
             controller: 'borrarEspecialistasController' //nombre controller
-        }).state('listado_alumnos', {
+        })
+        .state('listado_alumnos', {
             cache: false,
             url: '/listado_alumnos', // url que va arriba
             templateUrl: 'templates/views/alumnos/listado.html', //ubicacion del html
@@ -45,6 +48,18 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             url: '/editar_alumno/:id?', // url que va arriba
             templateUrl: 'templates/views/alumnos/editar.html', //ubicacion del html
             controller: 'editarAlumnosController' //nombre controller
+        })
+        .state('ver_alumno', {
+            cache: false,
+            url: '/ver_alumno/:id?', // url que va arriba
+            templateUrl: 'templates/views/alumnos/ver.html', //ubicacion del html
+            controller: 'verAlumnosController' //nombre controller
+        })
+        .state('borrar_alumno', {
+            cache: false,
+            url: '/borrar_alumno/:id?', // url que va arriba
+            templateUrl: 'templates/views/alumnos/borrar.html', //ubicacion del html
+            controller: 'borrarAlumnosController' //nombre controller
         })
         .state('actividades', {
             cache: false,

@@ -1,0 +1,63 @@
+<div class="section">
+<center>
+
+<div class="container" style="width: 50%;">
+
+<div class="row editCuadro">
+<form class="col s12">
+
+  <div class="input-field col s12">
+    <p id="dni" ><b>USERNAME</b>: {{user.username}}</p>
+  </div>
+
+  <div class="input-field col s12">
+    <p id="dni" ><b>EMAIL</b>: {{user.email}}</p>
+  </div>
+
+  <div class="input-field col s12">
+    <p id="dni" ><b>CREADO</b>: {{user.createdAt}}</p>
+  </div>
+
+  <div class="input-field col s12">
+    <p id="dni" ><b>ULTIMA MODIFICACION</b>: {{user.updatedAt}}</p>
+  </div>
+
+  <div class="input-field col s12">
+    <p id="dni" ><b>DNI</b>: {{alumno.dni}}</p>
+  </div>
+
+  <div class="input-field col s12">
+    <p id="nombre" ><b>NOMBRE</b>: {{alumno.nombre}}</p>
+  </div>
+
+  <div class="input-field col s12">
+    <p id="direccion" ><b>DIRECCION</b>: {{alumno.direccion}}</p>
+  </div>
+
+  <div class="input-field col s12">
+    <p id="fechaNacimiento" ><b>FECHA DE NACIMIENTO</b>: {{alumno.fecha_nacimiento}}</p>
+  </div>
+
+<div class="container" style="width: 320px">
+<center>
+
+  <a class="col s3 waves-effect waves-light btn btn-small botonAgregar" ui-sref="editar_alumno({id: alumno._id})">editar</a>
+  <div class="col s1"></div>
+  <a class="col s3 waves-effect waves-light btn btn-small botonAgregar" ui-sref="borrar_alumno({id: alumno._id})">borrar</a>
+  <div class="col s1"></div>
+  <a class="col s3 waves-effect waves-light btn btn-small botonAgregar" ui-sref="listado_alumnos">volver</a>
+
+</center>
+</div>
+
+<div ng-show="mensajeErrorIncompleto" class="col s12">
+  <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
+</div>
+
+</form>
+
+</div>
+
+</center>
+
+</div>

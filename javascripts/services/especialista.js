@@ -1,21 +1,21 @@
 'use strict';
-angular.module('alumnoService', []).service('alumnoService', function($http, config) {
+angular.module('especialistaService', []).service('especialistaService', function($http, config) {
 
     return {
-        getAlumno: function(requestId) {
-            return $http.get(config.api_url + '/api/pacientes/' + requestId);
+        getEspecialista: function(requestId) {
+            return $http.get(config.api_url + '/api/especialistas/' + requestId);
         },
-        getAllAlumnos: function() {
-            return $http.get(config.api_url + '/api/pacientes');
+        getAllEspecialistas: function() {
+            return $http.get(config.api_url + '/api/especialistas');
         },
-        putAlumnoById: function(requestId, data) {
-            return $http.put(config.api_url + '/api/pacientes/' + requestId, data);
+        putEspecialistaById: function(requestId, data) {
+            return $http.put(config.api_url + '/api/especialistas/' + requestId, data);
         },
-        postAlumno: function(data) {
-            return $http.post(config.api_url + '/api/pacientes', data);
+        postEspecialista: function(data) {
+            return $http.post(config.api_url + '/api/especialistas', data);
         },
-        deleteAlumnoById: function(requestId) {
-            return $http.delete(config.api_url + '/api/pacientes/' + requestId);
+        deleteEspecialistaById: function(requestId) {
+            return $http.delete(config.api_url + '/api/especialistas/' + requestId);
         },
     };
 
