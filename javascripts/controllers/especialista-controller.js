@@ -1,11 +1,77 @@
 'use strict';
 angular.module('wecareApp')
   .controller('listadoEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
+        $scope.page = [];
+        $scope.cantRegistros = 2;
+        $scope.pagActual = 1;
+        var cantRegis = $scope.cantRegistros;
         especialistaService.getAllEspecialistas()
         .then(function(especialistas) {
             $scope.listadoEspecialistas = especialistas.data;
             console.log($scope.listadoEspecialistas);
+            $scope.paginas = Math.ceil($scope.listadoEspecialistas.length/$scope.cantRegistros);
+            console.log('cantidad de paginas: '+$scope.paginas);
+            $scope.getNumber = function(num) {
+                return new Array($scope.paginas);
+            }
+
+            for (var i=0; i<cantRegis; i++) {
+              $scope.page.push($scope.listadoEspecialistas[i]);
+            }
+
+
         }).catch($log.error);
+
+        $scope.cambiarPag = function (pag) {
+          $scope.pagActual = pag+1;
+          pag = pag+1;
+          var hasta = pag*cantRegis;
+          var desde = hasta - cantRegis;
+          $scope.page = [];
+
+          for (var i=desde; i<hasta; i++) {
+            if($scope.listadoEspecialistas[i]!=null){
+              $scope.page.push($scope.listadoEspecialistas[i]);
+            }
+
+          }
+        }
+
+        $scope.sigPag = function () {
+          if($scope.pagActual+1<=$scope.paginas){
+            $scope.pagActual = $scope.pagActual+1;
+            var hasta = $scope.pagActual*cantRegis;
+            var desde = hasta - cantRegis;
+            $scope.page = [];
+
+            for (var i=desde; i<hasta; i++) {
+              if($scope.listadoEspecialistas[i]!=null){
+                $scope.page.push($scope.listadoEspecialistas[i]);
+              }
+
+            }
+          }
+
+        }
+
+        $scope.antPag = function () {
+          if($scope.pagActual-1>0){
+            $scope.pagActual = $scope.pagActual-1;
+            var hasta = $scope.pagActual*cantRegis;
+            var desde = hasta - cantRegis;
+            $scope.page = [];
+
+            for (var i=desde; i<hasta; i++) {
+              if($scope.listadoEspecialistas[i]!=null){
+                $scope.page.push($scope.listadoEspecialistas[i]);
+              }
+
+            }
+          }
+
+        }
+
+
 
   })
   .controller('agregarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, $location, config, especialistaService, userService, moment) {
