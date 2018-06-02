@@ -4,8 +4,16 @@ angular.module('wecareApp')
     $scope.mensaje = {};
     $scope.enviar = function() {
       botService.postPreguntas($scope.mensaje)
-      .then(function(resp) {
-        console.log(resp);
-      }).catch($log.error);
+        .then(function(resp) {
+          $scope.entities = resp.data.msg.entities;
+          var arrayEntities = Object.keys($scope.entities).map(function(key) {
+              return $scope.entities[key];
+            }
+          ).map(function(array) {
+            return array[0];
+          });
+          console.log(arrayEntities);
+          $scope.respuesta = arrayEntities[0].value;
+        }).catch($log.error);
     }
   });
