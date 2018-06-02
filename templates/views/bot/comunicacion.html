@@ -1,1 +1,17 @@
-{{'THIS_IS_BOT' | translate}}
+<div class="container">
+  <div class="caption center-align row">
+    <div class="col md6 s6">
+      <div input-field>
+        <label>habla con el bot</label>
+        <input type="text" ng-model="mensaje.texto">
+      </div>
+      <button class="btn" ng-click="enviar()">Enviar</button>
+    </div>
+    <div class="col md6 s6">
+      </br>
+      </br>
+      <p>Aca va la respuesta: {{respuesta}}</p>
+    </div>
+    <!-- {{'THIS_IS_BOT' | translate}} -->
+  </div>
+</div>
