@@ -3,7 +3,7 @@ angular.module('wecareApp')
   .controller('listadoEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
 
     console.log(userData.get('user'));//aca adentro estan los datos del usuario
-    
+
     $scope.cantRegistros = 2;
     /*FUNCION PARA INICIAR UNA PAGINACION DE UNA LISTAS EN UN SCOPE
     (OBLIGATORIO QUE ESTE EN UN SCOPE LA LISTAS) QUE SE LE PASE POR
@@ -135,7 +135,7 @@ angular.module('wecareApp')
             $scope.especialistaDatos.user = user.data._id;
             return especialistaService.postEspecialista($scope.especialistaDatos);
           }).then(function(especialista) {
-            $location.path("/listado_especialistas");
+            $location.path("/admin_listado_especialistas");
           }).catch($log.error);
 
       } else {
@@ -162,7 +162,7 @@ angular.module('wecareApp')
       especialistaService.putEspecialistaById($scope.especialista._id, $scope.especialista)
         .then(function(resp) {
           console.log('LISTO', resp);
-          $location.path("/listado_especialistas");
+          $location.path("/admin_listado_especialistas");
         }).catch($log.error);
     }
   })
@@ -204,7 +204,7 @@ angular.module('wecareApp')
         .then(function(userEliminado) {
           console.log(userEliminado.data);
           console.log('LISTO', userEliminado);
-          $location.path("/listado_especialistas");
+          $location.path("/admin_listado_especialistas");
         })
         .catch($log.error);
 

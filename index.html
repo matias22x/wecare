@@ -52,9 +52,12 @@
          <!-- <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a> -->
 
          <ul class="hide-on-med-and-down">
-         <li><a href="#!">Inicio</a></li>
-         <li><a ui-sref="listado_especialistas">Especialistas</a></li>
-         <li><a ui-sref="listado_alumnos">Alumnos</a></li>
+         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_home">Inicio</a></li>
+         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
+         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
+         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_home">Inicio</a></li>
+         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_actividades">Actividades diarias</a></li>
+         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_home">Inicio</a></li>
          <li><a ui-sref="bot_prueba">BOT</a></li>
          <li><a ui-sref="logout">Cerrar sesion</a></li>
          </ul>

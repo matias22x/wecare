@@ -56,7 +56,10 @@ wecareApp.config(function(config, $stateProvider, $authProvider, $urlRouterProvi
     $translateProvider.preferredLanguage('es');
 });
 
-wecareApp.run(function($rootScope, $state, $log, $auth) {
+wecareApp.run(function($rootScope, userData, $state, $log, $auth) {
+
+    $rootScope.type = userData.get('user').tipo;
+
   $rootScope.isAuthenticated = function() {
       return $auth.isAuthenticated();
   };
