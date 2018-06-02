@@ -66,5 +66,11 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             url: '/actividades', // url que va arriba
             templateUrl: 'templates/views/seguimiento/actividades.html', //ubicacion del html
             controller: 'actividadesController' //nombre controller
+        })
+        .state('bot_prueba', {
+            cache: false,
+            url: '/bot', // url que va arriba
+            templateUrl: 'templates/views/bot/comunicacion.html', //ubicacion del html
+            controller: 'botController' //nombre controller
         });
 });
