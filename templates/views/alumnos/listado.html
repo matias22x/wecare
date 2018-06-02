@@ -1,60 +1,58 @@
 <center>
-<div class="container">
-<div class="section">
-<div class="section">
-<a class="waves-effect waves-light btn btn-small botonAgregar" ui-sref="agregar_alumno"><i class="material-icons left">add</i>Agregar alumno</a>
-</div>
+  <div class="container">
+    <div class="section">
+      <div class="section">
+        <a class="waves-effect waves-light btn btn-small botonAgregar" ui-sref="agregar_alumno"><i class="material-icons left">add</i>Agregar alumno</a>
+      </div>
+      <label>Buscar: <input type="text" ng-model="name" ng-change="filtrar(name)"></label>
+      <table class="highlight centered">
+        <thead>
+          <tr class="fondo">
+            <th>DNI</th>
+            <th>NOMBRE</th>
+            <th>DIRECCION</th>
+            <th>FECHA DE NACIMIENTO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
 
-<table class="highlight centered">
-    <thead >
-      <tr class="fondo">
-          <th>DNI</th>
-          <th>NOMBRE</th>
-          <th>DIRECCION</th>
-          <th>FECHA DE NACIMIENTO</th>
-          <th>ACCIONES</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr ng-repeat="alumno in listadoAlumnos">
-        <td>{{alumno.dni}}</td>
-        <td>{{alumno.nombre}}</td>
-        <td>{{alumno.direccion}}</td>
-        <td>{{alumno.fecha_nacimiento | date:'dd-MM-yyyy'}}</td>
-        <td>
-        <a class="waves-effect waves-light btn-small btn-floating botonVer"  ui-sref="ver_alumno({id: alumno._id})"><i class="material-icons">visibility</i></a>
-        <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
-        <a class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="borrar_alumno({id: alumno._id})" ><i class="material-icons">clear</i></a>
+        <tbody>
+          <tr ng-repeat="alumno in page">
+            <td>{{alumno.dni}}</td>
+            <td>{{alumno.nombre}}</td>
+            <td>{{alumno.direccion}}</td>
+            <td>{{alumno.fecha_nacimiento | date:'dd-MM-yyyy'}}</td>
+            <td>
+              <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="ver_alumno({id: alumno._id})"><i class="material-icons">visibility</i></a>
+              <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
+              <a class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="borrar_alumno({id: alumno._id})"><i class="material-icons">clear</i></a>
 
 
-<!-- Modal Structure -->
-<div id="modal{{alumno.indexKey}}" class="modal modal-fixed-footer fade"  role="dialog">
-<div class="modal-content">
-  <h5>¿Está seguro que lo desea eliminar?</h5>
-  <p>{{alumno.dni}}</p>
-  <p>{{alumno.nombre}}</p>
-  <p>{{alumno.direccion}}</p>
-  <p>{{alumno.fecha_nacimiento}}</p>
-</div>
-<div class="modal-footer">
-  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-</div>
-</div>
+              <!-- Modal Structure -->
+              <div id="modal{{alumno.indexKey}}" class="modal modal-fixed-footer fade" role="dialog">
+                <div class="modal-content">
+                  <h5>¿Está seguro que lo desea eliminar?</h5>
+                  <p>{{alumno.dni}}</p>
+                  <p>{{alumno.nombre}}</p>
+                  <p>{{alumno.direccion}}</p>
+                  <p>{{alumno.fecha_nacimiento}}</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                </div>
+              </div>
 
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
-        </div>
-
-</center>
+            </td>
           </tr>
 
         </tbody>
       </table>
-            </div>
-
-    </center>
+      <ul class="pagination">
+        <li class="waves-effect"><a ng-click='antPag(listadoAlumnos);'><i class="material-icons">chevron_left</i></a></li>
+        <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, listadoAlumnos);'>{{$index+1}}</a></li>
+        <li class="waves-effect"><a ng-click='sigPag(listadoAlumnos);'><i class="material-icons">chevron_right</i></a></li>
+      </ul>
+    </div>
+  </div>
+</center>

@@ -37,6 +37,7 @@ angular.module('wecareApp')
       }
     }
 
+
     $scope.filtrar = function(palabra){
       $scope.listadoEspecialistas = [];
       angular.forEach($scope.listaCompleta, function(value, key) {

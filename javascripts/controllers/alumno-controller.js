@@ -1,11 +1,101 @@
 'use strict';
 angular.module('wecareApp')
   .controller('listadoAlumnosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+
+    $scope.cantRegistros = 2;
+
+    $scope.paginInit = function(lista) {
+
+      if(!$scope.cantRegistros){
+        $scope.cantRegistros = 10;
+      }
+
+      if(!$scope.pagActual){
+        $scope.pagActual = 1;
+      }
+
+      $scope.paginas = Math.ceil(lista.length / $scope.cantRegistros);
+
+      $scope.getNumber = function(num) {
+        return new Array($scope.paginas);
+      }
+
+      $scope.page = [];
+
+      for (var i = 0; i < $scope.cantRegistros; i++) {
+        if (lista[i] != null) {
+          $scope.page.push(lista[i]);
+        }
+      }
+    }
+
+
+    $scope.filtrar = function(palabra){
+      $scope.listadoAlumnos = [];
+      angular.forEach($scope.listaCompleta, function(value, key) {
+        if (value.dni.toLowerCase().includes(palabra.toLowerCase()) || value.nombre.toLowerCase().includes(palabra.toLowerCase())) {
+          $scope.listadoAlumnos.push(value);
+        }
+
+        $scope.paginInit($scope.listadoAlumnos);
+      })
+    }
+
+
         alumnoService.getAllAlumnos()
         .then(function(alumnos) {
+            $scope.listaCompleta = alumnos.data;
             $scope.listadoAlumnos = alumnos.data;
-            console.log($scope.listadoAlumnos);
+            $scope.paginInit($scope.listadoAlumnos);
         }).catch($log.error);
+
+        $scope.cambiarPag = function(pag, lista) {
+          $scope.pagActual = pag + 1;
+          var hasta = $scope.pagActual * $scope.cantRegistros;
+          var desde = hasta - $scope.cantRegistros;
+          $scope.page = [];
+
+          for (var i = desde; i < hasta; i++) {
+            if (lista[i] != null) {
+              $scope.page.push(lista[i]);
+            }
+
+          }
+        }
+
+        $scope.sigPag = function(lista) {
+          if ($scope.pagActual + 1 <= $scope.paginas) {
+            $scope.pagActual = $scope.pagActual + 1;
+            var hasta = $scope.pagActual * $scope.cantRegistros;
+            var desde = hasta - $scope.cantRegistros;
+            $scope.page = [];
+
+            for (var i = desde; i < hasta; i++) {
+              if (lista[i] != null) {
+                $scope.page.push(lista[i]);
+              }
+
+            }
+          }
+
+        }
+
+        $scope.antPag = function(lista) {
+          if ($scope.pagActual - 1 > 0) {
+            $scope.pagActual = $scope.pagActual - 1;
+            var hasta = $scope.pagActual * $scope.cantRegistros;
+            var desde = hasta - $scope.cantRegistros;
+            $scope.page = [];
+
+            for (var i = desde; i < hasta; i++) {
+              if (lista[i] != null) {
+                $scope.page.push(lista[i]);
+              }
+
+            }
+          }
+
+        }
 
   })
   .controller('agregarAlumnosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, $location, config, alumnoService, userService, moment) {
