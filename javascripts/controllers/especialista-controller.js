@@ -2,8 +2,9 @@
 angular.module('wecareApp')
   .controller('listadoEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
 
+    console.log(userData.get('user'));//aca adentro estan los datos del usuario
+    
     $scope.cantRegistros = 2;
-
     /*FUNCION PARA INICIAR UNA PAGINACION DE UNA LISTAS EN UN SCOPE
     (OBLIGATORIO QUE ESTE EN UN SCOPE LA LISTAS) QUE SE LE PASE POR
     PARAMETRO. VA A CREAR LA PRIMERA PAGINA QUE CONSTA DE LA CANTIDAD

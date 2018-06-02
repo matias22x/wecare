@@ -7,8 +7,7 @@ angular.module('wecareApp')
           $auth.login($scope.login_data).then(function(response) {
             userService.getUserByUserName(response.config.data.username)
             .then(function(resp) {
-              $rootScope.userData = resp.data[0];
-              console.log($rootScope.userData);
+              userData.set('user', resp.data[0]);//en userData guardo los datos de usuario, si queres guardar algo hacelo de esta manera!
               $state.go('listado_especialistas');
             });
           })
