@@ -5,6 +5,9 @@ angular.module('userService', []).service('userService', function($http, config)
         getUser: function(requestId) {
             return $http.get(config.api_url + '/api/users/' + requestId);
         },
+        getUserByUserName: function(username) {
+            return $http.get(config.api_url + '/api/users?conditions={"username":"' + username +'"}');
+        },
         getAllUsers: function() {
             return $http.get(config.api_url + '/api/users');
         },
