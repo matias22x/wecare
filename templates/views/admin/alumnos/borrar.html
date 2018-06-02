@@ -1,0 +1,44 @@
+<div class="section">
+<center>
+
+<div class="container" style="width: 50%;">
+
+<div class="row editCuadro">
+<form class="col s12">
+
+  <div class="input-field col s12">
+    <p id="dni" ><b>DNI</b>: {{alumno.dni}}</p>
+  </div>
+
+  <div class="input-field col s12">
+    <p id="nombre" ><b>NOMBRE</b>: {{alumno.nombre}}</p>
+  </div>
+
+  <div class="input-field col s12">
+    <p id="direccion" ><b>DIRECCION</b>: {{alumno.direccion}}</p>
+  </div>
+
+  <div class="input-field col s12">
+    <p id="fechaNacimiento" ><b>FECHA DE NACIMIENTO</b>: {{alumno.fecha_nacimiento}}</p>
+  </div>
+
+<div class="container" style="width: 250px">
+<center>
+  <div class="col s12"><b>¿esta seguro de eliminar el alumno?</b></div>
+  <a class="col s5 btn btn-large waves-effect botonAgregar" ui-sref="admin_listado_alumnos">volver</a>
+  <div class="col s2"></div>
+  <button ng-click="borrarAlumno()" class='col s5 btn btn-large waves-effect boton'>eliminar</button>
+</center>
+</div>
+
+<div ng-show="mensajeErrorIncompleto" class="col s12">
+  <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
+</div>
+
+</form>
+
+</div>
+
+</center>
+
+</div>

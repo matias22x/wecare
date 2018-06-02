@@ -123,7 +123,7 @@ angular.module('wecareApp')
             $scope.alumnoDatos.user = user.data._id;
             return alumnoService.postAlumno($scope.alumnoDatos);
         }).then(function(alumno) {
-          $location.path("/listado_alumnos");
+          $location.path("/admin_listado_alumnos");
         }).catch($log.error);
 
       } else {
@@ -150,7 +150,7 @@ angular.module('wecareApp')
       alumnoService.putAlumnoById($scope.alumno._id, $scope.alumno)
       .then(function(resp) {
         console.log('LISTO', resp);
-        $location.path("/listado_alumnos");
+        $location.path("/admin_listado_alumnos");
       }).catch($log.error);
     }
   })
@@ -192,7 +192,7 @@ angular.module('wecareApp')
         .then(function(userEliminado) {
             console.log(userEliminado.data);
             console.log('LISTO', userEliminado);
-            $location.path("/listado_alumnos");
+            $location.path("/admin_listado_alumnos");
         })
         .catch($log.error);
 

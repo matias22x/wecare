@@ -1,0 +1,48 @@
+      <div class="section">
+    <center>
+
+<div class="container" style="width: 50%;">
+
+<div class="row editCuadro">
+    <form class="col s12">
+
+        <div class="input-field col s12">
+          <input id="dni" type="text" class="validate" ng-model="especialista.dni" ng-focus="esconderError()">
+          <label for="dni">DNI</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="nombre" type="text" class="validate" ng-model="especialista.nombre" ng-focus="esconderError()">
+          <label for="nombre">NOMBRE</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="direccion" type="text" class="validate" ng-model="especialista.direccion" ng-focus="esconderError()">
+          <label for="direccion">DIRECCION</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="fechaNacimiento" type="date" class="validate" ng-model="especialista.fecha_nacimiento" ng-focus="esconderError()">
+          <label for="fechaNacimiento">FECHA DE NACIMIENTO</label>
+        </div>
+
+     <div class="container" style="width: 250px">
+     <center>
+       <div class="col s12"><b>¿esta seguro de modificar el especialista?</b></div>
+       <a class="col s5 btn btn-large waves-effect botonAgregar" ui-sref="admin_listado_especialistas">volver</a>
+       <div class="col s2"></div>
+       <button ng-click="modificarUsuario()" class='col s5 btn btn-large waves-effect boton'>modificar</button>
+     </center>
+    </div>
+
+      <div ng-show="mensajeErrorIncompleto" class="col s12">
+        <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
+      </div>
+
+    </form>
+
+    </div>
+
+    </center>
+
+    </div>
