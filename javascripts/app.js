@@ -11,6 +11,8 @@ var wecareApp = angular.module('wecareApp', ['satellizer', 'ui.router', 'ui.mate
     'especialistaService',
     'alumnoService',
     'userService',
+    'esTranslation',
+    'enTranslation',
     'actividadesService'
 ]);
 wecareApp.constant('config', {
