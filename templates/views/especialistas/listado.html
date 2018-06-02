@@ -4,7 +4,7 @@
       <div class="section">
         <a class="waves-effect waves-light btn btn-small botonAgregar" ui-sref="agregar_especialista"><i class="material-icons left">add</i>Agregar especialista</a>
       </div>
-
+       <label>Buscar: <input type="text" ng-model="name" ng-change="filtrar(name)"></label>
       <table class="highlight centered">
         <thead>
           <tr class="fondo">
@@ -54,11 +54,10 @@
       </ul>
     </div>-->
 
-    <ul class="pagination">
-    <li class="waves-effect"><a ng-click='antPag();'><i class="material-icons">chevron_left</i></a></li>
-
-    <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index);' >{{$index+1}}</a></li>
-    <li class="waves-effect"><a ng-click='sigPag();'><i class="material-icons">chevron_right</i></a></li>
-  </ul>
+      <ul class="pagination">
+        <li class="waves-effect"><a ng-click='antPag(listadoEspecialistas);'><i class="material-icons">chevron_left</i></a></li>
+        <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, listadoEspecialistas);'>{{$index+1}}</a></li>
+        <li class="waves-effect"><a ng-click='sigPag(listadoEspecialistas);'><i class="material-icons">chevron_right</i></a></li>
+      </ul>
 
 </center>

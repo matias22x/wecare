@@ -1,75 +1,109 @@
 'use strict';
 angular.module('wecareApp')
   .controller('listadoEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-        $scope.page = [];
-        $scope.cantRegistros = 2;
+
+    $scope.cantRegistros = 2;
+
+    /*FUNCION PARA INICIAR UNA PAGINACION DE UNA LISTAS EN UN SCOPE
+    (OBLIGATORIO QUE ESTE EN UN SCOPE LA LISTAS) QUE SE LE PASE POR
+    PARAMETRO. VA A CREAR LA PRIMERA PAGINA QUE CONSTA DE LA CANTIDAD
+    DE REGISTROS QUE QUERAMOS MOSTRAR DEFINIDOS EN EL SCOPE
+    $scope.cantRegistros. EL MISMO PUEDE SER DEFINIDO ANTES INICIAR
+    LA PAGINACION, ASI MISMO SE PUEDE PREDETERMINAR UNA PAGINA DONDE
+    EMPEZAR CON $scope.pagActual. SIRVE PARA UNA SOLA LISTA POR
+    PANTALLA*/
+    $scope.paginInit = function(lista) {
+
+      if(!$scope.cantRegistros){
+        $scope.cantRegistros = 10;
+      }
+
+      if(!$scope.pagActual){
         $scope.pagActual = 1;
-        var cantRegis = $scope.cantRegistros;
-        especialistaService.getAllEspecialistas()
-        .then(function(especialistas) {
-            $scope.listadoEspecialistas = especialistas.data;
-            console.log($scope.listadoEspecialistas);
-            $scope.paginas = Math.ceil($scope.listadoEspecialistas.length/$scope.cantRegistros);
-            console.log('cantidad de paginas: '+$scope.paginas);
-            $scope.getNumber = function(num) {
-                return new Array($scope.paginas);
-            }
+      }
 
-            for (var i=0; i<cantRegis; i++) {
-              $scope.page.push($scope.listadoEspecialistas[i]);
-            }
+      $scope.paginas = Math.ceil(lista.length / $scope.cantRegistros);
 
+      $scope.getNumber = function(num) {
+        return new Array($scope.paginas);
+      }
 
-        }).catch($log.error);
+      $scope.page = [];
 
-        $scope.cambiarPag = function (pag) {
-          $scope.pagActual = pag+1;
-          pag = pag+1;
-          var hasta = pag*cantRegis;
-          var desde = hasta - cantRegis;
-          $scope.page = [];
+      for (var i = 0; i < $scope.cantRegistros; i++) {
+        if (lista[i] != null) {
+          $scope.page.push(lista[i]);
+        }
+      }
+    }
 
-          for (var i=desde; i<hasta; i++) {
-            if($scope.listadoEspecialistas[i]!=null){
-              $scope.page.push($scope.listadoEspecialistas[i]);
-            }
-
-          }
+    $scope.filtrar = function(palabra){
+      $scope.listadoEspecialistas = [];
+      angular.forEach($scope.listaCompleta, function(value, key) {
+        if (value.dni.toLowerCase().includes(palabra.toLowerCase()) || value.nombre.toLowerCase().includes(palabra.toLowerCase())) {
+          $scope.listadoEspecialistas.push(value);
         }
 
-        $scope.sigPag = function () {
-          if($scope.pagActual+1<=$scope.paginas){
-            $scope.pagActual = $scope.pagActual+1;
-            var hasta = $scope.pagActual*cantRegis;
-            var desde = hasta - cantRegis;
-            $scope.page = [];
+        $scope.paginInit($scope.listadoEspecialistas);
+      })
+    }
 
-            for (var i=desde; i<hasta; i++) {
-              if($scope.listadoEspecialistas[i]!=null){
-                $scope.page.push($scope.listadoEspecialistas[i]);
-              }
+    especialistaService.getAllEspecialistas()
+      .then(function(especialistas) {
+        $scope.listaCompleta = especialistas.data;
+        $scope.listadoEspecialistas = especialistas.data;
 
-            }
-          }
+        $scope.paginInit($scope.listadoEspecialistas);
 
+      }).catch($log.error);
+
+    $scope.cambiarPag = function(pag, lista) {
+      $scope.pagActual = pag + 1;
+      var hasta = $scope.pagActual * $scope.cantRegistros;
+      var desde = hasta - $scope.cantRegistros;
+      $scope.page = [];
+
+      for (var i = desde; i < hasta; i++) {
+        if (lista[i] != null) {
+          $scope.page.push(lista[i]);
         }
 
-        $scope.antPag = function () {
-          if($scope.pagActual-1>0){
-            $scope.pagActual = $scope.pagActual-1;
-            var hasta = $scope.pagActual*cantRegis;
-            var desde = hasta - cantRegis;
-            $scope.page = [];
+      }
+    }
 
-            for (var i=desde; i<hasta; i++) {
-              if($scope.listadoEspecialistas[i]!=null){
-                $scope.page.push($scope.listadoEspecialistas[i]);
-              }
+    $scope.sigPag = function(lista) {
+      if ($scope.pagActual + 1 <= $scope.paginas) {
+        $scope.pagActual = $scope.pagActual + 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
 
-            }
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
           }
 
         }
+      }
+
+    }
+
+    $scope.antPag = function(lista) {
+      if ($scope.pagActual - 1 > 0) {
+        $scope.pagActual = $scope.pagActual - 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+
+        }
+      }
+
+    }
 
 
 
@@ -94,13 +128,13 @@ angular.module('wecareApp')
         $scope.especialistaDatos.fecha_nacimiento = esp.fecha_nacimiento;
 
         userService.postUser($scope.usuario)
-        .then(function(user) {
+          .then(function(user) {
             $scope.especialistaDatos.user = user.data;
             $scope.especialistaDatos.user = user.data._id;
             return especialistaService.postEspecialista($scope.especialistaDatos);
-        }).then(function(especialista) {
-          $location.path("/listado_especialistas");
-        }).catch($log.error);
+          }).then(function(especialista) {
+            $location.path("/listado_especialistas");
+          }).catch($log.error);
 
       } else {
         $scope.mensajeErrorIncompleto = true;
@@ -117,34 +151,34 @@ angular.module('wecareApp')
     var id = $stateParams.id;
 
     especialistaService.getEspecialista(id)
-    .then(function(especialistaAModificar){
+      .then(function(especialistaAModificar) {
         $scope.especialista = especialistaAModificar.data;
-        $scope.especialista.fecha_nacimiento = new Date ($scope.especialista.fecha_nacimiento);
-    }).catch($log.error);
+        $scope.especialista.fecha_nacimiento = new Date($scope.especialista.fecha_nacimiento);
+      }).catch($log.error);
 
     $scope.modificarUsuario = function() {
       especialistaService.putEspecialistaById($scope.especialista._id, $scope.especialista)
-      .then(function(resp) {
-        console.log('LISTO', resp);
-        $location.path("/listado_especialistas");
-      }).catch($log.error);
+        .then(function(resp) {
+          console.log('LISTO', resp);
+          $location.path("/listado_especialistas");
+        }).catch($log.error);
     }
   })
   .controller('verEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
     var id = $stateParams.id;
 
     especialistaService.getEspecialista(id)
-    .then(function(especialista){
+      .then(function(especialista) {
         $scope.especialista = especialista.data;
-        $scope.especialista.fecha_nacimiento = new Date ($scope.especialista.fecha_nacimiento);
+        $scope.especialista.fecha_nacimiento = new Date($scope.especialista.fecha_nacimiento);
 
         userService.getUser($scope.especialista.user)
-        .then(function(user){
+          .then(function(user) {
             $scope.user = user.data;
-            $scope.user.createdAt = new Date ($scope.user.createdAt);
-            $scope.user.updatedAt = new Date ($scope.user.updatedAt);
-        }).catch($log.error);
-    }).catch($log.error);
+            $scope.user.createdAt = new Date($scope.user.createdAt);
+            $scope.user.updatedAt = new Date($scope.user.updatedAt);
+          }).catch($log.error);
+      }).catch($log.error);
 
   })
   .controller('borrarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
@@ -152,23 +186,23 @@ angular.module('wecareApp')
     var id = $stateParams.id;
 
     especialistaService.getEspecialista(id)
-    .then(function(especialistaABorrar){
+      .then(function(especialistaABorrar) {
         $scope.especialista = especialistaABorrar.data;
-        $scope.especialista.fecha_nacimiento = new Date ($scope.especialista.fecha_nacimiento);
-    }).catch($log.error);
+        $scope.especialista.fecha_nacimiento = new Date($scope.especialista.fecha_nacimiento);
+      }).catch($log.error);
 
     $scope.borrarEspecialista = function() {
-        var id = $scope.especialista._id;
-        var userId = $scope.especialista.user;
-        especialistaService.deleteEspecialistaById(id)
+      var id = $scope.especialista._id;
+      var userId = $scope.especialista.user;
+      especialistaService.deleteEspecialistaById(id)
         .then(function() {
-            console.log('userId', userId);
-            return userService.deleteUserById(userId);
+          console.log('userId', userId);
+          return userService.deleteUserById(userId);
         })
         .then(function(userEliminado) {
-            console.log(userEliminado.data);
-            console.log('LISTO', userEliminado);
-            $location.path("/listado_especialistas");
+          console.log(userEliminado.data);
+          console.log('LISTO', userEliminado);
+          $location.path("/listado_especialistas");
         })
         .catch($log.error);
 
