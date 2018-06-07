@@ -11,13 +11,14 @@ angular.module('wecareApp')
       //mandamos nuestra respuesta, y nos devuelve las entities, o respuesta del bot
       botService.postPreguntas($scope.datos)
         .then(function(resp) {
-          $scope.entities = resp.data.msg.entities;
+          $scope.entities = resp.data.data.entities;
           var arrayEntities = Object.keys($scope.entities).map(function(key) {
               return $scope.entities[key];
             }
           ).map(function(array) {
             return array[0];
           });
+          console.log(arrayEntities);
           if (arrayEntities.length > 0) {
             //si hay mas de 1 respuesta, va a elegir una aleatoria
             var randomResponse = Math.floor((Math.random() * arrayEntities.length));
