@@ -6,8 +6,10 @@ body {
 main {
   flex: 1 0 auto; }
 
-body {
-  background: #fff; }
+body{
+  background-image: url('https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg'); 
+background-repeat: repeat-y;
+  background-position: bottom left;}
 
 .input-field input[type=date]:focus + label,
 .input-field input[type=text]:focus + label,
