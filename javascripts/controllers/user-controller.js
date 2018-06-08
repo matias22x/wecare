@@ -9,7 +9,7 @@ angular.module('wecareApp')
             .then(function(resp) {
               userData.set('user', resp.data[0]);//en userData guardo los datos de usuario, si queres guardar algo hacelo de esta manera!
               if(resp.data[0].tipo=='admin'){
-                $state.go('listado_especialistas');
+                $state.go('admin_listado_especialistas');
               }
               if(resp.data[0].tipo=='alumno'){
                 $state.go('alumno_home');
