@@ -85,7 +85,7 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             templateUrl: 'templates/views/alumnos/seguimiento/actividades.html', //ubicacion del html
             controller: 'alumnoActividadesController' //nombre controller
         })
-        .state('alumno_actividades', {
+        .state('alumno_actividades_copia', {
             cache: false,
             url: '/alumno_actividades_copia', // url que va arriba
             templateUrl: 'templates/views/alumnos/seguimiento/actividadescopia.html', //ubicacion del html
