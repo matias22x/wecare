@@ -77,18 +77,121 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             cache: false,
             url: '/alumno_home', // url que va arriba
             templateUrl: 'templates/views/alumnos/home.html', //ubicacion del html
-            controller: 'homeAlumnoController' //nombre controller
+            controller: 'alumnoHomeController' //nombre controller
         })
         .state('alumno_actividades', {
             cache: false,
             url: '/alumno_actividades', // url que va arriba
             templateUrl: 'templates/views/alumnos/seguimiento/actividades.html', //ubicacion del html
-            controller: 'actividadesController' //nombre controller
+            controller: 'alumnoActividadesController' //nombre controller
+        })
+        .state('alumno_actividades', {
+            cache: false,
+            url: '/alumno_actividades_copia', // url que va arriba
+            templateUrl: 'templates/views/alumnos/seguimiento/actividadescopia.html', //ubicacion del html
+            controller: 'alumnoActividadesController' //nombre controller
+        })
+
+        .state('alumno_estados', {
+            cache: false,
+            url: '/alumno_estados', // url que va arriba
+            templateUrl: 'templates/views/alumnos/seguimiento/estados.html', //ubicacion del html
+            controller: 'alumnoEstadosController' //nombre controller
+        })
+        .state('alumno_lugares', {
+            cache: false,
+            url: '/alumno_lugares', // url que va arriba
+            templateUrl: 'templates/views/alumnos/seguimiento/lugares.html', //ubicacion del html
+            controller: 'alumnoLugaresController' //nombre controller
+        })
+        .state('alumno_contar', {
+            cache: false,
+            url: '/alumno_contar', // url que va arriba
+            templateUrl: 'templates/views/alumnos/seguimiento/contar.html', //ubicacion del html
+            controller: 'alumnoContarController' //nombre controller
+        })
+        .state('alumno_sumario', {
+            cache: false,
+            url: '/alumno_sumario', // url que va arriba
+            templateUrl: 'templates/views/alumnos/seguimiento/sumario.html', //ubicacion del html
+            controller: 'alumnoSumarioController' //nombre controller
+        })
+        .state('alumno_finalizacion', {
+            cache: false,
+            url: '/alumno_finalizacion', // url que va arriba
+            templateUrl: 'templates/views/alumnos/seguimiento/finalizacion.html', //ubicacion del html
+            controller: 'alumnoFinalizacionController' //nombre controller
+        })
+        .state('alumno_agenda', {
+            cache: false,
+            url: '/alumno_agenda', // url que va arriba
+            templateUrl: 'templates/views/alumnos/agenda.html', //ubicacion del html
+            controller: 'alumnoAgendaController' //nombre controller
+        })
+        .state('alumno_historial', {
+            cache: false,
+            url: '/alumno_historial', // url que va arriba
+            templateUrl: 'templates/views/alumnos/historial.html', //ubicacion del html
+            controller: 'alumnoHistorialController' //nombre controller
+        })
+        .state('alumno_informacion', {
+            cache: false,
+            url: '/alumno_informacion', // url que va arriba
+            templateUrl: 'templates/views/alumnos/informacion.html', //ubicacion del html
+            controller: 'alumnoInformacionController' //nombre controller
         })
         .state('especialista_home', {
             cache: false,
             url: '/especialista_home', // url que va arriba
             templateUrl: 'templates/views/especialistas/home.html', //ubicacion del html
-            controller: 'homeEspecialistaController' //nombre controller
+            controller: 'especialistaHomeController' //nombre controller
+        })
+        .state('especialista_agenda', {
+            cache: false,
+            url: '/especialista_agenda', // url que va arriba
+            templateUrl: 'templates/views/especialistas/agenda.html', //ubicacion del html
+            controller: 'especialistaAgendaController' //nombre controller
+        })
+        .state('especialista_diagnosticos', {
+            cache: false,
+            url: '/especialista_diagnosticos', // url que va arriba
+            templateUrl: 'templates/views/especialistas/diagnosticos.html', //ubicacion del html
+            controller: 'especialistaDiagnosticosController' //nombre controller
+        })
+        .state('especialista_diagnosticoVer', {
+            cache: false,
+            url: '/especialista_diagnosticoVer', // url que va arriba
+            templateUrl: 'templates/views/especialistas/diagnosticoVer.html', //ubicacion del html
+            controller: 'especialistaDiagnosticoVerController' //nombre controller
+        })
+        .state('especialista_historial', {
+            cache: false,
+            url: '/especialista_historial', // url que va arriba
+            templateUrl: 'templates/views/especialistas/historial.html', //ubicacion del html
+            controller: 'especialistaHistorialController' //nombre controller
+        })
+        .state('especialista_observaciones', {
+            cache: false,
+            url: '/especialista_observaciones', // url que va arriba
+            templateUrl: 'templates/views/especialistas/observaciones.html', //ubicacion del html
+            controller: 'especialistaObservacionesController' //nombre controller
+        })
+        .state('especialista_pacientes', {
+            cache: false,
+            url: '/especialista_pacientes', // url que va arriba
+            templateUrl: 'templates/views/especialistas/pacientes.html', //ubicacion del html
+            controller: 'especialistaPacientesController' //nombre controller
+        })
+        .state('especialista_sesion', {
+            cache: false,
+            url: '/especialista_sesion', // url que va arriba
+            templateUrl: 'templates/views/especialistas/sesion.html', //ubicacion del html
+            controller: 'especialistaSesionController' //nombre controller
+        })
+        .state('especialista_turno', {
+            cache: false,
+            url: '/especialista_turno', // url que va arriba
+            templateUrl: 'templates/views/especialistas/turno.html', //ubicacion del html
+            controller: 'especialistaTurnoController' //nombre controller
         });
 });

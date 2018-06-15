@@ -36,43 +36,40 @@
   <script src="/wecare/javascripts/services/actividades.js"></script>
   <script src="/wecare/javascripts/controllers/user-controller.js"></script>
   <script src="/wecare/javascripts/controllers/bot-controller.js"></script>
+  <script src="/wecare/javascripts/controllers/admin-controller.js"></script>
   <script src="/wecare/javascripts/controllers/especialista-controller.js"></script>
   <script src="/wecare/javascripts/controllers/alumno-controller.js"></script>
   <script src="/wecare/javascripts/controllers/seguimiento-controller.js"></script>
-  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body ng-app="wecareApp">
-  <nav class="nav-center" ng-show="isAuthenticated()" ng-cloak >
+  <nav class="nav-center" ng-show="isAuthenticated()" ng-cloak>
 
-         <div class="nav-wrapper">
-         <a href="#" class="brand-logo center">WeCare</a>
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo center">WeCare</a>
+      <ul id="main-menu"  class="hide-on-med-and-down">
+        <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_home">Inicio</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_home">Inicio</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_estados">Registro diario</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_informacion">Informacion</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_agenda">Agenda</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_home">Inicio</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_pacientes">Mis pacientes</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_agenda">Agenda</a></li>
+        <li><a ui-sref="bot_prueba">BOT</a></li>
+        <li><a ui-sref="logout">Cerrar sesion</a></li>
+      </ul>
+      <ul id="main-menu-mobile" class="side-nav">
+        <!-- aca adentro metes las cosas con estilo -->
+      </ul>
+      <a data-activates="main-menu-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
 
-
-         <!-- <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a> -->
-
-         <ul class="lo">
-         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_home">Inicio</a></li>
-         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
-         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
-         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_home">Inicio</a></li>
-         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_actividades">Actividades diarias</a></li>
-         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_home">Inicio</a></li>
-         <li><a ui-sref="bot_prueba">BOT</a></li>
-         <li><a ui-sref="logout">Cerrar sesion</a></li>
-         </ul>
-         </div>
-    </nav>
-
-
-
-      <!-- <ul class="sidenav" id="mobile-nav">
-         <li><a href="#!">Link</a></li>
-         <li><a href="#!">Link</a></li>
-         <li><a href="#!">Link</a></li>
-         <li><a href="#!">Link</a></li>
-         <li><a href="#!">Link</a></li>
-         </ul> -->
   <main ui-view="login" ng-show="!isAuthenticated()" ng-cloak></main>
   <main ui-view ng-show="isAuthenticated()">
   </main>
@@ -88,5 +85,10 @@
           </div>
         </footer>
 </body>
+  <script>
 
+    $('nav .button-collapse').sideNav({
+        closeOnClick: true
+    });
+  </script>
 </html>
