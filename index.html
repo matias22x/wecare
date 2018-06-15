@@ -36,6 +36,7 @@
   <script src="/wecare/javascripts/services/actividades.js"></script>
   <script src="/wecare/javascripts/controllers/user-controller.js"></script>
   <script src="/wecare/javascripts/controllers/bot-controller.js"></script>
+  <script src="/wecare/javascripts/controllers/admin-controller.js"></script>
   <script src="/wecare/javascripts/controllers/especialista-controller.js"></script>
   <script src="/wecare/javascripts/controllers/alumno-controller.js"></script>
   <script src="/wecare/javascripts/controllers/seguimiento-controller.js"></script>
@@ -52,8 +53,13 @@
         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_home">Inicio</a></li>
-        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_actividades">Actividades diarias</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_estados">Registro diario</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_informacion">Informacion</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_agenda">Agenda</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_home">Inicio</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_pacientes">Mis pacientes</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_agenda">Agenda</a></li>
         <li><a ui-sref="bot_prueba">BOT</a></li>
         <li><a ui-sref="logout">Cerrar sesion</a></li>
       </ul>
