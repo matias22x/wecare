@@ -1,17 +1,43 @@
+
+
+
+ <center> 
 <div class="container">
-  <div class="caption center-align row">
-    <div class="col md6 s6">
-      </br>
-      </br>
-      <p>Aca va la pregunta: {{datos.pregunta}}</p>
+  <div class="section"></div>
+  <div class="section"></div>
+
+
+
+    <div class="col s12 contenedorBot">
+    <div class="col s6 bot">
+        <img class="responsive-img" style="width: 220px;" src="img/bot.gif" />
+      </div>
+      <div class="dialogue-box col s6">
+    <div class="tdialogue-box-text">
+ texto texto texto texto texto texto
+ texto texto texto texto texto texto
+
+ texto texto texto texto texto texto
     </div>
-    <div class="col md6 s6">
+    <div class="triangle-with-shadow"></div>
+</div>
+</div>
+      
+
+
+<div class="col s12 cuadroChat">
+      <h5>Aca va la pregunta: {{datos.pregunta}}</h5>
+    
+  
       <div input-field>
         <label>habla con el bot</label>
         <input type="text" ng-model="datos.respuesta">
-      </div>
+ 
       <button class="btn" ng-click="enviar()">Enviar</button>
     </div>
     <!-- {{'THIS_IS_BOT' | translate}} -->
   </div>
-</div>
+
+
+  </div>
+  </center>

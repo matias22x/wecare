@@ -10,8 +10,8 @@ main {
 
 body {
   background-image: url('../img/fondo.jpg');
-  background-repeat: repeat-y;
-  background-position: bottom left; }
+  background-repeat: repeat-x;
+   }
 
 .input-field input[type=date]:focus + label,
 .input-field input[type=text]:focus + label,
@@ -34,14 +34,38 @@ body {
 
 .logoDerecho{float:right;}
 
-.greyBis{ float: left;
+.greyBis{ 
 background-color: #fafafa;
-width: 50%; }
+width: 40%; }
 
  .grey {  width: 60%; 
  }
 
  .logotipo {margin-top: -100px;}
+
+ @media screen and (max-width: 700px) {
+  .greyBis{ 
+
+width: 70%; }
+}
+
+.fondoBlanco { background-color: white; }
+
+.iconFooter {    font-size: 12px !important;
+ }
+
+footer.page-footer {
+ 
+    padding-top: 0px !important;
+    background-color: #b0b0b0;
+    margin-top: -20px !important;
+}
+
+.contenedorBot {
+  background-color: #fff;
+  padding:25px !important;
+
+width:80% !important;}
 
 /*************************************************************/
 .botonClear {
@@ -140,4 +164,51 @@ table { background-color: #fafafa; }
 .editCuadro { background-color: #fafafa;
 margin: 20px;
     padding: 30px; }
+
+/******************************************/
+
+
+.dialogue-box {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.25);
+    position: relative;
+    float: right;
+    width: 50%;
+}
+
+.triangle-with-shadow {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 10px -17px rgba(0, 0, 0, 0.25);
+    transform: rotate(45deg);
+    position: absolute;
+    right: -40px;
+    bottom: -39px;
+}
+
+.triangle-with-shadow:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    transform: rotate(45deg);
+    top: 75px;
+    left: 25px;
+    -webkit-box-shadow: 10px 1px 10px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 10px 1px 10px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 10px 1px 10px 0px rgba(50, 50, 50, 0.25);
+}
+/* demo only */
+
+.bot { float:left; }
+
+
 
