@@ -17,8 +17,8 @@ var wecareApp = angular.module('wecareApp', ['satellizer', 'ui.router', 'ui.mate
     'actividadesService'
 ]);
 wecareApp.constant('config', {
-    api_url: 'http://159.65.176.157:3000',
-    // api_url: 'http://localhost:3000',
+    // api_url: 'http://159.65.176.157:3000',
+    api_url: 'http://localhost:3000',
     front_url: '/',
     user_validation: new RegExp('^(([A-z0-9]){4,20})$'),
     pass_validation: new RegExp('^(([A-z0-9@]){8,20})$')
@@ -62,7 +62,7 @@ wecareApp.run(function($rootScope, userData, $state, $log, $auth) {
   $rootScope.isAuthenticated = function() {
       return $auth.isAuthenticated();
   };
-  
+
   if ($rootScope.isAuthenticated()) {
     $rootScope.type = userData.get('user').tipo;
   }
@@ -77,5 +77,3 @@ var app = angular.module('materializeApp', ['ui.materialize'])
         };
     }]);
 */
-
-
