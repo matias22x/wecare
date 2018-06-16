@@ -7,30 +7,14 @@
           <img class="responsive-img" style="width: 220px;" src="img/bot.gif" />
         </div>
 
-        <div class="col l6 m6 s6 bubble me cuadroDialogo">
+        <div class="col l6 m6 s6 bubble me cuadroDialogo right">
 
           <div class="xop-container">
-            <p>Bienvenido Juan! Mi nombre es WeBot y estoy</p>
-            <p>aqui para ayudarte ¿Quieres empezar? <span class="cursor">|</span></p>
+            <p>{{datos.pregunta}}<span class="cursor">|</span></p>
           </div>
         </div>
 
       </div>
-
-
-      <!--
-      <div input-field class="respuesta">
-        <label>habla con el bot</label>
-        <input type="text" ng-model="datos.respuesta">
-
-      <button class="btn" ng-click="enviar()">Enviar</button>
-    </div>
-    {{'THIS_IS_BOT' | translate}} -->
-
-
-
-
-
       <section class="msger">
 
 
@@ -47,14 +31,10 @@
               <div class="msg-text">
                 Mi respuesta va a ser la siguiente:
 
-                <form action="#">
+                <form action="#" ng-repeat="item in opciones">
                   <p>
                     <input type="checkbox" id="test5" />
-                    <label for="test5">Red</label>
-                  </p>
-                  <p>
-                    <input type="checkbox" id="test6" />
-                    <label for="test6">Red</label>
+                    <label for="test5">{{item}}</label>
                   </p>
                 </form>
               </div>
@@ -63,7 +43,7 @@
         </main>
 
         <form class="enviarBoton">
-          <a class="waves-effect waves-light btn">Enviar</a>
+          <a class="waves-effect waves-light btn" ng-click="enviar({'respuesta': item})">Enviar</a>
         </form>
       </section>
 
