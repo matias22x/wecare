@@ -10,7 +10,8 @@
         <div class="col l6 m6 s6 bubble me cuadroDialogo right">
 
           <div class="xop-container">
-            <p>{{datos.pregunta}}<span class="cursor">|</span></p>
+            <p ng-if="datos.pregunta && datos.preguntaParseada.length === 0">{{datos.pregunta}}<span class="cursor">|</span></p>
+            <p ng-if="datos.pregunta && datos.preguntaParseada.length !== 0">{{datos.preguntaParseada}}<span class="cursor">|</span></p>
           </div>
         </div>
 
@@ -33,18 +34,18 @@
 
                 <form action="#" ng-repeat="item in opciones">
                   <p>
-                    <input type="checkbox" id="test5" ng-click="enviar({'respuesta': item})"/>
-                    <label for="test5">{{item}}</label>
+                    <label ng-click="enviar({'pregunta':datos.pregunta, 'respuesta': item})" for="test5">- {{item}}</label>
                   </p>
                 </form>
+                <div input-field ng-if="enableInput">
+                  <textarea ng-model="datos.input" class="materialize-textarea"></textarea>
+                  <label>Textarea</label>
+                  <a class="waves-effect waves-light btn" ng-click="enviar({'pregunta':datos.pregunta, 'respuesta': datos.pregunta, 'input': datos.input})">Enviar</a>
+                </div>
               </div>
             </div>
           </div>
         </main>
-
-        <!-- <form class="enviarBoton">
-          <a class="waves-effect waves-light btn" ng-click="enviar({'respuesta': item})">Enviar</a>
-        </form> -->
       </section>
 
     </div>
