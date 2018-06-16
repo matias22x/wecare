@@ -4,7 +4,7 @@
 
       <div class="col s12 contenedorBot">
         <div class="col l6 m6 s6 bot">
-          <img class="responsive-img" style="width: 220px;" src="img/bot.gif" />
+          <img class="responsive-img" style="width: 220px;" src="img/bot-2.gif" />
         </div>
 
         <div class="col l6 m6 s6 bubble me cuadroDialogo right">
@@ -33,7 +33,7 @@
 
                 <form action="#" ng-repeat="item in opciones">
                   <p>
-                    <input type="checkbox" id="test5" />
+                    <input type="checkbox" id="test5" ng-click="enviar({'respuesta': item})"/>
                     <label for="test5">{{item}}</label>
                   </p>
                 </form>
@@ -42,9 +42,9 @@
           </div>
         </main>
 
-        <form class="enviarBoton">
+        <!-- <form class="enviarBoton">
           <a class="waves-effect waves-light btn" ng-click="enviar({'respuesta': item})">Enviar</a>
-        </form>
+        </form> -->
       </section>
 
     </div>
