@@ -1,30 +1,28 @@
-
-
 <div class="fondoBlanco">
- <center> 
-<div class="container contenedor">
+  <center>
+    <div class="container contenedor">
 
-    <div class="col s12 contenedorBot">
-    <div class="col l6 m6 s6 bot">
-        <img class="responsive-img" style="width: 220px;" src="img/bot.gif" />
+      <div class="col s12 contenedorBot">
+        <div class="col l6 m6 s6 bot">
+          <img class="responsive-img" style="width: 220px;" src="img/bot.gif" />
+        </div>
+
+        <div class="col l6 m6 s6 bubble me cuadroDialogo">
+
+          <div class="xop-container">
+            <p>Bienvenido Juan! Mi nombre es WeBot y estoy</p>
+            <p>aqui para ayudarte ¿Quieres empezar? <span class="cursor">|</span></p>
+          </div>
+        </div>
+
       </div>
 
-       <div class="col l6 m6 s6 bubble me cuadroDialogo">
-     
-<div class="xop-container">
-<p>Bienvenido Juan! Mi nombre es WeBot y estoy</p>
-<p>aqui para ayudarte ¿Quieres empezar? <span class="cursor">|</span></p>
-</div>
-       </div>
 
-</div>
-      
-
-<!--
+      <!--
       <div input-field class="respuesta">
         <label>habla con el bot</label>
         <input type="text" ng-model="datos.respuesta">
- 
+
       <button class="btn" ng-click="enviar()">Enviar</button>
     </div>
     {{'THIS_IS_BOT' | translate}} -->
@@ -33,61 +31,42 @@
 
 
 
-  <section class="msger">
-  
+      <section class="msger">
 
-  <main class="msger-chat">
-    <div class="msg left-msg">
-      <div
-       class="msg-img"
-       style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
-      ></div>
 
-      <div class="msg-bubble">
-        <div class="msg-info">
-          <div class="msg-info-name">WeBot</div>
-          
-        </div>
+        <main class="msger-chat">
 
-        <div class="msg-text">
-          Aca va la pregunta: {{datos.pregunta}}
-        </div>
-      </div>
-    </div>
+          <div class="msg right-msg">
+            <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"></div>
 
-    <div class="msg right-msg">
-      <div
-       class="msg-img"
-       style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
-      ></div>
+            <div class="msg-bubble">
+              <div class="msg-info">
+                <div class="msg-info-name">Juan Perez</div>
+              </div>
 
-      <div class="msg-bubble">
-        <div class="msg-info">
-          <div class="msg-info-name">Juan Perez</div>
+              <div class="msg-text">
+                Mi respuesta va a ser la siguiente:
+
+                <form action="#">
+                  <p>
+                    <input type="checkbox" id="test5" />
+                    <label for="test5">Red</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="test6" />
+                    <label for="test6">Red</label>
+                  </p>
+                </form>
+              </div>
+            </div>
           </div>
+        </main>
 
-        <div class="msg-text">
-          Mi respuesta va a ser la siguiente:
+        <form class="enviarBoton">
+          <a class="waves-effect waves-light btn">Enviar</a>
+        </form>
+      </section>
 
-  <form action="#">
-    <p>
-      <input type="checkbox" id="test5" />
-      <label for="test5">Red</label>
-    </p>
-    <p>
-      <input type="checkbox" id="test6" />
-      <label for="test6">Red</label>
-    </p>
-    </form>
-        </div>
-      </div>
     </div>
-  </main>
-
-  <form class="enviarBoton">
-    <a class="waves-effect waves-light btn">Enviar</a>
-  </form>
-</section>
-
-  </div>
   </center>
+</div>
