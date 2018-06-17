@@ -19,10 +19,12 @@ angular.module('wecareApp')
         pregunta: datos.pregunta,
         respuesta: datos.respuesta
       });
+      console.log($scope.diagnosticoPrematuro);
     }
     //falta: entrenar y finalizar recorrido.
     $scope.enviar = function(datos) {
       $scope.enableInput = false;
+      $scope.datos.input = '';
       $scope.opciones = [];
       botService.postPreguntas(datos)
         .then(function(resp) {
@@ -49,8 +51,8 @@ angular.module('wecareApp')
             $scope.datos.pregunta = arrayEntities[0].value;
             $scope.datos.preguntaParseada = arrayEntities[0].value.slice(7);
             guardarEnDiagnostico(datos);
-          } else if(arrayEntities[0].value.indexOf('Finalizacion del recorrido') !== -1) {
-            //ACA DEBERIA TERMINAR EL CHATBOT.
+          } else if(arrayEntities[0].value.indexOf('*FINALIZACION DEL RECORRIDO*') !== -1) {
+            console.log('CHATBOT TERMINADO');
           }
         }).catch($log.error);
     }
