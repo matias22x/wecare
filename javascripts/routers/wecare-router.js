@@ -193,5 +193,11 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             url: '/especialista_turno', // url que va arriba
             templateUrl: 'templates/views/especialistas/turno.html', //ubicacion del html
             controller: 'especialistaTurnoController' //nombre controller
+        })
+        .state('especialista_historialTmp', {
+            cache: false,
+            url: '/especialista_historialTmp', // url que va arriba
+            templateUrl: 'templates/views/especialistas/historialTmp.html', //ubicacion del html
+            controller: 'especialistaHistorialController' //nombre controller
         });
 });
