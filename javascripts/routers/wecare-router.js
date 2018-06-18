@@ -211,5 +211,11 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             url: '/especialista_historialTmp', // url que va arriba
             templateUrl: 'templates/views/especialistas/historialTmp.html', //ubicacion del html
             controller: 'especialistaHistorialController' //nombre controller
+        })
+        .state('especialista_diagnosticosTmp', {
+            cache: false,
+            url: '/especialista_diagnosticosTmp', // url que va arriba
+            templateUrl: 'templates/views/especialistas/diagnosticosTmp.html', //ubicacion del html
+            controller: 'especialistaDiagnosticosController' //nombre controller
         });
 });
