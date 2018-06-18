@@ -1,2 +1,114 @@
-<a class="waves-effect waves-light btn btn-small"   style="margin: 0 auto; display:block; text-align: center; width: 210px;" ui-sref="especialista_pacientes"><i class="material-icons left">arrow_back</i>Volver</a>
+<style>
+  .buscadorFechas.placeholderclass::before {
+    width: 100%;
+    content: "";
+  }
+
+  .buscadorFechas.placeholderclass:hover::before {
+    width: 0%;
+    content: "";
+  }
+</style>
+
+<a class="waves-effect waves-light btn btn-small" style="margin: 0 auto; display:block; text-align: center; width: 210px;" ui-sref="especialista_pacientes"><i class="material-icons left">arrow_back</i>Volver</a>
 <br>
+
+<div class="fondoBlanco">
+  <center>
+    <div class="container">
+      <div class="section">
+        <div class="row">
+          <div class="col s3">
+
+
+            <table class="highlight centered">
+              <thead>
+                <tr class="fondo">
+                  <th>HISTORIAL DE REGISTROS</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr class="buscador">
+                  <td style="padding-top: 5px; padding-bottom: 1px;">
+                    <input id="buscadorDesde" type="date" class="validate buscadorFechas placeholderclass" style="margin-bottom: 1px;height: 20px;" placeholder="">
+                    <label for="buscadorDesde" style="color:grey;">por fecha desde</label>
+                    <br>
+                    <input id="buscadorHasta" type="date" class="validate buscadorFechas placeholderclass" style="margin-bottom: 1px;height: 20px;" placeholder="">
+                    <label for="buscadorHasta" style="color:grey;">hasta</label>
+                    <br>
+                    <a style="color:orange;">Buscar</a> &nbsp; &nbsp; &nbsp; <a style="color:#00a9ff;" ui-sref="especialista_historialTmp">ver general</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>478 14/07/2018 08:30</td>
+                </tr>
+                <tr>
+                  <td>478 17/07/2018 09:30</td>
+                </tr>
+                <tr>
+                  <td>478 21/07/2018 10:00</td>
+                </tr>
+                <tr>
+                  <td>478 128/07/2018 9:00</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="col s9">
+
+
+            <table class="highlight centered">
+              <thead>
+                <tr class="fondo">
+                  <th>DETALLES</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr class="detalles">
+                  <td style="padding-top: 5px; padding-bottom: 1px;">
+                    <div class="row" style="margin-bottom: 1px;">
+                      <div class="col s12">
+                        <span>Estado: </span>
+                        <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">sentiment_dissatisfied</i></button>
+                      </div>
+                      <div class="col s12">
+                        <span>lugares: </span>
+                        <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">business</i></button>
+                        <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">location_city</i></button>
+                      </div>
+                      <div class="col s12">
+                        <span>actividades: </span>
+                        <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">directions_bike</i></button>
+                        <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">laptop_windows</i></button>
+                      </div>
+                      <div class="col s12">
+                        <span>con quien estuvo: </span>
+                        <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">group</i></button>
+                      </div>
+                    </div>
+                    <div class="row" >
+                      <div class="col s12">
+                        <span>pensamiento: </span>
+                        <br>
+                        <span id="textarea1" class="materialize-textarea"  >
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum nulla eu ante porta lacinia. Maecenas lacinia dui elementum felis dignissim luctus. Quisque ultricies turpis augue, ut tincidunt ante condimentum quis. Nunc vitae nisl nec ex rhoncus
+                          ullamcorper. Sed gravida sem id velit tempor gravida. Suspendisse potenti. Aliquam sed sollicitudin nulla, et commodo urna. Integer faucibus iaculis pellentesque. Donec tortor tellus, fermentum eget suscipit et, semper a ex.
+                          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae ligula at tellus mollis laoreet. Curabitur nec ante sapien. Cras dictum mattis mi, quis blandit elit scelerisque sit amet.
+                          Nam venenatis egestas sem, sit amet aliquet nunc pretium et. Nam a nisi mattis, consectetur libero non, ultricies metus. Fusce fermentum cursus justo ac mollis.
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </center>
+</div>
