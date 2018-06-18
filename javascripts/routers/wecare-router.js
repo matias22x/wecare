@@ -67,11 +67,23 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             templateUrl: 'templates/views/admin/alumnos/borrar.html', //ubicacion del html
             controller: 'borrarAlumnosController' //nombre controller
         })
-        .state('bot_prueba', {
+        .state('bot_inicio', {
+            cache: false,
+            url: '/bot_inicio', // url que va arriba
+            templateUrl: 'templates/views/bot/inicio.html', //ubicacion del html
+            controller: 'botInicioController' //nombre controller
+        })
+        .state('bot', {
             cache: false,
             url: '/bot', // url que va arriba
             templateUrl: 'templates/views/bot/comunicacion.html', //ubicacion del html
             controller: 'botController' //nombre controller
+        })
+        .state('bot_final', {
+            cache: false,
+            url: '/bot_final', // url que va arriba
+            templateUrl: 'templates/views/bot/fin.html', //ubicacion del html
+            controller: 'botFinalController' //nombre controller
         })
         .state('alumno_home', {
             cache: false,

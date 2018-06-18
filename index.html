@@ -57,11 +57,11 @@
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_estados">Registro diario</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_informacion">Informacion</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_agenda">Agenda</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="bot_inicio">Realizar diagnostico</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_home">Inicio</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_pacientes">Mis pacientes</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_agenda">Agenda</a></li>
-        <li><a ui-sref="bot_prueba">BOT</a></li>
         <li><a ui-sref="logout">Cerrar sesion</a></li>
       </ul>
       <ul id="main-menu-mobile" class="side-nav">

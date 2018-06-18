@@ -1,6 +1,10 @@
 'use strict';
 angular.module('wecareApp')
-  .controller('botController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService) {
+  .controller('botInicioController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService) {
+  })
+  .controller('botFinalController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService) {
+  })
+  .controller('botController', function($location, $auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService) {
     $scope.datos = {};
     $scope.datos.pregunta = "¿Con quien vivis?";//INICIALIZO
     $scope.datos.respuesta = "¿Con quien vivis?";//INICIALIZO
@@ -21,7 +25,7 @@ angular.module('wecareApp')
       });
       console.log($scope.diagnosticoPrematuro);
     }
-    //falta: entrenar y finalizar recorrido.
+    //falta: determinar la gravedad.
     $scope.enviar = function(datos) {
       $scope.enableInput = false;
       $scope.datos.input = '';
@@ -42,17 +46,19 @@ angular.module('wecareApp')
             });
 
           } else if(arrayEntities.length === 1 && arrayEntities[0].value.indexOf('*INPUT*') === -1) {
-            $scope.datos.pregunta = arrayEntities[0].value;
             guardarEnDiagnostico(datos);
-            $scope.enviar({'respuesta': $scope.datos.pregunta})
-
+            if (arrayEntities[0].value.indexOf('*FINALIZACION DEL RECORRIDO*') !== -1) {
+              console.log('finalizacion del bot');
+              $location.path("/bot_final");
+              return;
+            }
+            $scope.datos.pregunta = arrayEntities[0].value;
+            $scope.enviar({'respuesta': $scope.datos.pregunta});
           } else if(arrayEntities[0].value.indexOf('*INPUT*') !== -1) {
             $scope.enableInput = true;
             $scope.datos.pregunta = arrayEntities[0].value;
             $scope.datos.preguntaParseada = arrayEntities[0].value.slice(7);
             guardarEnDiagnostico(datos);
-          } else if(arrayEntities[0].value.indexOf('*FINALIZACION DEL RECORRIDO*') !== -1) {
-            console.log('CHATBOT TERMINADO');
           }
         }).catch($log.error);
     }
