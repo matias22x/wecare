@@ -1,7 +1,7 @@
 'use strict';
 angular.module('wecareApp')
     .controller('loginController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, userService) {
-
+      $scope.display=false;
       $scope.login = function() {
           var userType = '';
           $auth.login($scope.login_data).then(function(response) {
@@ -24,8 +24,10 @@ angular.module('wecareApp')
           })
           .catch(function(err) {
               $log.error('Error: ', err);
+              $scope.display=true;
           });
       };
+
     }).controller('logoutController', function($auth, $state, userData, $rootScope) {
       $auth.logout();
       userData.remove('user');
