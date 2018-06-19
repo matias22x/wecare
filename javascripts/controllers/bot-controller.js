@@ -4,17 +4,28 @@ angular.module('wecareApp')
   })
   .controller('botFinalController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService) {
   })
-  .controller('botController', function($location, $auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService) {
+  .controller('botController', function($location, $auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService, alumnoService, diagnosticoPrematuroService) {
     $scope.datos = {};
     $scope.datos.pregunta = "¿Con quien vivis?";//INICIALIZO
     $scope.datos.respuesta = "¿Con quien vivis?";//INICIALIZO
     $scope.enableInput = false;
     $scope.opciones = [];
     $scope.diagnosticoPrematuro = {
-      diagnostico: []
+      diagnostico: [],
+      gravedad: 0
     };
+    $scope.diagnosticoPrematuro.gravedad = 0;
+    alumnoService.getAlumnoByUserId(userData.get('user')._id)
+    .then(function(resp) {
+        $scope.diagnosticoPrematuro.dniAlumno = resp.data[0].dni;
+        $scope.diagnosticoPrematuro.nombreAlumno = resp.data[0].nombre;
+    });
+
 
     function guardarEnDiagnostico(datos) {
+      if (datos.respuestaSinGravedad) {
+        datos.respuesta = datos.respuestaSinGravedad;
+      }
       if (datos.input) {
         datos.respuesta = datos.input;
         datos.pregunta = datos.pregunta.slice(7);
@@ -23,13 +34,13 @@ angular.module('wecareApp')
         pregunta: datos.pregunta,
         respuesta: datos.respuesta
       });
-      console.log($scope.diagnosticoPrematuro);
     }
-    //falta: determinar la gravedad.
+
     $scope.enviar = function(datos) {
       $scope.enableInput = false;
       $scope.datos.input = '';
       $scope.opciones = [];
+
       botService.postPreguntas(datos)
         .then(function(resp) {
           $scope.datos.preguntaParseada = '';
@@ -42,14 +53,23 @@ angular.module('wecareApp')
           });
           if (arrayEntities.length > 1) {
             Object.keys(arrayEntities).forEach(function(key) {
-              $scope.opciones.push(arrayEntities[key].value);
+              var opcionSinGravedad;
+              if (arrayEntities[key].value.indexOf('*gravedad:') !== -1) {
+                var comienzoGravedad = arrayEntities[key].value.indexOf('*gravedad:');
+                var gravedad = 0;
+                gravedad = arrayEntities[key].value.substring(comienzoGravedad + 10, comienzoGravedad + 11);
+                opcionSinGravedad = arrayEntities[key].value.slice(0,-12);
+              }
+              $scope.opciones.push({opcion: arrayEntities[key].value, opcionSinGravedad: opcionSinGravedad, gravedad: gravedad});
             });
 
           } else if(arrayEntities.length === 1 && arrayEntities[0].value.indexOf('*INPUT*') === -1) {
             guardarEnDiagnostico(datos);
             if (arrayEntities[0].value.indexOf('*FINALIZACION DEL RECORRIDO*') !== -1) {
-              console.log('finalizacion del bot');
-              $location.path("/bot_final");
+              diagnosticoPrematuroService.postDiagnosticoPrematuro($scope.diagnosticoPrematuro)
+              .then(function(resp) {
+                  $location.path("/bot_final");
+              }).catch($log.error);
               return;
             }
             $scope.datos.pregunta = arrayEntities[0].value;
@@ -61,6 +81,10 @@ angular.module('wecareApp')
             guardarEnDiagnostico(datos);
           }
         }).catch($log.error);
+    }
+
+    $scope.aumentarGravedad = function(gravedad) {
+      $scope.diagnosticoPrematuro.gravedad = $scope.diagnosticoPrematuro.gravedad + parseInt(gravedad);
     }
 
     $scope.enviar($scope.datos);

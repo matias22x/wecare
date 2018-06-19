@@ -34,7 +34,7 @@
 
                 <form action="#" ng-repeat="item in opciones">
                   <p>
-                    <label ng-click="enviar({'pregunta':datos.pregunta, 'respuesta': item})" for="test5">- {{item}}</label>
+                    <label ng-click="aumentarGravedad(item.gravedad || 0); enviar({'pregunta':datos.pregunta, 'respuesta': item.opcion, 'respuestaSinGravedad': item.opcionSinGravedad})" for="test5">- {{item.opcionSinGravedad || item.opcion}}</label>
                   </p>
                 </form>
                 <div input-field ng-if="enableInput">

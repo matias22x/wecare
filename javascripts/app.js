@@ -9,6 +9,7 @@ var wecareApp = angular.module('wecareApp', ['satellizer', 'ui.router', 'ui.mate
     'angular-web-notification',
     'wecareRouter',
     'especialistaService',
+    'diagnosticoPrematuroService',
     'alumnoService',
     'userService',
     'botService',

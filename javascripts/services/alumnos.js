@@ -17,6 +17,9 @@ angular.module('alumnoService', []).service('alumnoService', function($http, con
         deleteAlumnoById: function(requestId) {
             return $http.delete(config.api_url + '/api/pacientes/' + requestId);
         },
+        getAlumnoByUserId: function(requestId) {
+            return $http.get(config.api_url + '/api/pacientes?conditions={"user":"' + requestId +'"}');
+        }
     };
 
 });
