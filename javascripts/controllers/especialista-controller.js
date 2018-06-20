@@ -15,6 +15,12 @@ angular.module('wecareApp')
       $scope.diagnosticosPrematuros = resp.data;
     }).catch($log.error);
 
+    $scope.filtrarFecha = function (desde, hasta) {
+        diagnosticoPrematuroService.getAllDiagnosticosPrematurosPorFecha(desde, hasta)
+        .then(function(resp) {
+          $scope.diagnosticosPrematuros = resp.data;
+        }).catch($log.error);
+    }
 
     $scope.informacionAlumno = function(diagnostico) {
       $scope.informacion.diagnostico = diagnostico;
@@ -32,7 +38,6 @@ angular.module('wecareApp')
           }
         }).catch($log.error);
     }
-
   })
   .controller('especialistaDiagnosticoVerController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
     console.log("especialistaDiagnosticoVerController");

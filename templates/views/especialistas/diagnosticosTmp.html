@@ -18,32 +18,23 @@
             <table class="highlight centered">
               <thead>
                 <tr class="fondo">
-                  <th>DIAGNOSTICOS NUEVOS</th>
+                  <th>DIAGNOSTICOS POR FECHA</th>
                 </tr>
               </thead>
               <tbody>
                 <tr class="buscador">
                   <td style="padding-top: 5px; padding-bottom: 1px;">
-                    <input id="buscadorDesde" type="date" class="validate buscadorFechas placeholderclass" style="margin-bottom: 1px;height: 20px;" placeholder="">
+                    <input id="buscadorDesde" type="date" class="validate placeholderclass" ng-model="tiempo.buscadorDesde" style="margin-bottom: 1px;height: 20px;" placeholder="">
                     <label for="buscadorDesde" style="color:grey;">por fecha desde</label>
                     <br>
-                    <input id="buscadorHasta" type="date" class="validate buscadorFechas placeholderclass" style="margin-bottom: 1px;height: 20px;" placeholder="">
+                    <input id="buscadorHasta" type="date" class="validate placeholderclass" ng-model="tiempo.buscadorHasta" style="margin-bottom: 1px;height: 20px;" placeholder="">
                     <label for="buscadorHasta" style="color:grey;">hasta</label>
                     <br>
-                    <a style="color:orange;" >Buscar</a> &nbsp; &nbsp; &nbsp; <a style="color:orange;" ui-sref="especialista_diagnosticos">Ver nuevos</a>
+                    <a style="color:orange;" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta)" >Buscar</a> &nbsp; &nbsp; &nbsp; <a style="color:orange;" ui-sref="especialista_diagnosticos">Ver nuevos</a>
                   </td>
                 </tr>
-                <tr>
-                  <td>Juan Perez - 37411021 - 6to "A" T.M.</td>
-                </tr>
-                <tr>
-                  <td>Gimena Tapia - 35411021 - 5to "A" T.M.</td>
-                </tr>
-                <tr>
-                  <td>Marcos Santos - 33411021 - 7mo "A" T.M.</td>
-                </tr>
-                <tr>
-                  <td>Lunei Rando - 39411021 - 3ro "A" T.M.</td>
+                <tr ng-repeat="diagnosticosEntrantes in diagnosticosPrematuros">
+                  <td ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt}}</td>
                 </tr>
               </tbody>
             </table>
@@ -63,13 +54,13 @@
                     <div class="row" style="margin-bottom: 1px;">
                       <div class="col s12">
                         <span style="color: orange;"><b>Nombre y apellido</b></span><br>
-                        <span>Juan Perez</span><br>
+                        <span>{{informacion.diagnostico.alumno.nombre}}</span><br>
                         <span style="color: orange;"><b>DNI</b></span><br>
-                        <span>37411021</span><br>
+                        <span>{{informacion.diagnostico.alumno.dni}}</span><br>
                         <span style="color: orange;"><b>Direccion</b></span><br>
-                        <span>E.Castro 758, Haedo</span><br>
+                        <span>{{informacion.diagnostico.alumno.direccion}}</span><br>
                         <span style="color: orange;"><b>Curso</b></span><br>
-                        <span>6to "A" T.M.</span><br>
+                        <span>AGREGAR CURSO AL ABM!!!</span><br>
                       </div>
                     </div>
                   </td>
@@ -77,13 +68,11 @@
                     <div class="row" style="margin-bottom: 1px;">
                       <div class="col s12">
                         <span style="color: orange;"><b>fecha de ingreso</b></span><br>
-                        <span>12/08/2018 22:39</span><br>
+                        <span>{{informacion.diagnostico.alumno.createdAt}}</span><br>
                         <span style="color: orange;"><b>diagnostico</b></span><br>
-                        <span>preocupante</span><br>
-                        <span style="color: orange;"><b>Respuesta negativas</b></span><br>
-                        <span>7 de 15</span><br>
+                        <span>{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
                         <span style="color: orange;"><b>Puntuacion de gravedad</b></span><br>
-                        <span>40 de 100</span><br>
+                        <span>{{informacion.diagnostico.gravedad}}</span><br>
                       </div>
                     </div>
                   </td>
@@ -104,28 +93,11 @@
                   <td style="padding-top: 5px; padding-bottom: 1px; ">
                     <div class="row" style="margin-bottom: 1px;">
                       <div class="col s12" style="height: 400px;  overflow-y: scroll">
-                        <ul>
-                          <li style="text-align: right; border: 1px solid orange; margin-bottom:5px;">Lorem ipsum dolor sit.</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">Dictum vehicula vestibulum porttitor.</li>
-                          <li style="text-align: right; border: 1px solid orange;margin-bottom:5px;">Lobortis quam orci.</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">Ligula mauris etiam fermentum semper lacus.</li>
-                          <li style="text-align: right; border: 1px solid orange;margin-bottom:5px;">Rutrum dictumst ligula.</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">Leo fames magna ut lectus.</li>
-                          <li style="text-align: right; border: 1px solid orange;margin-bottom:5px;">Purus ornare duis aptent .</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">At vulputate facilisi platea nibh.</li>
-                          <li style="text-align: right; border: 1px solid orange;margin-bottom:5px;">Aliquam lacus vivamus velit .</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">Magna iaculis sapien.</li>
-                          <li style="text-align: right; border: 1px solid orange;margin-bottom:5px;">Praesent maecenas aptent.</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">Sodales tellus interdum.</li>
-                          <li style="text-align: right; border: 1px solid orange;margin-bottom:5px;">Sapien lectus facilisis sociosqu.</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">Ornare magnis nunc maecenas.</li>
-                          <li style="text-align: right; border: 1px solid orange;margin-bottom:5px;">Dis luctus accumsan viverra.</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">Rhoncus nibh purus diam maecenas mus.</li>
-                          <li style="text-align: right; border: 1px solid orange;margin-bottom:5px;">Rutrum feugiat curae porta neque .</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">Dictumst nibh libero dis montes .</li>
-                          <li style="text-align: right; border: 1px solid orange;margin-bottom:5px;">Molestie tristique leo aliquam inceptos.</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">Quis leo varius vitae cras.</li>
+                        <ul ng-if="informacion.diagnostico.diagnostico" ng-repeat="diagnostico in informacion.diagnostico.diagnostico">
+                          <li style="text-align: right; border: 1px solid orange; margin-bottom:5px;">{{diagnostico.pregunta}}</li>
+                          <li style="border: 1px solid grey;margin-bottom:5px;">{{diagnostico.respuesta}}</li>
                         </ul>
+                        <p ng-if="!informacion.diagnostico.diagnostico">Webot no ha recaudado datos.</p
                       </div>
                     </div>
                   </td>

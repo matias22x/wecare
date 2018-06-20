@@ -8,6 +8,9 @@ angular.module('diagnosticoPrematuroService', []).service('diagnosticoPrematuroS
         getAllDiagnosticosPrematuros: function() {
             return $http.get(config.api_url + '/api/diagnosticoprematuros');
         },
+        getAllDiagnosticosPrematurosPorFecha: function(desde, hasta) {
+            return $http.get(config.api_url + '/api/diagnosticoprematuros?conditions={"$and":[{"createdAt":{"$gte": "' + desde + '"}},{"createdAt":{"$lte": "' + hasta + '"}}]}');
+        },
         putDiagnosticoPrematuroById: function(requestId, data) {
             return $http.put(config.api_url + '/api/diagnosticoprematuros/' + requestId, data);
         },
