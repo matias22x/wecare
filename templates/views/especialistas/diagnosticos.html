@@ -70,8 +70,8 @@
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <a class="waves-effect waves-light btn btn-small" ui-sref="especialista_pacientes"><i class="material-icons left">add</i>agregar a mis pacientes</a>
+                  <td ng-if="informacion.diagnostico">
+                    <a class="waves-effect waves-light btn btn-small" ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id)" ><i class="material-icons left">add</i>agregar a mis pacientes</a>
                   </td>
                 </tr>
               </tbody>

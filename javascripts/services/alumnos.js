@@ -5,6 +5,9 @@ angular.module('alumnoService', []).service('alumnoService', function($http, con
         getAlumno: function(requestId) {
             return $http.get(config.api_url + '/api/pacientes/' + requestId);
         },
+        getAlumnoByUser: function(id) {
+          return $http.get(config.api_url + '/api/pacientes?conditions={"user":"' + id +'"}');
+        },
         getAlumnoByDni: function(dni) {
           return $http.get(config.api_url + '/api/pacientes?conditions={"dni":"' + dni +'"}');
         },

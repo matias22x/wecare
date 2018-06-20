@@ -57,7 +57,7 @@ wecareApp.config(function(config, $stateProvider, $authProvider, $urlRouterProvi
     $translateProvider.preferredLanguage('es');
 });
 
-wecareApp.run(function($rootScope, userData, $state, $log, $auth) {
+wecareApp.run(function($rootScope, userData, $state, $log, $auth, especialistaService, alumnoService) {
 
 
   $rootScope.isAuthenticated = function() {
@@ -66,15 +66,17 @@ wecareApp.run(function($rootScope, userData, $state, $log, $auth) {
 
   if ($rootScope.isAuthenticated()) {
     $rootScope.type = userData.get('user').tipo;
+
+    if ($rootScope.type === 'especialista') {
+        especialistaService.getEspecialistaByUser(userData.get('user')._id)
+        .then(function(datosEspecialista) {
+          userData.set('datosRol', datosEspecialista.data[0]);
+        });
+    } else if ($rootScope.type === 'alumno') {
+        alumnoService.getAlumnoByUser(userData.get('user').user)
+        .then(function(datosAlumno) {
+          userData.set('datosRol', datosAlumno.data[0]);
+        });
+    }
   }
 });
-
-/*
-var app = angular.module('materializeApp', ['ui.materialize'])
-    .controller('BodyController', ["$scope", function ($scope) {
-        $scope.select = {
-            value: "Option1",
-            choices: ["Option1", "I'm an option", "This is materialize", "No, this is Patrick."]
-        };
-    }]);
-*/

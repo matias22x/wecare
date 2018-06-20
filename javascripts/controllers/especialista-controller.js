@@ -38,6 +38,18 @@ angular.module('wecareApp')
           }
         }).catch($log.error);
     }
+    $scope.agregarAMisPacientes = function(idAlumno, idDiagnostico) {
+      $scope.diagnosticosPrematuros[0].asignado = true;
+      $scope.informacion.diagnostico.alumno.especialistaAsociado = userData.get('datosRol')._id;
+      diagnosticoPrematuroService.putDiagnosticoPrematuroById(idDiagnostico, $scope.diagnosticosPrematuros[0])
+      .then(function(diagnosticoPrematuro) {
+          return alumnoService.putAlumnoById(idAlumno, $scope.informacion.diagnostico.alumno);
+      })
+      .then(function() {
+          $state.go('especialista_pacientes');
+      }).catch($log.error);
+    };
+
   })
   .controller('especialistaDiagnosticoVerController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
     console.log("especialistaDiagnosticoVerController");

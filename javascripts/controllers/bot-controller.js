@@ -12,7 +12,8 @@ angular.module('wecareApp')
     $scope.opciones = [];
     $scope.diagnosticoPrematuro = {
       diagnostico: [],
-      gravedad: 0
+      gravedad: 0,
+      asignado: false
     };
     $scope.diagnosticoPrematuro.gravedad = 0;
     alumnoService.getAlumnoByUserId(userData.get('user')._id)
