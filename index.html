@@ -7,6 +7,9 @@
 
   <link rel="stylesheet" href="stylesheets/materialize.css">
   <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="stylesheets/materialize-stepper.min.css">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">  
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <script src="/wecare/components/jquery/dist/jquery.min.js"></script>
   <script src="/wecare/components/angular/angular.min.js"></script>
   <script src="/wecare/components/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -28,6 +31,7 @@
   <script src="/wecare/javascripts/translate/es.js"></script>
   <script src="/wecare/javascripts/translate/en.js"></script>
 
+  <script src="/wecare/javascripts/scripts/materialize-stepper.min.js"></script>
   <script src="/wecare/javascripts/app.js"></script>
   <script src="/wecare/javascripts/routers/wecare-router.js"></script>
   <script src="/wecare/javascripts/services/especialista.js"></script>
@@ -46,39 +50,60 @@
 </head>
 
 <body ng-app="wecareApp">
-  <nav class="nav-center" ng-show="isAuthenticated()" ng-cloak>
 
-    <div class="nav-wrapper container">
-      <a href="#" class="brand-logo center">WeCare</a>
-      <ul id="main-menu"  class="hide-on-med-and-down">
-        <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_home">Inicio</a></li>
+  <nav class="nav-center fill" ng-show="isAuthenticated()" ng-cloak>
+
+    <div class="nav-wrapper container" style="width: 80%;">
+      <a href="#" class="brand-logo left hide-on-med-and-down"> <img class="responsive-img" style="width: 10%;" src="img/tipo.png" /></a>
+      <ul id="main-menu"  class="right hide-on-med-and-down">
+       
+        <li ng-if="isAuthenticated && type === 'admin'" class="link one" ><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'" class="link "><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
+        
+        <li ng-if="isAuthenticated && type === 'alumno'" class="link one"><a ui-sref="alumno_estados">Registro diario</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'" class="link two"><a ui-sref="alumno_informacion">Informacion</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'" class="link three"><a ui-sref="alumno_agenda">Agenda</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'" class="link four"><a ui-sref="bot_inicio">Realizar diagnostico</a></li>
+        
+        <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ui-sref="especialista_pacientes">Mis pacientes</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ui-sref="especialista_agenda">Agenda</a></li>
+        <li class="link five"><a ui-sref="logout">Cerrar sesion</a></li>
+        
+        <span>|</span>
+        <li><a ui-sref="#"><i class="material-icons">account_circle</i>Juan Perez</a></li>
+      </ul>
+      <ul id="main-menu-mobile" class="side-nav">
+ <div class="user-view">   
+<a ui-sref="#"><i class="material-icons">account_circle</i></a>
+<h5>Juan Perez, alumno</h5>
+</div>
         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
-        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_home">Inicio</a></li>
+        
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_estados">Registro diario</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_informacion">Informacion</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_agenda">Agenda</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="bot_inicio">Realizar diagnostico</a></li>
-        <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_home">Inicio</a></li>
+        
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_pacientes">Mis pacientes</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_agenda">Agenda</a></li>
         <li><a ui-sref="logout">Cerrar sesion</a></li>
       </ul>
-      <ul id="main-menu-mobile" class="side-nav">
-        <!-- aca adentro metes las cosas con estilo -->
-      </ul>
-      <a data-activates="main-menu-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a data-activates="main-menu-mobile" class="button-collapse"><img class="responsive-img" style="width: 45px; margin-top: 10px;" src="img/isologo.png" /></a>
     </div>
   </nav>
+
+
+
 
   <main ui-view="login" ng-show="!isAuthenticated()" ng-cloak></main>
   <main ui-view ng-show="isAuthenticated()">
   </main>
 
 
-
-  <footer class="page-footer">
+  <footer class="page-footer footer-fixed">
                     <div class="footer-copyright">
             <div class="container">
             <i class="material-icons iconFooter">copyright</i> 2018 Hecho con <i class="material-icons iconFooter">favorite</i>  por Heredia Matias, Rando Ariel y Chovanec Florencia
