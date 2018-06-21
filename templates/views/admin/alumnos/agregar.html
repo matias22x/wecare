@@ -3,69 +3,76 @@
 
 <div class="container" style="width: 50%;">
 
-<div class="row editCuadro">
-    <form class="col s12">
+  <div class="row editCuadro">
 
-        <div class="input-field col s12">
-          <input id="username" type="text" class="validate" ng-model="alumnoNuevo.username" ng-focus="esconderError()">
-          <label for="username">USERNAME</label>
-        </div>
+    <form class="col s12" name="form">
 
-        <div class="input-field col s12">
-          <input id="email" type="text" class="validate" ng-model="alumnoNuevo.email" ng-focus="esconderError()">
-          <label for="email">EMAIL</label>
-        </div>
-
-        <div class="input-field col s12">
-          <input id="dni" type="text" class="validate" ng-model="alumnoNuevo.dni" ng-focus="esconderError()">
-          <label for="dni">DNI</label>
-        </div>
-
-        <div class="input-field col s12">
-          <input id="nombre" type="text" class="validate" ng-model="alumnoNuevo.nombre" ng-focus="esconderError()">
-          <label for="nombre">NOMBRE</label>
-        </div>
-
-        <div class="input-field col s12">
-          <input id="curso" type="text" class="validate" ng-model="alumnoNuevo.curso" ng-focus="esconderError()">
-          <label for="nombre">CURSO</label>
-        </div>
-
-        <div class="input-field col s12">
-          <input id="direccion" type="text" class="validate" ng-model="alumnoNuevo.direccion" ng-focus="esconderError()">
-          <label for="direccion">DIRECCION</label>
-        </div>
-
-        <div class="input-field col s12">
-          <input id="fechaNacimiento" type="date" class="validate" ng-model="alumnoNuevo.fecha_nacimiento" ng-focus="esconderError()">
-          <label for="fechaNacimiento">FECHA DE NACIMIENTO</label>
-        </div>
-        <!--
-        <div class="input-field col s12">
-          <select>
-            <option value="1">Activo</option>
-            <option value="2">Desactivado</option>
-          </select>
-          <label>Estado</label>
-        </div>
-        -->
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate"ng-model="alumnoNuevo.password" ng-focus="esconderError()">
-          <label for="password">CONTRASEÑA</label>
-        </div>
-
-     <div class="container" style="width: 250px">
-     <center>
-        <button ng-click="crearAlumno()" class='col s12 btn btn-large waves-effect boton'>Guardar Especialista</button>
-     </center>
-    </div>
-
-      <div ng-show="mensajeErrorIncompleto" class="col s12">
-        <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
+      <div class="input-field col s12">
+        <input id="username" name="username" type="text" class="validate" ng-model="alumnoNuevo.username" required minlength="4" ng-pattern="/^[a-zA-Z\s]*$/" ng-keypress="usernameError = false" ng-click="usernameError = false" oninvalid="return false;" autocomplete="off" />
+        <label for="username">USERNAME</label>
+        <span style=" color:red;" id="usernameErrorSpan" ng-show="usernameError" >{{usernameErrorMensaje}}</span>
       </div>
+
+      <div class="input-field col s12">
+        <input id="email" name="email" type="email" class="validate" ng-model="alumnoNuevo.email"  required ng-keypress="emailError = false" ng-click="emailError = false" oninvalid="return false;" autocomplete="off" />
+        <label for="email">EMAIL</label>
+        <span style=" color:red;" id="emailErrorSpan" ng-show="emailError" >{{emailErrorMensaje}}</span>
+      </div>
+
+      <div class="input-field col s12">
+        <input id="dni" name="dni" type="number" class="validate" ng-model="alumnoNuevo.dni" required min='10000000' max='100000000' ng-keypress="dniError = false" ng-click="dniError = false" oninvalid="return false;" autocomplete="off" />
+        <label for="dni">DNI</label>
+        <span style=" color:red;" id="dniErrorSpan" ng-show="dniError" >{{dniErrorMensaje}}</span>
+      </div>
+
+      <div class="input-field col s12">
+        <input id="nombre" name="nombre" type="text" class="validate" ng-model="alumnoNuevo.nombre" required minlength="4" ng-pattern="/^[a-zA-Z\s]*$/" ng-keypress="nombreError = false" ng-click="nombreError = false" oninvalid="return false;" autocomplete="off" />
+        <label for="nombre">NOMBRE Y APELLIDO</label>
+        <span style=" color:red;" id="nombreErrorSpan" ng-show="nombreError" >{{nombreErrorMensaje}}</span>
+      </div>
+
+      <div class="input-field col s12">
+        <input id="curso" name="curso" type="text" class="validate" ng-model="alumnoNuevo.curso" required minlength="2" ng-pattern="/^[a-zA-Z0-9.º-\s]*$/" ng-keypress="cursoError = false" ng-click="cursoError = false" oninvalid="return false;" autocomplete="off" />
+        <label for="nombre">CURSO</label>
+        <span style=" color:red;" id="cursoErrorSpan" ng-show="cursoError" >{{cursoErrorMensaje}}</span>
+      </div>
+
+      <div class="input-field col s12">
+        <input id="direccion" name="direccion" type="text" class="validate" ng-model="alumnoNuevo.direccion" required minlength="4" ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-keypress="direccionError = false" ng-click="direccionError = false" oninvalid="return false;" autocomplete="off" />
+        <label for="direccion">DIRECCION</label>
+        <span style=" color:red;" id="direccionErrorSpan" ng-show="direccionError" >{{direccionErrorMensaje}}</span>
+      </div>
+
+      <div class="input-field col s12">
+        <input id="fechaNacimiento" name="fechaNacimiento" type="date" class="validate" ng-model="alumnoNuevo.fecha_nacimiento" required min="1900-01-01" max='{{hoy |date: "yyyy-MM-dd"}}' ng-keypress="fechaNacimientoError = false" ng-click="fechaNacimientoError = false" oninvalid="return false;" autocomplete="off" />
+        <label for="fechaNacimiento">FECHA DE NACIMIENTO</label>
+        <span style=" color:red;" id="fechaNacimientoErrorSpan" ng-show="fechaNacimientoError" >{{fechaNacimientoErrorMensaje}}</span>
+      </div>
+      <!--
+    <div class="input-field col s12">
+      <select>
+        <option value="1">Activo</option>
+        <option value="2">Desactivado</option>
+      </select>
+      <label>Estado</label>
+    </div>
+    -->
+      <div class="input-field col s12">
+        <input id="password" name="password" type="password" class="validate" ng-model="alumnoNuevo.password" required minlength="4" ng-pattern="/^[a-zA-Z0-9_.-\s]*$/" ng-keypress="passwordError = false" ng-click="passwordError = false" oninvalid="return false;" autocomplete="off" />
+        <label for="password">CONTRASEÑA</label>
+        <span style=" color:red;" id="passwordErrorSpan" ng-show="passwordError" >{{passwordErrorMensaje}}</span>
+      </div>
+
+      <div class="container" style="width: 250px">
+        <center>
+          <button ng-click="submit()" class='col s12 btn btn-large waves-effect boton'>Guardar Alumno</button>
+        </center>
+      </div>
+
+
     </form>
 
-    </div>
+  </div>
 
     </center>
 
