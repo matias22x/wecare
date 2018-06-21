@@ -15,7 +15,7 @@ var wecareApp = angular.module('wecareApp', ['satellizer', 'ui.router', 'ui.mate
     'botService',
     'esTranslation',
     'enTranslation',
-    'actividadesService'
+    'registrosService'
 ]);
 wecareApp.constant('config', {
     api_url: 'http://159.65.176.157:3000',
@@ -73,7 +73,7 @@ wecareApp.run(function($rootScope, userData, $state, $log, $auth, especialistaSe
           userData.set('datosRol', datosEspecialista.data[0]);
         });
     } else if ($rootScope.type === 'alumno') {
-        alumnoService.getAlumnoByUser(userData.get('user').user)
+        alumnoService.getAlumnoByUser(userData.get('user')._id)
         .then(function(datosAlumno) {
           userData.set('datosRol', datosAlumno.data[0]);
         });

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="stylesheets/materialize.css">
   <link rel="stylesheet" href="stylesheets/style.css">
   <link rel="stylesheet" href="stylesheets/materialize-stepper.min.css">
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <script src="/wecare/components/jquery/dist/jquery.min.js"></script>
   <script src="/wecare/components/angular/angular.min.js"></script>
@@ -38,7 +38,7 @@
   <script src="/wecare/javascripts/services/alumnos.js"></script>
   <script src="/wecare/javascripts/services/user.js"></script>
   <script src="/wecare/javascripts/services/bot.js"></script>
-  <script src="/wecare/javascripts/services/actividades.js"></script>
+  <script src="/wecare/javascripts/services/registros.js"></script>
   <script src="/wecare/javascripts/services/diagnostico-prematuro.js"></script>
   <script src="/wecare/javascripts/controllers/user-controller.js"></script>
   <script src="/wecare/javascripts/controllers/bot-controller.js"></script>
@@ -56,36 +56,36 @@
     <div class="nav-wrapper container" style="width: 80%;">
       <a href="#" class="brand-logo left hide-on-med-and-down"> <img class="responsive-img" style="width: 10%;" src="img/tipo.png" /></a>
       <ul id="main-menu"  class="right hide-on-med-and-down">
-       
+
         <li ng-if="isAuthenticated && type === 'admin'" class="link one" ><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
         <li ng-if="isAuthenticated && type === 'admin'" class="link "><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
-        
+
         <li ng-if="isAuthenticated && type === 'alumno'" class="link one"><a ui-sref="alumno_estados">Registro diario</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'" class="link two"><a ui-sref="alumno_informacion">Informacion</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'" class="link three"><a ui-sref="alumno_agenda">Agenda</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'" class="link four"><a ui-sref="bot_inicio">Realizar diagnostico</a></li>
-        
+
         <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ui-sref="especialista_pacientes">Mis pacientes</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ui-sref="especialista_agenda">Agenda</a></li>
         <li class="link five"><a ui-sref="logout">Cerrar sesion</a></li>
-        
+
         <span>|</span>
         <li><a ui-sref="#"><i class="material-icons">account_circle</i>Juan Perez</a></li>
       </ul>
       <ul id="main-menu-mobile" class="side-nav">
- <div class="user-view">   
+ <div class="user-view">
 <a ui-sref="#"><i class="material-icons">account_circle</i></a>
 <h5>Juan Perez, alumno</h5>
 </div>
         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
-        
+
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_estados">Registro diario</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_informacion">Informacion</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_agenda">Agenda</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="bot_inicio">Realizar diagnostico</a></li>
-        
+
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_pacientes">Mis pacientes</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_agenda">Agenda</a></li>
