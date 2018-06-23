@@ -54,15 +54,17 @@
   <nav class="nav-center fill" ng-show="isAuthenticated()" ng-cloak>
 
     <div class="nav-wrapper container" style="width: 80%;">
-      <a href="#" class="brand-logo left hide-on-med-and-down"> <img class="responsive-img" style="width: 10%;" src="img/tipo.png" /></a>
-      <ul id="main-menu"  class="right hide-on-med-and-down">
+      <a ng-if="isAuthenticated && type === 'admin'" ui-sref="admin_home" class="brand-logo left hide-on-med-and-down"> <img class="responsive-img" style="width: 10%;" src="img/tipo.png" /></a>
+      <a ng-if="isAuthenticated && type === 'alumno'" ui-sref="alumno_home" class="brand-logo left hide-on-med-and-down"> <img class="responsive-img" style="width: 10%;" src="img/tipo.png" /></a>
+      <a ng-if="isAuthenticated && type === 'especialista'" ui-sref="especialista_home" class="brand-logo left hide-on-med-and-down"> <img class="responsive-img" style="width: 10%;" src="img/tipo.png" /></a>
+      <ul id="main-menu" class="right hide-on-med-and-down">
 
-        <li ng-if="isAuthenticated && type === 'admin'" class="link one" ><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'" class="link one"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
         <li ng-if="isAuthenticated && type === 'admin'" class="link "><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
 
         <li ng-if="isAuthenticated && type === 'alumno'" class="link one"><a ui-sref="alumno_estados">Registro diario</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'" class="link two"><a ui-sref="alumno_informacion">Informacion</a></li>
-        <li ng-if="isAuthenticated && type === 'alumno'" class="link three"><a ui-sref="alumno_agenda">Agenda</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'" class="link three"><a ui-sref="alumno_historial">Historial de estados</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'" class="link four"><a ui-sref="bot_inicio">Realizar diagnostico</a></li>
 
         <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
@@ -74,10 +76,10 @@
         <li><a ui-sref="#"><i class="material-icons">account_circle</i>Juan Perez</a></li>
       </ul>
       <ul id="main-menu-mobile" class="side-nav">
- <div class="user-view">
-<a ui-sref="#"><i class="material-icons">account_circle</i></a>
-<h5>Juan Perez, alumno</h5>
-</div>
+        <div class="user-view">
+          <a ui-sref="#"><i class="material-icons">account_circle</i></a>
+          <h5>Juan Perez, alumno</h5>
+        </div>
         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
 
@@ -104,18 +106,18 @@
 
 
   <footer class="page-footer footer-fixed">
-                    <div class="footer-copyright">
-            <div class="container">
-            <i class="material-icons iconFooter">copyright</i> 2018 Hecho con <i class="material-icons iconFooter">favorite</i>  por Heredia Matias, Rando Ariel y Chovanec Florencia
-            <a class="grey-text text-lighten-4 right" href="#!">Acerca de</a>
-            </div>
-          </div>
-        </footer>
+    <div class="footer-copyright">
+      <div class="container">
+        <i class="material-icons iconFooter">copyright</i> 2018 Hecho con <i class="material-icons iconFooter">favorite</i> por Heredia Matias, Rando Ariel y Chovanec Florencia
+        <a class="grey-text text-lighten-4 right" href="#!">Acerca de</a>
+      </div>
+    </div>
+  </footer>
 </body>
-  <script>
+<script>
+  $('nav .button-collapse').sideNav({
+    closeOnClick: true
+  });
+</script>
 
-    $('nav .button-collapse').sideNav({
-        closeOnClick: true
-    });
-  </script>
 </html>

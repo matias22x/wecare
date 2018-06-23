@@ -9,104 +9,106 @@
     content: "";
   }
 </style>
-<div class="fondoBlanco">
-  <center>
-    <div class="container">
-      <div class="section">
-        <div class="row">
-          <div class="col s3">
-            <table class="highlight centered">
-              <thead>
-                <tr class="fondo">
-                  <th>DIAGNOSTICOS POR FECHA</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="buscador">
-                  <td style="padding-top: 5px; padding-bottom: 1px;">
-                    <input id="buscadorDesde" type="date" class="validate placeholderclass" ng-model="tiempo.buscadorDesde" style="margin-bottom: 1px;height: 20px;" placeholder="">
-                    <label for="buscadorDesde" style="color:grey;">por fecha desde</label>
-                    <br>
-                    <input id="buscadorHasta" type="date" class="validate placeholderclass" ng-model="tiempo.buscadorHasta" style="margin-bottom: 1px;height: 20px;" placeholder="">
-                    <label for="buscadorHasta" style="color:grey;">hasta</label>
-                    <br>
-                    <a style="color:orange;" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta)" >Buscar</a> &nbsp; &nbsp; &nbsp; <a style="color:orange;" ui-sref="especialista_diagnosticos">Ver nuevos</a>
-                  </td>
-                </tr>
-                <tr ng-repeat="diagnosticosEntrantes in diagnosticosPrematuros">
-                  <td ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col s9">
-            <table class="highlight ">
-              <thead>
-                <tr class="fondo">
-                  <th>DETALLES</th>
-                  <th>DIAGNOSTICO PREMATURO</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="detalles">
-                  <td style="padding-top: 5px; padding-bottom: 1px; vertical-align: top;">
-                    <div class="row" style="margin-bottom: 1px;">
-                      <div class="col s12">
-                        <span style="color: orange;"><b>Nombre y apellido</b></span><br>
-                        <span>{{informacion.diagnostico.alumno.nombre}}</span><br>
-                        <span style="color: orange;"><b>DNI</b></span><br>
-                        <span>{{informacion.diagnostico.alumno.dni}}</span><br>
-                        <span style="color: orange;"><b>Direccion</b></span><br>
-                        <span>{{informacion.diagnostico.alumno.direccion}}</span><br>
-                        <span style="color: orange;"><b>Curso</b></span><br>
-                        <span>AGREGAR CURSO AL ABM!!!</span><br>
+<main>
+  <div class="section"></div>
+  <div class="container">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <div class="row">
+            <div class="col s3">
+              <table class="highlight centered">
+                <thead>
+                  <tr class="fondo">
+                    <th>DIAGNOSTICOS POR FECHA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="buscador">
+                    <td style="padding-top: 5px; padding-bottom: 1px;">
+                      <input id="buscadorDesde" type="date" class="validate placeholderclass" ng-model="tiempo.buscadorDesde" style="margin-bottom: 1px;height: 20px;" placeholder="">
+                      <label for="buscadorDesde" style="color:grey;">por fecha desde</label>
+                      <br>
+                      <input id="buscadorHasta" type="date" class="validate placeholderclass" ng-model="tiempo.buscadorHasta" style="margin-bottom: 1px;height: 20px;" placeholder="">
+                      <label for="buscadorHasta" style="color:grey;">hasta</label>
+                      <br>
+                      <a style="color:orange;" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta)">Buscar</a> &nbsp; &nbsp; &nbsp; <a style="color:orange;" ui-sref="especialista_diagnosticos">Ver nuevos</a>
+                    </td>
+                  </tr>
+                  <tr ng-repeat="diagnosticosEntrantes in diagnosticosPrematuros">
+                    <td ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col s9">
+              <table class="highlight ">
+                <thead>
+                  <tr class="fondo">
+                    <th>DETALLES</th>
+                    <th>DIAGNOSTICO PREMATURO</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="detalles">
+                    <td style="padding-top: 5px; padding-bottom: 1px; vertical-align: top;">
+                      <div class="row" style="margin-bottom: 1px;">
+                        <div class="col s12">
+                          <span style="color: orange;"><b>Nombre y apellido</b></span><br>
+                          <span>{{informacion.diagnostico.alumno.nombre}}</span><br>
+                          <span style="color: orange;"><b>DNI</b></span><br>
+                          <span>{{informacion.diagnostico.alumno.dni}}</span><br>
+                          <span style="color: orange;"><b>Direccion</b></span><br>
+                          <span>{{informacion.diagnostico.alumno.direccion}}</span><br>
+                          <span style="color: orange;"><b>Curso</b></span><br>
+                          <span>AGREGAR CURSO AL ABM!!!</span><br>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td style="padding-top: 5px; padding-bottom: 1px; vertical-align: top;">
-                    <div class="row" style="margin-bottom: 1px;">
-                      <div class="col s12">
-                        <span style="color: orange;"><b>fecha de ingreso</b></span><br>
-                        <span>{{informacion.diagnostico.alumno.createdAt}}</span><br>
-                        <span style="color: orange;"><b>diagnostico</b></span><br>
-                        <span>{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
-                        <span style="color: orange;"><b>Puntuacion de gravedad</b></span><br>
-                        <span>{{informacion.diagnostico.gravedad}}</span><br>
+                    </td>
+                    <td style="padding-top: 5px; padding-bottom: 1px; vertical-align: top;">
+                      <div class="row" style="margin-bottom: 1px;">
+                        <div class="col s12">
+                          <span style="color: orange;"><b>fecha de ingreso</b></span><br>
+                          <span>{{informacion.diagnostico.alumno.createdAt}}</span><br>
+                          <span style="color: orange;"><b>diagnostico</b></span><br>
+                          <span>{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
+                          <span style="color: orange;"><b>Puntuacion de gravedad</b></span><br>
+                          <span>{{informacion.diagnostico.gravedad}}</span><br>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td ng-if="informacion.diagnostico">
-                    <a class="waves-effect waves-light btn btn-small botonAgregar" ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id)" ><i class="material-icons left">add</i>agregar a mis pacientes</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table class="highlight ">
-              <thead>
-                <tr class="fondo">
-                  <th>CHATBOT</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="detalles">
-                  <td style="padding-top: 5px; padding-bottom: 1px; ">
-                    <div class="row" style="margin-bottom: 1px;">
-                      <div class="col s12" style="height: 400px;  overflow-y: scroll">
-                        <ul ng-if="informacion.diagnostico.diagnostico" ng-repeat="diagnostico in informacion.diagnostico.diagnostico">
-                          <li style="text-align: right; border: 1px solid orange; margin-bottom:5px;">{{diagnostico.pregunta}}</li>
-                          <li style="border: 1px solid grey;margin-bottom:5px;">{{diagnostico.respuesta}}</li>
-                        </ul>
-                        <p ng-if="!informacion.diagnostico.diagnostico">Webot no ha recaudado datos.</p
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    </td>
+                    <td ng-if="informacion.diagnostico">
+                      <a class="waves-effect waves-light btn btn-small botonAgregar" ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id)"><i class="material-icons left">add</i>agregar a mis pacientes</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="highlight ">
+                <thead>
+                  <tr class="fondo">
+                    <th>CHATBOT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="detalles">
+                    <td style="padding-top: 5px; padding-bottom: 1px; ">
+                      <div class="row" style="margin-bottom: 1px;">
+                        <div class="col s12" style="height: 400px;  overflow-y: scroll">
+                          <ul ng-if="informacion.diagnostico.diagnostico" ng-repeat="diagnostico in informacion.diagnostico.diagnostico">
+                            <li style="text-align: right; border: 1px solid orange; margin-bottom:5px;">{{diagnostico.pregunta}}</li>
+                            <li style="border: 1px solid grey;margin-bottom:5px;">{{diagnostico.respuesta}}</li>
+                          </ul>
+                          <p ng-if="!informacion.diagnostico.diagnostico">Webot no ha recaudado datos.</p </div>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </center>
-</div>
+</main>

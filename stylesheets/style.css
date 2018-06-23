@@ -11,7 +11,7 @@ main {
 
 body {
   background-image: url('../img/fondo.jpg');
-  background-repeat: repeat-x;
+  background-repeat: repeat;
    }
 
 .input-field input[type=date]:focus + label,
@@ -35,7 +35,7 @@ body {
 
 .logoDerecho{float:right;}
 
-.greyBis{ 
+.greyBis{
 background-color: #fafafa;
 width: 40%; }
 
@@ -45,7 +45,7 @@ width: 40%; }
  .logotipo {margin-top: -100px;}
 
  @media screen and (max-width: 700px) {
-  .greyBis{ 
+  .greyBis{
 
 width: 70%; }
 }
@@ -59,7 +59,7 @@ width: 70%; }
  }
 
 footer.page-footer {
- 
+
     padding-top: 0px !important;
     background-color: #b0b0b0;
     margin-top: 0px !important;
@@ -68,14 +68,14 @@ footer.page-footer {
 .contenedorBot {
 background-color: #fff;
     padding: 25px !important;
-   
+
     width: 65% !important;
     /* height: 50px; */
 }
 
 
  @media screen and (max-width: 900px) {
-.contenedorBot { 
+.contenedorBot {
 
 width: 100%; }
 }
@@ -227,12 +227,12 @@ margin: 20px;
 
 .xop-container p {
     font-family: 'Calibri', sans-serif; ;
-    
+
     color: #000;
     white-space: nowrap;
     overflow: hidden;
     width: 100%;
-   
+
     animation: typing 4s steps(60, end);
 }
 
@@ -297,23 +297,23 @@ margin: 20px;
 }
 
 .me {
-    float: left;   
-    margin: 5px 45px 5px 20px;         
+    float: left;
+    margin: 5px 45px 5px 20px;
 }
 
 .me::before {
     box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4 );
-    left: -9px;           
+    left: -9px;
 }
 
 .you {
-    float: right;    
-    margin: 5px 20px 5px 45px;         
+    float: right;
+    margin: 5px 20px 5px 45px;
 }
 
 .you::before {
     box-shadow: 2px -2px 2px 0 rgba( 178, 178, 178, .4 );
-    right: -9px;    
+    right: -9px;
 }
 
 .cuadroDialogo { float:right !important;
@@ -328,7 +328,7 @@ margin: 20px;
 
 
  @media screen and (max-width: 700px) {
- .msger { 
+ .msger {
 
 width: 100% !important; }
 }
@@ -345,7 +345,7 @@ width: 100% !important; }
   border: 1px solid #fafafa;
  padding-bottom: 15px;
   background: var(--msger-bg);
- 
+
 }
 
 .msger-header {
@@ -470,11 +470,11 @@ width: 100% !important; }
 
  [type="checkbox"]:checked + label:before {
       border-right: 2px solid #ff8500 ;
-    border-bottom: 2px solid #ff8500 ; 
+    border-bottom: 2px solid #ff8500 ;
  }
 
  @media screen and (max-width: 1150px) {
- .cuadroDialogo{ 
+ .cuadroDialogo{
 float:none !important;
  }
 }
@@ -486,7 +486,7 @@ a {  color: #fff;  }
   padding: 1rem;
   font-size: 5rem;
 
-  
+
   display: inline-block;
 }
 
@@ -552,13 +552,13 @@ h5.estado { color:#000; }
 
 .timeline_card {
   position: relative;
-  
+
 
   background-color: #fff;
 
   padding: 20px;
 
- 
+
 }
 
 .timeline_label {
@@ -566,11 +566,11 @@ h5.estado { color:#000; }
   position: relative;
   width: 25%;
   float: left;
-  
+
   color: #909090;
   font-weight: 100;
   text-transform: uppercase;
-  
+
   letter-spacing: 1px;
 }
 .timeline_label:before {
@@ -835,7 +835,7 @@ h5.estado { color:#000; }
 
 /********************************************/
 
- 
+
 /*********************************************************/
  ul {
   list-style-type: none;
@@ -994,7 +994,7 @@ label img {
 }
 /*****************************************/
 
-.estadoAnimo p { text-align: center; 
+.estadoAnimo p { text-align: center;
 }
 
 .textoAlumno h5{ text-align: center }
@@ -1024,22 +1024,22 @@ ul.stepper.horizontal .step.active .step-title:before, ul.stepper.horizontal .st
 }
 
 
-nav { background-color: #fff; 
+nav { background-color: #fff;
 }
 
 nav li { color:#000; }
 
-nav span{  color:#000; 
+nav span{  color:#000;
 float: left; }
 
-nav .material-icons { height: 0px !important; 
+nav .material-icons { height: 0px !important;
 float: left;
 margin-right: 32px;}
 
 .side-nav li {     text-align: left;
  }
 
-.side-nav .material-icons { float:none !important; 
+.side-nav .material-icons { float:none !important;
   font-size: 68px;
   height: 60px !important;
   margin: 0 auto;
@@ -1092,6 +1092,3 @@ ul li.active-link>a{
      text-decoration:underline;
       color: #ff8500;
  }
-
-
-

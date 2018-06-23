@@ -177,23 +177,64 @@ angular.module('wecareApp')
 
 
   })
-  .controller('editarAlumnosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, $stateParams, $location, config, alumnoService, userService) {
+  .controller('editarAlumnosController', function($auth, $scope, $rootScope, $state, userData,$filter, $log, $http, $translate, $stateParams, $location, config, alumnoService, userService) {
 
     var id = $stateParams.id;
 
     alumnoService.getAlumno(id)
       .then(function(alumnoAModificar) {
         $scope.alumno = alumnoAModificar.data;
+        $scope.alumno.dni= parseInt($scope.alumno.dni);
         $scope.alumno.fecha_nacimiento = new Date($scope.alumno.fecha_nacimiento);
       }).catch($log.error);
 
-    $scope.modificarUsuario = function() {
-      alumnoService.putAlumnoById($scope.alumno._id, $scope.alumno)
-        .then(function(resp) {
-          console.log('LISTO', resp);
-          $location.path("/admin_listado_alumnos");
-        }).catch($log.error);
-    }
+
+      $scope.validadInput = function(input, mensaje, show, min = null, max = null, valido = null){
+        var keys = Object.keys(input.$error);
+        var len = keys.length;
+        if(len != 0){
+          for (var first in input.$error) break;
+          var error = first;
+          switch (error) {
+            case 'required':
+              $scope[mensaje] = "Este campo es requerido";
+              break;
+            case 'minlength':
+              $scope[mensaje] = "Este campo debe ser mayor a "+ min +" caracteres";
+              break;
+            case 'email':
+              $scope[mensaje]  = "Debe ingresar un email valido";
+              break;
+            case 'pattern':
+              $scope[mensaje]  = "Los datos ingresados no son validos, solo se permiten "+ valido;
+              break;
+            case 'min':
+              $scope[mensaje]  = "El valor ingresado no puede ser menor a "+ min;
+              break;
+            case 'max':
+              $scope[mensaje]  = "El valor ingresado no puede ser mayor a "+max;
+              break;
+            default:
+          }
+          $scope[show] =true;
+        }
+      }
+
+      $scope.submit = function() {
+        if(!$scope.form.$valid){
+          $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
+          $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
+          $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
+          $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
+        }else{
+          alumnoService.putAlumnoById($scope.alumno._id, $scope.alumno)
+            .then(function(resp) {
+              console.log('LISTO', resp);
+              $location.path("/admin_listado_alumnos");
+            }).catch($log.error);
+        }
+}
+
   })
   .controller('verAlumnosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, $stateParams, $location, config, alumnoService, userService) {
     var id = $stateParams.id;
@@ -443,7 +484,6 @@ angular.module('wecareApp')
         if(len != 0){
           for (var first in input.$error) break;
           var error = first;
-          console.log(error);
           switch (error) {
             case 'required':
               $scope[mensaje] = "Este campo es requerido";
