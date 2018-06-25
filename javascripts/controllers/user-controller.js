@@ -31,5 +31,6 @@ angular.module('wecareApp')
     }).controller('logoutController', function($auth, $state, userData, $rootScope) {
       $auth.logout();
       userData.remove('user');
+      userData.remove('datosRol');
       $state.go('home');
   });

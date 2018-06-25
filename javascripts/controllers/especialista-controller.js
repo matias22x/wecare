@@ -63,15 +63,23 @@ angular.module('wecareApp')
     console.log("especialistaObservacionesController");
 
   })
-  .controller('especialistaPacientesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-    console.log("especialistaPacientesController");
+  .controller('especialistaPacientesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, alumnoService) {
+    alumnoService.getAlumnoByEspecialistaId(userData.get('datosRol')._id)
+    .then(function(dataAlumnos) {
+      $scope.alumnosEspecialista = dataAlumnos.data;
+    }).catch($log.error);
 
   })
   .controller('especialistaSesionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
     console.log("especialistaSesionesController");
 
   })
-  .controller('especialistaTurnoController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-    console.log("especialistaTurnoController");
+  .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, alumnoService) {
+      if ($stateParams.id !== '') {
+          alumnoService.getAlumno($stateParams.id)
+          .then(function(dataAlumno) {
+            $scope.alumnoElegido = dataAlumno.data;
+          }).catch($log.error);
+      }
 
   });

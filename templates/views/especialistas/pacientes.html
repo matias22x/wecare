@@ -30,51 +30,19 @@
               </tr>
             </thead>
 
-            <tbody>
+            <tbody ng-repeat="alumno in alumnosEspecialista">
               <tr>
-                <td>40986235</td>
-                <td>Juan Rinaldo</td>
-                <td>7mo</td>
+                <td>{{alumno.dni}}</td>
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.grado || '-'}}</td>
                 <td>
-                  <button class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_observaciones"><i class="material-icons">visibility</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_historial"><i class="material-icons">insert_drive_file</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_turno"><i class="material-icons">add</i></button>
-                </td>
-              </tr>
-              <tr>
-                <td>40986235</td>
-                <td>Juan Rinaldo</td>
-                <td>7mo</td>
-                <td>
-                  <button class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_observaciones"><i class="material-icons">visibility</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_historial"><i class="material-icons">insert_drive_file</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_turno"><i class="material-icons">add</i></button>
-                </td>
-              </tr>
-              <tr>
-                <td>40986235</td>
-                <td>Juan Rinaldo</td>
-                <td>7mo</td>
-                <td>
-                  <button class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_observaciones"><i class="material-icons">visibility</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_historial"><i class="material-icons">insert_drive_file</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_turno"><i class="material-icons">add</i></button>
-                </td>
-              </tr>
-              <tr>
-                <td>40986235</td>
-                <td>Juan Rinaldo</td>
-                <td>7mo</td>
-                <td>
-                  <button class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_observaciones"><i class="material-icons">visibility</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_historial"><i class="material-icons">insert_drive_file</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_turno"><i class="material-icons">add</i></button>
+                  <button class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_observaciones({id: alumno._id})"><i class="material-icons">visibility</i></button>
+                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_historial({id: alumno._id})"><i class="material-icons">insert_drive_file</i></button>
+                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons">add</i></button>
                 </td>
               </tr>
             </tbody>
           </table>
-
-
         </div>
       </div>
     </div>

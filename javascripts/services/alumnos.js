@@ -25,6 +25,9 @@ angular.module('alumnoService', []).service('alumnoService', function($http, con
         },
         getAlumnoByUserId: function(requestId) {
             return $http.get(config.api_url + '/api/pacientes?conditions={"user":"' + requestId +'"}');
+        },
+        getAlumnoByEspecialistaId: function(especialistaId) {
+            return $http.get(config.api_url + '/api/pacientes?conditions={"especialistaAsociado":"' + especialistaId +'"}');
         }
     };
 

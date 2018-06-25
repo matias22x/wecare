@@ -178,13 +178,13 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
         })
         .state('especialista_historial', {
             cache: false,
-            url: '/especialista_historial', // url que va arriba
+            url: '/especialista_historial/:id?', // url que va arriba
             templateUrl: 'templates/views/especialistas/historial.html', //ubicacion del html
             controller: 'especialistaHistorialController' //nombre controller
         })
         .state('especialista_observaciones', {
             cache: false,
-            url: '/especialista_observaciones', // url que va arriba
+            url: '/especialista_observaciones/:id?', // url que va arriba
             templateUrl: 'templates/views/especialistas/observaciones.html', //ubicacion del html
             controller: 'especialistaObservacionesController' //nombre controller
         })
@@ -202,13 +202,13 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
         })
         .state('especialista_turno', {
             cache: false,
-            url: '/especialista_turno', // url que va arriba
+            url: '/especialista_turno/:id?', // url que va arriba
             templateUrl: 'templates/views/especialistas/turno.html', //ubicacion del html
             controller: 'especialistaTurnoController' //nombre controller
         })
         .state('especialista_historialTmp', {
             cache: false,
-            url: '/especialista_historialTmp', // url que va arriba
+            url: '/especialista_historialTmp/:id?', // url que va arriba
             templateUrl: 'templates/views/especialistas/historialTmp.html', //ubicacion del html
             controller: 'especialistaHistorialController' //nombre controller
         })
