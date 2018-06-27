@@ -33,14 +33,13 @@
                 </td>
                 <td>
                   <div class="input-field ">
-                    <input id="fecha" type="datetime-local" class="validate">
+                    <input id="fecha" type="datetime-local" class="validate" ng-model="turno.horario">
                     <label for="fecha">fecha</label>
                   </div>
                 </td>
                 <td>
                   <div class="input-field ">
-                    <textarea id="textarea1" class="materialize-textarea" style=" background-color: rgba(255,255,255,0.5);"></textarea>
-
+                    <textarea id="textarea1" class="materialize-textarea" ng-model="turno.nota_previa" style=" background-color: rgba(255,255,255,0.5);"></textarea>
                   </div>
                 </td>
 
@@ -51,7 +50,7 @@
             </tbody>
           </table>
           <a class="waves-effect waves-light btn btn-small" style="float: left;" ui-sref="especialista_pacientes"><i class="material-icons left">arrow_back</i>Volver</a>
-          <a class="waves-effect waves-light btn btn-small" style="float: right;" ui-sref="especialista_pacientes"><i class="material-icons right">add</i>Crear turno</a>
+          <a class="waves-effect waves-light btn btn-small" style="float: right;" ng-click="crearTurno()"><i class="material-icons right">add</i>Crear turno</a>
 
         </div>
       </div>

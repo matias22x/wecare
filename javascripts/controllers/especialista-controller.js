@@ -74,7 +74,9 @@ angular.module('wecareApp')
     console.log("especialistaSesionesController");
 
   })
-  .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, alumnoService) {
+  .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, alumnoService, turnoService) {
+      $scope.turno = {};
+
       if ($stateParams.id !== '') {
           alumnoService.getAlumno($stateParams.id)
           .then(function(dataAlumno) {
@@ -82,4 +84,17 @@ angular.module('wecareApp')
           }).catch($log.error);
       }
 
+      $scope.crearTurno = function() {
+        var data = {
+          alumno: $scope.alumnoElegido._id,
+          horario: $scope.turno.horario,
+          nota_previa: $scope.turno.nota_previa,
+          especialista: userData.get('datosRol')._id,
+        }
+
+        turnoService.postTurno(data)
+        .then(function(resp) {
+            $state.go('especialista_pacientes');
+        }).catch($log.error);
+      }
   });

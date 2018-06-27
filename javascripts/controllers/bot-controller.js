@@ -1,15 +1,19 @@
 'use strict';
 angular.module('wecareApp')
   .controller('botInicioController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService) {
+    responsiveVoice.speak('Hola! bienvenido a WeCare, antes de comenzar te voy a hacer una serie de preguntas para comunicarnos con vos.', "Spanish Latin American Male");
+
   })
   .controller('botFinalController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService) {
+    responsiveVoice.speak('Gracias por tomarte tu tiempo para contestarme las preguntas! un especialista va a ver tus respuestas y te ayudará con tus problemas.', "Spanish Latin American Male");
   })
-  .controller('botController', function($location, $auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService, alumnoService, diagnosticoPrematuroService) {
+  .controller('botController', function($location, $timeout, $auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService, alumnoService, diagnosticoPrematuroService) {
     $scope.datos = {};
     $scope.datos.pregunta = "¿Con quien vivis?";//INICIALIZO
     $scope.datos.respuesta = "¿Con quien vivis?";//INICIALIZO
     $scope.enableInput = false;
     $scope.opciones = [];
+    var ultimaPregunta = '';
     $scope.diagnosticoPrematuro = {
       diagnostico: [],
       gravedad: 0,
@@ -36,7 +40,12 @@ angular.module('wecareApp')
         respuesta: datos.respuesta
       });
     }
-
+    function botParlante(pregunta) {
+        if (pregunta !== ultimaPregunta && pregunta.indexOf('*INPUT*') === -1) {
+            responsiveVoice.speak(pregunta, "Spanish Latin American Male");
+        }
+        ultimaPregunta = pregunta;
+    }
     $scope.enviar = function(datos) {
       $scope.enableInput = false;
       $scope.datos.input = '';
@@ -44,6 +53,7 @@ angular.module('wecareApp')
 
       botService.postPreguntas(datos)
         .then(function(resp) {
+          botParlante($scope.datos.pregunta);
           $scope.datos.preguntaParseada = '';
           $scope.entities = resp.data.data.entities;
           var arrayEntities = Object.keys($scope.entities).map(function(key) {
@@ -79,6 +89,7 @@ angular.module('wecareApp')
             $scope.enableInput = true;
             $scope.datos.pregunta = arrayEntities[0].value;
             $scope.datos.preguntaParseada = arrayEntities[0].value.slice(7);
+            botParlante($scope.datos.preguntaParseada);
             guardarEnDiagnostico(datos);
           }
         }).catch($log.error);
