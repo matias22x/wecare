@@ -1,25 +1,28 @@
 <main>
   <div class="section"></div>
-  <div class="container">
+  <div class="container center">
     <div class="col s12">
       <div class="card">
-        <div class="card-content">
+        <div class="card-content misPac">
 
-          <h3>MIS PACIENTES</h3>
+          <h4>MIS PACIENTES</h4>
 
-          <div class="row ">
-            <div class="col s6">
 
-              <div class="input-field " style="display: inline-block; width: 250px;">
+            <div class="wrap">
+            
+            <a class="waves-effect waves-light btn btn-small botonGeneral boton01" ui-sref="especialista_turno"><i class="material-icons left">add</i>Crear turno</a>
+
+            <div class="buscador01">
+            <div class="input-field buscador00">
                 <input id="buscador" type="text" class="validate" ng-model="name" ng-change="filtrar(name)">
                 <label for="buscador">Busque por DNI, turno o nombre</label>
               </div>
               <button class="waves-effect waves-light btn btn-small botonVer" style="display: inline-block;">Buscar</button>
-            </div>
-            <div class="col s6">
-              <a class="waves-effect waves-light btn btn-small botonAgregar" ui-sref="especialista_turno"><i class="material-icons left">add</i>Crear turno</a>
-            </div>
+           </div>
           </div>
+
+
+          <div class="tabla01">
           <table class="highlight centered">
             <thead>
               <tr class="fondo">
@@ -38,11 +41,12 @@
                 <td>
                   <button class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_observaciones({id: alumno._id})"><i class="material-icons">visibility</i></button>
                   <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_historial({id: alumno._id})"><i class="material-icons">insert_drive_file</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons">add</i></button>
+                  <button class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons">add</i></button>
                 </td>
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </div>

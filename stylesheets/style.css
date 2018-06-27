@@ -87,6 +87,24 @@ width: 100%; }
 .btn-floating:hover {
   background-color: rgba(0, 0, 0, 0.3); }
 
+.botonGeneral {  background-color: #00a9ff;  }
+.botonGeneralBis {  background-color: #ff8500;  }
+
+
+.estadoResumen span, .estadoResumen button{ float: left; }
+
+.iconos img { width: 30px;
+    float: left; 
+    padding-right: 5px;
+   }
+
+.fondoEsp { padding-bottom: 25px; }
+
+.textoInformativo p {text-align: left;}
+
+td, th {
+       border-radius: 0px !important; }
+
 .botonVer {
   background-color: #00a9ff; }
 
@@ -94,15 +112,25 @@ width: 100%; }
   background-color: #ff8500; }
 
 .fondo {
-  background-color: rgba(0, 0, 0, 0.05); }
+  background-color: #d1d1d1; }
+
+  .tablaIzq { margin-top: 49px; }
 
 .fondo th {
-  color: rgba(0, 0, 0, 0.4); }
+  color: #fff; }
 
 .botonAgregar {
   background-color: #ff8500 !important;
   float: right;
   margin-bottom: 20px; }
+
+.textoPersonal span { float: left; 
+text-align: left;}
+
+.textUp { text-transform: uppercase;
+font-weight: bold; }
+
+.cuadro01 { margin-top: 25px; }
 
 /******************************************/
 nav {
@@ -117,6 +145,8 @@ nav.nav-center ul {
 nav.nav-center ul li {
   display: inline;
   }
+
+
 
 nav.nav-center ul li a {
 font-size: 13px;
@@ -271,30 +301,72 @@ margin: 20px;
 /****************************************/
 
 
-.bubble{
-    background-color: #fafafa;
-    border-radius: 5px;
-    box-shadow: 0 0 6px #B2B2B2;
-    display: inline-block;
-    padding: 10px 18px;
-    position: relative;
-    vertical-align: top;
+/* CSS talk bubble */
+.talk-bubble {
+  margin: 40px;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: auto;
+  background-color: lightyellow;
+  padding: 15px;
 }
 
-.bubble::before {
-    background-color: #fafafa;
-    content: "\00a0";
-    display: block;
-    height: 16px;
-    position: absolute;
-    top: 11px;
-    transform:             rotate( 29deg ) skew( -35deg );
-        -moz-transform:    rotate( 29deg ) skew( -35deg );
-        -ms-transform:     rotate( 29deg ) skew( -35deg );
-        -o-transform:      rotate( 29deg ) skew( -35deg );
-        -webkit-transform: rotate( 29deg ) skew( -35deg );
-    width:  20px;
+
+/* Right triangle placed top left flush. */
+.tri-right.border.left-top:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -40px;
+  right: auto;
+  top: -8px;
+  bottom: auto;
+  border: 32px solid;
+  border-color: #666 transparent transparent transparent;
 }
+.tri-right.left-top:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -20px;
+  right: auto;
+  top: 0px;
+  bottom: auto;
+  border: 22px solid;
+  border-color: lightyellow transparent transparent transparent;
+}
+
+
+/* Right triangle, left side slightly down */
+.tri-right.border.left-in:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -40px;
+  right: auto;
+  top: 30px;
+  bottom: auto;
+  border: 20px solid;
+  border-color: #666 #666 transparent transparent;
+}
+.tri-right.left-in:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -20px;
+  right: auto;
+  top: 38px;
+  bottom: auto;
+  border: 12px solid;
+  border-color: lightyellow lightyellow transparent transparent;
+}
+
+
 
 .me {
     float: left;
@@ -318,6 +390,7 @@ margin: 20px;
 
 .cuadroDialogo { float:right !important;
  margin: 0 !important;}
+
 :root {
   --body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   --msger-bg: #fff;
@@ -338,24 +411,16 @@ width: 100% !important; }
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
-  width: 70%;
-
+  
+float: right;
   margin: 0px 0px;
   height: calc(100% - 50px);
-  border: 1px solid #fafafa;
+ 
  padding-bottom: 15px;
   background: var(--msger-bg);
 
 }
 
-.msger-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: var(--border);
-  background: #eee;
-  color: #666;
-}
 
 .msger-chat {
   flex: 1;
@@ -367,10 +432,10 @@ width: 100% !important; }
   width: 6px;
 }
 .msger-chat::-webkit-scrollbar-track {
-  background: #ddd;
+
 }
 .msger-chat::-webkit-scrollbar-thumb {
-  background: #bdbdbd;
+  b
 }
 .msg {
   display: flex;
@@ -455,9 +520,7 @@ width: 100% !important; }
   background: rgb(0, 180, 50);
 }
 
-.msger-chat {
-  background-color: #fcfcfe;
- }
+
 
 .enviarBoton { padding: 10px;
  }
@@ -1092,3 +1155,194 @@ ul li.active-link>a{
      text-decoration:underline;
       color: #ff8500;
  }
+
+.cajaAlumno { padding-bottom: 20px !important;
+    box-sizing: border-box;
+    border: 4px solid; }
+
+
+
+h3 .title-bg {background-color:  #ff8500;
+    line-height: 2;
+    padding-left: 8px;
+    padding-right: 8px;}
+
+
+h5 .title-bg2 {background-color:  #b0b0b0;
+    line-height: 2;
+    padding-left: 8px;
+    padding-right: 8px;}
+
+.titulo01 { 
+text-transform: uppercase;
+padding-top: 25px;
+letter-spacing: 2px;
+padding-bottom: 25px; }
+
+.tabs01 ul li a {    
+ color: #000 !important;
+    font-size: 15px !important;
+    }
+
+.tabs .indicator {
+    position: absolute;
+    bottom: 0;  
+    height: 2px;
+    background-color: #ff8500;
+    
+}
+
+.tabs .tab a:hover, .tabs .tab a.active {
+    color: #fff !important;
+    background-color: #ff8500;
+}
+
+.bordeTabs { border-bottom: 2px solid #ff8500; }
+
+
+.tablaDeTres { margin-top: 40px; 
+  margin-bottom: 40px;
+}
+
+.tablaDeTres p {
+      margin-left: 20px;
+    margin-right: 20px;
+}
+
+.tablaDeTres h5 { color: #ff8500;
+font-weight: bold;
+ }
+
+
+  @media screen and (max-width: 600px) {
+.tabs01 ul li a {    
+    font-size: 11px !important;
+    }
+}
+
+.titulo02 h4, .titulo02 h5 { 
+  text-transform: uppercase;
+font-weight: bold;
+ }
+
+.titulo02 p { margin-left: 10%;
+margin-right: 10%; }
+
+.titulo02 h5 { color:#ff8500; }
+
+.descp { font-size: 20px;
+  margin-left: 10%;
+margin-right: 10%;
+ }
+
+ .btnempezar {  margin-bottom: 40px; }
+
+
+ /*****************************************************/
+
+ .titulo03 { text-transform: uppercase; 
+  color:#ff8500; 
+  font-weight: bold;
+}
+
+.botonBuscar { background-color:  #ff8500; 
+}
+
+.resgitro00:hover {
+
+ cursor: pointer;
+  background-color: rgba(0, 169, 255, 0.5);;
+ 
+}
+
+/**************************************************/
+
+.misPac h4 {  
+  color:#ff8500; 
+  font-weight: bold;
+  border-bottom: 2px solid #b0b0b0; }
+
+.buscador00 { display: inline-block; width: 250px; }
+
+
+
+.botonAgregar01 {
+  display: inline-block;
+  margin: 0.3em;
+ 
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 3px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  border: none; 
+  font-size: 15px;
+  text-align: center;
+}
+
+
+.ripple {
+  position: absolute;
+  background: rgba(0,0,0,.25);
+  border-radius: 100%;
+  transform: scale(0.2);
+  opacity:0;
+  pointer-events: none;
+  -webkit-animation: ripple .75s ease-out;
+  -moz-animation: ripple .75s ease-out;
+  animation: ripple .75s ease-out;
+}
+
+@-webkit-keyframes ripple {
+  from {
+    opacity:1;
+  }
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes ripple {
+  from {
+    opacity:1;
+  }
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  from {
+    opacity:1;
+  }
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+
+.btn:focus, .btn-large:focus, .btn-floating:focus {
+    background-color: #ff8500 !important;
+}
+
+.boton01 { float: left;
+margin-top: 25px; }
+
+.buscador01 { float: right;
+ }
+
+
+
+.iconos .bistext { text-align: center !important; 
+text-transform: uppercase;
+font-weight: bold; 
+}
