@@ -7,6 +7,12 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             templateUrl: 'templates/views/admin/home.html', //ubicacion del html
             controller: 'homeAdminController' //nombre controller
         })
+        .state('admin_user', {
+            cache: false,
+            url: '/admin_user', // url que va arriba
+            templateUrl: 'templates/views/admin/user.html', //ubicacion del html
+            controller: 'userAdminController' //nombre controller
+        })
         .state('admin_listado_especialistas', {
             cache: false,
             url: '/admin_listado_especialistas', // url que va arriba
@@ -91,6 +97,12 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             templateUrl: 'templates/views/alumnos/home.html', //ubicacion del html
             controller: 'alumnoHomeController' //nombre controller
         })
+        .state('alumno_user', {
+            cache: false,
+            url: '/alumno_user', // url que va arriba
+            templateUrl: 'templates/views/alumnos/user.html', //ubicacion del html
+            controller: 'alumnoUserController' //nombre controller
+        })
         .state('alumno_actividades', {
             cache: false,
             url: '/alumno_actividades', // url que va arriba
@@ -157,6 +169,12 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             url: '/especialista_home', // url que va arriba
             templateUrl: 'templates/views/especialistas/home.html', //ubicacion del html
             controller: 'especialistaHomeController' //nombre controller
+        })
+        .state('especialista_user', {
+            cache: false,
+            url: '/especialista_user', // url que va arriba
+            templateUrl: 'templates/views/especialistas/user.html', //ubicacion del html
+            controller: 'especialistaUserController' //nombre controller
         })
         .state('especialista_agenda', {
             cache: false,

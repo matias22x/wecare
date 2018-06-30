@@ -1,6 +1,6 @@
 'use strict';
 angular.module('wecareApp')
-    .controller('loginController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, userService) {
+    .controller('loginController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, userService, especialistaService, alumnoService) {
       $scope.display=false;
       $scope.login = function() {
           var userType = '';
@@ -14,10 +14,20 @@ angular.module('wecareApp')
               }
               if(resp.data[0].tipo=='alumno'){
                 $rootScope.type = userData.get('user').tipo;
+                alumnoService.getAlumnoByUser(userData.get('user')._id)
+                .then(function(datosAlumno) {
+                  userData.set('datosRol', datosAlumno.data[0]);
+                  console.log(userData.get('datosRol'));
+                });
                 $state.go('alumno_home');
               }
               if(resp.data[0].tipo=='especialista'){
                 $rootScope.type = userData.get('user').tipo;
+                especialistaService.getEspecialistaByUser(userData.get('user')._id)
+                .then(function(datosEspecialista) {
+                  userData.set('datosRol', datosEspecialista.data[0]);
+                  console.log(userData.get('datosRol'));
+                });
                 $state.go('especialista_home');
               }
             });

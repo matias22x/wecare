@@ -1,5 +1,33 @@
 'use strict';
 angular.module('wecareApp')
+  .controller('userAdminController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {
+    console.log('user');
+    $scope.usuario = userData.get('user');
+    $scope.usuario.createdAt = $filter('date')($scope.usuario.createdAt, "dd-MM-yyyy");
+    $scope.usuario.updatedAt = $filter('date')($scope.usuario.updatedAt, "dd-MM-yyyy");
+    $scope.contraseniaNueva= "";
+    $scope.contraseniaNuevaBis= "";
+    $scope.passwordError = false;
+    $scope.emailErrorMensaje = "";
+    console.log($scope.usuario);
+    $scope.cambiarClave = function(){
+      if($scope.contraseniaNueva==$scope.contraseniaNuevaBis){
+        $scope.usuario.password=$scope.contraseniaNuevaBis;
+        $scope.usuario.updatedAt = new Date();
+        $scope.usuario.createdAt = new Date($scope.usuario.createdAt);
+        userService.putUserById($scope.usuario._id, $scope.usuario)
+          .then(function(resp) {
+            console.log('LISTO', resp);
+            $scope.passwordCorrecto = true;
+            $scope.contraseniaCorrectoMensaje = "Las contraseñas cambio satisfactoriamente";
+          }).catch($log.error);
+      }else{
+        $scope.passwordError = true;
+        $scope.contraseniaErrorMensaje = "Las contraseñas no coinciden";
+      }
+
+    }
+  })
   .controller('listadoAlumnosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
 
     $scope.cantRegistros = 2;
@@ -33,7 +61,8 @@ angular.module('wecareApp')
     $scope.filtrar = function(palabra) {
       $scope.listadoAlumnos = [];
       angular.forEach($scope.listaCompleta, function(value, key) {
-        if (value.dni.toLowerCase().includes(palabra.toLowerCase()) || value.nombre.toLowerCase().includes(palabra.toLowerCase())) {
+        if (value.dni.toLowerCase().includes(palabra.toLowerCase()) || value.nombre.toLowerCase().includes(palabra.toLowerCase())
+             || (value.curso && value.curso.toLowerCase().includes(palabra.toLowerCase()))) {
           $scope.listadoAlumnos.push(value);
         }
 
@@ -146,6 +175,7 @@ angular.module('wecareApp')
         $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
         $scope.validadInput($scope.form.curso, 'cursoErrorMensaje', 'cursoError', 2, null, 'letras, numeros, espacios, guiones, indicadores ordinales y puntos');
         $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
+        $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
         $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
         $scope.validadInput($scope.form.password, 'passwordErrorMensaje', 'passwordError', 4, null, 'letras, nuemros, espacios, guion bajo, guion alto y puntos');
 
@@ -155,11 +185,13 @@ angular.module('wecareApp')
         $scope.usuario.username = esp.username;
         $scope.usuario.password = esp.password;
         $scope.usuario.email = esp.email;
+        $scope.usuario.telefono = esp.telefono;
         $scope.usuario.tipo = 'alumno'
 
         $scope.alumnoDatos.dni = esp.dni;
         $scope.alumnoDatos.nombre = esp.nombre;
         $scope.alumnoDatos.direccion = esp.direccion;
+        $scope.alumnoDatos.curso = esp.curso;
         $scope.alumnoDatos.fecha_nacimiento = esp.fecha_nacimiento;
 
         userService.postUser($scope.usuario)
@@ -186,6 +218,13 @@ angular.module('wecareApp')
         $scope.alumno = alumnoAModificar.data;
         $scope.alumno.dni= parseInt($scope.alumno.dni);
         $scope.alumno.fecha_nacimiento = new Date($scope.alumno.fecha_nacimiento);
+        userService.getUser($scope.alumno.user)
+          .then(function(usuarioAModificar) {
+            $scope.usuario = usuarioAModificar.data;
+            $scope.usuario.telefono= parseInt($scope.usuario.telefono);
+            $scope.usuario.createdAt = new Date($scope.usuario.createdAt);
+            $scope.usuario.updatedAt = new Date();
+          }).catch($log.error);
       }).catch($log.error);
 
 
@@ -224,13 +263,19 @@ angular.module('wecareApp')
         if(!$scope.form.$valid){
           $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
           $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
+          $scope.validadInput($scope.form.curso, 'cursoErrorMensaje', 'cursoError', 2, null, 'letras, numeros, espacios, guiones, indicadores ordinales y puntos');
           $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
+          $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
           $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
         }else{
           alumnoService.putAlumnoById($scope.alumno._id, $scope.alumno)
             .then(function(resp) {
-              console.log('LISTO', resp);
-              $location.path("/admin_listado_alumnos");
+                  console.log('LISTO', resp);
+                  userService.putUserById($scope.usuario._id, $scope.usuario)
+                    .then(function(usuarioModificado) {
+                      console.log('LISTO',usuarioModificado);
+                      $location.path("/admin_listado_alumnos");
+                    }).catch($log.error);
             }).catch($log.error);
         }
 }
@@ -436,6 +481,7 @@ angular.module('wecareApp')
         $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
         $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
         $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
+        $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
         $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
         $scope.validadInput($scope.form.password, 'passwordErrorMensaje', 'passwordError', 4, null, 'letras, nuemros, espacios, guion bajo, guion alto y puntos');
 
@@ -445,6 +491,7 @@ angular.module('wecareApp')
           $scope.usuario.username = esp.username;
           $scope.usuario.password = esp.password;
           $scope.usuario.email = esp.email;
+          $scope.usuario.telefono = esp.telefono;
           $scope.usuario.tipo = 'especialista'
 
           $scope.especialistaDatos.dni = esp.dni;
@@ -476,6 +523,13 @@ angular.module('wecareApp')
         $scope.especialista = especialistaAModificar.data;
         $scope.especialista.dni= parseInt($scope.especialista.dni);
         $scope.especialista.fecha_nacimiento = new Date($scope.especialista.fecha_nacimiento);
+        userService.getUser($scope.especialista.user)
+          .then(function(usuarioAModificar) {
+            $scope.usuario = usuarioAModificar.data;
+            $scope.usuario.telefono= parseInt($scope.usuario.telefono);
+            $scope.usuario.createdAt = new Date($scope.usuario.createdAt);
+            $scope.usuario.updatedAt = new Date();
+          }).catch($log.error);
       }).catch($log.error);
 
       $scope.validadInput = function(input, mensaje, show, min = null, max = null, valido = null){
@@ -514,12 +568,17 @@ angular.module('wecareApp')
           $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
           $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
           $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
+          $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
           $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
         }else{
           especialistaService.putEspecialistaById($scope.especialista._id, $scope.especialista)
             .then(function(resp) {
               console.log('LISTO', resp);
-              $location.path("/admin_listado_especialistas");
+              userService.putUserById($scope.usuario._id, $scope.usuario)
+                .then(function(usuarioModificado) {
+                  console.log('LISTO',usuarioModificado);
+                  $location.path("/admin_listado_especialistas");
+                }).catch($log.error);
             }).catch($log.error);
         }
 }

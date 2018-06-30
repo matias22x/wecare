@@ -75,7 +75,9 @@
         <li class="link five"><a ui-sref="logout">Cerrar sesion</a></li>
 
         <span>|</span>
-        <li><a ui-sref="#"><i class="material-icons">account_circle</i>Juan Perez</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'" class="link" ><a ui-sref="admin_user"><i class="material-icons">account_circle</i>Matias Heredia</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'" class="link" ><a ui-sref="alumno_user"><i class="material-icons">account_circle</i>Gabriel Rando</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'" class="link" ><a ui-sref="especialista_user"><i class="material-icons">account_circle</i>Florencia Chovanec</a></li>
       </ul>
       <ul id="main-menu-mobile" class="side-nav">
         <div class="user-view">

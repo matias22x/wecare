@@ -67,16 +67,18 @@ wecareApp.run(function($rootScope, userData, $state, $log, $auth, especialistaSe
 
   if ($rootScope.isAuthenticated()) {
     $rootScope.type = userData.get('user').tipo;
-
+    console.log(userData.get('user'));
     if ($rootScope.type === 'especialista') {
         especialistaService.getEspecialistaByUser(userData.get('user')._id)
         .then(function(datosEspecialista) {
           userData.set('datosRol', datosEspecialista.data[0]);
+          console.log(userData.get('datosRol'));
         });
     } else if ($rootScope.type === 'alumno') {
         alumnoService.getAlumnoByUser(userData.get('user')._id)
         .then(function(datosAlumno) {
           userData.set('datosRol', datosAlumno.data[0]);
+          console.log(userData.get('datosRol'));
         });
     }
   }

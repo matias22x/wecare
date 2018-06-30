@@ -1,0 +1,123 @@
+<main>
+  <div class="section"></div>
+  <div class="container">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+
+          <h3>Datos de usuario</h3>
+
+          <table class="highlight centered">
+            <thead>
+              <tr class="fondo">
+                <!-- ORDENAR EN CSS -->
+                <th style="width:33%;">Datos</th>
+                <th style="width:33%;"></th>
+                <th style="width:33%;"></th>
+
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>
+                  <b>Nombre y apellido</b><br>
+                  <span>{{alumno.nombre}}</span>
+                </td>
+                <td>
+                  <b>DNI</b><br>
+                  <span>{{alumno.dni}}</span>
+                </td>
+                <td>
+                  <b>Fecha de nacimiento</b><br>
+                  <span>{{alumno.fecha_nacimiento}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Direccion</b><br>
+                  <span>{{alumno.direccion}}</span>
+                </td>
+                <td>
+                  <b>Telefono</b><br>
+                  <span>{{usuario.telefono}}</span>
+                </td>
+                <td>
+                  <b>Curso</b><br>
+                  <span>{{alumno.curso}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>user</b><br>
+                  <span>{{usuario.username}}</span>
+                </td>
+                <td>
+                  <b>email</b><br>
+                  <span>{{usuario.email}}</span>
+                </td>
+                <td>
+                  <b>tipo</b><br>
+                  <span>{{usuario.tipo}}</span>
+                </td>
+              </tr>
+              <tr>
+
+                <td>
+                  <b>id</b><br>
+                  <span>{{usuario._id}}</span>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <table class="highlight centered">
+            <thead>
+              <tr class="fondo">
+                <!-- ORDENAR EN CSS -->
+                <th style="width:33%;">Cambiar contraseña</th>
+                <th style="width:33%;"></th>
+                <th style="width:33%;"></th>
+
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>
+
+                  <div class="input-field col s12">
+                    <input id="contrasenia" name="contrasenia" type="password" class="validate" ng-model="contraseniaNueva" ng-keypress="passwordError = false; passwordCorrecto = false;" required  oninvalid="return false;" autocomplete="off" />
+                    <label for="contrasenia">CONTRASEÑA</label>
+
+                  </div>
+
+                </td>
+                <td>
+
+                  <div class="input-field col s12">
+                    <input id="contraseniaBis" name="contraseniaBis" type="password" class="validate" ng-model="contraseniaNuevaBis" ng-keypress="passwordError = false; passwordCorrecto = false;" required  oninvalid="return false;" autocomplete="off" />
+                    <label for="contraseniaBis">REPITA LA CONTRASEÑA</label>
+
+                  </div>
+                </td>
+                <td>
+                  <center>
+                    <button ng-click="cambiarClave()" class='col s12 btn btn-large waves-effect boton'>Cambiar</button>
+                  </center>
+                    <span style=" color:red;" id="passwordErrorSpan" ng-show="passwordError" >{{contraseniaErrorMensaje}}</span>
+                    <span style=" color:green;" id="passwordCorrectoSpan" ng-show="passwordCorrecto" >{{contraseniaCorrectoMensaje}}</span>
+                </td>
+
+              </tr>
+
+
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
