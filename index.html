@@ -27,6 +27,7 @@
   <script src="/wecare/components/angular-sanitize/angular-sanitize.min.js"></script>
   <script src="/wecare/components/simple-web-notification/web-notification.js"></script>
   <script src="/wecare/components/angular-web-notification/angular-web-notification.js"></script>
+  <script src="/wecare/components/angular-i18n/angular-locale_es-ar.js"></script>
   <script src="/wecare/javascripts/materialize/materialize.js"></script>
   <script src="/wecare/javascripts/translate/es.js"></script>
   <script src="/wecare/javascripts/translate/en.js"></script>
@@ -63,11 +64,11 @@
 
         <li ng-if="isAuthenticated && type === 'admin'" class="link one"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
         <li ng-if="isAuthenticated && type === 'admin'" class="link "><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'" class="link "><a ui-sref="admin_listado_consejos">Consejos</a></li>
 
         <li ng-if="isAuthenticated && type === 'alumno'" class="link one"><a ui-sref="alumno_estados">Registro diario</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'" class="link two"><a ui-sref="alumno_informacion">Informacion</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'" class="link three"><a ui-sref="alumno_historial">Historial de estados</a></li>
-        <li ng-if="isAuthenticated && type === 'alumno'" class="link four"><a ui-sref="bot_inicio">Realizar diagnostico</a></li>
 
         <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ui-sref="especialista_pacientes">Mis pacientes</a></li>
@@ -86,11 +87,11 @@
         </div>
         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
         <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'"><a ui-sref="admin_listado_consejos">Consejos</a></li>
 
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_estados">Registro diario</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_informacion">Informacion</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="alumno_historial">historial</a></li>
-        <li ng-if="isAuthenticated && type === 'alumno'"><a ui-sref="bot_inicio">Realizar diagnostico</a></li>
 
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'"><a ui-sref="especialista_pacientes">Mis pacientes</a></li>

@@ -73,6 +73,36 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             templateUrl: 'templates/views/admin/alumnos/borrar.html', //ubicacion del html
             controller: 'borrarAlumnosController' //nombre controller
         })
+        .state('admin_listado_consejos', {
+            cache: false,
+            url: '/admin_listado_consejos', // url que va arriba
+            templateUrl: 'templates/views/admin/consejos/listado.html', //ubicacion del html
+            controller: 'listadoConsejosController' //nombre controller
+        })
+        .state('admin_agregar_consejo', {
+            cache: false,
+            url: '/admin_agregar_consejo', // url que va arriba
+            templateUrl: 'templates/views/admin/consejos/agregar.html', //ubicacion del html
+            controller: 'agregarConsejosController' //nombre controller
+        })
+        .state('admin_editar_consejo', {
+            cache: false,
+            url: '/admin_editar_consejo/:id?', // url que va arriba
+            templateUrl: 'templates/views/admin/consejos/editar.html', //ubicacion del html
+            controller: 'editarConsejosController' //nombre controller
+        })
+        .state('admin_ver_consejo', {
+            cache: false,
+            url: '/admin_ver_consejo/:id?', // url que va arriba
+            templateUrl: 'templates/views/admin/consejos/ver.html', //ubicacion del html
+            controller: 'verConsejosController' //nombre controller
+        })
+        .state('admin_borrar_consejo', {
+            cache: false,
+            url: '/admin_borrar_consejo/:id?', // url que va arriba
+            templateUrl: 'templates/views/admin/consejos/borrar.html', //ubicacion del html
+            controller: 'borrarConsejosController' //nombre controller
+        })
         .state('bot_inicio', {
             cache: false,
             url: '/bot_inicio', // url que va arriba

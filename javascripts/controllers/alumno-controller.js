@@ -1,9 +1,14 @@
 'use strict';
 angular.module('wecareApp')
 .controller('alumnoUserController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {
+  if(!userData.get('datosRol').diagnostico){
+    $state.go('bot_inicio');
+  }
   console.log('user');
   $scope.usuario = userData.get('user');
+  console.log($scope.usuario);
   $scope.alumno = userData.get('datosRol');
+  console.log($scope.alumno);
   $scope.alumno.fecha_nacimiento = $filter('date')($scope.alumno.fecha_nacimiento, "dd-MM-yyyy");
   $scope.contraseniaNueva= "";
   $scope.contraseniaNuevaBis= "";
@@ -27,14 +32,23 @@ angular.module('wecareApp')
   }
 })
   .controller('alumnoHomeController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    if(!userData.get('datosRol').diagnostico){
+      $state.go('bot_inicio');
+    }
     console.log("alumnoHomeController");
 
   })
   .controller('alumnoActividadesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    if(!userData.get('datosRol').diagnostico){
+      $state.go('bot_inicio');
+    }
     console.log("alumnoHomeController");
 
   })
   .controller('alumnoEstadosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService) {
+    if(!userData.get('datosRol').diagnostico){
+      $state.go('bot_inicio');
+    }
     $scope.registro = {
       actividades: {
         deporte: false,
@@ -71,30 +85,51 @@ angular.module('wecareApp')
 
   })
   .controller('alumnoLugaresController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    if(!userData.get('datosRol').diagnostico){
+      $state.go('bot_inicio');
+    }
     console.log("alumnoLugaresController");
 
   })
   .controller('alumnoContarController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    if(!userData.get('datosRol').diagnostico){
+      $state.go('bot_inicio');
+    }
     console.log("alumnoContarController");
 
   })
   .controller('alumnoSumarioController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    if(!userData.get('datosRol').diagnostico){
+      $state.go('bot_inicio');
+    }
     console.log("alumnoSumarioController");
 
   })
   .controller('alumnoFinalizacionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    if(!userData.get('datosRol').diagnostico){
+      $state.go('bot_inicio');
+    }
     console.log("alumnoFinalizacionController");
 
   })
   .controller('alumnoAgendaController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    if(!userData.get('datosRol').diagnostico){
+      $state.go('bot_inicio');
+    }
     console.log("alumnoAgendaController");
 
   })
   .controller('alumnoHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    if(!userData.get('datosRol').diagnostico){
+      $state.go('bot_inicio');
+    }
     console.log("alumnoHistorialController");
 
   })
   .controller('alumnoInformacionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    if(!userData.get('datosRol').diagnostico){
+      $state.go('bot_inicio');
+    }
     console.log("alumnoInformacionController");
 
   });

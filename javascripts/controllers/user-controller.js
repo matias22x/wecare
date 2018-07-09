@@ -1,10 +1,13 @@
 'use strict';
 angular.module('wecareApp')
-    .controller('loginController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, userService, especialistaService, alumnoService) {
+    .controller('loginController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, userService, especialistaService, alumnoService) {
       $scope.display=false;
       $scope.login = function() {
           var userType = '';
-          $auth.login($scope.login_data).then(function(response) {
+          var aux_data = {};
+          aux_data.password = $scope.login_data.password;
+          aux_data.username =$filter('lowercase')($scope.login_data.username);
+          $auth.login(aux_data).then(function(response) {
             userService.getUserByUserName(response.config.data.username)
             .then(function(resp) {
               userData.set('user', resp.data[0]);//en userData guardo los datos de usuario, si queres guardar algo hacelo de esta manera!
@@ -17,6 +20,7 @@ angular.module('wecareApp')
                 alumnoService.getAlumnoByUser(userData.get('user')._id)
                 .then(function(datosAlumno) {
                   userData.set('datosRol', datosAlumno.data[0]);
+                  var alumno = userData.get('datosRol');
                   console.log(userData.get('datosRol'));
                 });
                 $state.go('alumno_home');

@@ -36,7 +36,7 @@
                     </td>
                   </tr>
                   <tr ng-repeat="diagnosticosEntrantes in diagnosticosPrematuros">
-                    <td ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt}}</td>
+                    <td ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt | date: "EEEE d 'de' LLLL" }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -70,7 +70,7 @@
                       <div class="row" style="margin-bottom: 1px;">
                         <div class="col s12">
                           <span style="color: orange;"><b>fecha de ingreso</b></span><br>
-                          <span>{{informacion.diagnostico.alumno.createdAt}}</span><br>
+                          <span>{{informacion.diagnostico.createdAt | date: "EEEE d 'de' LLLL 'de' yyyy" }}</span><br>
                           <span style="color: orange;"><b>diagnostico</b></span><br>
                           <span>{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
                           <span style="color: orange;"><b>Puntuacion de gravedad</b></span><br>
