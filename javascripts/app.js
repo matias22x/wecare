@@ -79,7 +79,7 @@ wecareApp.run(function($rootScope, userData, $state, $log, $auth, especialistaSe
         alumnoService.getAlumnoByUser(userData.get('user')._id)
         .then(function(datosAlumno) {
           userData.set('datosRol', datosAlumno.data[0]);
-          if(!userData.get('datosRol').diagnostico){
+          if(userData.get('datosRol').chatbot == true){
             $state.go('bot_inicio');
           }
           console.log(userData.get('datosRol'));
