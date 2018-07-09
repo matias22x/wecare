@@ -22,6 +22,8 @@ angular.module('wecareApp')
     $scope.diagnosticoPrematuro.gravedad = 0;
     alumnoService.getAlumnoByUserId(userData.get('user')._id)
     .then(function(resp) {
+        $scope.alumno = resp.data[0];
+        console.log($scope.alumno);
         $scope.diagnosticoPrematuro.dniAlumno = resp.data[0].dni;
         $scope.diagnosticoPrematuro.nombreAlumno = resp.data[0].nombre;
     });
@@ -79,7 +81,13 @@ angular.module('wecareApp')
             if (arrayEntities[0].value.indexOf('*FINALIZACION DEL RECORRIDO*') !== -1) {
               diagnosticoPrematuroService.postDiagnosticoPrematuro($scope.diagnosticoPrematuro)
               .then(function(resp) {
-                  $location.path("/bot_final");
+                  $scope.alumno.chatbot = false;
+                  alumnoService.putAlumnoById($scope.alumno._id, $scope.alumno)
+                    .then(function(resp) {
+                          userData.set('datosRol', $scope.alumno);
+                          $location.path("/bot_final");
+                    }).catch($log.error);
+
               }).catch($log.error);
               return;
             }
