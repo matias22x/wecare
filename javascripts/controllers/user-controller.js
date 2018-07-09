@@ -20,10 +20,14 @@ angular.module('wecareApp')
                 alumnoService.getAlumnoByUser(userData.get('user')._id)
                 .then(function(datosAlumno) {
                   userData.set('datosRol', datosAlumno.data[0]);
-                  var alumno = userData.get('datosRol');
-                  console.log(userData.get('datosRol'));
+                  if (datosAlumno.chatbot == true){
+                    $state.go('bot_inicio');
+                  }else{
+                    $state.go('alumno_home');
+                  }
+                  //console.log(userData.get('datosRol'));
                 });
-                $state.go('alumno_home');
+
               }
               if(resp.data[0].tipo=='especialista'){
                 $rootScope.type = userData.get('user').tipo;
