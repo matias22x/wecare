@@ -41,6 +41,7 @@
   <script src="/wecare/javascripts/services/bot.js"></script>
   <script src="/wecare/javascripts/services/registros.js"></script>
   <script src="/wecare/javascripts/services/turnos.js"></script>
+  <script src="/wecare/javascripts/services/noticias.js"></script>
   <script src="/wecare/javascripts/services/diagnostico-prematuro.js"></script>
   <script src="/wecare/javascripts/controllers/user-controller.js"></script>
   <script src="/wecare/javascripts/controllers/bot-controller.js"></script>
@@ -65,6 +66,7 @@
         <li ng-if="isAuthenticated && type === 'admin'" class="link one"><a ui-sref="admin_listado_especialistas">Especialistas</a></li>
         <li ng-if="isAuthenticated && type === 'admin'" class="link "><a ui-sref="admin_listado_alumnos">Alumnos</a></li>
         <li ng-if="isAuthenticated && type === 'admin'" class="link "><a ui-sref="admin_listado_consejos">Consejos</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'" class="link "><a ui-sref="admin_listado_noticias">Noticias</a></li>
 
         <li ng-if="isAuthenticated && type === 'alumno'" class="link one"><a ui-sref="alumno_estados">Registro diario</a></li>
         <li ng-if="isAuthenticated && type === 'alumno'" class="link two"><a ui-sref="alumno_informacion">Informacion</a></li>

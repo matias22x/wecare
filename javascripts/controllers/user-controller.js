@@ -15,7 +15,7 @@ angular.module('wecareApp')
                 $rootScope.type = userData.get('user').tipo;
                 $state.go('admin_listado_especialistas');
               }
-              if(resp.data[0].tipo=='alumno'){
+              if(resp.data[0].tipo=='alumno') {
                 $rootScope.type = userData.get('user').tipo;
                 alumnoService.getAlumnoByUser(userData.get('user')._id)
                 .then(function(datosAlumno) {

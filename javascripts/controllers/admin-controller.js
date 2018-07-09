@@ -915,4 +915,146 @@ angular.module('wecareApp')
         .catch($log.error);
 
     };
+  })
+  .controller('listadoNoticiasController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, especialistaService, userService, noticiasService) {
+
+    $scope.paginInit = function(lista) {
+
+      if (!$scope.cantRegistros) {
+        $scope.cantRegistros = 10;
+      }
+
+      if (!$scope.pagActual) {
+        $scope.pagActual = 1;
+      }
+
+      $scope.paginas = Math.ceil(lista.length / $scope.cantRegistros);
+
+      $scope.getNumber = function(num) {
+        return new Array($scope.paginas);
+      }
+
+      $scope.page = [];
+
+      for (var i = 0; i < $scope.cantRegistros; i++) {
+        if (lista[i] != null) {
+          //lista[i].fecha_nacimiento = $filter('date')(new Date(lista[i].fecha_nacimiento), "EEEE d 'de' LLLL 'de' yyyy")
+          $scope.page.push(lista[i]);
+        }
+      }
+    }
+
+    $scope.filtrar = function(palabra) {
+      $scope.listadoNoticias = [];
+      angular.forEach($scope.listaCompleta, function(value, key) {
+        if (value.dni.toLowerCase().includes(palabra.toLowerCase()) || value.nombre.toLowerCase().includes(palabra.toLowerCase())) {
+          $scope.listadoNoticias.push(value);
+        }
+
+        $scope.paginInit($scope.listadoNoticias);
+      })
+    }
+
+    noticiasService.getAllNoticias()
+      .then(function(noticias) {
+        $scope.listaCompleta = noticias.data;
+        $scope.listadoNoticias = noticias.data;
+
+        $scope.paginInit($scope.listadoNoticias);
+
+      }).catch($log.error);
+
+    $scope.cambiarPag = function(pag, lista) {
+      $scope.pagActual = pag + 1;
+      var hasta = $scope.pagActual * $scope.cantRegistros;
+      var desde = hasta - $scope.cantRegistros;
+      $scope.page = [];
+
+      for (var i = desde; i < hasta; i++) {
+        if (lista[i] != null) {
+          $scope.page.push(lista[i]);
+        }
+
+      }
+    }
+
+    $scope.sigPag = function(lista) {
+      if ($scope.pagActual + 1 <= $scope.paginas) {
+        $scope.pagActual = $scope.pagActual + 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+
+        }
+      }
+
+    }
+
+    $scope.antPag = function(lista) {
+      if ($scope.pagActual - 1 > 0) {
+        $scope.pagActual = $scope.pagActual - 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+
+        }
+      }
+
+    }
+
+
+
+  })
+  .controller('agregarNoticiasController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $location, config, especialistaService, userService, moment, noticiasService) {
+    $scope.noticiaNueva = {};
+
+    $scope.submit = function() {
+          noticiasService.postNoticias($scope.noticiaNueva)
+            .then(function(user) {
+              $location.path("/admin_listado_noticias");
+            }).catch($log.error);
+
+
+    }
+
+  })
+  .controller('editarNoticiasController', function($auth, $scope, $rootScope, $state, userData, $log, $filter, $http, $translate, $stateParams, $location, config, especialistaService, userService, noticiasService) {
+
+    var id = $stateParams.id;
+    $scope.hoy = new Date();
+
+    noticiasService.getNoticias(id)
+      .then(function(noticiaAModificar) {
+        $scope.noticia = noticiaAModificar.data;
+        console.log($scope.noticia);
+      }).catch($log.error);
+
+
+      $scope.submit = function() {
+
+        noticiasService.putNoticiasById($scope.noticia._id, $scope.noticia)
+          .then(function(resp) {
+              $location.path("/admin_listado_noticias");
+          }).catch($log.error);
+      }
+
+  })
+  .controller('verNoticiasController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, $stateParams, $location, config, especialistaService, userService, noticiasService) {
+    var id = $stateParams.id;
+
+    noticiasService.getNoticias(id)
+      .then(function(noticia) {
+        $scope.noticia = noticia.data;
+      }).catch($log.error);
+
   });

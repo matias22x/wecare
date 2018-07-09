@@ -1,0 +1,33 @@
+<div class="section">
+  <center>
+
+    <div class="container" style="width: 50%;">
+
+      <div class="row editCuadro">
+
+        <form class="col s12" name="form">
+
+          <div class="input-field col s12">
+            <input id="titulo" name="titulo" type="text" class="validate" ng-model="noticiaNueva.titulo"/>
+            <label for="titulo">TITULO</label>
+          </div>
+
+          <div class="input-field col s12">
+            <textarea id="descripcion" name="descripcion" type="descripcion" class="validate" ng-model="noticiaNueva.descripcion"/></textarea>
+            <label for="descripcion">DESCRIPCIÓN</label>
+          </div>
+
+          <div class="container" style="width: 250px">
+            <center>
+              <button ng-click="submit()" class='col s12 btn btn-large waves-effect boton'>Guardar Noticia</button>
+            </center>
+          </div>
+
+
+        </form>
+
+      </div>
+
+  </div>
+  </center>
+</div>

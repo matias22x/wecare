@@ -103,6 +103,30 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             templateUrl: 'templates/views/admin/consejos/borrar.html', //ubicacion del html
             controller: 'borrarConsejosController' //nombre controller
         })
+        .state('admin_listado_noticias', {
+            cache: false,
+            url: '/admin_listado_noticias', // url que va arriba
+            templateUrl: 'templates/views/admin/noticias/listado.html', //ubicacion del html
+            controller: 'listadoNoticiasController' //nombre controller
+        })
+        .state('admin_agregar_noticia', {
+            cache: false,
+            url: '/admin_agregar_noticia', // url que va arriba
+            templateUrl: 'templates/views/admin/noticias/agregar.html', //ubicacion del html
+            controller: 'agregarNoticiasController' //nombre controller
+        })
+        .state('admin_editar_noticia', {
+            cache: false,
+            url: '/admin_editar_noticia/:id?', // url que va arriba
+            templateUrl: 'templates/views/admin/noticias/editar.html', //ubicacion del html
+            controller: 'editarNoticiasController' //nombre controller
+        })
+        .state('admin_ver_noticia', {
+            cache: false,
+            url: '/admin_ver_noticia/:id?', // url que va arriba
+            templateUrl: 'templates/views/admin/noticias/ver.html', //ubicacion del html
+            controller: 'verNoticiasController' //nombre controller
+        })
         .state('bot_inicio', {
             cache: false,
             url: '/bot_inicio', // url que va arriba
