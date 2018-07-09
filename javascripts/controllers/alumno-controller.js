@@ -126,10 +126,14 @@ angular.module('wecareApp')
     console.log("alumnoHistorialController");
 
   })
-  .controller('alumnoInformacionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+  .controller('alumnoInformacionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, noticiasService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }
-    console.log("alumnoInformacionController");
+
+    noticiasService.getAllNoticias()
+    .then(function(resp) {
+      $scope.noticias = resp.data;
+    }).catch($log.error);
 
   });
