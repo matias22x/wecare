@@ -1,6 +1,11 @@
 'use strict';
 angular.module('wecareApp')
     .controller('homeAdminController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {
+      userService.estadisticas()
+      .then(function(resp) {
+        $scope.datos = resp.data.data;
+        $scope.datos.gravedadPromedio = $scope.datos.gravedadPromedio.toFixed(2);
+      }).catch($log.error);
 
     })
   .controller('userAdminController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {

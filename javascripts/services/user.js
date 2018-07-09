@@ -20,6 +20,9 @@ angular.module('userService', []).service('userService', function($http, config)
         deleteUserById: function(requestId) {
             return $http.delete(config.api_url + '/api/users/' + requestId);
         },
+        estadisticas: function() {
+            return $http.get(config.api_url + '/estadisticas');
+        }
     };
 
 });

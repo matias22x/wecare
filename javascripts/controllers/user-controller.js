@@ -13,7 +13,7 @@ angular.module('wecareApp')
               userData.set('user', resp.data[0]);//en userData guardo los datos de usuario, si queres guardar algo hacelo de esta manera!
               if(resp.data[0].tipo=='admin'){
                 $rootScope.type = userData.get('user').tipo;
-                $state.go('admin_listado_especialistas');
+                $state.go('admin_home');
               }
               if(resp.data[0].tipo=='alumno') {
                 $rootScope.type = userData.get('user').tipo;
