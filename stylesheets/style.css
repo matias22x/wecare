@@ -3,11 +3,16 @@
 body {
   display: flex;
   min-height: 100vh;
-  flex-direction: column; }
-
+  flex-direction: column; 
+}
 
 main {
   flex: 1 0 auto; }
+
+.plantilla { margin-bottom: 40px;
+ }
+
+.tabs01 { padding-bottom: 25px; }
 
 body {
   background-image: url('../img/fondo.jpg');
@@ -72,6 +77,9 @@ background-color: #fff;
   
     /* height: 50px; */
 }
+
+
+
 
 
  @media screen and (max-width: 900px) {
@@ -542,7 +550,7 @@ width: 100% !important; }
 .enviarBoton a:hover
  { background-color: #ff8500 ; }
 
- label  { color: white; }
+
 
  [type="checkbox"]:checked + label:before {
       border-right: 2px solid #ff8500 ;
@@ -1166,6 +1174,7 @@ nav.nav-center ul li { letter-spacing: 0.5px; }
   transition: -webkit-transform 1s ease;
   transition: transform 1s ease;
   transition: transform 1s ease, -webkit-transform 1s ease;
+
 }
 .link:hover::before {
   -webkit-transform: translateX(110%);
@@ -1177,20 +1186,27 @@ nav.nav-center ul li { letter-spacing: 0.5px; }
     font-size: 12px;
     font-weight: bold; }
 
-ul li.active-link>a{
-     text-decoration:underline;
-      color: #ff8500;
- }
 
-.cajaAlumno { padding-bottom: 20px !important;
+.card .card-content {     padding: 23px !important;
+margin-bottom: 40px !important; }
+
+.carta { margin-top:38px !important; 
+  margin-bottom: 40px !important;
+}
+
+
+.cajaAlumno { padding-bottom: 25px !important;
+    padding-top: 20px;
     box-sizing: border-box;
-    border: 4px solid; }
+    border: 2px solid #d5d3d3;
+    margin-top: 30px; }
 
 
 
-h3 .title-bg {background-color:  #ff8500;
-    line-height: 2;
+
+h4 .title-bg {background-color:  #ff8500;
     padding-left: 8px;
+    letter-spacing: 2px;
     padding-right: 8px;}
 
 
@@ -1198,6 +1214,17 @@ h5 .title-bg2 {background-color:  #b0b0b0;
     line-height: 2;
     padding-left: 8px;
     padding-right: 8px;}
+
+.cajaAlumno p { font-size: 20px !important;
+color: #000 !important;
+padding-left: 15px;
+    padding-right: 15px; }
+
+ @media screen and (max-width: 500px) {
+.cajaAlumno p {
+    font-size: 14px !important;
+  }
+ }
 
 .titulo01 { 
 text-transform: uppercase;
@@ -1272,6 +1299,7 @@ margin-right: 10%;
 }
 
 .botonBuscar { background-color:  #ff8500; 
+  margin-top: 20px !important;
 }
 
 .resgitro00:hover {
@@ -1590,3 +1618,66 @@ border-radius: 33px;
 
 
 .items p {   cursor: pointer;}
+
+
+/*******************SLIDE**********************/
+
+.slider .indicators .indicator-item {
+  background-color: #ff8500;
+  border: 3px solid #ffffff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.slider .indicators .indicator-item.active {
+  background-color: #00a9ff;
+}
+
+.slider .indicators {
+  bottom: 40px;
+  z-index: 100;
+  /* text-align: left; */
+}
+
+
+.slider .slides { background-color: #fff !important;
+        margin-top: 38px; }
+
+/*********************************************/
+
+hr { width: 50%;
+    height: 2px;
+    background-color: #d5d3d3;
+    border: none; }
+
+ @media screen and (max-width: 660px)
+ {  .slider .indicators {
+  bottom: 20px;
+}
+  }
+
+.cajaAlumno .botonGeneral {     margin-left: 20px;
+    margin-right: 20px; }
+
+ @media screen and (max-width: 450px) {
+  .cajaAlumno .botonGeneral {
+    font-size: 10px;
+  }
+  h4 .title-bg { font-size: 25px; }
+  .titulo01 h4 { 
+  padding-left: 20px;
+    padding-right: 20px;
+    font-size: 26px; }
+ }
+
+  @media screen and (max-width: 1050px)
+  {
+    .cajaAlumno { margin-top: 0px !important;}
+  }
+
+input.buscadorFechas{ margin-bottom: 2px; }
+
+
+
+
+  
