@@ -625,9 +625,9 @@ angular.module('wecareApp')
         .catch($log.error);
 
     };
-  }).controller('listadoConsejosController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, especialistaService, userService) {
+  }).controller('listadoConsejosController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, consejosService, userService) {
 
-    console.log(userData.get('user')); //aca adentro estan los datos del usuario
+
 
     $scope.paginInit = function(lista) {
 
@@ -657,22 +657,23 @@ angular.module('wecareApp')
 
 
     $scope.filtrar = function(palabra) {
-      $scope.listadoEspecialistas = [];
+      $scope.listadoConsejos = [];
       angular.forEach($scope.listaCompleta, function(value, key) {
-        if (value.dni.toLowerCase().includes(palabra.toLowerCase()) || value.nombre.toLowerCase().includes(palabra.toLowerCase())) {
-          $scope.listadoEspecialistas.push(value);
+        if (value.titulo.toLowerCase().includes(palabra.toLowerCase()) || value.descripcion.toLowerCase().includes(palabra.toLowerCase())) {
+          $scope.listadoConsejos.push(value);
         }
 
-        $scope.paginInit($scope.listadoEspecialistas);
+        $scope.paginInit($scope.listadoConsejos);
       })
     }
 
-    especialistaService.getAllEspecialistas()
-      .then(function(especialistas) {
-        $scope.listaCompleta = especialistas.data;
-        $scope.listadoEspecialistas = especialistas.data;
+    consejosService.getAllConsejos()
+      .then(function(consejo) {
+        console.log(consejo);
+        $scope.listaCompleta = consejo.data;
+        $scope.listadoConsejos = consejo.data;
 
-        $scope.paginInit($scope.listadoEspecialistas);
+        $scope.paginInit($scope.listadoConsejos);
 
       }).catch($log.error);
 
@@ -727,195 +728,70 @@ angular.module('wecareApp')
 
 
   })
-  .controller('agregarConsejosController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $location, config, especialistaService, userService, moment) {
-    $scope.especialistaNuevo = {};
-    $scope.usuario = {};
-    $scope.especialistaDatos = {};
-    $scope.especialista = {};
-    $scope.hoy = new Date();
-
-    $scope.validadInput = function(input, mensaje, show, min = null, max = null, valido = null){
-      var keys = Object.keys(input.$error);
-      var len = keys.length;
-      if(len != 0){
-        for (var first in input.$error) break;
-        var error = first;
-        switch (error) {
-          case 'required':
-            $scope[mensaje] = "Este campo es requerido";
-            break;
-          case 'minlength':
-            $scope[mensaje] = "Este campo debe ser mayor a "+ min +" caracteres";
-            break;
-          case 'email':
-            $scope[mensaje]  = "Debe ingresar un email valido";
-            break;
-          case 'pattern':
-            $scope[mensaje]  = "Los datos ingresados no son validos, solo se permiten "+ valido;
-            break;
-          case 'min':
-            $scope[mensaje]  = "El valor ingresado no puede ser menor a "+ min;
-            break;
-          case 'max':
-            $scope[mensaje]  = "El valor ingresado no puede ser mayor a "+max;
-            break;
-          default:
-        }
-        $scope[show] =true;
-      }
-    }
-
+  .controller('agregarConsejosController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $location, config, consejosService, userService, moment) {
+    $scope.consejoNuevo = {};
+    $scope.consejo = {};
 
     $scope.submit = function() {
-      if(!$scope.form.$valid){
+        var esp = $scope.consejoNuevo;
 
-        $scope.validadInput($scope.form.username, 'usernameErrorMensaje', 'usernameError', 4, null, 'letras y espacios');
-        $scope.validadInput($scope.form.email, 'emailErrorMensaje', 'emailError', null, null, null);
-        $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
-        $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
-        $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
-        $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
-        $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
-        $scope.validadInput($scope.form.password, 'passwordErrorMensaje', 'passwordError', 4, null, 'letras, nuemros, espacios, guion bajo, guion alto y puntos');
+          $scope.consejo.titulo = esp.titulo;
+          $scope.consejo.descripcion = esp.descripcion;
 
-      }else{
-        var esp = $scope.especialistaNuevo;
-
-          $scope.usuario.username = esp.username;
-          $scope.usuario.password = esp.password;
-          $scope.usuario.email = esp.email;
-          $scope.usuario.telefono = esp.telefono;
-          $scope.usuario.tipo = 'especialista'
-
-          $scope.especialistaDatos.dni = esp.dni;
-          $scope.especialistaDatos.nombre = esp.nombre;
-          $scope.especialistaDatos.direccion = esp.direccion;
-          $scope.especialistaDatos.fecha_nacimiento = esp.fecha_nacimiento;
-
-          userService.postUser($scope.usuario)
-            .then(function(user) {
-              $scope.especialistaDatos.user = user.data;
-              $scope.especialistaDatos.user = user.data._id;
-              return especialistaService.postEspecialista($scope.especialistaDatos);
-            }).then(function(especialista) {
-              $location.path("/admin_listado_especialistas");
+          consejosService.postConsejos($scope.consejo)
+            .then(function(resp) {
+              $location.path("/admin_listado_consejos");
             }).catch($log.error);
-
-      }
 
     }
 
   })
-  .controller('editarConsejosController', function($auth, $scope, $rootScope, $state, userData, $log, $filter, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
+  .controller('editarConsejosController', function($auth, $scope, $rootScope, $state, userData, $log, $filter, $http, $translate, $stateParams, $location, config, consejosService, userService) {
 
     var id = $stateParams.id;
-    $scope.hoy = new Date();
 
-    especialistaService.getEspecialista(id)
-      .then(function(especialistaAModificar) {
-        $scope.especialista = especialistaAModificar.data;
-        $scope.especialista.dni= parseInt($scope.especialista.dni);
-        $scope.especialista.fecha_nacimiento = new Date($scope.especialista.fecha_nacimiento);
-        userService.getUser($scope.especialista.user)
-          .then(function(usuarioAModificar) {
-            $scope.usuario = usuarioAModificar.data;
-            $scope.usuario.telefono= parseInt($scope.usuario.telefono);
-            $scope.usuario.createdAt = new Date($scope.usuario.createdAt);
-            $scope.usuario.updatedAt = new Date();
-          }).catch($log.error);
+    consejosService.getConsejos(id)
+      .then(function(consejoAModificar) {
+        $scope.consejo = consejoAModificar.data;
       }).catch($log.error);
 
-      $scope.validadInput = function(input, mensaje, show, min = null, max = null, valido = null){
-        var keys = Object.keys(input.$error);
-        var len = keys.length;
-        if(len != 0){
-          for (var first in input.$error) break;
-          var error = first;
-          switch (error) {
-            case 'required':
-              $scope[mensaje] = "Este campo es requerido";
-              break;
-            case 'minlength':
-              $scope[mensaje] = "Este campo debe ser mayor a "+ min +" caracteres";
-              break;
-            case 'email':
-              $scope[mensaje]  = "Debe ingresar un email valido";
-              break;
-            case 'pattern':
-              $scope[mensaje]  = "Los datos ingresados no son validos, solo se permiten "+ valido;
-              break;
-            case 'min':
-              $scope[mensaje]  = "El valor ingresado no puede ser menor a "+ min;
-              break;
-            case 'max':
-              $scope[mensaje]  = "El valor ingresado no puede ser mayor a "+max;
-              break;
-            default:
-          }
-          $scope[show] =true;
-        }
-      }
 
       $scope.submit = function() {
-        if(!$scope.form.$valid){
-          $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
-          $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
-          $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
-          $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
-          $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
-        }else{
-          especialistaService.putEspecialistaById($scope.especialista._id, $scope.especialista)
+
+          consejosService.putConsejosById($scope.consejo._id, $scope.consejo)
             .then(function(resp) {
               console.log('LISTO', resp);
-              userService.putUserById($scope.usuario._id, $scope.usuario)
-                .then(function(usuarioModificado) {
-                  console.log('LISTO',usuarioModificado);
-                  $location.path("/admin_listado_especialistas");
-                }).catch($log.error);
+              $location.path("/admin_listado_consejos");
             }).catch($log.error);
-        }
+
 }
 
   })
-  .controller('verConsejosController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
+  .controller('verConsejosController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, $stateParams, $location, config, consejosService, userService) {
     var id = $stateParams.id;
 
-    especialistaService.getEspecialista(id)
-      .then(function(especialista) {
-        $scope.especialista = especialista.data;
-        $scope.especialista.fecha_nacimiento = $filter('date')(new Date($scope.especialista.fecha_nacimiento), "EEEE d 'de' LLLL 'de' yyyy");
-
-        userService.getUser($scope.especialista.user)
-          .then(function(user) {
-            $scope.user = user.data;
-            $scope.user.createdAt = $filter('date')(new Date($scope.user.createdAt), "EEEE d 'de' LLLL 'de' yyyy");
-            $scope.user.updatedAt = $filter('date')(new Date($scope.user.updatedAt), "EEEE d 'de' LLLL 'de' yyyy");
-          }).catch($log.error);
+    consejosService.getConsejos(id)
+      .then(function(consejo) {
+        $scope.consejo = consejo.data;
       }).catch($log.error);
 
   })
-  .controller('borrarConsejosController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
+  .controller('borrarConsejosController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, $stateParams, $location, config, consejosService, userService) {
 
     var id = $stateParams.id;
 
-    especialistaService.getEspecialista(id)
-      .then(function(especialistaABorrar) {
-        $scope.especialista = especialistaABorrar.data;
-        $scope.especialista.fecha_nacimiento = $filter('date')(new Date($scope.especialista.fecha_nacimiento), "EEEE d 'de' LLLL 'de' yyyy");
+    consejosService.getConsejos(id)
+      .then(function(consejoABorrar) {
+        $scope.consejo = consejoABorrar.data;
       }).catch($log.error);
 
-    $scope.borrarEspecialista = function() {
-      var id = $scope.especialista._id;
-      var userId = $scope.especialista.user;
-      especialistaService.deleteEspecialistaById(id)
-        .then(function() {
-          console.log('userId', userId);
-          return userService.deleteUserById(userId);
-        })
-        .then(function(userEliminado) {
-          console.log(userEliminado.data);
-          console.log('LISTO', userEliminado);
-          $location.path("/admin_listado_especialistas");
+    $scope.borrarConsejo = function() {
+      var id = $scope.consejo._id;
+      consejosService.deleteConsejosById(id)
+        .then(function(consejoEliminado) {
+          console.log(consejoEliminado.data);
+          console.log('LISTO', consejoEliminado);
+          $location.path("/admin_listado_consejos");
         })
         .catch($log.error);
 

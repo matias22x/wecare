@@ -17,7 +17,8 @@ var wecareApp = angular.module('wecareApp', ['satellizer', 'ui.router', 'ui.mate
     'enTranslation',
     'registrosService',
     'turnoService',
-    'noticiasService'
+    'noticiasService',
+    'consejosService'
 ]);
 wecareApp.constant('config', {
     api_url: 'http://159.65.176.157:3000',

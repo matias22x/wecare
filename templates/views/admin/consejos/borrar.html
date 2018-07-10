@@ -1,4 +1,4 @@
-   <div class="fondoBlanco">  
+   <div class="fondoBlanco">
 <center>
 
 <div>
@@ -7,33 +7,23 @@
 <form class="col s12">
 
   <div class="input-field col s12">
-    <p id="dni" ><b>DNI</b>: {{especialista.dni}}</p>
+    <p id="dni" ><b>TITULO</b>: {{consejo.titulo}}</p>
   </div>
 
   <div class="input-field col s12">
-    <p id="nombre" ><b>NOMBRE</b>: {{especialista.nombre}}</p>
+    <p id="nombre" ><b>DESCRIPCION</b>: {{consejo.descripcion | limitTo:150}}...</p>
   </div>
 
-  <div class="input-field col s12">
-    <p id="direccion" ><b>DIRECCION</b>: {{especialista.direccion}}</p>
-  </div>
-
-  <div class="input-field col s12">
-    <p id="fechaNacimiento" ><b>FECHA DE NACIMIENTO</b>: {{especialista.fecha_nacimiento}}</p>
-  </div>
 
 <div class="container" style="width: 250px">
 <center>
-  <div class="col s12"><b>¿Está seguro de eliminar el especialista?</b></div>
-  <a class="col s5 btn btn-large waves-effect botonAgregar" ui-sref="admin_listado_especialistas">volver</a>
+  <div class="col s12"><b>¿Está seguro de eliminar el consejo?</b></div>
+  <a class="col s5 btn btn-large waves-effect botonAgregar" ui-sref="admin_listado_consejos">volver</a>
   <div class="col s2"></div>
-  <button ng-click="borrarEspecialista()" class='col s5 btn btn-large waves-effect boton'>eliminar</button>
+  <button ng-click="borrarConsejo()" class='col s5 btn btn-large waves-effect boton'>eliminar</button>
 </center>
 </div>
 
-<div ng-show="mensajeErrorIncompleto" class="col s12">
-  <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
-</div>
 
 </form>
 
