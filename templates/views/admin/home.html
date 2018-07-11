@@ -1,5 +1,66 @@
 <main>
-  <div class="container center fondoBlanco">
+  <div class="container center plantilla fondoBlanco">
+    <div class="slider">
+      <ul class="slides">
+        <li>
+          <img src="img/fondoPrueba.jpg">
+          <div class="caption center-align">
+            <div class="col s12 cajaAlumno">
+              <h4> <span class="title-bg"> REGISTROS</span> </h4>
+              <p class="light parrafo">ALUMNOS REGISTRADOS: {{datos.cantidadPacientes}}</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="img/fondoPrueba.jpg">
+          <div class="caption center-align">
+            <div class="col s12 cajaAlumno">
+              <h4> <span class="title-bg"> REGISTROS</span> </h4>
+              <p class="light parrafo">ESPECIALISTAS REGISTRADOS: {{datos.cantidadEspecialistas}}</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="img/fondoPrueba.jpg">
+          <div class="caption center-align">
+            <div class="col s12 cajaAlumno">
+              <h4> <span class="title-bg"> TURNOS</span> </h4>
+              <p class="light parrafo">DEL DÍA DE HOY: {{datos.cantidadTurnosDelDia}}</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="img/fondoPrueba.jpg">
+          <div class="caption center-align">
+            <div class="col s12 cajaAlumno">
+              <h4> <span class="title-bg"> TURNOS</span> </h4>
+              <p class="light parrafo">TURNOS REALIZADOS EN LOS ÚLTIMOS 30 DÍAS: {{datos.cantidadTurnosDelMes}}</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="img/fondoPrueba.jpg">
+          <div class="caption center-align">
+            <div class="col s12 cajaAlumno">
+              <h4> <span class="title-bg"> WEBOT</span> </h4>
+              <p class="light parrafo">DIAGNOSTICOS RECAUDADOS: {{datos.CantidadDiagnosticosPrematuros}}</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="img/fondoPrueba.jpg">
+          <div class="caption center-align">
+            <div class="col s12 cajaAlumno">
+              <h4> <span class="title-bg"> WEBOT</span> </h4>
+              <p class="light parrafo">GRAVEDAD PROMEDIO DE LOS DIAGNOSTICOS: {{datos.gravedadPromedio}} de 22 en la escala</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!--<hr>-->
+
     <div class="titulo01">
       <h4>Somos mucho más que una plataforma</h4>
     </div>
@@ -74,44 +135,23 @@
         </div>
       </div>
     </div>
-    <div class="titulo02">
-      <div class="row">
-        <h4>Datos recaudados de WeBot:</h4>
-        <div class="col s6">
-          -alumnos registrados: {{datos.cantidadPacientes}}
-        </div>
-        <div class="col s6">
-          -especialistas registrados: {{datos.cantidadEspecialistas}}
-        </div>
-        <div class="col s6">
-          -turnos del día de hoy: {{datos.cantidadTurnosDelDia}}
-        </div>
-        <div class="col s6">
-          -turnos realizados en los últimos 30 días: {{datos.cantidadTurnosDelMes}}
-        </div>
-        <div class="col s6">
-          -diagnosticos recaudados por WeBot: {{datos.CantidadDiagnosticosPrematuros}}
-        </div>
-        <div class="col s6">
-          -Gravedad promedio de los diagnosticos: {{datos.gravedadPromedio}} de 22 en la escala
-        </div>
-      </div>
-    </div>
+
 
   </div>
 
 
   <script type="text/javascript">
     $(document).ready(function() {
-      $('.parallax').parallax();
-    });
+      $('.slider').slider();
 
-
-    $(document).ready(function() {
-      $('.tabs').tabs({
-        swipeable: true,
-        responsiveThreshold: 1920
+      $(document).ready(function() {
+        $('.tabs').tabs({
+          swipeable: true,
+          responsiveThreshold: 1920
+        });
       });
+
+
     });
   </script>
 </main>
