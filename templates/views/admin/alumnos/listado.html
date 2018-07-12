@@ -101,13 +101,26 @@
   </div>
 
   <!-- Modal Structure -->
-<div id="demoModal" class="modal">
-    <div class="modal-content">
-        <h4>Modal header</h4>
-        <p>A bunch of text</p>
+<div id="demoModal" class="modal" >
+    <div class="modal-content modalTitulo center">
+        <h4>¿Está seguro que lo desea eliminar?</h4>
+        <span>{{alumno.dni}}</span>
+        <span>{{alumno.nombre}}</span>
+        <span>{{alumno.curso}}</span>
+        <span>{{alumno.direccion}}</span>
+        <span>{{alumno.fecha_nacimiento}}</span>
+        <p>JKASFHKSFHKLSDHFKHSDKFH</p>
     </div>
     <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <div class="row sinEspacio center">
+        <div class="col s6 m6 l6 ">
+        <a href="#/admin_listado_alumnos" class="modal-action modal-close btn botonGeneral flotarIzq">Volver</a>
+        </div>
+        <div class="col s6 m6 l6 ">
+        <a href="#!" class="modal-action modal-close btn botonGeneral">Aceptar</a>
+        </div>
+        
+        </div>
     </div>
 </div>
 </main>

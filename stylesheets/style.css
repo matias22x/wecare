@@ -2113,4 +2113,19 @@ font-size: 25px; }
 .textoInformativo p { text-align: center;
 padding: 25px; }
 
+.modalTitulo { text-align: center;
+    
+    font-weight: bold; }
+
+.flotarIzq { float: left !important; }
+
+.sinEspacio { margin-bottom: 0px; }
+
+
+.botonEstilado { margin-left: 15px; margin-right:15px; }
+
+#demoModal {     margin-top: 10%;
+    padding-bottom: 10px;
+     width: 45%;
+ }
 
