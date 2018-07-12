@@ -10,7 +10,9 @@
         
 
           <div class="row claseImportante">
+          
             <div class="col s12 l3 m12">
+            <h5 class="center titulo03 titAparte show-on-small hide-on-med-and-up">Diagnósticos</h5>
               <table class="centered tablaMarg">
                 <thead>
                   <tr class="fondoOne">
@@ -31,7 +33,8 @@
             </div>
             <div class="col s12 m12 l9">
 
-            <h5 class="center titulo03 titAparte">Diagnósticos</h5>
+            <h5 class="center titulo03 titAparte hide-on-med-and-down">Diagnósticos</h5>
+
 
         <div class="row">
         <div class="col s12 m12 l12">
@@ -51,20 +54,29 @@
           <span>{{informacion.diagnostico.alumno.dni}}</span><br>
           <span class="titNar"><b>Direccion</b></span><br>
           <span>{{informacion.diagnostico.alumno.direccion}}</span><br>
-          <span class="titNar"><b>Curso</b></span><br>
+          
         </div>
 
         <div class="col s12 m4 l4 conjDiag">
+        <span class="titNar"><b>Curso</b></span><br>
         <span class="titNar"><b>Fecha de ingreso</b></span><br>
         <span>{{informacion.diagnostico.createdAt | date: "EEEE d 'de' LLLL 'de' yyyy" }}</span><br>
         <span class="titNar"><b>Diagnostico</b></span><br>
         <span>{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
-        <span class="titNar"><b>Puntuación de gravedad</b></span><br>
-        <span>{{informacion.diagnostico.gravedad}}</span><br>
+        
+          <!-- HTML5 -->
+   
+
+     
         </div>
 
-        <div class="col s12 m4 l4 conjDiagBis center">
-
+        <div class="col s12 m4 l4 conjDiagBis gravBot center">
+        <span class="titNar"><b>Gravedad</b></span><br>
+ 
+    <progress max="22" value="{{informacion.diagnostico.gravedad}}" class="html5">
+    <div class="progress-bar">
+      </div>
+    </progress>
         <div ng-if="informacion.diagnostico">
          <a class="waves-effect waves-light btn btn-small botonGeneral bagregar" ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id)">agregar a mis pacientes</a>
          </div>
@@ -90,8 +102,8 @@
                       <div class="row">
                         <div class="col s12 botScroll">
                           <ul ng-if="informacion.diagnostico.diagnostico" ng-repeat="diagnostico in informacion.diagnostico.diagnostico">
-                            <li class="pregunta">{{diagnostico.pregunta}}</li>
-                            <li class="respuesta">{{diagnostico.respuesta}}</li>
+                            <span class="estiloPart">Pregunta:</span>&nbsp &nbsp<li class="pregunta">{{diagnostico.pregunta}}</li><br>
+                            <span class="estiloPart2">Respuesta:</span>&nbsp &nbsp<li class="respuesta">{{diagnostico.respuesta}}</li>
                           </ul>
                           <p ng-if="!informacion.diagnostico.diagnostico">Webot no ha recaudado datos.</p>
                         </div>
