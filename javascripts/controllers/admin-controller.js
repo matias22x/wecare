@@ -19,7 +19,7 @@ angular.module('wecareApp')
     $scope.emailErrorMensaje = "";
     console.log($scope.usuario);
     $scope.cambiarClave = function(){
-      if($scope.contraseniaNueva==$scope.contraseniaNuevaBis){
+      if($scope.contraseniaNueva==$scope.contraseniaNuevaBis && $scope.contraseniaNueva && $scope.contraseniaNueva.length>8){
         $scope.usuario.password=$scope.contraseniaNuevaBis;
         $scope.usuario.updatedAt = new Date();
         $scope.usuario.createdAt = new Date($scope.usuario.createdAt);
@@ -27,11 +27,18 @@ angular.module('wecareApp')
           .then(function(resp) {
             console.log('LISTO', resp);
             $scope.passwordCorrecto = true;
-            $scope.contraseniaCorrectoMensaje = "Las contraseñas cambio satisfactoriamente";
+            $scope.contraseniaCorrectoMensaje = "La contraseña cambio satisfactoriamente";
           }).catch($log.error);
       }else{
         $scope.passwordError = true;
-        $scope.contraseniaErrorMensaje = "Las contraseñas no coinciden";
+         if (!$scope.contraseniaNueva){
+          $scope.contraseniaErrorMensaje = "la contraseña no puede estar vacia y debe ser mayor a 8 caracteres";
+        }else if($scope.contraseniaNueva.length<8){
+          $scope.contraseniaErrorMensaje = "La contraseña es demasiado corta, debe ser mayor a 8 caracteres";
+        }else{
+          $scope.contraseniaErrorMensaje = "Las contraseñas no coinciden";
+        }
+
       }
 
     }
