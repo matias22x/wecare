@@ -2071,13 +2071,20 @@ margin-bottom: 40px !important;  }
 
 .card-contentDos { background-color: #fff; }
 
+.card-contentTres {
+    background-color: #fff;
+    padding-bottom: 25px;
+}
+
 .card .card-content {     padding: 23px !important;
 margin-bottom: 40px !important; 
 background-image: url("../img/fondo02.png"); 
 background-repeat: repeat-x repeat-y;}
 
 
-.claseImportante {     background-color: #fff;
+.claseImportante {     
+
+    background-color: #fff;
     /* padding-bottom: 25px; */
     padding: 25px;
     margin-bottom: 0px;
