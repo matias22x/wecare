@@ -1086,7 +1086,7 @@ label img {
 float: right;
      }
 
-#textarea1 { width: 80%; }
+
 
 .textoAlumno4 label { margin-left:10%;  }
 
@@ -1429,7 +1429,7 @@ background-color: #fff; }
 
 #chat {
   margin-top: 38px;
-height:420px;
+height:450px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -1852,10 +1852,12 @@ ul.stepper.horizontal .step-content {     overflow-y: hidden !important; }
 
 .titNar { color: #ff8500; }
 
-.conjDiag { margin-top: 25px;
+.conjDiag { margin-top: 5px;
     padding-left: 25px !important; }
 
 .conjDiagBis { margin-top: 60px; }
+
+.gravBot { margin-top: 10px; }
 
 .bisF th{ text-align: center; }
 
@@ -1873,8 +1875,8 @@ ul.stepper.horizontal .step-content {     overflow-y: hidden !important; }
 
 .botScroll { height: 400px;  overflow-y: scroll; }
 
-.pregunta{ text-align: right; border: 1px solid  #00a9ff; padding:5px;}
-.respuesta { border: 1px solid #b0b0b0 ;margin-bottom:5px; padding:5px;}
+.pregunta{ text-align: right;  padding:5px;    font-weight: bold; margin-bottom: 10px;}
+.respuesta {  ;margin-bottom:5px; padding:5px;}
 
 .margMenos { margin-bottom: 0px !important; }
 
@@ -2129,3 +2131,177 @@ padding: 25px; }
      width: 45%;
  }
 
+
+/**********************************************/
+
+
+progress:not(value) {
+  /* Add your styles here. As part of this walkthrough we will focus only on determinate progress bars. */
+}
+
+/* Styling the determinate progress element */
+
+progress[value] {
+  /* Get rid of the default appearance */
+  appearance: none;
+  
+  /* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
+  border: none;
+  
+  /* Add dimensions */
+  width: 100%; height: 20px;
+  
+  /* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
+    background-color: whiteSmoke;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+  
+  /* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
+  color: royalblue;
+  
+  position: relative;
+  margin: 0 0 1.5em; 
+}
+
+/*
+Webkit browsers provide two pseudo classes that can be use to style HTML5 progress element.
+-webkit-progress-bar -> To style the progress element container
+-webkit-progress-value -> To style the progress element value.
+*/
+
+progress[value]::-webkit-progress-bar {
+  background-color: whiteSmoke;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  position: relative;
+  
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  border-radius:3px;
+  
+  /* Let's animate this */
+  animation: animate-stripes 5s linear infinite;
+}
+
+@keyframes animate-stripes { 100% { background-position: -100px 0; } }
+
+/* Let's spice up things little bit by using pseudo elements. */
+
+progress[value]::-webkit-progress-value:after {
+  /* Only webkit/blink browsers understand pseudo elements on pseudo classes. A rare phenomenon! */
+  content: '';
+  position: absolute;
+  
+  width:5px; height:5px;
+  top:7px; right:7px;
+  
+  background-color: white;
+  border-radius: 100%;
+}
+
+/* Firefox provides a single pseudo class to style the progress element value and not for container. -moz-progress-bar */
+
+progress[value]::-moz-progress-bar {
+  /* Gradient background with Stripes */
+  background-image:
+  -moz-linear-gradient( 135deg,
+                           transparent,
+                           transparent 66%,
+                           rgba(0,0,0,.1) 66%,
+                           rgba(0,0,0,.1) 33%,
+                           transparent 33%),
+    -moz-linear-gradient( top,
+                            rgba(255, 255, 255, .25),
+                            rgba(0,0,0,.2)),
+     -moz-linear-gradient( left, #40bf43, #dd0000);
+  
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  border-radius:3px;
+  
+  /* Firefox doesn't support CSS3 keyframe animations on progress element. Hence, we did not include animate-stripes in this code block */
+}
+
+
+/* The percentage will automatically fall in place as soon as we make the width fluid. Now making widths fluid. */
+
+p[data-value]:after {
+  content: attr(data-value) '%';
+  position: absolute; right:0;
+}
+
+
+
+
+
+.html5::-webkit-progress-value  {
+  /* Gradient background with Stripes */
+  background-image:
+  -webkit-linear-gradient( 135deg,
+                           transparent,
+                           transparent 66%,
+                           rgba(0,0,0,.1) 66%,
+                           rgba(0,0,0,.1) 33%,
+                           transparent 33%),
+    -webkit-linear-gradient( top,
+                            rgba(255, 255, 255, .25),
+                            rgba(0,0,0,.2)),
+     -webkit-linear-gradient( left, #40bf43, #dd0000);
+}
+
+
+
+/* Similarly, for Mozilla. Unfortunately combining the styles for different browsers will break every other browser. Hence, we need a separate block. */
+
+.html5::-moz-progress-bar {
+  /* Gradient background with Stripes */
+  background-image:
+  -moz-linear-gradient( 135deg,
+                           transparent,
+                           transparent 66%,
+                           rgba(0,0,0,.1) 66%,
+                           rgba(0,0,0,.1) 33%,
+                           transparent 33%),
+    -moz-linear-gradient( top,
+                            rgba(255, 255, 255, .25),
+                            rgba(0,0,0,.2)),
+     -moz-linear-gradient( left, #40bf43, #dd0000);
+}
+
+
+
+@media screen and (max-width: 600px)
+{ .conjDiag, .conjDiagBis { text-align: center;
+ }
+}
+
+
+
+
+
+
+@media screen and (max-width: 600px)
+{
+.tablaMarg {
+    margin-top: 0px;
+    margin-bottom: 35px;
+}
+}
+
+.estiloPart { padding-bottom: 5px; }
+
+span.estiloPart { color: #00a9ff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase; 
+    padding-left: 10px;}
+
+span.estiloPart2 {color: #ff8500;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  padding-left: 10px;}
+
+
+  textarea.opcionDos { resize: none; }
