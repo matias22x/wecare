@@ -29,13 +29,13 @@
                 <div class="message items"> <p>Mi respuesta:</p>
                   <form action="#" ng-repeat="item in opciones">
                     <p>
-                      <label ng-click="aumentarGravedad(item.gravedad || 0); enviar({'pregunta':datos.pregunta, 'respuesta': item.opcion, 'respuestaSinGravedad': item.opcionSinGravedad})" for="test5">- {{item.opcionSinGravedad || item.opcion}}</label>
+                      <label class="opcion" ng-click="aumentarGravedad(item.gravedad || 0); enviar({'pregunta':datos.pregunta, 'respuesta': item.opcion, 'respuestaSinGravedad': item.opcionSinGravedad})" for="test5">&#9673; {{item.opcionSinGravedad || item.opcion}}</label>
                     </p>
                   </form>
                   <div input-field ng-if="enableInput">
-                    <textarea ng-model="datos.input" class="materialize-textarea"></textarea>
-                    <label>(Textarea)</label>
-                    <a class="waves-effect waves-light btn" ng-click="enviar({'pregunta':datos.pregunta, 'respuesta': datos.pregunta, 'input': datos.input})">Enviar</a>
+                    <textarea class="opcion" ng-model="datos.input" class="materialize-textarea"></textarea>
+                    <label class="opcion"></label>
+                    <a class="waves-effect waves-light btn botonGeneral" ng-click="enviar({'pregunta':datos.pregunta, 'respuesta': datos.pregunta, 'input': datos.input})">Enviar</a>
                   </div>
                  </div>
                 <div class="avatar abis"><img class="responsive-img" style="width: 60px;" src="img/chico.png" /></div>

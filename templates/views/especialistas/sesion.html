@@ -4,55 +4,92 @@
     <div class="col s12">
       <div class="card">
         <div class="card-content">
-          <h4>HOY</h4>
-          <table class="highlight centered">
-            <thead>
-              <tr class="fondo">
-                <th>TURNO</th>
-                <th>DNI</th>
-                <th>NOMBRE</th>
-              </tr>
-            </thead>
 
-            <tbody>
-              <tr>
-                <td>478</td>
-                <td>40986235</td>
-                <td>Juan Rinaldo</td>
-              </tr>
+          <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+    <li class="acordeon">
+    <div class="collapsible-header">
+      
+      <h5 class="center titulo04 titAparte">Sesión Actual</h5>
+      </div>
+    <div class="collapsible-body">
+    <div class="row center">
+        <div class="col s4 m4 l4">
+        <h5 class="titulosAparte center contenidoUsuario">Numero de turno</h5>
+        <span>478</span>
+        </div>
 
-            </tbody>
-          </table>
+        <div class="col s4 m4 l4">
+        <h5 class="titulosAparte center contenidoUsuario">Nro de Documento</h5>
+        <span>37456988</span>
+        </div>
+
+        <div class="col s4 m4 l4">
+        <h5 class="titulosAparte center contenidoUsuario">Nombre</h5>
+        <span>Guido Kazka</span>
+        </div>
+        </div>
+          
+        </div>
+  </li>
+</ul>
+
+          
 
 
           <div class="row">
-            <div class="col s12">
+            <div class="col s12 m12 l12">
 
-              <div class="input-field">
+              <div class="input-field center tituloTexto">
+              <span>Estado de ánimo durante la sesión:</span>
+                <div class="col s12 center iconosEsp">
+                
+                <form action="#" class="actividades bisAct">
+                      <ul>
+                        <li><input type="checkbox" id="cb1" ng-model="registro.animo.contento" />
+                          <label for="cb1"><img src="img/happy.png" /></label>
+                          
+                        </li>
+                        <li><input type="checkbox" id="cb2" ng-model="registro.animo.neutral" />
+                          <label for="cb2"><img src="img/confused.png" /></label>
+                          
+                        </li>
+                        <li><input type="checkbox" id="cb3" ng-model="registro.animo.triste" />
+                          <label for="cb3"><img src="img/sad.png" /></label>
+                          
+                        </li>
+                        <li><input type="checkbox" id="cb4" ng-model="registro.animo.enojado" />
+                          <label for="cb4"><img src="img/angry.png" /></label>
+                          
+                        </li>
 
-                <span>Estado del alumno:  </span>
-                <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">mood_bad</i></button>
-                <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">sentiment_very_dissatisfied</i></button>
-                <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">sentiment_dissatisfied</i></button>
-                <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">sentiment_neutral</i></button>
-                <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">sentiment_satisfied</i></button>
-                <button class="waves-effect waves-light btn-small btn-floating botonVer"><i class="material-icons">sentiment_very_satisfied</i></button>
+                      </ul>
+                    </form>
+                </div>
               </div>
             </div>
           </div>
+          
+
           <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea" style=" background-color: rgba(255,255,255,0.5);"></textarea>
-                  <label for="textarea1">Observaciones</label>
-                </div>
-              </div>
+            <div class="col s12 m12 l12">
+
+              <div class="input-field center tituloTexto">
+          <span>Observaciones:</span>
+         
+            <form>        
+                
+                  <textarea id="textarea2" class="materialize-textarea"></textarea>
+                  
+            
+              
             </form>
+                </div>
           </div>
-          <a class="waves-effect waves-light btn btn-small" style="margin: 0 auto; display:block; text-align: center; width: 250px;" ui-sref="especialista_pacientes"><i class="material-icons left">add</i>Finalizar</a>
+          <a class="waves-effect waves-light btn botonGeneral btn-small" style="margin: 0 auto; display:block; text-align: center; width: 250px;" ui-sref="especialista_pacientes">Finalizar</a>
         </div>
       </div>
     </div>
   </div>
-</main>
+  </div>
+  </div>
+  </main>

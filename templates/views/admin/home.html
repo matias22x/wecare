@@ -1,5 +1,10 @@
 <main>
-  <div class="container center plantilla fondoBlanco">
+  <div class="container center plantilla ">
+
+   <div class="card espaciadoArriba">
+        <div class="card-content">
+
+        <div class="contenidoBorde">
     <div class="slider">
       <ul class="slides">
         <li>
@@ -7,7 +12,7 @@
           <div class="caption center-align">
             <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> REGISTROS</span> </h4>
-              <p class="light parrafo">ALUMNOS REGISTRADOS: {{datos.cantidadPacientes}}</p>
+              <span class="light parrafo title-bgbis">ALUMNOS REGISTRADOS:<br></span><span class="parrafo sinEstilo">{{datos.cantidadPacientes}}</span>
             </div>
           </div>
         </li>
@@ -16,7 +21,7 @@
           <div class="caption center-align">
             <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> REGISTROS</span> </h4>
-              <p class="light parrafo">ESPECIALISTAS REGISTRADOS: {{datos.cantidadEspecialistas}}</p>
+              <span class="light parrafo title-bgbis">ESPECIALISTAS REGISTRADOS:<br></span><span class="parrafo sinEstilo">{{datos.cantidadEspecialistas}}</span>
             </div>
           </div>
         </li>
@@ -25,7 +30,7 @@
           <div class="caption center-align">
             <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> TURNOS</span> </h4>
-              <p class="light parrafo">DEL DÍA DE HOY: {{datos.cantidadTurnosDelDia}}</p>
+              <span class="light parrafo title-bgbis">DEL DÍA DE HOY:<br></span><span class="parrafo sinEstilo">{{datos.cantidadTurnosDelDia}}</span>
             </div>
           </div>
         </li>
@@ -34,7 +39,7 @@
           <div class="caption center-align">
             <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> TURNOS</span> </h4>
-              <p class="light parrafo">TURNOS REALIZADOS EN LOS ÚLTIMOS 30 DÍAS: {{datos.cantidadTurnosDelMes}}</p>
+              <span class="light parrafo title-bgbis">TURNOS REALIZADOS EN LOS ÚLTIMOS 30 DÍAS:<br></span><span class="parrafo sinEstilo">{{datos.cantidadTurnosDelMes}}</span>
             </div>
           </div>
         </li>
@@ -43,7 +48,7 @@
           <div class="caption center-align">
             <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> WEBOT</span> </h4>
-              <p class="light parrafo">DIAGNOSTICOS RECAUDADOS: {{datos.CantidadDiagnosticosPrematuros}}</p>
+              <span class="light parrafo title-bgbis">DIAGNOSTICOS RECAUDADOS:<br></span><span class="parrafo sinEstilo">{{datos.CantidadDiagnosticosPrematuros}}</span>
             </div>
           </div>
         </li>
@@ -52,7 +57,7 @@
           <div class="caption center-align">
             <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> WEBOT</span> </h4>
-              <p class="light parrafo">GRAVEDAD PROMEDIO DE LOS DIAGNOSTICOS: {{datos.gravedadPromedio}} de 22 en la escala</p>
+              <span class="light parrafo title-bgbis">GRAVEDAD PROMEDIO DE LOS DIAGNOSTICOS:<br></span><span class="parrafo sinEstilo">{{datos.gravedadPromedio}} de 22 en la escala</span>
             </div>
           </div>
         </li>
@@ -74,17 +79,17 @@
       <div id="swipe-1" class="col s12 l12 m12 xl12">
         <div class="row tablaDeTres">
 
-          <div class="col s12 l4 m4 xl4">
+          <div class="col s12 l4 m4 xl4 espacioGeneral">
             <i class="medium material-icons">today</i>
             <h5>Historial de turnos</h5>
             <p>Podrá ver todos las fechas de los turnos que se le asignaron, haciendo de esta forma más organizado el tratamiento.</p>
           </div>
-          <div class="col s12 l4 m4 xl4">
+          <div class="col s12 l4 m4 xl4 espacioGeneral">
             <i class="medium material-icons">lock_outline</i>
             <h5>Confidencialidad</h5>
             <p>Ofrecemos total y completa privacidad para los adolescentes. Los resultados solo podrá verlo el especialista.</p>
           </div>
-          <div class="col s12 l4 m4 xl4">
+          <div class="col s12 l4 m4 xl4 espacioGeneral">
             <i class="medium material-icons">touch_app</i>
             <h5>Interfaz interactiva</h5>
             <p>Podrá responder y contar sus preocupaciones a traves de una interfaz con un diseño amigable e interactivo.</p>
@@ -95,17 +100,17 @@
       <div id="swipe-2" class="col s12 l12 m12 xl12">
         <div class="row tablaDeTres">
 
-          <div class="col s12 l4 m4 xl4">
+          <div class="col s12 l4 m4 xl4 espacioGeneral">
             <i class="medium material-icons">insert_chart_outlined</i>
             <h5>Orden</h5>
             <p>Mejora de la organización y gestión de los alumnos y especialistas.</p>
           </div>
-          <div class="col s12 l4 m4 xl4">
+          <div class="col s12 l4 m4 xl4 espacioGeneral">
             <i class="medium material-icons">thumb_up_alt</i>
             <h5>Control general</h5>
             <p>Se podrá mejorar el control de las problemáticas entre los adolescentes de la institución.</p>
           </div>
-          <div class="col s12 l4 m4 xl4">
+          <div class="col s12 l4 m4 xl4 espacioGeneral">
             <i class="medium material-icons">stars</i>
             <h5>Reputación</h5>
             <p>Mejora del prestigio y la reputación de la institución.</p>
@@ -116,17 +121,17 @@
       <div id="swipe-3" class="col s12 l12 m12 xl12">
         <div class="row tablaDeTres">
 
-          <div class="col s12 l4 m4 xl4">
+          <div class="col s12 l4 m4 xl4 espacioGeneral">
             <i class="medium material-icons">description</i>
             <h5>Historial de turnos</h5>
             <p>Obtendrá un diagnostico prematuro del caso de cada alumno, agilizando el tratamiento y desarrollo del mismo.</p>
           </div>
-          <div class="col s12 l4 m4 xl4">
+          <div class="col s12 l4 m4 xl4 espacioGeneral">
             <i class="medium material-icons">today</i>
             <h5>Agenda de turnos</h5>
             <p>Podrá acceder a una agenda con todos los turnos, pudiendo asignar o modificar los mismos.</p>
           </div>
-          <div class="col s12 l4 m4 xl4">
+          <div class="col s12 l4 m4 xl4 espacioGeneral">
             <i class="medium material-icons">speaker_notes</i>
             <h5>Filtrado de casos</h5>
             <p>Podrá ver todos los diagnosticos entrantes, filtrando por gravedad dependiendo del caso.</p>
@@ -135,7 +140,9 @@
         </div>
       </div>
     </div>
-
+</div>
+</div>
+</div>
 
   </div>
 

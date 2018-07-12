@@ -1,48 +1,38 @@
-<style>
-  .buscadorFechas.placeholderclass::before {
-    width: 100%;
-    content: "";
-  }
+<main>
+     <div class="container center">
+      <div class="col s12">
+        <div class="card espaciadoArriba ">
+        <div class="card-content">
 
-  .buscadorFechas.placeholderclass:hover::before {
-    width: 0%;
-    content: "";
-  }
-</style>
-
-<a class="waves-effect waves-light btn botonGeneral btn-small" sui-sref="especialista_pacientes"><i class="material-icons left">arrow_back</i>Volver</a>
-<br>
-
-<div class="fondoBlanco">
-  <center>
-    <div class="container">
-      <div class="section">
-        <div class="row">
-          <div class="col s3">
+        <div class="contenidoBorde">
+         
+           <h5 class="center titulo03 titAparte">Observaciones del Alumno durante la sesión</h5>
+        <div class="row cuadro01 claseImportante">
+          <div class="col s12 l3 m3">
 
 
-            <table class="highlight centered">
+            <table class="centered tablaIzq tablaGeneral">
               <thead>
                 <tr class="fondo">
-                  <th>OBSERVACIONES</th>
+                  <th>HISTORIAL DE REGISTROS</th>
                 </tr>
               </thead>
 
-              <tbody>
-                <tr class="buscador">
-                  <td>
-                    <input id="buscadorTexto" type="text" class="validate" style="margin-bottom: 1px;height: 20px;">
-                    <label for="buscadorTexto">Busque por DNI, turno o nombre</label>
-                    <br>
-                    <input id="buscadorDesde" type="date" class="validate buscadorFechas placeholderclass" style="margin-bottom: 1px;height: 20px;" placeholder="">
-                    <label for="buscadorDesde">Buscar por fecha desde</label>
-                    <br>
-                    <input id="buscadorHasta" type="date" class="validate buscadorFechas placeholderclass" style="margin-bottom: 1px;height: 20px;" placeholder="">
-                    <label for="buscadorHasta">Hasta</label>
-                    <br>
-                    <a class="btn botonBuscar">Buscar</a>
-                  </td>
-                </tr>
+              <tbody>               
+                  <tr class="buscador">
+                    <td>
+                    <div class="input-field center">
+                      <input id="buscadorDesde" type="date" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
+                      <label for="buscadorDesde">Fecha desde</label>
+                    </div>
+                      <div class="input-field center">
+                      <input id="buscadorHasta" type="date" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorHasta" placeholder="">
+                      <label for="buscadorHasta">Hasta</label>
+                      </div>
+                      <br>
+                     <a class="btn botonBuscar">Buscar</a>
+                    </td>
+                  </tr>
                   <tr>
                   <td class="resgitro00">478 14/07/2018 08:30</td>
                 </tr>
@@ -58,48 +48,83 @@
 
               </tbody>
             </table>
-          </div>
-          <div class="col s9">
+              
+             </div>
+          <div class="col s12 l9 m9">
 
 
-            <table class="highlight centered">
+            <table class="centered tablaGeneral">
               <thead>
                 <tr class="fondo">
-                  <th>DETALLES</th>
+                  <th>OBSERVACIONES</th>
                 </tr>
               </thead>
 
               <tbody>
                 <tr class="detalles">
-                  <td style="padding-top: 5px; padding-bottom: 1px;">
-                    <div class="row estadoResumen" >
+                  <td>
+                    <div class="row estadoResumen">
                       <div class="col s12 iconos">
-                      <span class="bistext">Alumno: Juan Perez</span><br>
-                        <span class="textUp">Estado del alumno: &nbsp</span>
-                       <img src="img/confused.png" />
+                      <span class="textUp">Alumno: &nbsp Juan Perez</span>
+                      </br> </br>
+                        <span class="textUp">Estado de ánimo: &nbsp</span>
+                        <img src="img/confused.png" />
+                        <img src="img/angry.png" />
+                      </br> </br>
+                      </div>
+                      
+                      
+                    </div>
+                    <div class="row" >
+                      <div class="col s12 textoPersonal">
+                        <span class="textUp">Observaciones durante sesión: </span>
+                        <br>
+                        <span class="materialize-textarea textoPersonal"  >
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum nulla eu ante porta lacinia. Maecenas lacinia dui elementum felis dignissim luctus. Quisque ultricies turpis augue, ut tincidunt ante condimentum quis. Nunc vitae nisl nec ex rhoncus
+                          ullamcorper. Sed gravida sem id velit tempor gravida. Suspendisse potenti. Aliquam sed sollicitudin nulla, et commodo urna. Integer faucibus iaculis pellentesque. Donec tortor tellus, fermentum eget suscipit et, semper a ex. Integer faucibus iaculis pel.
+                          </span>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col s12 textoPersonal">
-                        <span class="textUp">Observaciones</span>
-                        <br>
-                        <span class="materialize-textarea"  >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum nulla eu ante porta lacinia. Maecenas lacinia dui elementum felis dignissim luctus. Quisque ultricies turpis augue, ut tincidunt ante condimentum quis. Nunc vitae nisl nec ex rhoncus
-                          ullamcorper. Sed gravida sem id velit tempor gravida. Suspendisse potenti. Aliquam sed sollicitudin nulla, et commodo urna. Integer faucibus iaculis pellentesque. Donec tortor tellus, fermentum eget suscipit et, semper a ex.
-                          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae ligula at tellus mollis laoreet. Curabitur nec ante sapien. Cras dictum mattis mi, quis blandit elit scelerisque sit amet.
-                          Nam venenatis egestas sem, sit amet aliquet nunc pretium et. Nam a nisi mattis, consectetur libero non, ultricies metus. Fusce fermentum cursus justo ac mollis.
-                        </span>
-                      </div>
                   </td>
                 </tr>
               </tbody>
             </table>
+            
             </div>
+            
+
           </div>
 
+          <div class="row">
+            <div class="col s6 l6 m6">
+            <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" sui-sref="especialista_pacientes"><i class="material-icons left">keyboard_arrow_left</i>Volver</a>
+            </div>
+            <div class="col s6 l6 m6">
+             <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" sui-sref="especialista_turno"><i class="material-icons left">add</i>Asignar turno</a>
+            </div>
+            </div>
+        </div>
         </div>
       </div>
-  </center>
+    </div>
+ <script>
+$(function(){
+  $('.datepicker').pickadate({
+      monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+      weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+      weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+        selectMonths: true,
+        selectYears: 100, // Puedes cambiarlo para mostrar más o menos años
+        today: 'Hoy',
+        clear: 'Limpiar',
+        close: 'Ok',
+        labelMonthNext: 'Siguiente mes',
+      labelMonthPrev: 'Mes anterior',
+      labelMonthSelect: 'Selecciona un mes',
+      labelYearSelect: 'Selecciona un año',
+      });
+});
+</script>
 
-
-  </div>
+</main>

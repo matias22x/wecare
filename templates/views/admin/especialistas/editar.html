@@ -1,54 +1,132 @@
-   <div class="fondoBlanco">
+<main>
+  <div class="section"></div>
+  <div class="container center anchoMinimo">
 
+      
+     
+      <div class="card">
+        <div class="card-content">
 
-<div class="container" style="width: 50%;">
-<center>
-<div class="row editCuadro">
-    <form class="col s12" name="form">
+        <div class="contenidoBorde">
+        <h5 class="center titulo03 titAparte">Editar Especialista</h5>
+         
+          <div class="separador">
+          
 
-      <div class="input-field col s12">
+            <form class="col s12 l12 m12" name="form">
+
+      <div class="input-field separaCostado">
         <input id="dni" name="dni" type="number" class="validate" ng-model="especialista.dni" required min='10000000' max='100000000' ng-keypress="dniError = false" ng-click="dniError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="dni">DNI</label>
+        <label for="dni">Nro de Documento</label>
         <span style=" color:red;" id="dniErrorSpan" ng-show="dniError" >{{dniErrorMensaje}}</span>
       </div>
 
-      <div class="input-field col s12">
+      <div class="input-field separaCostado">
+
         <input id="nombre" name="nombre" type="text" class="validate" ng-model="especialista.nombre" required minlength="4" ng-pattern="/^[a-zA-Z\s]*$/" ng-keypress="nombreError = false" ng-click="nombreError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="nombre">NOMBRE Y APELLIDO</label>
+        <label for="nombre">Nombre y Apellido</label>
         <span style=" color:red;" id="nombreErrorSpan" ng-show="nombreError" >{{nombreErrorMensaje}}</span>
       </div>
 
-      <div class="input-field col s12">
+      <div class="input-field separaCostado">
         <input id="direccion" name="direccion" type="text" class="validate" ng-model="especialista.direccion" required minlength="4" ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-keypress="direccionError = false" ng-click="direccionError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="direccion">DIRECCION</label>
+        <label for="direccion">Dirección</label>
         <span style=" color:red;" id="direccionErrorSpan" ng-show="direccionError" >{{direccionErrorMensaje}}</span>
       </div>
 
-      <div class="input-field col s12">
+      <div class="input-field separaCostado">
         <input id="telefono" name="telefono" type="number" class="validate" ng-model="usuario.telefono"  min='10000000' max='10000000000000' ng-keypress="telefonoError = false" ng-click="telefonoError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="telefono">TELEFONO</label>
+        <label for="telefono">Teléfono</label>
         <span style=" color:red;" id="telefonoErrorSpan" ng-show="telefonoError" >{{telefonoErrorMensaje}}</span>
       </div>
 
-      <div class="input-field col s12">
-        <input id="fechaNacimiento" name="fechaNacimiento" type="date" class="validate" ng-model="especialista.fecha_nacimiento" required min="1900-01-01" max='{{hoy |date: "yyyy-MM-dd"}}' ng-keypress="fechaNacimientoError = false" ng-click="fechaNacimientoError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="fechaNacimiento">FECHA DE NACIMIENTO</label>
-        <span style=" color:red;" id="fechaNacimientoErrorSpan" ng-show="fechaNacimientoError" >{{fechaNacimientoErrorMensaje}}</span>
-      </div>
+      <div class="input-field separaCostado">
 
-     <div class="container" style="width: 250px">
-     <center>
-       <div class="col s12"><b>¿Está seguro de modificar el especialista?</b></div>
-       <a class="col s5 btn btn-large waves-effect botonAgregar" ui-sref="admin_listado_especialistas">volver</a>
-       <div class="col s2"></div>
-       <button ng-click="submit()" class='col s5 btn btn-large waves-effect boton'>modificar</button>
-     </center>
-    </div>
+<div class="input-field center">
+                      <input id="fechaNacimiento" name="fechaNacimiento" type="date" ng-model="especialista.fecha_nacimiento" required min="1900-01-01" max='{{hoy |date: "yyyy-MM-dd"}}' ng-keypress="fechaNacimientoError = false" ng-click="fechaNacimientoError = false" oninvalid="return false;" autocomplete="off" class="validate datepicker" >
+                      <span style=" color:red;" id="fechaNacimientoErrorSpan" ng-show="fechaNacimientoError" >{{fechaNacimientoErrorMensaje}}</span>
+                    </div>
+      </div>
 
     </form>
 
-    </div>
+            </div>
 
-    </center>
+           <div class="card-action cardBorder">
 
-    </div>
+
+           
+           <div class="row">
+
+
+           <div class="input-field col s12 m12 l6">
+            <a class="btn waves-effect botonGeneral" ui-sref="admin_listado_especialistas">
+            volver</a>
+          
+          </div>
+
+          <div class="input-field col s12 m12 l6">
+          <a  class="btn waves-effect botonGeneral modal-trigger" href="#modal1">modificar</a>
+
+      <div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
+          </div>
+
+
+
+         
+
+              <div ng-show="mensajeErrorIncompleto" class="col s12">
+  <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
+</div>
+
+          </div>
+        </div>
+          </div>
+          </div>
+          </div>
+            </div>
+
+
+                 <script>
+$(function(){
+  $('.datepicker').pickadate({
+      monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+      weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+      weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+        selectMonths: true,
+        selectYears: 100, // Puedes cambiarlo para mostrar más o menos años
+        today: 'Hoy',
+        clear: 'Limpiar',
+        close: 'Ok',
+        labelMonthNext: 'Siguiente mes',
+      labelMonthPrev: 'Mes anterior',
+      labelMonthSelect: 'Selecciona un mes',
+      labelYearSelect: 'Selecciona un año',
+      });
+});
+
+
+$(document).ready(function(){
+    $('.modal').modal();
+  });
+</script>
+</main>
+
+          
+
+
+      
+           
+
+            
+        
+

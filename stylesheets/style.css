@@ -99,7 +99,9 @@ width: 100%; }
 .botonGeneralBis {  background-color: #ff8500;  }
 
 
-.estadoResumen span, .estadoResumen button{ float: left; }
+.estadoResumen span, .estadoResumen button{ float: left; margin-left: 15px;}
+
+.estadoResumen {  }
 
 .iconos img { width: 30px;
     float: left; 
@@ -120,9 +122,12 @@ td, th {
   background-color: #ff8500; }
 
 .fondo {
-  background-color: #d1d1d1; }
+  background-color: #00a9ff; }
 
-  .tablaIzq { margin-top: 49px; }
+  .tablaIzq { margin-top: 0px; 
+}
+
+   
 
 .fondo th {
   color: #fff; }
@@ -133,7 +138,9 @@ td, th {
   margin-bottom: 20px; }
 
 .textoPersonal span { float: left; 
-text-align: left;}
+text-align: left;
+margin-left: 15px;
+margin-right: 15px;}
 
 .textUp { text-transform: uppercase;
 font-weight: bold; }
@@ -181,25 +188,7 @@ font-size: 11px;
   border-bottom: 2px solid #ff8500 !important; }
 
 /******************************/
-.modal {
-  width: 50% !important;
-  height: 50% !important; }
 
-.modal-content h5 {
-  padding-top: 12px;
-  color: #00a9ff !important; }
-
-.modal-content p {
-  padding-top: 2px; }
-
-.modal {
-  position: absolute;
-  top: 0;
-  bottom: 1px;
-  left: 0;
-  z-index: 10040;
-  overflow: auto;
-  overflow-y: auto; }
 
   #sidenav-overlay {
       background-color: transparent;
@@ -221,6 +210,16 @@ table { background-color: #fafafa; }
 .editCuadro { background-color: #fafafa;
 margin: 20px;
     padding: 30px; }
+
+.tablaGeneral { background-color: #fff; 
+box-sizing: border-box;
+border: 1px solid #d5d3d3 ;}
+
+.fondoOne { background-color:  #d5d3d3;}
+
+.fondoOne th { color: #333333;
+    font-size: 13px;
+    letter-spacing: 1px; }
 
 
 /******************************************/
@@ -1187,8 +1186,7 @@ nav.nav-center ul li { letter-spacing: 0.5px; }
     font-weight: bold; }
 
 
-.card .card-content {     padding: 23px !important;
-margin-bottom: 40px !important; }
+
 
 .carta { margin-top:38px !important; 
   margin-bottom: 40px !important;
@@ -1198,8 +1196,8 @@ margin-bottom: 40px !important; }
 .cajaAlumno { padding-bottom: 25px !important;
     padding-top: 20px;
     box-sizing: border-box;
-    border: 2px solid #d5d3d3;
-    margin-top: 30px; }
+    border: 2px solid #00a9ff;
+     }
 
 
 
@@ -1300,6 +1298,7 @@ margin-right: 10%;
 
 .botonBuscar { background-color:  #ff8500; 
   margin-top: 20px !important;
+      margin-bottom: 10px;
 }
 
 .resgitro00:hover {
@@ -1314,11 +1313,13 @@ margin-right: 10%;
 .misPac h4 {  
   color:#ff8500; 
   font-weight: bold;
-  border-bottom: 2px solid #b0b0b0; }
+      padding-bottom: 15px;
+    border-bottom: 1px solid #d5d3d3; }
 
-.buscador00 { display: inline-block; width: 250px; }
+.buscador00 { display: inline-block; width: 285px; }
 
-
+.resgitro00 {    border-top: 1px solid #d5d3d3;
+    border-bottom: 1px solid #d5d3d3;}
 
 .botonAgregar01 {
   display: inline-block;
@@ -1388,11 +1389,10 @@ margin-right: 10%;
     background-color: #ff8500 !important;
 }
 
-.boton01 { float: left;
+.boton01 { 
 margin-top: 25px; }
 
-.buscador01 { float: right;
- }
+
 
 
 
@@ -1419,13 +1419,16 @@ font-weight: bold;
 }
 
 
+label.opcion {color:#fff;}
+
+.opcion { color:#fff; }
+
 #chat {
-  
+  margin-top: 38px;
 height:420px;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 0 0 -0.5rem 0;
   background-color: white;
 }
 
@@ -1640,14 +1643,13 @@ border-radius: 33px;
 }
 
 
-.slider .slides { background-color: #fff !important;
-        margin-top: 38px; }
+
 
 /*********************************************/
 
-hr { width: 50%;
-    height: 2px;
-    background-color: #d5d3d3;
+hr { width: 40%;
+    height: 1px;
+    background-color: #b0b0b0;
     border: none; }
 
  @media screen and (max-width: 660px)
@@ -1678,6 +1680,426 @@ hr { width: 50%;
 input.buscadorFechas{ margin-bottom: 2px; }
 
 
+/**************************************/
 
 
-  
+.container .img {
+  width: 100px;
+  height: 100px;
+  background: #333;
+  margin: 20px auto;
+  border-radius: 50%;
+  -webkit-transition: all 400ms ease-out;
+}
+
+.titulosAparte { 
+  font-size: 16px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    margin-right: 5px;
+    margin-left: 5px;
+   }
+
+.linea00 span { margin-left: 10px;
+margin-right: 10px; }
+
+
+.linea00 { padding-bottom: 20px; }
+
+.cardBorder { border-top: 1px solid #b0b0b0 !important;
+background-color: #fafafa !important; }
+
+.cambiContra { padding-bottom: 25px; }
+
+.contenidoBorde { box-sizing: border-box;
+                  border: 1px solid #d5d3d3;
+                  background-color: #fff; }
+
+.espacio { padding-top: 40px; }
+
+.iconCuenta { margin-top: 20px; }
+
+.acordeon { display: initial;  }
+
+
+
+.collapsible-accordion {     background-color: #fff; }
+
+.collapsible-body, .collapsible-header {
+  border-bottom: 1px solid #b0b0b0;
+}
+
+.iconoW { color: #00a9ff;
+    margin-top: -5px; }
+
+.titAparte {     padding-top: 4px; }
+
+
+.buscador td{ padding-left: 25px;
+    padding-right: 25px;
+ }
+
+  @media screen and (max-width: 600px)
+  { 
+  .tablaIzq {
+    margin-bottom: 20px;
+    } }
+
+
+
+.card-input {
+      height: 40px;
+}
+
+.card-input input[type="text"]:not(.browser-default) {
+  height: 40px;
+  padding: 0 16px;
+  margin-bottom: 0;
+  border-bottom: none;
+  width: calc(100% - 72px);
+}
+
+.card-input input[type="text"]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.card-input i {
+  line-height: 50px;
+  margin-right: 8px;
+  vertical-align: top;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+
+
+.buscador01 input[type=text]:focus:not([readonly]),
+.buscador01 input-field input[type=text]:focus {
+  border-bottom: none; 
+    box-shadow: none !important;
+}
+
+
+
+
+
+.fechaIngresar {     margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+        width: 50%; }
+
+
+
+
+.itemsBuscador h5 { font-size: 18px;
+                      color: #ff8500; 
+                      font-weight: bold;
+                      padding-top: 5px;
+                      padding-bottom: 5px;}
+
+
+.btn01 {
+  float: left;
+  margin-left: 25px;
+}
+
+.btn02 { 
+margin-right: 25px;
+float: right; }
+
+.buscarAl {     margin-top: -50px; }
+
+
+
+ul.stepper.horizontal .step-content {     overflow-y: hidden !important; }
+
+.fechHor h5 { margin-top: -35px; }
+
+.picker__date-display, .picker__weekday-display, .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected
+ { background-color: #ff8500 !important; }
+
+.picker__day.picker__day--today { color:#ff8500 !important ; }
+
+.picker__wrap { margin-top: -25px; }
+
+ @media screen and (max-width: 995px)
+ {
+  .fechaIngresar { width: 80% !important; }
+ }
+
+.botonAparteVolver  { margin-top: 30px; }
+
+.b02 {     font-size: 11px !important; }
+
+.tituloDiag {     text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #333333;
+    background-color: #d5d3d3;
+    padding: 16px;
+    /* padding-left: 30px; */
+    text-align: center; }
+
+.bagregar {     font-size: 11px;
+    padding-left: 18px;
+    padding-right: 18px; }
+
+.titNar { color: #ff8500; }
+
+.conjDiag { margin-top: 25px;
+    padding-left: 25px !important; }
+
+.conjDiagBis { margin-top: 60px; }
+
+.bisF th{ text-align: center; }
+
+.tablaMarg { margin-top: 53px;
+  margin-bottom: 30px;
+    box-sizing: border-box;
+    border: 1px solid #d5d3d3; }
+
+.tablaGeneralBis { box-sizing: border-box;
+    border: 1px solid #d5d3d3;
+        padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 30px !important;
+   }
+
+.botScroll { height: 400px;  overflow-y: scroll; }
+
+.pregunta{ text-align: right; border: 1px solid  #00a9ff; padding:5px;}
+.respuesta { border: 1px solid #b0b0b0 ;margin-bottom:5px; padding:5px;}
+
+.margMenos { margin-bottom: 0px !important; }
+
+
+input[type=text].invalid { border-bottom: 1px solid #b0b0b0;
+    box-shadow: 0 1px 0 0 #b0b0b0; }
+
+.butonComp {     margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 13px !important; }
+
+.linearBusc {     margin-left: 10px !important;
+    margin-right: 10px !important; }
+
+
+.buscador03 {
+    display: inline-block;
+        width: 100%;
+    margin-bottom: 15px;
+}
+
+.bisTitulo { padding-bottom: 20px; }
+
+.contenidoTabla { margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #d5d3d3; }
+
+.iconosEsp img {     width: 50px;
+    height: 50px; }
+
+
+    .buscador05 {
+    display: inline-block;
+    width: 260px;
+}
+
+.tabla01 thead  { height: 220px !important; }
+
+
+@media screen and (max-width: 992px)
+{
+.tabla01 tr {  height: 220px; } }
+
+@media screen and (max-width: 350px)
+{
+.buscador05 {
+    display: inline-block;
+    width: 230px;
+      
+}
+}
+
+
+.buscador05 input {
+    
+        font-size: 13px !important;
+}
+
+
+
+.titulo04 { 
+    text-transform: uppercase;
+    color: #00a9ff;
+    font-weight: bold;
+} 
+
+
+.cajaAlumno:after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: #fff;
+    border: 2px solid #d5d3d3;
+  z-index: -1;
+}
+
+.slider .slides li {     margin-top: 25px !important; }
+
+.tituloTexto { font-size: 19px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase; }
+
+
+.bisAct ul { margin-top: -15px; }
+
+.bisAct ul li { margin-left: -15px; }
+
+#textarea2 {   width: 50%; }
+
+@media screen and (max-width: 900px)
+{ #textarea2 {   width: 80% !important; } }
+
+.parrafo {     color: #000;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 50px; }
+
+.title-bgbis {  background-color:  #00a9ff;
+  color:#fff;
+    padding-left: 8px;
+    letter-spacing: 2px;
+    padding-right: 8px; }
+
+.sinEstilo {
+  background-color: #d5d3d3;
+    border-radius: 50px;
+    padding: 9px 15px;
+    color: #000;
+} 
+
+
+@media only screen and (max-width: 992px)
+{
+.alto { height: 290px; }
+.altoFondo tr { height:290px; }
+}
+
+
+
+
+
+@media only screen and (max-width: 992px)
+{
+.tablaSegunda table.responsive-table thead  {
+    border: 0;
+    border-right: 1px solid #d0d0d0;
+    height: 290px !important;
+} 
+}
+
+.espacioNo { margin-bottom: 0px !important;  }
+
+.separador { margin-top: 30px; margin-bottom: 30px; }
+
+.espacioEntre { margin-top: 25px; }
+
+.container.anchoMinimo { width: 50% !important; }
+
+@media only screen and (max-width: 992px)
+{
+  .container.anchoMinimo { width: 80% !important; }
+}
+
+
+.separaCostado { margin-left: 100px;
+    margin-right: 100px; }
+
+
+@media only screen and (max-width: 992px)
+{  .separaCostado { margin-left: 20px;
+    margin-right: 20px; }
+
+}
+
+.separaCostado input, .separaCostado label { 
+      text-align: left; }
+
+
+
+  .cardBorderNo {
+    margin-top: 30px; 
+   }
+
+.espacioYBorde {     padding-left: 30px !important;
+    padding-right: 30px !important;
+ }
+
+ .areaTexto {     height: 16rem !important; }
+
+ .separaLabel label {     padding-bottom: 5px; }
+
+ .separaLabel { margin-top: 25px; }
+
+
+ .container { width: 80% !important; }
+
+ @media only screen and (max-width: 999px){
+ .container { width: 90% !important; }
+ }
+
+ .slider .slides { background-color: #fff !important;
+        margin-top: 38px; }
+
+
+.espacioGeneral { padding: 25px !important;}
+
+.espaciadoArriba { margin-top: 38px; }
+
+
+.card-contentBis { padding: 23px !important;
+margin-bottom: 40px !important;  }
+
+.card-contentDos { background-color: #fff; }
+
+.card .card-content {     padding: 23px !important;
+margin-bottom: 40px !important; 
+background-image: url("../img/fondo02.png"); 
+background-repeat: repeat-x repeat-y;}
+
+
+.claseImportante {     background-color: #fff;
+    /* padding-bottom: 25px; */
+    padding: 25px;
+    margin-bottom: 0px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px; }
+
+.parrafoBis {
+    color: #000;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 30px !important; 
+}
+
+
+.margenL {     margin-bottom: 40px; }
+
+.textoInformativo h4 { color:#00a9ff;
+font-size: 25px; }
+
+.textoInformativo p { text-align: center;
+padding: 25px; }
+
+

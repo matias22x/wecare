@@ -1,37 +1,73 @@
-<div class="section">
-<center>
+<main>
+  <div class="section"></div>
+  <div class="container center">
 
-<div class="container" style="width: 50%;">
+      
+     
+      <div class="card">
+        <div class="card-content">
 
-<div class="row editCuadro">
-<form class="col s12">
+        <div class="contenidoBorde">
 
-  <div class="input-field col s12">
-    <p id="dni" ><b>TITULO</b>: {{consejo.titulo}}</p>
-  </div>
+          <div class="separador">
+          <div class="row espacioNo">
 
-  <div class="input-field col s12">
-    <p id="dni" ><b>DESCRIPCION</b>: {{consejo.descripcion}}</p>
-  </div>
+          <div class="col s12 m12 l12">
+           <h5 class="titulosAparte center contenidoUsuario">Título</h5>
+          
+          <span>{{consejo.titulo}}</span>
+           </div>
+           </div>
+
+         </div>
+
+           <div class="row">
+
+           <div class="col s12 m12 l12 espacioYBorde center">
+          <h5 class="titulosAparte center contenidoUsuario">Descripción</h5>
+          
+          <span>{{consejo.descripcion}}</span>
+          </div>
+          
+         
+
+         
+          </div>
+
+        
+          
+
+           <div class="card-action cardBorder">
 
 
-<div class="container" style="width: 320px">
-<center>
-
-  <a class="col s3 waves-effect waves-light btn btn-small botonAgregar" ui-sref="admin_editar_consejo({id: consejo._id})">editar</a>
-  <div class="col s1"></div>
-  <a class="col s3 waves-effect waves-light btn btn-small botonAgregar" ui-sref="admin_borrar_consejo({id: consejo._id})">borrar</a>
-  <div class="col s1"></div>
-  <a class="col s3 waves-effect waves-light btn btn-small botonAgregar" ui-sref="admin_listado_consejos">volver</a>
-
-</center>
-</div>
+           
+           <div class="row">
 
 
-</form>
+           <div class="input-field col s4 m4 l4">
+           <a class="waves-effect waves-light btn btn-small botonGeneral" ui-sref="admin_listado_consejos">volver</a>
+          
+          </div>
 
-</div>
+          <div class="input-field col s4 m4 l4">
+          <a class="waves-effect waves-light btn btn-small botonGeneral" ui-sref="admin_borrar_consejo({id: consejo._id})">borrar</a>
+          </div>
 
-</center>
+          <div class="input-field col s4 m4 l4">
+         <a class="waves-effect waves-light btn btn-small botonGeneral" ui-sref="admin_editar_consejo({id: consejo._id})">editar</a>
+              </div>
 
-</div>
+             
+
+          </div>
+        </div>
+          </div>
+          </div>
+          </div>
+           </div>
+            </div>
+          </main>
+
+
+
+
