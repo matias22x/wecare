@@ -59,23 +59,9 @@
                   <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_alumno({id: alumno._id})"><i class="material-icons">visibility</i></a>
                   <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
                   <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear" data-target='demoModal' modal><i class="material-icons">clear</i></a>  <!--ui-sref="admin_borrar_alumno({id: alumno._id})"-->
-                  <a ng-if="!alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " ui-sref="admin_habilitar_alumno({id: alumno._id})"><i class="material-icons">add</i></a>
+                  <a ng-if="!alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit"  data-target='demoModalDos' modal><i class="material-icons">add</i></a> <!--ui-sref="admin_habilitar_alumno({id: alumno._id})"-->
 
-                  <!-- Modal Structure -->
-                  <div id="modal{{alumno.indexKey}}" class="modal modal-fixed-footer fade" role="dialog">
-                    <div class="modal-content">
-                      <h5>¿Está seguro que lo desea eliminar?</h5>
-                      <p>{{alumno.dni}}</p>
-                      <p>{{alumno.nombre}}</p>
-                      <p>{{alumno.curso}}</p>
-                      <p>{{alumno.direccion}}</p>
-                      <p>{{alumno.fecha_nacimiento}}</p>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                    </div>
-                  </div>
+                
 
                 </td>
               </tr>
@@ -104,6 +90,29 @@
 <div id="demoModal" class="modal" >
     <div class="modal-content modalTitulo center">
         <h4>¿Está seguro que lo desea eliminar?</h4>
+        <span>{{alumno.dni}}</span>
+        <span>{{alumno.nombre}}</span>
+        <span>{{alumno.curso}}</span>
+        <span>{{alumno.direccion}}</span>
+        <span>{{alumno.fecha_nacimiento}}</span>
+        <p>JKASFHKSFHKLSDHFKHSDKFH</p>
+    </div>
+    <div class="modal-footer">
+        <div class="row sinEspacio center">
+        <div class="col s6 m6 l6 ">
+        <a href="#/admin_listado_alumnos" class="modal-action modal-close btn botonGeneral flotarIzq">Volver</a>
+        </div>
+        <div class="col s6 m6 l6 ">
+        <a href="#!" class="modal-action modal-close btn botonGeneral">Aceptar</a>
+        </div>
+        
+        </div>
+    </div>
+</div>
+
+<div id="demoModalDos" class="modal" >
+    <div class="modal-content modalTitulo center">
+        <h4>¿Está seguro que lo desea habilitar?</h4>
         <span>{{alumno.dni}}</span>
         <span>{{alumno.nombre}}</span>
         <span>{{alumno.curso}}</span>
