@@ -30,6 +30,7 @@ angular.module('wecareApp')
       }
 
   }
+}
 })
   .controller('especialistaHomeController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
     console.log("especialistaHomeController");
