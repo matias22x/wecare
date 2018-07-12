@@ -58,7 +58,7 @@
                 <td>
                   <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_alumno({id: alumno._id})"><i class="material-icons">visibility</i></a>
                   <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
-                  <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="admin_borrar_alumno({id: alumno._id})"><i class="material-icons">clear</i></a>
+                  <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear" data-target='demoModal' modal><i class="material-icons">clear</i></a>  <!--ui-sref="admin_borrar_alumno({id: alumno._id})"-->
                   <a ng-if="!alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " ui-sref="admin_habilitar_alumno({id: alumno._id})"><i class="material-icons">add</i></a>
 
                   <!-- Modal Structure -->
@@ -99,5 +99,16 @@
     </div>
   </div>
   </div>
+
+  <!-- Modal Structure -->
+<div id="demoModal" class="modal">
+    <div class="modal-content">
+        <h4>Modal header</h4>
+        <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
 </main>
 
