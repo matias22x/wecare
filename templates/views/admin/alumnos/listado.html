@@ -21,6 +21,7 @@
                 <th>CURSO</th>
                 <th>DIRECCION</th>
                 <th>FECHA DE NACIMIENTO</th>
+                <th>ESTADO</th>
                 <th>ACCIONES</th>
               </tr>
             </thead>
@@ -32,11 +33,12 @@
                 <td>{{alumno.curso}}</td>
                 <td>{{alumno.direccion}}</td>
                 <td>{{alumno.fecha_nacimiento | date:'dd-MM-yyyy'}}</td>
+                <td><span ng-if="alumno.habilitado">Habilitado</span><span ng-if="!alumno.habilitado">Desabilitado</span></td>
                 <td>
                   <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_alumno({id: alumno._id})"><i class="material-icons">visibility</i></a>
-                  <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
-                  <a class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="admin_borrar_alumno({id: alumno._id})"><i class="material-icons">clear</i></a>
-
+                  <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
+                  <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="admin_borrar_alumno({id: alumno._id})"><i class="material-icons">clear</i></a>
+                  <a ng-if="!alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " ui-sref="admin_habilitar_alumno({id: alumno._id})"><i class="material-icons">add</i></a>
 
                   <!-- Modal Structure -->
                   <div id="modal{{alumno.indexKey}}" class="modal modal-fixed-footer fade" role="dialog">

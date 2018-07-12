@@ -79,8 +79,15 @@ angular.module('wecareApp')
 
     alumnoService.getAllAlumnos()
       .then(function(alumnos) {
-        $scope.listaCompleta = alumnos.data;
-        $scope.listadoAlumnos = alumnos.data;
+        $scope.listaCompleta = [];
+        angular.forEach(alumnos.data, function(value, key) {
+          userService.getUser(value.user)
+            .then(function(usuario) {
+              value.habilitado = usuario.data.habilitado;
+            }).catch($log.error);
+            $scope.listaCompleta.push(value);
+        })
+        $scope.listadoAlumnos = $scope.listaCompleta;
         $scope.paginInit($scope.listadoAlumnos);
       }).catch($log.error);
 
@@ -297,6 +304,7 @@ angular.module('wecareApp')
 
         userService.getUser($scope.alumno.user)
           .then(function(user) {
+            console.log(user);
             $scope.user = user.data;
             $scope.user.createdAt = $filter('date')(new Date($scope.user.createdAt), "EEEE d 'de' LLLL 'de' yyyy");
             $scope.user.updatedAt = $filter('date')(new Date($scope.user.updatedAt), "EEEE d 'de' LLLL 'de' yyyy");
@@ -312,25 +320,45 @@ angular.module('wecareApp')
       .then(function(alumnoABorrar) {
         $scope.alumno = alumnoABorrar.data;
         $scope.alumno.fecha_nacimiento = $filter('date')(new Date($scope.alumno.fecha_nacimiento), "EEEE d 'de' LLLL 'de' yyyy");
+        userService.getUser($scope.alumno.user)
+          .then(function(user) {
+            $scope.user = user.data;
+          }).catch($log.error);
       }).catch($log.error);
 
     $scope.borrarAlumno = function() {
-      var id = $scope.alumno._id;
-      var userId = $scope.alumno.user;
-      alumnoService.deleteAlumnoById(id)
-        .then(function() {
-          console.log('userId', userId);
-          return userService.deleteUserById(userId);
-        })
-        .then(function(userEliminado) {
-          console.log(userEliminado.data);
-          console.log('LISTO', userEliminado);
+      $scope.user.habilitado = false;
+      userService.putUserById($scope.user._id, $scope.user)
+        .then(function(usuarioModificado) {
+          console.log('LISTO',usuarioModificado);
           $location.path("/admin_listado_alumnos");
-        })
-        .catch($log.error);
-
+        }).catch($log.error);
     };
-  }).controller('listadoEspecialistasController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, especialistaService, userService) {
+  })
+  .controller('habilitarAlumnosController', function($auth, $scope, $rootScope, $state, userData, $filter,  $log, $http, $translate, $stateParams, $location, config, alumnoService, userService) {
+
+    var id = $stateParams.id;
+
+    alumnoService.getAlumno(id)
+      .then(function(alumnoABorrar) {
+        $scope.alumno = alumnoABorrar.data;
+        $scope.alumno.fecha_nacimiento = $filter('date')(new Date($scope.alumno.fecha_nacimiento), "EEEE d 'de' LLLL 'de' yyyy");
+        userService.getUser($scope.alumno.user)
+          .then(function(user) {
+            $scope.user = user.data;
+          }).catch($log.error);
+      }).catch($log.error);
+
+    $scope.habilitarAlumno = function() {
+      $scope.user.habilitado = true;
+      userService.putUserById($scope.user._id, $scope.user)
+        .then(function(usuarioModificado) {
+          console.log('LISTO',usuarioModificado);
+          $location.path("/admin_listado_alumnos");
+        }).catch($log.error);
+    };
+  })
+  .controller('listadoEspecialistasController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, especialistaService, userService) {
 
     console.log(userData.get('user')); //aca adentro estan los datos del usuario
 

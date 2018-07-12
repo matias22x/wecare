@@ -73,6 +73,12 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             templateUrl: 'templates/views/admin/alumnos/borrar.html', //ubicacion del html
             controller: 'borrarAlumnosController' //nombre controller
         })
+        .state('admin_habilitar_alumno', {
+            cache: false,
+            url: '/admin_habilitar_alumno/:id?', // url que va arriba
+            templateUrl: 'templates/views/admin/alumnos/habilitar.html', //ubicacion del html
+            controller: 'habilitarAlumnosController' //nombre controller
+        })
         .state('admin_listado_consejos', {
             cache: false,
             url: '/admin_listado_consejos', // url que va arriba
