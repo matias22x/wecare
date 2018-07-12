@@ -1419,9 +1419,13 @@ font-weight: bold;
 }
 
 
-label.opcion {color:#fff;}
+label.opcion {color:#fff;
+cursor: pointer;}
 
 .opcion { color:#fff; }
+
+.opcionDos { color:#000;
+background-color: #fff; }
 
 #chat {
   margin-top: 38px;
