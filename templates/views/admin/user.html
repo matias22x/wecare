@@ -1,102 +1,106 @@
 <main>
   <div class="section"></div>
-  <div class="container">
-    <div class="col s12">
+  <div class="container center">
+
+      
+     
       <div class="card">
         <div class="card-content">
 
-          <h3>Datos de usuario</h3>
+        <div class="contenidoBorde">
 
-          <table class="highlight centered">
-            <thead>
-              <tr class="fondo">
-                <!-- ORDENAR EN CSS -->
-                <th style="width:33%;">Datos</th>
-                <th style="width:33%;"></th>
-                <th style="width:33%;"></th>
+        <i class="large material-icons iconCuenta">account_circle</i>
 
-              </tr>
-            </thead>
+          <h5 class="center titulo03 titLinea">Datos de administrador</h5>
+          <hr>
+          <div class="row linea00 espacio">
+           <div class="col s12 m2 l2">
+          <h5 class="titulosAparte center contenidoUsuario">Nombre</h5>
+          
+          <span>{{usuario.username}}</span>
+          </div>
 
-            <tbody>
-              <tr>
-                <td>
-                  <b>user</b><br>
-                  <span>{{usuario.username}}</span>
-                </td>
-                <td>
-                  <b>email</b><br>
-                  <span>{{usuario.email}}</span>
-                </td>
-                <td>
-                  <b>tipo</b><br>
-                  <span>{{usuario.tipo}}</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <b>creado el</b><br>
-                  <span>{{usuario.createdAt}}</span>
-                </td>
-                <td>
-                  <b>ultima modificacion</b><br>
-                  <span>{{usuario.updatedAt}}</span>
-                </td>
-                <td>
-                  <b>id</b><br>
-                  <span>{{usuario._id}}</span>
-                </td>
-              </tr>
+          <div class="col s12 m3 l3">
+          <h5 class="titulosAparte center contenidoUsuario">Correo electrónico</h5>
+          
+          <span>{{usuario.email}}</span>
+          </div>
 
-            </tbody>
-          </table>
-          <table class="highlight centered">
-            <thead>
-              <tr class="fondo">
-                <!-- ORDENAR EN CSS -->
-                <th style="width:33%;">Cambiar contraseña</th>
-                <th style="width:33%;"></th>
-                <th style="width:33%;"></th>
+          <div class="col s12 m2 l2">
+          <h5 class="titulosAparte center contenidoUsuario">Tipo</h5>
+          
+          <span>{{usuario.tipo}}</span>
+          </div>
+          
 
-              </tr>
-            </thead>
+           
+          <div class="col s12 m2 l2">
+          <h5 class="titulosAparte center contenidoUsuario">Creado el</h5>
+          
+          <span>{{usuario.createdAt}}</span>
+          </div>
 
-            <tbody>
-              <tr>
-                <td>
+          <div class="col s12 m3 l3">
+          <h5 class="titulosAparte center contenidoUsuario">Última modificación</h5>
+          
+          <span>{{usuario.updatedAt}}</span>
+          </div>
 
-                  <div class="input-field col s12">
-                    <input id="contrasenia" name="contrasenia" type="password" class="validate" ng-model="contraseniaNueva" ng-keypress="passwordError = false; passwordCorrecto = false;" required  oninvalid="return false;" autocomplete="off" />
-                    <label for="contrasenia">CONTRASEÑA</label>
+          
+          </div>
 
-                  </div>
+           <div class="card-action cardBorder">
+           <h5 class="center titulo03 cambiContra">Cambiar contraseña</h5>
+           <div class="row">
+           <div class="input-field col s6 m4 l4">
+          <input id="contrasenia" name="contrasenia" type="password" class="validate" ng-model="contraseniaNueva" ng-keypress="passwordError = false; passwordCorrecto = false;" required  oninvalid="return false;" autocomplete="off" />
+          <label for="contrasenia">Contraseña</label>
+          </div>
 
-                </td>
-                <td>
+          <div class="input-field col s6 m4 l4">
+          <input id="contraseniaBis" name="contraseniaBis" type="password" class="validate" ng-model="contraseniaNuevaBis" ng-keypress="passwordError = false; passwordCorrecto = false;" required  oninvalid="return false;" autocomplete="off" />
+           <label for="contraseniaBis">Repita la contraseña</label>
+          </div>
 
-                  <div class="input-field col s12">
-                    <input id="contraseniaBis" name="contraseniaBis" type="password" class="validate" ng-model="contraseniaNuevaBis" ng-keypress="passwordError = false; passwordCorrecto = false;" required  oninvalid="return false;" autocomplete="off" />
-                    <label for="contraseniaBis">REPITA LA CONTRASEÑA</label>
+          <div class="input-field col s12 m4 l4">
+          <button ng-click="cambiarClave()" class='col s12 btn btn-large waves-effect boton'>Confirmar</button>
+                  
+      <span style=" color:red;" id="passwordErrorSpan" ng-show="passwordError" >{{contraseniaErrorMensaje}}</span>
+      <span style=" color:green;" id="passwordCorrectoSpan" ng-show="passwordCorrecto" >{{contraseniaCorrectoMensaje}}</span>
+              </div>
 
-                  </div>
-                </td>
-                <td>
-                  <center>
-                    <button ng-click="cambiarClave()" class='col s12 btn btn-large waves-effect boton'>Cambiar</button>
-                  </center>
-                    <span style=" color:red;" id="passwordErrorSpan" ng-show="passwordError" >{{contraseniaErrorMensaje}}</span>
-                    <span style=" color:green;" id="passwordCorrectoSpan" ng-show="passwordCorrecto" >{{contraseniaCorrectoMensaje}}</span>
-                </td>
-
-              </tr>
-
-
-            </tbody>
-          </table>
-
-
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</main>
+
+           
+           </div>
+
+          
+          </div>
+          </div>
+          </div>
+            </div>
+          </main>
+
+          
+
+          
+
+          
+
+          
+
+          
+
+           
+          
+
+
+
+
+      
+           
+
+            
+        
+

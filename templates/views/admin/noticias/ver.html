@@ -1,29 +1,72 @@
-<div class="section">
-<center>
+<main>
+  <div class="section"></div>
+  <div class="container center">
 
-<div class="container" style="width: 50%;">
+      
+     
+      <div class="card">
+        <div class="card-content">
 
-<div class="row editCuadro">
-<form class="col s12">
+        <div class="contenidoBorde">
 
-  <div class="input-field col s12">
-    <p id="dni" ><b>TITULO</b>: {{noticia.titulo}}</p>
-  </div>
+          <div class="separador">
+          <div class="row espacioNo">
 
-  <div class="input-field col s12">
-    <p id="dni" ><b>DESCRIPCIÓN</b>: {{noticia.descripcion}}</p>
-  </div>
+          <div class="col s12 m12 l12">
+           <h5 class="titulosAparte center contenidoUsuario">Título</h5>
+          
+          <span>{{noticia.titulo}}</span>
+           </div>
+           </div>
 
-<div class="container" style="width: 320px">
-<center>
-  <a class="col s3 waves-effect waves-light btn btn-small botonAgregar" ui-sref="admin_listado_noticias">volver</a>
-</center>
-</div>
+         </div>
 
-</form>
+           <div class="row">
 
-</div>
+           <div class="col s12 m12 l12 espacioYBorde center">
+          <h5 class="titulosAparte center contenidoUsuario">Descripción</h5>
+          
+          <span>{{noticia.descripcion}}</span>
+          </div>
+          
+         
 
-</center>
+         
+          </div>
 
-</div>
+        
+          
+
+           <div class="card-action cardBorder">
+
+
+           
+           <div class="row">
+
+
+           <div class="input-field col s4 m4 l4">
+           <a class="waves-effect waves-light btn btn-small botonGeneral" ui-sref="admin_listado_noticias">volver</a>
+          
+          </div>
+
+          <div class="input-field col s4 m4 l4">
+          <a class="waves-effect waves-light btn btn-small botonGeneral" ui-sref="admin_borrar_noticia({id: noticia._id})">borrar</a>
+          </div>
+
+          <div class="input-field col s4 m4 l4">
+         <a class="waves-effect waves-light btn btn-small botonGeneral" ui-sref="admin_editar_noticia({id: noticia._id})">editar</a>
+              </div>
+
+              
+
+          </div>
+        </div>
+          </div>
+          </div>
+          </div>
+           </div>
+            </div>
+          </main>
+
+
+

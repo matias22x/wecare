@@ -1,37 +1,79 @@
-   <div class="fondoBlanco">
+<main>
+  <div class="section"></div>
+  <div class="container center anchoMinimo">
 
+      
+     
+      <div class="card">
+        <div class="card-content">
 
-<div class="container" style="width: 50%;">
-<center>
-<div class="row editCuadro">
-    <form class="col s12" name="form">
+        <div class="contenidoBorde">
+        <h5 class="center titulo03 titAparte">Editar Noticia</h5>
+         
+          <div class="separador">
+          
 
-      <div class="input-field col s12">
-        <input id="titulo" name="titulo" type="text" class="validate" ng-model="consejo.titulo" required autocomplete="off" />
-        <label for="titulo">TITULO</label>
+            <form class="col s12 l12 m12" name="form">
+
+      <div class="input-field separaCostado">
+        <input id="titulo" name="titulo" type="text" class="validate" ng-model="consejo.titulo"/>
+        <label for="titulo">Titulo</label>
         <span style=" color:red;" id="tituloErrorSpan" ng-show="tituloError" >{{tituloErrorMensaje}}</span>
+        
       </div>
 
-      <div class="input-field col s12">
-        <textarea id="descripcion" name="descripcion"  class="validate" ng-model="consejo.descripcion"  required  autocomplete="off" ></textarea>
-        <label for="descripcion">DESCRIPCION</label>
+      <div class="input-field separaCostado separaLabel">
+      <textarea id="descripcion" name="descripcion" ng-model="consejo.descripcion"  required  autocomplete="off"  class="validate areaTexto"/></textarea>
+        <label for="descripcion">Descripción</label>
         <span style=" color:red;" id="descripcionErrorSpan" ng-show="descripcionError" >{{descripcionErrorMensaje}}</span>
-      </div>
+        </div>
 
-
-     <div class="container" style="width: 250px">
-     <center>
-       <div class="col s12"><b>¿Está seguro de modificar el consejo?</b></div>
-       <a class="col s5 btn btn-large waves-effect botonAgregar" ui-sref="admin_listado_consejos">volver</a>
-       <div class="col s2"></div>
-       <button ng-click="submit()" class='col s5 btn btn-large waves-effect boton'>modificar</button>
-     </center>
-    </div>
+      
 
     </form>
 
-    </div>
+      </div>
+            
 
-    </center>
+           <div class="card-action cardBorder">
 
-    </div>
+
+           
+           <div class="row">
+
+
+           <div class="input-field col s12 m12 l6">
+            <a class="btn waves-effect botonGeneral" ui-sref="admin_listado_consejos">
+            volver</a>
+          
+          </div>
+
+          <div class="input-field col s12 m12 l6">
+          <a  class="btn waves-effect botonGeneral"  ng-click="submit()">guardar</a>
+
+     
+          </div>
+
+            
+</div>
+          </div>
+        </div>
+          </div>
+          </div>
+          </div>
+            </div>
+
+
+
+</main>
+
+          
+
+
+      
+           
+
+            
+        
+
+
