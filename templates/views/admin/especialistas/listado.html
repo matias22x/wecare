@@ -54,23 +54,10 @@
                 <td>
                   <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_especialista({id: especialista._id})"><i class="material-icons">visibility</i></a>
                   <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_especialista({id: especialista._id})"><i class="material-icons">edit</i></a>
-                  <a class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="admin_borrar_especialista({id: especialista._id})"><i class="material-icons">clear</i></a>
+                  <a class="waves-effect waves-light btn-small btn-floating botonClear "  data-target='demoModal' modal><i class="material-icons">clear</i></a> <!-- ui-sref="admin_borrar_especialista({id: especialista._id})"-->
 
 
-                  <!-- Modal Structure -->
-                  <div id="modal{{especialista.indexKey}}" class="modal modal-fixed-footer fade" role="dialog">
-                    <div class="modal-content">
-                      <h5>¿Está seguro que lo desea eliminar?</h5>
-                      <p>{{especialista.dni}}</p>
-                      <p>{{especialista.nombre}}</p>
-                      <p>{{especialista.direccion}}</p>
-                      <p>{{especialista.fecha_nacimiento}}</p>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                    </div>
-                  </div>
+                 
 
                 </td>
               </tr>
@@ -95,5 +82,25 @@
     </div>
   </div>
   </div>
+    <div id="demoModal" class="modal" >
+    <div class="modal-content modalTitulo center">
+        <h4>¿Está seguro que lo desea eliminar?</h4>
+        <p>{{especialista.dni}}</p>
+        <p>{{especialista.nombre}}</p>
+        <p>{{especialista.direccion}}</p>
+        <p>{{especialista.fecha_nacimiento}}</p>
+    </div>
+    <div class="modal-footer">
+        <div class="row sinEspacio center">
+        <div class="col s6 m6 l6 ">
+        <a ui-sref="admin_listado_especialistas" class="modal-action modal-close btn botonGeneral flotarIzq">Volver</a>
+        </div>
+        <div class="col s6 m6 l6 ">
+        <a href="#!" class="modal-action modal-close btn botonGeneral">Aceptar</a>
+        </div>
+        
+        </div>
+    </div>
+</div>
 </main>
 

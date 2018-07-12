@@ -1,33 +1,77 @@
-<div class="section">
-  <center>
+<main>
+  <div class="section"></div>
+  <div class="container center anchoMinimo">
 
-    <div class="container" style="width: 50%;">
+      
+     
+      <div class="card">
+        <div class="card-content">
 
-      <div class="row editCuadro">
+        <div class="contenidoBorde">
+        <h5 class="center titulo03 titAparte">Agregar Noticia</h5>
+         
+          <div class="separador">
+          
 
-        <form class="col s12" name="form">
+            <form class="col s12 l12 m12" name="form">
 
-          <div class="input-field col s12">
-            <input id="titulo" name="titulo" type="text" class="validate" ng-model="noticiaNueva.titulo"/>
-            <label for="titulo">TITULO</label>
-          </div>
-
-          <div class="input-field col s12">
-            <textarea id="descripcion" name="descripcion" type="descripcion" class="validate" ng-model="noticiaNueva.descripcion"/></textarea>
-            <label for="descripcion">DESCRIPCIÓN</label>
-          </div>
-
-          <div class="container" style="width: 250px">
-            <center>
-              <button ng-click="submit()" class='col s12 btn btn-large waves-effect boton'>Guardar Noticia</button>
-            </center>
-          </div>
-
-
-        </form>
-
+      <div class="input-field separaCostado">
+        <input id="titulo" name="titulo" type="text" class="validate" ng-model="noticiaNueva.titulo"/>
+            <label for="titulo">Título</label>
+        
       </div>
 
-  </div>
-  </center>
+      <div class="input-field separaCostado separaLabel">
+      <textarea id="descripcion" name="descripcion" type="descripcion" class="validate materialize-textarea" ng-model="noticiaNueva.descripcion"/></textarea>
+            <label for="descripcion">Descripción</label>
+        </div>
+
+      
+
+    </form>
+
+      </div>
+            
+
+           <div class="card-action cardBorder">
+
+
+           
+           <div class="row">
+
+
+           <div class="input-field col s12 m12 l6">
+            <a class="btn waves-effect botonGeneral" ui-sref="admin_listado_noticias">
+            volver</a>
+          
+          </div>
+
+          <div class="input-field col s12 m12 l6">
+          <a  class="btn waves-effect botonGeneral"  ng-click="submit()">guardar</a>
+
+     
+          </div>
+
+            
 </div>
+          </div>
+        </div>
+          </div>
+          </div>
+          </div>
+            </div>
+
+
+
+</main>
+
+          
+
+
+      
+           
+
+            
+        
+
+

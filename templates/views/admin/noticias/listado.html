@@ -50,7 +50,7 @@
                 <td>
                   <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_noticia({id: noticia._id})"><i class="material-icons">visibility</i></a>
                   <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_noticia({id: noticia._id})"><i class="material-icons">edit</i></a>
-                  <a class="waves-effect waves-light btn-small btn-floating botonClear " ui-sref="admin_borrar_noticia({id: noticia._id})"><i class="material-icons">clear</i></a>
+                  <a class="waves-effect waves-light btn-small btn-floating botonClear "  data-target='demoModal' modal><i class="material-icons">clear</i></a> <!-- ui-sref="admin_borrar_noticia({id: noticia._id})" -->
 
 
                   
@@ -78,6 +78,24 @@
     </div>
   </div>
   </div>
+  <div id="demoModal" class="modal" >
+    <div class="modal-content modalTitulo center">
+        <h4>¿Está seguro que lo desea eliminar?</h4>
+        <p>{{noticia.titulo}}</p>
+        
+    </div>
+    <div class="modal-footer">
+        <div class="row sinEspacio center">
+        <div class="col s6 m6 l6 ">
+        <a ui-sref="admin_listado_noticias" class="modal-action modal-close btn botonGeneral flotarIzq">Volver</a>
+        </div>
+        <div class="col s6 m6 l6 ">
+        <a href="#!" class="modal-action modal-close btn botonGeneral">Aceptar</a>
+        </div>
+        
+        </div>
+    </div>
+</div>
 </main>
 
 
