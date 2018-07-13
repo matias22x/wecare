@@ -56,10 +56,10 @@
               <tbody>
                 <tr class="buscador">
                   <td>
-                    <input id="buscadorDesde" type="date" class="validate buscadorFechas placeholderclass" placeholder="">
+                    <input id="buscadorDesde" type="date" class="datepicker validate buscadorFechas placeholderclass" placeholder="">
                     <label for="buscadorDesde" class="textBlack" >Fecha desde</label>
                     <br>
-                    <input id="buscadorHasta" type="date" class="validate buscadorFechas placeholderclass"  placeholder="">
+                    <input id="buscadorHasta" type="date" class="datepicker validate buscadorFechas placeholderclass"  placeholder="">
                     <label for="buscadorHasta" class="textBlack" >Fecha hasta</label>
                     <br>
                     <a class="btn botonBuscar">Buscar</a>
@@ -99,25 +99,26 @@
                         <span class="textUp">Estado de ánimo: &nbsp</span>
                         <img src="img/confused.png" />
                         <img src="img/angry.png" />
+                        <img src="img/happy.png" />
+                        <img src="img/sad.png" />
                       </br> </br>
                       </div>
-                      <div class="col s12 iconos">
-                        <span class="textUp">Lugares: &nbsp</span>
-                         <img src="img/escuela.png" />
-                        <img src="img/casa.png" />
-                        </br> </br>
-                      </div>
-                      <div class="col s12 iconos">
+                        <div class="col s12 iconos">
                         <span class="textUp">Actividades: &nbsp</span>
-                        <img src="img/futbol.png" />
-                        <img src="img/zzz.png" />
+                        <img src="img/bicicleta.png" />
+                        <img src="img/dormir.png" />
                         <img src="img/consola-de-juegos.png" />
+                        <img src="img/libro-abierto.png" />
+                        <img src="img/disco.png" />
+                        <img src="img/paisaje-urbano.png" />
                         </br> </br>
                       </div>
                       <div class="col s12 iconos">
                         <span class="textUp">Con quien estuvo: &nbsp</span>
                        <img src="img/chico.png" />
                        <img src="img/familia.png" />
+                       <img src="img/pareja.png" />
+                       <img src="img/pareja2.png" />
                        </br> </br>
                       </div>
                     </div>
@@ -143,4 +144,35 @@
     </div>
 
 
+  <script>
+$(function(){
+  $('.datepicker').pickadate({
+      monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+      weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+      weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+        selectMonths: true,
+        selectYears: 100, // Puedes cambiarlo para mostrar más o menos años
+        today: 'Hoy',
+        clear: 'Limpiar',
+        close: 'Ok',
+        labelMonthNext: 'Siguiente mes',
+      labelMonthPrev: 'Mes anterior',
+      labelMonthSelect: 'Selecciona un mes',
+      labelYearSelect: 'Selecciona un año',
+      });
+});
+
+
+$(document).ready(function() {
+      const input = $('#lunchtime');
+      // initialize timepicker
+      input.pickatime();
+      // get picker
+      const picker = input.pickatime('picker');
+      // set initial value using arrays formatted as [HOUR,MINUTE].
+      picker.set('select', [3,0]); // <-- picker.set is not a function
+    });
+
+</script>
 </main>
