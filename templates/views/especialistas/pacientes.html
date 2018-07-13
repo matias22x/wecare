@@ -4,68 +4,68 @@
     <div class="col s12">
       <div class="card">
         <div class="card-content misPac">
-        <div class="contenidoBorde">
+          <div class="contenidoBorde">
 
-          <h4>MIS PACIENTES</h4>
+            <h4>MIS PACIENTES</h4>
 
 
             <div class="wrap">
 
-            <div class="row">
+              <div class="row">
 
-            <div class="col s12 m12 l6">
-            <a class="waves-effect waves-light btn btn-small botonGeneral boton01" ui-sref="especialista_turno"><i class="material-icons left">add</i>Crear turno</a>
+                <div class="col s12 m12 l6">
+                  <a class="waves-effect waves-light btn btn-small botonGeneral boton01" ui-sref="especialista_turno"><i class="material-icons left">add</i>Crear turno</a>
+                </div>
+
+
+                <div class="col s12 m12 l6">
+                  <div class="buscador01">
+                    <div class="input-field buscador05">
+
+                      <div class="card card-input">
+                        <input placeholder="Busque por DNI, Turno o Nombre" id="buscador" type="text" class="validate" ng-model="name" ng-change="filtrar(name)">
+                        <i class="material-icons grey-text">search</i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
 
 
-<div class="col s12 m12 l6">
-            <div class="buscador01">
-            <div class="input-field buscador05">
+            <div class="col s12 m12 l12">
+              <div class="tabla01">
+                <div class="contenidoTabla">
+                  <table class="responsive-table centered">
+                    <thead>
+                      <tr class="fondoOne">
+                        <th>DNI</th>
+                        <th>NOMBRE</th>
+                        <th>GRADO</th>
+                        <th>ACCIONES</th>
+                      </tr>
+                    </thead>
 
-<div class="card card-input">
-    <input placeholder="Busque por DNI, Turno o Nombre" id="buscador" type="text" class="validate" ng-model="name" ng-change="filtrar(name)">
-    <i class="material-icons grey-text">search</i>
-  </div>
-  </div>
-          </div>      
+                    <tbody ng-repeat="alumno in alumnosEspecialista">
+                      <tr>
+                        <td>{{alumno.dni}}</td>
+                        <td>{{alumno.nombre}}</td>
+                        <td>{{alumno.grado || '-'}}</td>
+                        <td>
+                          <button tooltipped data-position="left" data-delay="250" data-tooltip="Ver observaciones del alumno durante las sesiones" class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_observaciones({id: alumno._id})"><i class="material-icons">visibility</i></button>
+                          <button tooltipped data-position="left" data-delay="250" data-tooltip="Ver historial del alumno" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_historial({id: alumno._id})"><i class="material-icons">insert_drive_file</i></button>
+                          <button tooltipped data-position="left" data-delay="250" data-tooltip="Crear turno" class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons">add</i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-             
-           </div>
+            </div>
           </div>
-
-          
-          <div class="col s12 m12 l12">
-          <div class="tabla01">
-          <div class="contenidoTabla">
-          <table class="responsive-table centered">
-            <thead>
-              <tr class="fondoOne">
-                <th>DNI</th>
-                <th>NOMBRE</th>
-                <th>GRADO</th>
-                <th>ACCIONES</th>
-              </tr>
-            </thead>
-
-            <tbody ng-repeat="alumno in alumnosEspecialista">
-              <tr>
-                <td>{{alumno.dni}}</td>
-                <td>{{alumno.nombre}}</td>
-                <td>{{alumno.grado || '-'}}</td>
-                <td>
-                  <button class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_observaciones({id: alumno._id})"><i class="material-icons">visibility</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_historial({id: alumno._id})"><i class="material-icons">insert_drive_file</i></button>
-                  <button class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons">add</i></button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          </div>
-          </div>
-        </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </main>

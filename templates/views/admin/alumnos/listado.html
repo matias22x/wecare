@@ -56,10 +56,10 @@
                         <td>{{alumno.fecha_nacimiento | date:'dd-MM-yyyy'}}</td>
                         <td><span ng-if="alumno.habilitado">Habilitado</span><span ng-if="!alumno.habilitado">Desabilitado</span></td>
                         <td>
-                          <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_alumno({id: alumno._id})"><i class="material-icons">visibility</i></a>
-                          <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
-                          <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">clear</i></a>
-                          <a ng-if="!alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">add</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Ver Alumno" class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_alumno({id: alumno._id})"><i class="material-icons">visibility</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Editar Alumno" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Deshabilitar Alumno" ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">clear</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Habilitar Alumno" ng-if="!alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">add</i></a>
                         </td>
                       </tr>
                     </tbody>

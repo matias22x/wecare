@@ -52,10 +52,10 @@
                         <td>{{especialista.direccion}}</td>
                         <td>{{especialista.fecha_nacimiento | date:'dd-MM-yyyy'}}</td>
                         <td>
-                          <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_especialista({id: especialista._id})"><i class="material-icons">visibility</i></a>
-                          <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_especialista({id: especialista._id})"><i class="material-icons">edit</i></a>
-                          <a ng-if="especialista.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(especialista)">clear</i></a>
-                          <a ng-if="!especialista.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(especialista)">add</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Ver especialista" class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_especialista({id: especialista._id})"><i class="material-icons">visibility</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Editar especialista" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_especialista({id: especialista._id})"><i class="material-icons">edit</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Deshabilitar especialista" ng-if="especialista.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(especialista)">clear</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Habilitar especialista" ng-if="!especialista.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(especialista)">add</i></a>
                         </td>
                       </tr>
 
