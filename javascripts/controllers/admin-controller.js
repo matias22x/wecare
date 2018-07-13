@@ -184,6 +184,7 @@ angular.module('wecareApp')
       if(len != 0){
         for (var first in input.$error) break;
         var error = first;
+        console.log(error);
         switch (error) {
           case 'required':
             $scope[mensaje] = "Este campo es requerido";
@@ -212,7 +213,6 @@ angular.module('wecareApp')
 
     $scope.submit = function() {
       if(!$scope.form.$valid){
-
         $scope.validadInput($scope.form.username, 'usernameErrorMensaje', 'usernameError', 4, null, 'letras y espacios');
         $scope.validadInput($scope.form.email, 'emailErrorMensaje', 'emailError', null, null, null);
         $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
@@ -236,7 +236,7 @@ angular.module('wecareApp')
         $scope.alumnoDatos.nombre = esp.nombre;
         $scope.alumnoDatos.direccion = esp.direccion;
         $scope.alumnoDatos.curso = esp.curso;
-        $scope.alumnoDatos.fecha_nacimiento = esp.fecha_nacimiento;
+        $scope.alumnoDatos.fecha_nacimiento = new Date($scope.form.fechaNacimiento.$viewValue.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
 
         userService.postUser($scope.usuario)
           .then(function(user) {
@@ -261,7 +261,7 @@ angular.module('wecareApp')
       .then(function(alumnoAModificar) {
         $scope.alumno = alumnoAModificar.data;
         $scope.alumno.dni= parseInt($scope.alumno.dni);
-        $scope.alumno.fecha_nacimiento = new Date($scope.alumno.fecha_nacimiento);
+        $scope.alumno.fecha_nacimiento = $filter('date')(new Date($scope.alumno.fecha_nacimiento), "dd MMMM, yyyy") ;
         userService.getUser($scope.alumno.user)
           .then(function(usuarioAModificar) {
             $scope.usuario = usuarioAModificar.data;
@@ -312,6 +312,7 @@ angular.module('wecareApp')
           $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
           $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
         }else{
+          $scope.alumno.fecha_nacimiento = new Date($scope.alumno.fecha_nacimiento.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
           alumnoService.putAlumnoById($scope.alumno._id, $scope.alumno)
             .then(function(resp) {
                   console.log('LISTO', resp);
@@ -579,8 +580,7 @@ angular.module('wecareApp')
           $scope.especialistaDatos.dni = esp.dni;
           $scope.especialistaDatos.nombre = esp.nombre;
           $scope.especialistaDatos.direccion = esp.direccion;
-          $scope.especialistaDatos.fecha_nacimiento = esp.fecha_nacimiento;
-
+          $scope.especialistaDatos.fecha_nacimiento = new Date($scope.form.fechaNacimiento.$viewValue.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
           userService.postUser($scope.usuario)
             .then(function(user) {
               $scope.especialistaDatos.user = user.data;
@@ -604,7 +604,7 @@ angular.module('wecareApp')
       .then(function(especialistaAModificar) {
         $scope.especialista = especialistaAModificar.data;
         $scope.especialista.dni= parseInt($scope.especialista.dni);
-        $scope.especialista.fecha_nacimiento = new Date($scope.especialista.fecha_nacimiento);
+        $scope.especialista.fecha_nacimiento = $filter('date')(new Date($scope.especialista.fecha_nacimiento), "dd MMMM, yyyy") ;
         userService.getUser($scope.especialista.user)
           .then(function(usuarioAModificar) {
             $scope.usuario = usuarioAModificar.data;
@@ -653,6 +653,7 @@ angular.module('wecareApp')
           $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
           $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
         }else{
+          $scope.especialista.fecha_nacimiento = new Date($scope.especialista.fecha_nacimiento.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
           especialistaService.putEspecialistaById($scope.especialista._id, $scope.especialista)
             .then(function(resp) {
               console.log('LISTO', resp);
@@ -671,6 +672,7 @@ angular.module('wecareApp')
 
     especialistaService.getEspecialista(id)
       .then(function(especialista) {
+        console.log(especialista);
         $scope.especialista = especialista.data;
         $scope.especialista.fecha_nacimiento = $filter('date')(new Date($scope.especialista.fecha_nacimiento), "EEEE d 'de' LLLL 'de' yyyy");
 
