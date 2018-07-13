@@ -2,128 +2,129 @@
   <div class="section"></div>
   <div class="container center anchoMinimo">
 
-      
-     
-      <div class="card">
-        <div class="card-content">
+
+
+    <div class="card">
+      <div class="card-content">
 
         <div class="contenidoBorde">
-        <h5 class="center titulo03 titAparte">Editar Alumno</h5>
-         
+          <h5 class="center titulo03 titAparte">Editar Alumno</h5>
+
           <div class="separador">
-          
+
 
             <form class="col s12 l12 m12" name="form">
 
-      <div class="input-field separaCostado">
-        <input id="dni" name="dni" type="number" class="validate" ng-model="alumno.dni" required min='10000000' max='100000000' ng-keypress="dniError = false" ng-click="dniError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="dni">Nro de Documento</label>
-        <span style=" color:red;" id="dniErrorSpan" ng-show="dniError" >{{dniErrorMensaje}}</span>
-      </div>
+              <div class="input-field separaCostado">
+                <input id="dni" name="dni" type="number" class="validate" ng-model="alumno.dni" required min='10000000' max='100000000' ng-keypress="dniError = false" ng-click="dniError = false" oninvalid="return false;" autocomplete="off" />
+                <label for="dni">Nro de Documento</label>
+                <span style=" color:red;" id="dniErrorSpan" ng-show="dniError">{{dniErrorMensaje}}</span>
+              </div>
 
-      <div class="input-field separaCostado">
+              <div class="input-field separaCostado">
 
-      <input id="nombre" name="nombre" type="text" class="validate" ng-model="alumno.nombre" required minlength="4" ng-pattern="/^[a-zA-Z\s]*$/" ng-keypress="nombreError = false" ng-click="nombreError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="nombre">Nombre y Apellido</label>
-        <span style=" color:red;" id="nombreErrorSpan" ng-show="nombreError" >{{nombreErrorMensaje}}</span>
-      </div>
+                <input id="nombre" name="nombre" type="text" class="validate" ng-model="alumno.nombre" required minlength="4" ng-pattern="/^[a-zA-Z\s]*$/" ng-keypress="nombreError = false" ng-click="nombreError = false" oninvalid="return false;" autocomplete="off" />
+                <label for="nombre">Nombre y Apellido</label>
+                <span style=" color:red;" id="nombreErrorSpan" ng-show="nombreError">{{nombreErrorMensaje}}</span>
+              </div>
 
-      <div class="input-field separaCostado">
-        <input id="curso" name="curso" type="text" class="validate" ng-model="alumno.curso" required minlength="2" ng-pattern="/^[a-zA-Z0-9.º-\s]*$/" ng-keypress="cursoError = false" ng-click="cursoError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="nombre">Curso</label>
-        <span style=" color:red;" id="cursoErrorSpan" ng-show="cursoError" >{{cursoErrorMensaje}}</span>
-      </div>
+              <div class="input-field separaCostado">
+                <input id="curso" name="curso" type="text" class="validate" ng-model="alumno.curso" required minlength="2" ng-pattern="/^[a-zA-Z0-9.º-\s]*$/" ng-keypress="cursoError = false" ng-click="cursoError = false" oninvalid="return false;" autocomplete="off" />
+                <label for="nombre">Curso</label>
+                <span style=" color:red;" id="cursoErrorSpan" ng-show="cursoError">{{cursoErrorMensaje}}</span>
+              </div>
 
-      <div class="input-field separaCostado">
-         <input id="direccion" name="direccion" type="text" class="validate" ng-model="alumno.direccion" required minlength="4" ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-keypress="direccionError = false" ng-click="direccionError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="direccion">Dirección</label>
-        <span style=" color:red;" id="direccionErrorSpan" ng-show="direccionError" >{{direccionErrorMensaje}}</span>
-      </div>
+              <div class="input-field separaCostado">
+                <input id="direccion" name="direccion" type="text" class="validate" ng-model="alumno.direccion" required minlength="4" ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-keypress="direccionError = false" ng-click="direccionError = false" oninvalid="return false;" autocomplete="off"
+                />
+                <label for="direccion">Dirección</label>
+                <span style=" color:red;" id="direccionErrorSpan" ng-show="direccionError">{{direccionErrorMensaje}}</span>
+              </div>
 
-      <div class="input-field separaCostado">
-        <input id="telefono" name="telefono" type="number" class="validate" ng-model="usuario.telefono"  min='10000000' max='10000000000000' ng-keypress="telefonoError = false" ng-click="telefonoError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="telefono">Teléfono</label>
-        <span style=" color:red;" id="telefonoErrorSpan" ng-show="telefonoError" >{{telefonoErrorMensaje}}</span>
-      </div>
+              <div class="input-field separaCostado">
+                <input id="telefono" name="telefono" type="number" class="validate" ng-model="usuario.telefono" min='10000000' max='10000000000000' ng-keypress="telefonoError = false" ng-click="telefonoError = false" oninvalid="return false;" autocomplete="off" />
+                <label for="telefono">Teléfono</label>
+                <span style=" color:red;" id="telefonoErrorSpan" ng-show="telefonoError">{{telefonoErrorMensaje}}</span>
+              </div>
 
-      <div class="input-field separaCostado">
+              <div class="input-field separaCostado">
 
-<div class="input-field center">
-                      <input id="fechaNacimiento" name="fechaNacimiento" type="date" class="validate datepicker" ng-model="alumno.fecha_nacimiento" required min="1900-01-01" max='{{hoy |date: "yyyy-MM-dd"}}' ng-keypress="fechaNacimientoError = false" ng-click="fechaNacimientoError = false" oninvalid="return false;" autocomplete="off" />
-        <label for="fechaNacimiento">Fecha de nacimiento</label>
-        <span style=" color:red;" id="fechaNacimientoErrorSpan" ng-show="fechaNacimientoError" >{{fechaNacimientoErrorMensaje}}</span>
-                    </div>
-      </div>
+                <div class="input-field center">
+                  <input id="fechaNacimiento" name="fechaNacimiento" type="text" class="validate datepicker" ng-model="alumno.fecha_nacimiento" required ng-keypress="fechaNacimientoError = false" ng-click="fechaNacimientoError = false" oninvalid="return false;" autocomplete="off"/>
+                  <label for="fechaNacimiento">Fecha de nacimiento</label>
+                  <span style=" color:red;" id="fechaNacimientoErrorSpan" ng-show="fechaNacimientoError">{{fechaNacimientoErrorMensaje}}</span>
+                </div>
+              </div>
 
-    </form>
+            </form>
 
-            </div>
+          </div>
 
-           <div class="card-action cardBorder">
-
-
-           
-           <div class="row">
+          <div class="card-action cardBorder">
 
 
-           <div class="input-field col s12 m12 l6">
-            <a class="btn waves-effect botonGeneral" ui-sref="admin_listado_alumnos">
+
+            <div class="row">
+
+
+              <div class="input-field col s12 m12 l6">
+                <a class="btn waves-effect botonGeneral" ui-sref="admin_listado_alumnos">
             volver</a>
-          
-          </div>
 
-          <div class="input-field col s12 m12 l6">
-          <a  class="btn waves-effect botonGeneral modal-trigger" ng-click="submit()">modificar</a>
+              </div>
 
-      <div id="modal1" class="modal">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
-</div>
-          </div>
+              <div class="input-field col s12 m12 l6">
+                <a class="btn waves-effect botonGeneral modal-trigger" ng-click="submit()">modificar</a>
+
+                <div id="modal1" class="modal">
+                  <div class="modal-content">
+                    <h4>Modal Header</h4>
+                    <p>A bunch of text</p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                  </div>
+                </div>
+              </div>
 
 
 
-         
+
 
               <div ng-show="mensajeErrorIncompleto" class="col s12">
-  <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
-</div>
+                <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
+              </div>
 
+            </div>
           </div>
         </div>
-          </div>
-          </div>
-          </div>
-            </div>
+      </div>
+    </div>
+  </div>
 
 
-                 <script>
-$(function(){
-  $('.datepicker').pickadate({
-      monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-      monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-      weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-      weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+  <script>
+    $(function() {
+      $('.datepicker').pickadate({
+        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
         selectMonths: true,
         selectYears: 100, // Puedes cambiarlo para mostrar más o menos años
         today: 'Hoy',
         clear: 'Limpiar',
         close: 'Ok',
         labelMonthNext: 'Siguiente mes',
-      labelMonthPrev: 'Mes anterior',
-      labelMonthSelect: 'Selecciona un mes',
-      labelYearSelect: 'Selecciona un año',
+        labelMonthPrev: 'Mes anterior',
+        labelMonthSelect: 'Selecciona un mes',
+        labelYearSelect: 'Selecciona un año',
       });
-});
+    });
 
 
-$(document).ready(function(){
-    $('.modal').modal();
-  });
-</script>
+    $(document).ready(function() {
+      $('.modal').modal();
+    });
+  </script>
 </main>
