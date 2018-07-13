@@ -5,109 +5,92 @@
       <div class="card">
         <div class="card-content misPac">
           <div class="contenidoBorde">
-          <h4>ALUMNOS</h4>
+            <h4>ALUMNOS</h4>
 
-           <div class="wrap">
+            <div class="wrap">
 
-            <div class="row">
+              <div class="row">
 
-            <div class="col s12 m12 l6">
-            <a class="waves-effect waves-light btn btn-small botonGeneral boton01" ui-sref="admin_agregar_alumno"><i class="material-icons left">add</i>agregar alumno</a>
-            </div>
+                <div class="col s12 m12 l6">
+                  <a class="waves-effect waves-light btn btn-small botonGeneral boton01" ui-sref="admin_agregar_alumno"><i class="material-icons left">add</i>agregar alumno</a>
+                </div>
 
 
-<div class="col s12 m12 l6">
-            <div class="buscador01">
-            <div class="input-field buscador05">
+                <div class="col s12 m12 l6">
+                  <div class="buscador01">
+                    <div class="input-field buscador05">
 
-<div class="card card-input">
-    <input placeholder="Buscar por nombre o documento" id="buscador" type="text" class="validate" ng-model="name" ng-change="filtrar(name)">
-    <i class="material-icons grey-text">search</i>
-  </div>
-  </div>
-          </div>
+                      <div class="card card-input">
+                        <input placeholder="Buscar por nombre o documento" id="buscador" type="text" class="validate" ng-model="name" ng-change="filtrar(name)">
+                        <i class="material-icons grey-text">search</i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
-
-           </div>
             </div>
 
             <div class="col s12 m12 l12">
-          <div class="tabla01">
-          <div class="contenidoTabla tablaSegunda">
-          <table class="responsive-table centered">
-            <thead class="altoFondo">
-              <tr class="fondoOne">
-                <th>DNI</th>
-                <th>NOMBRE</th>
-                <th>CURSO</th>
-                <th>DIRECCION</th>
-                <th>FECHA DE NACIMIENTO</th>
-                <th>ESTADO</th>
-                <th>ACCIONES</th>
-              </tr>
-            </thead>
+              <div class="tabla01">
+                <div class="contenidoTabla tablaSegunda">
+                  <table class="responsive-table centered">
+                    <thead class="altoFondo">
+                      <tr class="fondoOne">
+                        <th>DNI</th>
+                        <th>NOMBRE</th>
+                        <th>CURSO</th>
+                        <th>DIRECCION</th>
+                        <th>FECHA DE NACIMIENTO</th>
+                        <th>ESTADO</th>
+                        <th>ACCIONES</th>
+                      </tr>
+                    </thead>
 
-            <tbody class="alto">
-               <tr ng-repeat="alumno in page">
-                <td>{{alumno.dni}}</td>
-                <td>{{alumno.nombre}}</td>
-                <td>{{alumno.curso}}</td>
-                <td>{{alumno.direccion}}</td>
-                <td>{{alumno.fecha_nacimiento | date:'dd-MM-yyyy'}}</td>
-                <td><span ng-if="alumno.habilitado">Habilitado</span><span ng-if="!alumno.habilitado">Desabilitado</span></td>
-                <td>
-                  <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_alumno({id: alumno._id})"><i class="material-icons">visibility</i></a>
-                  <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
-                  <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear" data-target='demoModal' modal><i class="material-icons">clear</i></a>  <!--ui-sref="admin_borrar_alumno({id: alumno._id})"-->
-                  <a ng-if="!alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " ui-sref="admin_habilitar_alumno({id: alumno._id})"><i class="material-icons">add</i></a>
-
-                  <!-- Modal Structure -->
-                  <div id="modal{{alumno.indexKey}}" class="modal modal-fixed-footer fade" role="dialog">
-                    <div class="modal-content">
-                      <h5>¿Está seguro que lo desea eliminar?</h5>
-                      <p>{{alumno.dni}}</p>
-                      <p>{{alumno.nombre}}</p>
-                      <p>{{alumno.curso}}</p>
-                      <p>{{alumno.direccion}}</p>
-                      <p>{{alumno.fecha_nacimiento}}</p>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                    </div>
-                  </div>
-
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-</div>
-</div>
-</div>
-          <!--<ul>
-        <li ng-repeat="i in getNumber(number) track by $index"><span ng-click='cambiarPag($index)'>{{$index+1}}</span></li>
-      </ul>
-    </div>-->
- <ul class="pagination">
-            <li class="waves-effect"><a ng-click='antPag(listadoAlumnos);'><i class="material-icons">chevron_left</i></a></li>
-            <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, listadoAlumnos);'>{{$index+1}}</a></li>
-            <li class="waves-effect"><a ng-click='sigPag(listadoAlumnos);'><i class="material-icons">chevron_right</i></a></li>
-          </ul>
+                    <tbody class="alto">
+                      <tr ng-repeat="alumno in page">
+                        <td>{{alumno.dni}}</td>
+                        <td>{{alumno.nombre}}</td>
+                        <td>{{alumno.curso}}</td>
+                        <td>{{alumno.direccion}}</td>
+                        <td>{{alumno.fecha_nacimiento | date:'dd-MM-yyyy'}}</td>
+                        <td><span ng-if="alumno.habilitado">Habilitado</span><span ng-if="!alumno.habilitado">Desabilitado</span></td>
+                        <td>
+                          <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_alumno({id: alumno._id})"><i class="material-icons">visibility</i></a>
+                          <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
+                          <a ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">clear</i></a>
+                          <a ng-if="!alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">add</i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <ul class="pagination">
+              <li class="waves-effect"><a ng-click='antPag(listadoAlumnos);'><i class="material-icons">chevron_left</i></a></li>
+              <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, listadoAlumnos);'>{{$index+1}}</a></li>
+              <li class="waves-effect"><a ng-click='sigPag(listadoAlumnos);'><i class="material-icons">chevron_right</i></a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-
-  <!-- Modal Structure -->
-<div id="demoModal" class="modal">
-    <div class="modal-content">
-        <h4>Modal header</h4>
-        <p>A bunch of text</p>
+  <div id="demoModal" class="modal">
+    <div class="modal-content modalTitulo center">
+      <h4>¿Está seguro que desea cambiar el estado de {{datosADeshabilitar.nombre}}?</h4>
     </div>
     <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      <div class="row sinEspacio center">
+        <div class="col s6 m6 l6 ">
+          <a class="modal-action modal-close btn botonGeneral flotarIzq">Volver</a>
+        </div>
+        <div class="col s6 m6 l6 ">
+          <a ng-click="deshabilitar()" class="modal-action modal-close btn botonGeneral">Aceptar</a>
+        </div>
+
+      </div>
     </div>
-</div>
+  </div>
 </main>
