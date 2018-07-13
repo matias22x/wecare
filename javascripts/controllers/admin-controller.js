@@ -146,6 +146,30 @@ angular.module('wecareApp')
 
     }
 
+    $scope.selectToDisable = function(objeto) {
+      $scope.datosADeshabilitar = objeto;
+    }
+
+    $scope.deshabilitar = function() {
+      var cambio;
+      userService.getUser($scope.datosADeshabilitar.user)
+      .then(function(userADeshabilitar) {
+        $scope.userADeshabilitar = userADeshabilitar.data;
+        if ($scope.userADeshabilitar.habilitado === true) {
+          $scope.userADeshabilitar.habilitado = false;
+          cambio = false;
+        } else {
+          $scope.userADeshabilitar.habilitado = true;
+          cambio = true;
+        }
+        return userService.putUserById($scope.userADeshabilitar._id, $scope.userADeshabilitar);
+      })
+      .then(function(userDeshabilitado) {
+          $state.reload();
+      })
+      .catch($log.error);
+    }
+
   })
   .controller('agregarAlumnosController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $location, config, alumnoService, userService, moment) {
     $scope.alumnoNuevo = {};
@@ -366,9 +390,6 @@ angular.module('wecareApp')
     };
   })
   .controller('listadoEspecialistasController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, especialistaService, userService) {
-
-    console.log(userData.get('user')); //aca adentro estan los datos del usuario
-
     $scope.paginInit = function(lista) {
 
       if (!$scope.cantRegistros) {
@@ -407,14 +428,20 @@ angular.module('wecareApp')
       })
     }
 
-    especialistaService.getAllEspecialistas()
-      .then(function(especialistas) {
-        $scope.listaCompleta = especialistas.data;
-        $scope.listadoEspecialistas = especialistas.data;
-
-        $scope.paginInit($scope.listadoEspecialistas);
-
-      }).catch($log.error);
+      especialistaService.getAllEspecialistas()
+        .then(function(especialistas) {
+          $scope.listaCompleta = [];
+          angular.forEach(especialistas.data, function(value, key) {
+            userService.getUser(value.user)
+              .then(function(usuario) {
+                value.habilitado = usuario.data.habilitado;
+              }).catch($log.error);
+              $scope.listaCompleta.push(value);
+          })
+          $scope.listadoEspecialistas = $scope.listaCompleta;
+          console.log($scope.listadoEspecialistas);
+          $scope.paginInit($scope.listadoEspecialistas);
+        }).catch($log.error);
 
     $scope.cambiarPag = function(pag, lista) {
       $scope.pagActual = pag + 1;
@@ -464,7 +491,29 @@ angular.module('wecareApp')
 
     }
 
+    $scope.selectToDisable = function(objeto) {
+      $scope.datosADeshabilitar = objeto;
+    }
 
+    $scope.deshabilitar = function() {
+      var cambio;
+      userService.getUser($scope.datosADeshabilitar.user)
+      .then(function(userADeshabilitar) {
+        $scope.userADeshabilitar = userADeshabilitar.data;
+        if ($scope.userADeshabilitar.habilitado === true) {
+          $scope.userADeshabilitar.habilitado = false;
+          cambio = false;
+        } else {
+          $scope.userADeshabilitar.habilitado = true;
+          cambio = true;
+        }
+        return userService.putUserById($scope.userADeshabilitar._id, $scope.userADeshabilitar);
+      })
+      .then(function(userDeshabilitado) {
+          $state.reload();
+      })
+      .catch($log.error);
+    }
 
   })
   .controller('agregarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $location, config, especialistaService, userService, moment) {
