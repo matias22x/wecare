@@ -3,6 +3,8 @@ angular.module('wecareApp')
 .controller('alumnoUserController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {
   if(userData.get('datosRol').chatbot){
     $state.go('bot_inicio');
+  }else{
+    $rootScope.alumnoMenu=true;
   }
   console.log('user');
   $scope.usuario = userData.get('user');
@@ -40,6 +42,8 @@ angular.module('wecareApp')
   .controller('alumnoHomeController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
+    }else{
+      $rootScope.alumnoMenu=true;
     }
     console.log("alumnoHomeController");
 
@@ -54,6 +58,8 @@ angular.module('wecareApp')
   .controller('alumnoEstadosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
+    }else{
+      $rootScope.alumnoMenu=true;
     }
     $scope.registro = {
       actividades: {
@@ -93,6 +99,8 @@ angular.module('wecareApp')
   .controller('alumnoLugaresController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
+    }else{
+      $rootScope.alumnoMenu=true;
     }
     console.log("alumnoLugaresController");
 
@@ -100,6 +108,8 @@ angular.module('wecareApp')
   .controller('alumnoContarController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
+    }else{
+      $rootScope.alumnoMenu=true;
     }
     console.log("alumnoContarController");
 
@@ -107,6 +117,8 @@ angular.module('wecareApp')
   .controller('alumnoSumarioController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
+    }else{
+      $rootScope.alumnoMenu=true;
     }
     console.log("alumnoSumarioController");
 
@@ -114,6 +126,8 @@ angular.module('wecareApp')
   .controller('alumnoFinalizacionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
+    }else{
+      $rootScope.alumnoMenu=true;
     }
     console.log("alumnoFinalizacionController");
 
@@ -121,6 +135,8 @@ angular.module('wecareApp')
   .controller('alumnoAgendaController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
+    }else{
+      $rootScope.alumnoMenu=true;
     }
     console.log("alumnoAgendaController");
 
@@ -128,6 +144,8 @@ angular.module('wecareApp')
   .controller('alumnoHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
+    }else{
+      $rootScope.alumnoMenu=true;
     }
     console.log("alumnoHistorialController");
 
@@ -135,6 +153,8 @@ angular.module('wecareApp')
   .controller('alumnoInformacionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, noticiasService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
+    }else{
+      $rootScope.alumnoMenu=true;
     }
 
     noticiasService.getAllNoticias()

@@ -711,9 +711,24 @@ angular.module('wecareApp')
         .catch($log.error);
 
     };
-  }).controller('listadoConsejosController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, consejosService, userService) {
+  }).controller('listadoConsejosController', function($auth, $scope, $rootScope,$window, $state, $filter, userData, $log, $http, $translate, config, consejosService, userService) {
 
 
+    $scope.cambiarTitulo = function(obj) {
+      $scope.objModificar = obj;
+    }
+
+    $scope.borrarConsejo = function() {
+      var id = $scope.objModificar._id;
+      consejosService.deleteConsejosById(id)
+        .then(function(consejoEliminado) {
+          console.log(consejoEliminado.data);
+          console.log('LISTO', consejoEliminado);
+           $window.location.reload();
+        })
+        .catch($log.error);
+
+    };
 
     $scope.paginInit = function(lista) {
 

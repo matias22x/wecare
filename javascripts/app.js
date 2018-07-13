@@ -62,6 +62,7 @@ wecareApp.config(function(config, $stateProvider, $authProvider, $urlRouterProvi
 
 wecareApp.run(function($rootScope, userData, $state, $log, $auth, especialistaService, alumnoService) {
 
+  $rootScope.alumnoMenu=false;
 
   $rootScope.isAuthenticated = function() {
       return $auth.isAuthenticated();
@@ -80,8 +81,12 @@ wecareApp.run(function($rootScope, userData, $state, $log, $auth, especialistaSe
         alumnoService.getAlumnoByUser(userData.get('user')._id)
         .then(function(datosAlumno) {
           userData.set('datosRol', datosAlumno.data[0]);
+          $rootScope.bot = userData.get('datosRol').chatbot;
+          console.log($rootScope.bot);
           if(userData.get('datosRol').chatbot == true){
             $state.go('bot_inicio');
+          }else{
+            $rootScope.alumnoMenu=true;
           }
           console.log(userData.get('datosRol'));
         });

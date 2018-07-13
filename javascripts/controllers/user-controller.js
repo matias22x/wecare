@@ -3,6 +3,7 @@ angular.module('wecareApp')
     .controller('loginController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, userService, especialistaService, alumnoService) {
       $scope.display=false;
       $scope.login = function() {
+        $rootScope.alumnoMenu=false;
           var userType = '';
           var aux_data = {};
           aux_data.password = $scope.login_data.password;
@@ -20,9 +21,11 @@ angular.module('wecareApp')
                 alumnoService.getAlumnoByUser(userData.get('user')._id)
                 .then(function(datosAlumno) {
                   userData.set('datosRol', datosAlumno.data[0]);
+                  $rootScope.bot = userData.get('datosRol').chatbot;
                   if (datosAlumno.chatbot == true){
                     $state.go('bot_inicio');
                   }else{
+                    $rootScope.alumnoMenu=true;
                     $state.go('alumno_home');
                   }
                   //console.log(userData.get('datosRol'));

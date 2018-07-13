@@ -6,7 +6,7 @@
         <div class="card-content misPac">
           <div class="contenidoBorde">
           <h4>NOTICIAS</h4>
-          
+
            <div class="wrap">
 
             <div class="row">
@@ -25,9 +25,9 @@
     <i class="material-icons grey-text">search</i>
   </div>
   </div>
-          </div>      
+          </div>
               </div>
-             
+
            </div>
             </div>
 
@@ -46,15 +46,15 @@
             <tbody class="alto">
                <tr ng-repeat="noticia in page">
                 <td>{{noticia.titulo}}</td>
-                <td>{{noticia.habilitado}}</td>
+                <td>{{noticia.habilitado ? 'habilitado' : 'desabilitado'}}</td>
                 <td>
                   <a class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_noticia({id: noticia._id})"><i class="material-icons">visibility</i></a>
                   <a class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_noticia({id: noticia._id})"><i class="material-icons">edit</i></a>
                   <a class="waves-effect waves-light btn-small btn-floating botonClear "  data-target='demoModal' modal><i class="material-icons">clear</i></a> <!-- ui-sref="admin_borrar_noticia({id: noticia._id})" -->
 
 
-                  
-                 
+
+
 
                 </td>
               </tr>
@@ -82,7 +82,7 @@
     <div class="modal-content modalTitulo center">
         <h4>¿Está seguro que lo desea eliminar?</h4>
         <p>{{noticia.titulo}}</p>
-        
+
     </div>
     <div class="modal-footer">
         <div class="row sinEspacio center">
@@ -92,11 +92,8 @@
         <div class="col s6 m6 l6 ">
         <a href="#!" class="modal-action modal-close btn botonGeneral">Aceptar</a>
         </div>
-        
+
         </div>
     </div>
 </div>
 </main>
-
-
-
