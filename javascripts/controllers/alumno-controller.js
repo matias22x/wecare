@@ -154,7 +154,6 @@ angular.module('wecareApp')
 
     $scope.verRegistro = function(registro) {
       $scope.registroSeleccionado = registro;
-      console.log($scope.registroSeleccionado);
     }
 
   })

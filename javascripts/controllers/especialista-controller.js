@@ -87,9 +87,20 @@ angular.module('wecareApp')
     console.log("especialistaDiagnosticoVerController");
 
   })
-  .controller('especialistaHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-    console.log("especialistaHistorialController");
+  .controller('especialistaHistorialController', function($auth, $scope, $rootScope, $state, userData, $stateParams, $log, $http, $translate, config, especialistaService, userService, registrosService, alumnoService) {
+    alumnoService.getAlumno($stateParams.id)
+    .then(function(resp) {
+      $scope.alumno = resp.data;
+    }).catch($log.error);
 
+    registrosService.getRegistrosPorPaciente($stateParams.id)
+    .then(function(resp) {
+      $scope.registros = resp.data;
+    }).catch($log.error);
+
+    $scope.verRegistro = function(registro) {
+      $scope.registroSeleccionado = registro;
+    }
   })
   .controller('especialistaObservacionesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
     console.log("especialistaObservacionesController");
