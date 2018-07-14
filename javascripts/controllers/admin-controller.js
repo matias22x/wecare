@@ -4,7 +4,11 @@ angular.module('wecareApp')
       userService.estadisticas()
       .then(function(resp) {
         $scope.datos = resp.data.data;
-        $scope.datos.gravedadPromedio = $scope.datos.gravedadPromedio.toFixed(2);
+        if ($scope.datos.gravedadPromedio) {
+          $scope.datos.gravedadPromedio = $scope.datos.gravedadPromedio.toFixed(2);
+        } else {
+          $scope.datos.gravedadPromedio = 0;
+        }
       }).catch($log.error);
 
     })

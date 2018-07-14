@@ -1,143 +1,139 @@
 <main>
-     <div class="container center">
-      <div class="col s12">
-        <div class="card ">
-           <div class="card-content claseImportante">
+  <div class="container center">
+    <div class="col s12">
+      <div class="card ">
+        <div class="card-content claseImportante">
 
-           <div class="contenidoBorde">
+          <div class="contenidoBorde">
 
-<h5 class="center titulo03 titAparte">Historial del Alumno</h5>
-        <div class="row cuadro01 claseImportante">
-          <div class="col s12 l3 m3">
-
-
-            <table class="centered tablaIzq tablaGeneral">
-              <thead>
-                <tr class="fondo">
-                  <th>HISTORIAL DE REGISTROS</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                 <tr class="buscador">
-                    <td>
-                    <div class="input-field center">
-                      <input id="buscadorDesde" type="date" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
-                      <label for="buscadorDesde">Fecha desde</label>
-                    </div>
-                      <div class="input-field center">
-                      <input id="buscadorHasta" type="date" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorHasta" placeholder="">
-                      <label for="buscadorHasta">Hasta</label>
-                      </div>
-                      <br>
-                     <a class="btn botonBuscar">Buscar</a>
-                    </td>
-                  </tr>
-                  <tr>
-                  <td class="resgitro00">478 14/07/2018 08:30</td>
-                </tr>
-                <tr>
-                  <td class="resgitro00">478 17/07/2018 09:30</td>
-                </tr>
-                <tr>
-                  <td class="resgitro00">478 21/07/2018 10:00</td>
-                </tr>
-                <tr>
-                  <td class="resgitro00">478 128/07/2018 9:00</td>
-                </tr>
-
-              </tbody>
-            </table>
-
-             </div>
-          <div class="col s12 l9 m9">
+            <h5 class="center titulo03 titAparte">Historial del Alumno</h5>
+            <div class="row cuadro01 claseImportante">
+              <div class="col s12 l3 m3">
 
 
-            <table class="centered tablaGeneral">
-              <thead>
-                <tr class="fondo">
-                  <th>OBSERVACIONES</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr class="detalles">
-                  <td>
-                    <div class="row estadoResumen">
-                      <div class="col s12 iconos">
-                      <span class="textUp">Alumno: &nbsp Juan Perez</span>
-                      </br> </br>
-                        <span class="textUp">Estado de ánimo: &nbsp</span>
-                        <img src="img/confused.png" />
-                        <img src="img/angry.png" />
-                      </br> </br>
-                      </div>
-                      <div class="col s12 iconos">
-                        <span class="textUp">Lugares: &nbsp</span>
-                         <img src="img/escuela.png" />
-                        <img src="img/casa.png" />
-                        </br> </br>
-                      </div>
-                      <div class="col s12 iconos">
-                        <span class="textUp">Actividades: &nbsp</span>
-                        <img src="img/futbol.png" />
-                        <img src="img/zzz.png" />
-                        <img src="img/consola-de-juegos.png" />
-                        </br> </br>
-                      </div>
-
-                    </div>
-                    <div class="row" >
-                      <div class="col s12 textoPersonal">
-                        <span class="textUp">Texto personal del alumno: </span>
+                <table class="centered tablaIzq tablaGeneral">
+                  <thead>
+                    <tr class="fondo">
+                      <th>HISTORIAL DE REGISTROS</th>
+                    </tr>
+                    <tr class="buscador">
+                      <td>
+                        <div class="input-field center">
+                          <input id="buscadorDesde" type="date" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
+                          <label for="buscadorDesde">Fecha desde</label>
+                        </div>
+                        <div class="input-field center">
+                          <input id="buscadorHasta" type="date" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorHasta" placeholder="">
+                          <label for="buscadorHasta">Hasta</label>
+                        </div>
                         <br>
-                        <span class="materialize-textarea textoPersonal"  >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum nulla eu ante porta lacinia. Maecenas lacinia dui elementum felis dignissim luctus. Quisque ultricies turpis augue, ut tincidunt ante condimentum quis. Nunc vitae nisl nec ex rhoncus
-                          ullamcorper. Sed gravida sem id velit tempor gravida. Suspendisse potenti. Aliquam sed sollicitudin nulla, et commodo urna. Integer faucibus iaculis pellentesque. Donec tortor tellus, fermentum eget suscipit et, semper a ex. Integer faucibus iaculis pel.
+                        <a class="btn botonBuscar">Buscar</a>
+                      </td>
+                    </tr>
+                  </thead>
+
+                  <tbody ng-repeat="registro in registros">
+                    <tr>
+                      <td class="resgitro00" ng-click="verRegistro(registro)">{{registro.createdAt | date: "EEEE d 'de' LLLL" }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <div class="col s12 l9 m9">
+
+
+                <table class="centered tablaGeneral">
+                  <thead>
+                    <tr class="fondo">
+                      <th>OBSERVACIONES</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr class="detalles">
+                      <td>
+                        <div class="row estadoResumen">
+                          <div class="col s12 iconos">
+                            <span class="textUp">Estado de ánimo: &nbsp</span>
+                            <img ng-if="registroSeleccionado.animo.neutral" src="img/confused.png" />
+                            <img ng-if="registroSeleccionado.animo.enojado" src="img/angry.png" />
+                            <img ng-if="registroSeleccionado.animo.contento" src="img/happy.png" />
+                            <img ng-if="registroSeleccionado.animo.triste" src="img/sad.png" />
+                            </br>
+                            </br>
+                          </div>
+                          <div class="col s12 iconos">
+                            <span class="textUp">Actividades: &nbsp</span>
+                            <img ng-if="registroSeleccionado.actividades.deporte" src="img/bicicleta.png" />
+                            <img ng-if="registroSeleccionado.actividades.descanso" src="img/dormir.png" />
+                            <img ng-if="registroSeleccionado.actividades.juego" src="img/consola-de-juegos.png" />
+                            <img ng-if="registroSeleccionado.actividades.estudio" src="img/libro-abierto.png" />
+                            <img ng-if="registroSeleccionado.actividades.fiesta" src="img/disco.png" />
+                            <img ng-if="registroSeleccionado.actividades.salida" src="img/paisaje-urbano.png" />
+                            </br>
+                            </br>
+                          </div>
+                          <div class="col s12 iconos">
+                            <span class="textUp">Con quien estuvo: &nbsp</span>
+                            <img ng-if="registroSeleccionado.social.solo" src="img/chico.png" />
+                            <img ng-if="registroSeleccionado.social.familia" src="img/familia.png" />
+                            <img ng-if="registroSeleccionado.social.pareja" src="img/pareja.png" />
+                            <img ng-if="registroSeleccionado.social.amigos" src="img/pareja2.png" />
+                            </br>
+                            </br>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12 textoPersonal">
+                            <span class="textUp">Texto personal del alumno: </span>
+                            <br>
+                            <span class="materialize-textarea textoPersonal">
+                              {{registroSeleccionado.cuentanosmas}}
                           </span>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+
 
             </div>
 
-
+            <div class="row">
+              <div class="col s6 l6 m6">
+                <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_pacientes"><i class="material-icons left">keyboard_arrow_left</i>Volver</a>
+              </div>
+              <div class="col s6 l6 m6">
+                <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons left">add</i>Asignar turno</a>
+              </div>
+            </div>
           </div>
-
-          <div class="row">
-            <div class="col s6 l6 m6">
-            <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_pacientes"><i class="material-icons left">keyboard_arrow_left</i>Volver</a>
-            </div>
-            <div class="col s6 l6 m6">
-             <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_turno"><i class="material-icons left">add</i>Asignar turno</a>
-            </div>
-            </div>
-        </div>
         </div>
       </div>
     </div>
-    </div>
-   <script>
-$(function(){
-  $('.datepicker').pickadate({
-      monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-      monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-      weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-      weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+  </div>
+  <script>
+    $(function() {
+      $('.datepicker').pickadate({
+        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
         selectMonths: true,
         selectYears: 100, // Puedes cambiarlo para mostrar más o menos años
         today: 'Hoy',
         clear: 'Limpiar',
         close: 'Ok',
         labelMonthNext: 'Siguiente mes',
-      labelMonthPrev: 'Mes anterior',
-      labelMonthSelect: 'Selecciona un mes',
-      labelYearSelect: 'Selecciona un año',
+        labelMonthPrev: 'Mes anterior',
+        labelMonthSelect: 'Selecciona un mes',
+        labelYearSelect: 'Selecciona un año',
       });
-});
-</script>
+    });
+  </script>
 
 </main>

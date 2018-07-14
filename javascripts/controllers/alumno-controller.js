@@ -132,22 +132,29 @@ angular.module('wecareApp')
     console.log("alumnoFinalizacionController");
 
   })
-  .controller('alumnoAgendaController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+  .controller('alumnoAgendaController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
       $rootScope.alumnoMenu=true;
     }
-    console.log("alumnoAgendaController");
 
   })
-  .controller('alumnoHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+  .controller('alumnoHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
       $rootScope.alumnoMenu=true;
     }
-    console.log("alumnoHistorialController");
+
+    registrosService.getRegistrosPorPaciente(userData.get('datosRol')._id)
+    .then(function(resp) {
+      $scope.registros = resp.data;
+    }).catch($log.error);
+
+    $scope.verRegistro = function(registro) {
+      $scope.registroSeleccionado = registro;
+    }
 
   })
   .controller('alumnoInformacionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, noticiasService) {

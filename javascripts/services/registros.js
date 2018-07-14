@@ -5,6 +5,9 @@ angular.module('registrosService', []).service('registrosService', function($htt
         getRegistros: function(requestId) {
             return $http.get(config.api_url + '/api/registros/' + requestId);
         },
+        getRegistrosPorPaciente: function(pacienteId) {
+            return $http.get(config.api_url + '/api/registros?conditions={"pacienteId": "' + pacienteId + '"}');
+        },
         getAllRegistross: function() {
             return $http.get(config.api_url + '/api/registros');
         },

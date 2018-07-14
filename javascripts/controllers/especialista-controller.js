@@ -156,9 +156,20 @@ angular.module('wecareApp')
 
 
   })
-  .controller('especialistaHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
+  .controller('especialistaHistorialController', function($auth, $scope, $rootScope, $state, userData, $stateParams, $log, $http, $translate, config, especialistaService, userService, registrosService, alumnoService) {
+    alumnoService.getAlumno($stateParams.id)
+    .then(function(resp) {
+      $scope.alumno = resp.data;
+    }).catch($log.error);
 
+    registrosService.getRegistrosPorPaciente($stateParams.id)
+    .then(function(resp) {
+      $scope.registros = resp.data;
+    }).catch($log.error);
 
+    $scope.verRegistro = function(registro) {
+      $scope.registroSeleccionado = registro;
+    }
   })
   .controller('especialistaObservacionesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
 
@@ -175,8 +186,9 @@ angular.module('wecareApp')
 
 
   })
-  .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, alumnoService, turnoService) {
+  .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $rootScope, $state, userData, $document, $log, $http, $translate, config, moment, especialistaService, userService, alumnoService, turnoService) {
       $scope.turno = {};
+      var modalMjs = $document.find('#demoModal').modal();
 
       if ($stateParams.id !== '') {
           alumnoService.getAlumno($stateParams.id)
@@ -186,16 +198,20 @@ angular.module('wecareApp')
       }
 
       $scope.crearTurno = function() {
+        var hora = new Date($scope.turno.hora);
+        var fecha = new Date($scope.turno.fecha.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+
+        var turno = new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate(), hora.getHours(), hora.getMinutes());
         var data = {
           alumno: $scope.alumnoElegido._id,
-          horario: $scope.turno.horario,
+          horario: turno,
           nota_previa: $scope.turno.nota_previa,
           especialista: userData.get('datosRol')._id,
         }
 
         turnoService.postTurno(data)
         .then(function(resp) {
-            $state.go('especialista_pacientes');
+          modalMjs.modal('open');
         }).catch($log.error);
       }
   });

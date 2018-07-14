@@ -14,26 +14,20 @@
                   <center>
                     <br>
                     <br>
-                    
+
                     <h5>Buscar Alumno</h5>
                     <div class="buscador01">
-              <div ng-if="!alumnoElegido._id" class="input-field buscador00">
-            <div class="card card-input">
-            <input placeholder="Busque por DNI o nombre" id="buscador" type="text" class="validate">
-            <i class="material-icons grey-text">search</i>
-          </div>
-          <div class="itemsBuscador">
-          <h5>Nombre y apellido</h5>
-          <span>{{alumnoElegido.nombre}}</span>
-          <h5>DNI</h5>
-          <span>{{alumnoElegido.dni}}</span>
-          <h5>Curso</h5>
-          <span>{{alumnoElegido.curso || '1ro A'}}</span>
-          <h5>Direccion</h5>
-          <span>{{alumnoElegido.direccion}}</span>
-          </div>
-  </div>
-          </div>
+                      <div class="input-field buscador00">
+                        <div class="itemsBuscador">
+                          <h5>Nombre y apellido</h5>
+                          <span>{{alumnoElegido.nombre}}</span>
+                          <h5>DNI</h5>
+                          <span>{{alumnoElegido.dni}}</span>
+                          <h5>Curso</h5>
+                          <span>{{alumnoElegido.curso || '1ro A'}}</span>
+                        </div>
+                      </div>
+                    </div>
                   </center>
                 </div>
                 <div class="step-actions">
@@ -50,17 +44,17 @@
                   <br>
 
                   <h5>Seleccionar día y horario del turno</h5>
-                  
-      <div class="input-field fechaIngresar center">
-        <input id="fecha" type="text" class="datepicker">
-              <label for="fecha">Fecha</label>
 
-         </div>
+                  <div class="input-field fechaIngresar center">
+                    <input id="fecha" type="text" class="datepicker" ng-model="turno.fecha">
+                    <label for="fecha">Fecha</label>
 
-          <div class="input-field fechaIngresar center">
-        <label for="lunchtime">Horario</label>
-        <input id="lunchtime" type="text" class="timepicker">
-      </div>
+                  </div>
+
+                  <div class="input-field fechaIngresar center">
+                    <p for="lunchtime">Horario</p>
+                    <input id="lunchtime" type="time" class="timepicker" ng-model="turno.hora">
+                  </div>
                 </center>
                 <div class="step-actions">
 
@@ -84,7 +78,7 @@
 
                         <div class="input-field col s12">
                           <textarea id="textarea1" class="materialize-textarea" ng-model="turno.nota_previa"></textarea>
-                          
+
                         </div>
 
                       </form>
@@ -97,14 +91,28 @@
                 </div>
               </div>
             </li>
-            
+
           </ul>
         </div>
       </div>
     </div>
   </div>
+  <div id="demoModal" class="modal">
+    <div class="modal-content modalTitulo center">
+      <h4>Turno asignado con éxito.</h4>
+    </div>
+    <div class="modal-footer">
+      <div class="row sinEspacio center">
+        <div class="col s6 m6 l6 ">
+          <a ui-sref="especialista_pacientes" class="modal-action modal-close btn botonGeneral">Ir a listado de pacientes</a>
+        </div>
+        <div class="col s6 m6 l6 ">
+          <a ui-sref="especialista_agenda" class="modal-action modal-close btn botonGeneral">Ir a agenda</a>
+        </div>
 
-
+      </div>
+    </div>
+  </div>
   <script>
     $(function() {
       $('.stepper').activateStepper();
@@ -137,37 +145,24 @@
 
 
 
-  <script>
-$(function(){
-  $('.datepicker').pickadate({
+<script>
+  $(function() {
+    $('.datepicker').pickadate({
       monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
       monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
       weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
       weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-        selectMonths: true,
-        selectYears: 100, // Puedes cambiarlo para mostrar más o menos años
-        today: 'Hoy',
-        clear: 'Limpiar',
-        close: 'Ok',
-        labelMonthNext: 'Siguiente mes',
+      selectMonths: true,
+      selectYears: 100, // Puedes cambiarlo para mostrar más o menos años
+      today: 'Hoy',
+      clear: 'Limpiar',
+      close: 'Ok',
+      labelMonthNext: 'Siguiente mes',
       labelMonthPrev: 'Mes anterior',
       labelMonthSelect: 'Selecciona un mes',
       labelYearSelect: 'Selecciona un año',
-      });
-});
-
-
-$(document).ready(function() {
-      const input = $('#lunchtime');
-      // initialize timepicker
-      input.pickatime();
-      // get picker
-      const picker = input.pickatime('picker');
-      // set initial value using arrays formatted as [HOUR,MINUTE].
-      picker.set('select', [3,0]); // <-- picker.set is not a function
     });
+  });
 
 </script>
 </main>
-
-

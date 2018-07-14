@@ -1,196 +1,168 @@
 <main>
-
-
-     <div class="container center">
-      <div class="col s12">
-        <div class="card carta">
-           <div class="card-content">
-
-
-
-
-
-<ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-    <li class="acordeon">
-    <div class="collapsible-header">
-      <i class="large material-icons iconoW">warning</i>
-      <h5 class="center titulo03 titAparte">Próxima sesión</h5>
-      </div>
-    <div class="collapsible-body">
-    <div class="row">
-        <div class="col s4 m4 l4">
-        <h5 class="titulosAparte center contenidoUsuario">Numero de turno</h5>
-        <span>478</span>
-        </div>
-
-        <div class="col s4 m4 l4">
-        <h5 class="titulosAparte center contenidoUsuario">Fecha</h5>
-        <span>Viernes 22 de Junio de 2018</span>
-        </div>
-
-        <div class="col s4 m4 l4">
-        <h5 class="titulosAparte center contenidoUsuario">Hora</h5>
-        <span>08:30 hs</span>
-        </div>
-
-        </div></div>
-  </li>
-</ul>
-
-
-
-
-
-
-        <div class="row cuadro01">
-          <div class="col s12 l3 m3">
-
-
-            <table class="centered tablaIzq tablaGeneral">
-              <thead>
-                <tr class="fondo">
-                  <th>HISTORIAL DE REGISTROS</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr class="buscador">
-                  <td>
-                    <input id="buscadorDesde" type="date" class="datepicker validate buscadorFechas placeholderclass" placeholder="">
-                    <label for="buscadorDesde" class="textBlack" >Fecha desde</label>
-                    <br>
-                    <input id="buscadorHasta" type="date" class="datepicker validate buscadorFechas placeholderclass"  placeholder="">
-                    <label for="buscadorHasta" class="textBlack" >Fecha hasta</label>
-                    <br>
-                    <a class="btn botonBuscar">Buscar</a>
-                  </td>
-                </tr>
+  <div class="container center">
+    <div class="col s12">
+      <div class="card carta">
+        <div class="card-content">
+          <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+            <li class="acordeon">
+              <div class="collapsible-header">
+                <i class="large material-icons iconoW">warning</i>
+                <h5 class="center titulo03 titAparte">Próxima sesión</h5>
+              </div>
+              <div class="collapsible-body">
+                <div class="row">
+                  <div class="col s4 m4 l4">
+                    <h5 class="titulosAparte center contenidoUsuario">Numero de turno</h5>
+                    <span>478</span>
+                  </div>
+                  <div class="col s4 m4 l4">
+                    <h5 class="titulosAparte center contenidoUsuario">Fecha</h5>
+                    <span>Viernes 22 de Junio de 2018</span>
+                  </div>
+                  <div class="col s4 m4 l4">
+                    <h5 class="titulosAparte center contenidoUsuario">Hora</h5>
+                    <span>08:30 hs</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="row cuadro01">
+            <div class="col s12 l3 m3">
+              <table class="centered tablaIzq tablaGeneral">
+                <thead>
+                  <tr class="fondo">
+                    <th>HISTORIAL DE REGISTROS</th>
+                  </tr>
+                  <tr class="buscador">
+                    <td>
+                      <input id="buscadorDesde" type="date" class="datepicker validate buscadorFechas placeholderclass" placeholder="">
+                      <label for="buscadorDesde" class="textBlack">Fecha desde</label>
+                      <br>
+                      <input id="buscadorHasta" type="date" class="datepicker validate buscadorFechas placeholderclass" placeholder="">
+                      <label for="buscadorHasta" class="textBlack">Fecha hasta</label>
+                      <br>
+                      <div class="center-align">
+                        <a class="btn botonBuscar">Buscar</a>
+                      </div>
+                    </td>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="registro in registros">
                   <tr>
-                  <td class="resgitro00">478 14/07/2018 08:30</td>
-                </tr>
-                <tr>
-                  <td class="resgitro00">478 17/07/2018 09:30</td>
-                </tr>
-                <tr>
-                  <td class="resgitro00">478 21/07/2018 10:00</td>
-                </tr>
-                <tr>
-                  <td class="resgitro00">478 128/07/2018 9:00</td>
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
-          <div class="col s12 l9 m9">
-
-
-            <table class="centered tablaGeneral">
-              <thead>
-                <tr class="fondo">
-                  <th>DETALLE DE ESTADOS</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr class="detalles">
-                  <td>
-                    <div class="row estadoResumen">
-                      <div class="col s12 iconos">
-                        <span class="textUp">Estado de ánimo: &nbsp</span>
-                        <img src="img/confused.png" />
-                        <img src="img/angry.png" />
-                        <img src="img/happy.png" />
-                        <img src="img/sad.png" />
-                      </br> </br>
-                      </div>
+                    <td class="resgitro00" ng-click="verRegistro(registro)">{{registro.createdAt | date: "EEEE d 'de' LLLL" }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col s12 l9 m9">
+              <table class="centered tablaGeneral">
+                <thead>
+                  <tr class="fondo">
+                    <th>DETALLE DE ESTADOS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="detalles">
+                    <td>
+                      <div class="row estadoResumen">
                         <div class="col s12 iconos">
-                        <span class="textUp">Actividades: &nbsp</span>
-                        <img src="img/bicicleta.png" />
-                        <img src="img/dormir.png" />
-                        <img src="img/consola-de-juegos.png" />
-                        <img src="img/libro-abierto.png" />
-                        <img src="img/disco.png" />
-                        <img src="img/paisaje-urbano.png" />
-                        </br> </br>
+                          <span class="textUp">Estado de ánimo: &nbsp</span>
+                          <img ng-if="registroSeleccionado.animo.neutral" src="img/confused.png" />
+                          <img ng-if="registroSeleccionado.animo.enojado" src="img/angry.png" />
+                          <img ng-if="registroSeleccionado.animo.contento" src="img/happy.png" />
+                          <img ng-if="registroSeleccionado.animo.triste" src="img/sad.png" />
+                          </br>
+                          </br>
+                        </div>
+                        <div class="col s12 iconos">
+                          <span class="textUp">Actividades: &nbsp</span>
+                          <img ng-if="registroSeleccionado.actividades.deporte" src="img/bicicleta.png" />
+                          <img ng-if="registroSeleccionado.actividades.descanso" src="img/dormir.png" />
+                          <img ng-if="registroSeleccionado.actividades.juego" src="img/consola-de-juegos.png" />
+                          <img ng-if="registroSeleccionado.actividades.estudio" src="img/libro-abierto.png" />
+                          <img ng-if="registroSeleccionado.actividades.fiesta" src="img/disco.png" />
+                          <img ng-if="registroSeleccionado.actividades.salida" src="img/paisaje-urbano.png" />
+                          </br>
+                          </br>
+                        </div>
+                        <div class="col s12 iconos">
+                          <span class="textUp">Con quien estuvo: &nbsp</span>
+                          <img ng-if="registroSeleccionado.social.solo" src="img/chico.png" />
+                          <img ng-if="registroSeleccionado.social.familia" src="img/familia.png" />
+                          <img ng-if="registroSeleccionado.social.pareja" src="img/pareja.png" />
+                          <img ng-if="registroSeleccionado.social.amigos" src="img/pareja2.png" />
+                          </br>
+                          </br>
+                        </div>
                       </div>
-                      <div class="col s12 iconos">
-                        <span class="textUp">Con quien estuvo: &nbsp</span>
-                       <img src="img/chico.png" />
-                       <img src="img/familia.png" />
-                       <img src="img/pareja.png" />
-                       <img src="img/pareja2.png" />
-                       </br> </br>
-                      </div>
-                    </div>
-                    <div class="row" >
-                      <div class="col s12 textoPersonal">
-                        <span class="textUp">Texto personal: </span>
-                        <br>
-                        <span class="materialize-textarea textoPersonal"  >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum nulla eu ante porta lacinia. Maecenas lacinia dui elementum felis dignissim luctus. Quisque ultricies turpis augue, ut tincidunt ante condimentum quis. Nunc vitae nisl nec ex rhoncus
-                          ullamcorper. Sed gravida sem id velit tempor gravida. Suspendisse potenti. Aliquam sed sollicitudin nulla, et commodo urna. Integer faucibus iaculis pellentesque. Donec tortor tellus, fermentum eget suscipit et, semper a ex. Sed gravida sem id velit tempor gravida. Suspendisse potenti. Sed gravida sem id velit tempor gravida. Suspendisse potenti.
+                      <div class="row">
+                        <div class="col s12 textoPersonal">
+                          <span class="textUp">Texto personal: </span>
+                          <br>
+                          <span class="materialize-textarea textoPersonal">
+                          {{registroSeleccionado.cuentanosmas}}
                           </span>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-        </div>
       </div>
     </div>
-   <script>
-$(function(){
-  $('.datepicker').pickadate({
-      monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-      monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-      weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-      weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+  </div>
+  <script>
+    $(function() {
+      $('.datepicker').pickadate({
+        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
         selectMonths: true,
         selectYears: 100, // Puedes cambiarlo para mostrar más o menos años
         today: 'Hoy',
         clear: 'Limpiar',
         close: 'Ok',
         labelMonthNext: 'Siguiente mes',
-      labelMonthPrev: 'Mes anterior',
-      labelMonthSelect: 'Selecciona un mes',
-      labelYearSelect: 'Selecciona un año',
+        labelMonthPrev: 'Mes anterior',
+        labelMonthSelect: 'Selecciona un mes',
+        labelYearSelect: 'Selecciona un año',
       });
-});
-</script>
+    });
+  </script>
 
   <script>
-$(function(){
-  $('.datepicker').pickadate({
-      monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-      monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-      weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-      weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+    $(function() {
+      $('.datepicker').pickadate({
+        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
         selectMonths: true,
         selectYears: 100, // Puedes cambiarlo para mostrar más o menos años
         today: 'Hoy',
         clear: 'Limpiar',
         close: 'Ok',
         labelMonthNext: 'Siguiente mes',
-      labelMonthPrev: 'Mes anterior',
-      labelMonthSelect: 'Selecciona un mes',
-      labelYearSelect: 'Selecciona un año',
+        labelMonthPrev: 'Mes anterior',
+        labelMonthSelect: 'Selecciona un mes',
+        labelYearSelect: 'Selecciona un año',
       });
-});
+    });
 
 
-$(document).ready(function() {
+    $(document).ready(function() {
       const input = $('#lunchtime');
       // initialize timepicker
       input.pickatime();
       // get picker
       const picker = input.pickatime('picker');
       // set initial value using arrays formatted as [HOUR,MINUTE].
-      picker.set('select', [3,0]); // <-- picker.set is not a function
+      picker.set('select', [3, 0]); // <-- picker.set is not a function
     });
-
-</script>
+  </script>
 </main>
