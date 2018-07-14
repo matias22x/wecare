@@ -1,6 +1,7 @@
 'use strict';
 angular.module('wecareApp')
     .controller('loginController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, userService, especialistaService, alumnoService) {
+      $rootScope.nombre = "";
       $scope.display=false;
       $scope.login = function() {
         $rootScope.alumnoMenu=false;
@@ -14,6 +15,7 @@ angular.module('wecareApp')
               userData.set('user', resp.data[0]);//en userData guardo los datos de usuario, si queres guardar algo hacelo de esta manera!
               if(resp.data[0].tipo=='admin'){
                 $rootScope.type = userData.get('user').tipo;
+                $rootScope.nombre = userData.get('user').username;
                 $state.go('admin_home');
               }
               if(resp.data[0].tipo=='alumno') {
@@ -22,6 +24,7 @@ angular.module('wecareApp')
                 .then(function(datosAlumno) {
                   userData.set('datosRol', datosAlumno.data[0]);
                   $rootScope.bot = userData.get('datosRol').chatbot;
+                  $rootScope.nombre = userData.get('datosRol').nombre;
                   if (datosAlumno.chatbot == true){
                     $state.go('bot_inicio');
                   }else{
@@ -37,7 +40,7 @@ angular.module('wecareApp')
                 especialistaService.getEspecialistaByUser(userData.get('user')._id)
                 .then(function(datosEspecialista) {
                   userData.set('datosRol', datosEspecialista.data[0]);
-                  console.log(userData.get('datosRol'));
+                  $rootScope.nombre = userData.get('datosRol').nombre;
                 });
                 $state.go('especialista_home');
               }
@@ -53,5 +56,6 @@ angular.module('wecareApp')
       $auth.logout();
       userData.remove('user');
       userData.remove('datosRol');
+      $rootScope.nombre = "";
       $state.go('home');
   });

@@ -1,7 +1,7 @@
 'use strict';
 angular.module('wecareApp')
 .controller('especialistaUserController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {
-  console.log('user');
+
   $scope.usuario = userData.get('user');
   $scope.especialista = userData.get('datosRol');
   $scope.especialista.fecha_nacimiento = $filter('date')($scope.especialista.fecha_nacimiento, "dd-MM-yyyy");
@@ -15,7 +15,7 @@ angular.module('wecareApp')
       $scope.usuario.updatedAt = new Date();
       userService.putUserById($scope.usuario._id, $scope.usuario)
         .then(function(resp) {
-          console.log('LISTO', resp);
+
           $scope.passwordCorrecto = true;
           $scope.contraseniaCorrectoMensaje = "Las contraseñas cambio satisfactoriamente";
         }).catch($log.error);
@@ -33,19 +33,80 @@ angular.module('wecareApp')
 }
 })
   .controller('especialistaHomeController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-    console.log("especialistaHomeController");
+
 
   })
   .controller('especialistaAgendaController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-    console.log("especialistaAgendaController");
+
 
   })
-  .controller('especialistaDiagnosticosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, diagnosticoPrematuroService, alumnoService) {
+  .controller('especialistaDiagnosticosController', function($auth, $scope, $rootScope,$filter, $window, $state, userData, $log, $http, $translate, config, especialistaService, userService, diagnosticoPrematuroService, alumnoService) {
     $scope.informacion = {};
+    $scope.diagnosticosPrematuros = [];
     diagnosticoPrematuroService.getAllDiagnosticosPrematuros()
     .then(function(resp) {
-      $scope.diagnosticosPrematuros = resp.data;
+      angular.forEach(resp.data, function(value, key) {
+        if(value.visto==false){
+          $scope.diagnosticosPrematuros.push(value);
+        };
+      })
+      $scope.diagnosticosPrematuros = $filter('orderBy')($scope.diagnosticosPrematuros, "gravedad", true);
     }).catch($log.error);
+
+
+
+    $scope.informacionAlumno = function(diagnostico) {
+      $scope.informacion.diagnostico = diagnostico;
+        alumnoService.getAlumnoByDni(diagnostico.dniAlumno)
+        .then(function(alumno) {
+          $scope.informacion.diagnostico.alumno = alumno.data[0];
+          if ($scope.informacion.diagnostico.gravedad === 0) {
+              $scope.informacion.diagnostico.puntuacionDeGravedad = 'Estable'
+          } else if ($scope.informacion.diagnostico.gravedad > 0 && $scope.informacion.diagnostico.gravedad < 10) {
+              $scope.informacion.diagnostico.puntuacionDeGravedad = 'Observar'
+          }  else if ($scope.informacion.diagnostico.gravedad > 10 && $scope.informacion.diagnostico.gravedad < 18) {
+              $scope.informacion.diagnostico.puntuacionDeGravedad = 'Preocupante'
+          }  else if ($scope.informacion.diagnostico.gravedad > 15) {
+              $scope.informacion.diagnostico.puntuacionDeGravedad = 'Urgente'
+          }
+        }).catch($log.error);
+    }
+    $scope.agregarAMisPacientes = function(idAlumno, idDiagnostico) {
+      diagnosticoPrematuroService.getDiagnosticoPrematuro(idDiagnostico)
+      .then(function(diagnostico){
+        diagnostico.data.asignado = true;
+        diagnostico.data.visto = true;
+        $scope.informacion.diagnostico.alumno.especialistaAsociado = userData.get('datosRol')._id;
+        diagnosticoPrematuroService.putDiagnosticoPrematuroById(idDiagnostico, diagnostico.data)
+        .then(function(diagnosticoPrematuro) {
+            return alumnoService.putAlumnoById(idAlumno, $scope.informacion.diagnostico.alumno);
+        })
+        .then(function() {
+            $state.go('especialista_pacientes');
+        }).catch($log.error);
+      }).catch($log.error);
+
+
+    };
+
+    $scope.cambiarDiagnosticoAVisto = function(idDiagnostico) {
+      diagnosticoPrematuroService.getDiagnosticoPrematuro(idDiagnostico)
+      .then(function(diagnostico){
+        diagnostico.data.visto = true;
+        $scope.informacion.diagnostico.alumno.especialistaAsociado = userData.get('datosRol')._id;
+        diagnosticoPrematuroService.putDiagnosticoPrematuroById(idDiagnostico, diagnostico.data)
+        .then(function(diagnosticoPrematuro) {
+            $window.location.reload();
+        }).catch($log.error);
+      }).catch($log.error);
+    };
+
+  }).controller('especialistaDiagnosticosViejosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, diagnosticoPrematuroService, alumnoService) {
+    $scope.informacion = {};
+    diagnosticoPrematuroService.getAllDiagnosticosPrematurosVistos()
+    .then(function(resp) {
+          $scope.diagnosticosPrematuros = resp.data;
+      }).catch($log.error);
 
     $scope.filtrarFecha = function (desde, hasta) {
         diagnosticoPrematuroService.getAllDiagnosticosPrematurosPorFecha(desde, hasta)
@@ -71,28 +132,36 @@ angular.module('wecareApp')
         }).catch($log.error);
     }
     $scope.agregarAMisPacientes = function(idAlumno, idDiagnostico) {
-      $scope.diagnosticosPrematuros[0].asignado = true;
-      $scope.informacion.diagnostico.alumno.especialistaAsociado = userData.get('datosRol')._id;
-      diagnosticoPrematuroService.putDiagnosticoPrematuroById(idDiagnostico, $scope.diagnosticosPrematuros[0])
-      .then(function(diagnosticoPrematuro) {
-          return alumnoService.putAlumnoById(idAlumno, $scope.informacion.diagnostico.alumno);
-      })
-      .then(function() {
-          $state.go('especialista_pacientes');
+      diagnosticoPrematuroService.getDiagnosticoPrematuro(idDiagnostico)
+      .then(function(diagnostico){
+        diagnostico.data.asignado = true;
+        diagnostico.data.visto = true;
+        $scope.informacion.diagnostico.alumno.especialistaAsociado = userData.get('datosRol')._id;
+        diagnosticoPrematuroService.putDiagnosticoPrematuroById(idDiagnostico, diagnostico.data)
+        .then(function(diagnosticoPrematuro) {
+            return alumnoService.putAlumnoById(idAlumno, $scope.informacion.diagnostico.alumno);
+        })
+        .then(function() {
+            $state.go('especialista_pacientes');
+        }).catch($log.error);
       }).catch($log.error);
+
+
     };
+
+
 
   })
   .controller('especialistaDiagnosticoVerController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-    console.log("especialistaDiagnosticoVerController");
+
 
   })
   .controller('especialistaHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-    console.log("especialistaHistorialController");
+
 
   })
   .controller('especialistaObservacionesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-    console.log("especialistaObservacionesController");
+
 
   })
   .controller('especialistaPacientesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, alumnoService) {
@@ -103,7 +172,7 @@ angular.module('wecareApp')
 
   })
   .controller('especialistaSesionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-    console.log("especialistaSesionesController");
+
 
   })
   .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, alumnoService, turnoService) {

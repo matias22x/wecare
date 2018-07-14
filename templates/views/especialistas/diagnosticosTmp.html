@@ -5,7 +5,7 @@
       <div class="card">
         <div class="card-content">
 
-        
+
 
           <div class="row claseImportante">
             <div class="col s12 l3 m12">
@@ -73,17 +73,17 @@
         <div class="col s12 m4 l4 conjDiagBis center">
 
         <div ng-if="informacion.diagnostico">
-         <a class="waves-effect waves-light btn btn-small botonGeneral bagregar" ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id)">agregar a mis pacientes</a>
+         <a class="waves-effect waves-light btn btn-small botonGeneral bagregar" ng-if="!informacion.diagnostico.asignado" ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id)">agregar a mis pacientes</a>
          </div>
         </div></td>
           </tr>
         </tbody>
 
         </table>
-        
+
 
         </div>
-        
+
         </div>
          <table class="tablaGeneral">
                 <thead>
@@ -97,8 +97,8 @@
                       <div class="row">
                         <div class="col s12 botScroll">
                           <ul ng-if="informacion.diagnostico.diagnostico" ng-repeat="diagnostico in informacion.diagnostico.diagnostico">
-                            <li class="pregunta">{{diagnostico.pregunta}}</li>
-                            <li class="respuesta">{{diagnostico.respuesta}}</li>
+                            <span class="estiloPart">Pregunta:</span>&nbsp &nbsp<li class="pregunta">{{diagnostico.pregunta}}</li><br>
+                            <span class="estiloPart2">Respuesta:</span>&nbsp &nbsp<li class="respuesta">{{diagnostico.respuesta}}</li>
                           </ul>
                           <p ng-if="!informacion.diagnostico.diagnostico">Webot no ha recaudado datos.</p>
                         </div>

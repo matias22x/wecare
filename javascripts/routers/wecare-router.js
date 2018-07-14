@@ -294,6 +294,6 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             cache: false,
             url: '/especialista_diagnosticosTmp', // url que va arriba
             templateUrl: 'templates/views/especialistas/diagnosticosTmp.html', //ubicacion del html
-            controller: 'especialistaDiagnosticosController' //nombre controller
+            controller: 'especialistaDiagnosticosViejosController' //nombre controller
         });
 });

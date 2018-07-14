@@ -9,7 +9,7 @@ angular.module('wecareApp')
 
     })
   .controller('userAdminController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {
-    console.log('user');
+
     $scope.usuario = userData.get('user');
     $scope.usuario.createdAt = $filter('date')($scope.usuario.createdAt, "dd-MM-yyyy");
     $scope.usuario.updatedAt = $filter('date')($scope.usuario.updatedAt, "dd-MM-yyyy");
@@ -17,7 +17,6 @@ angular.module('wecareApp')
     $scope.contraseniaNuevaBis= "";
     $scope.passwordError = false;
     $scope.emailErrorMensaje = "";
-    console.log($scope.usuario);
     $scope.cambiarClave = function(){
       if($scope.contraseniaNueva==$scope.contraseniaNuevaBis && $scope.contraseniaNueva && $scope.contraseniaNueva.length>8){
         $scope.usuario.password=$scope.contraseniaNuevaBis;
@@ -25,7 +24,6 @@ angular.module('wecareApp')
         $scope.usuario.createdAt = new Date($scope.usuario.createdAt);
         userService.putUserById($scope.usuario._id, $scope.usuario)
           .then(function(resp) {
-            console.log('LISTO', resp);
             $scope.passwordCorrecto = true;
             $scope.contraseniaCorrectoMensaje = "La contraseña cambio satisfactoriamente";
           }).catch($log.error);
@@ -213,7 +211,7 @@ angular.module('wecareApp')
 
     $scope.submit = function() {
       if(!$scope.form.$valid){
-        $scope.validadInput($scope.form.username, 'usernameErrorMensaje', 'usernameError', 4, null, 'letras y espacios');
+        $scope.validadInput($scope.form.username, 'usernameErrorMensaje', 'usernameError', 4, null, 'letras y numeros');
         $scope.validadInput($scope.form.email, 'emailErrorMensaje', 'emailError', null, null, null);
         $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
         $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
@@ -559,7 +557,7 @@ angular.module('wecareApp')
     $scope.submit = function() {
       if(!$scope.form.$valid){
 
-        $scope.validadInput($scope.form.username, 'usernameErrorMensaje', 'usernameError', 4, null, 'letras y espacios');
+        $scope.validadInput($scope.form.username, 'usernameErrorMensaje', 'usernameError', 4, null, 'letras y numeros');
         $scope.validadInput($scope.form.email, 'emailErrorMensaje', 'emailError', null, null, null);
         $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
         $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
@@ -722,8 +720,6 @@ angular.module('wecareApp')
       var id = $scope.objModificar._id;
       consejosService.deleteConsejosById(id)
         .then(function(consejoEliminado) {
-          console.log(consejoEliminado.data);
-          console.log('LISTO', consejoEliminado);
            $window.location.reload();
         })
         .catch($log.error);

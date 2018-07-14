@@ -17,7 +17,7 @@
 
 
           <div class="input-field separaCostado">
-            <input id="username" name="username" type="text" class="validate" ng-model="especialistaNuevo.username" required minlength="4" ng-pattern="/^[a-zA-Z\s]*$/" ng-keypress="usernameError = false" ng-click="usernameError = false" oninvalid="return false;" autocomplete="off" />
+            <input id="username" name="username" type="text" class="validate" ng-model="especialistaNuevo.username" required minlength="4" ng-pattern="/^[a-zA-Z0-9_.-]*$/" ng-keypress="usernameError = false" ng-click="usernameError = false" oninvalid="return false;" autocomplete="off" />
             <label for="username">Nombre de Usuario</label>
             <span style=" color:red;" id="usernameErrorSpan" ng-show="usernameError" >{{usernameErrorMensaje}}</span>
           </div>

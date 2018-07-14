@@ -69,27 +69,28 @@ wecareApp.run(function($rootScope, userData, $state, $log, $auth, especialistaSe
   };
 
   if ($rootScope.isAuthenticated()) {
+    $rootScope.nombre = "";
     $rootScope.type = userData.get('user').tipo;
-    console.log(userData.get('user'));
     if ($rootScope.type === 'especialista') {
         especialistaService.getEspecialistaByUser(userData.get('user')._id)
         .then(function(datosEspecialista) {
           userData.set('datosRol', datosEspecialista.data[0]);
-          console.log(userData.get('datosRol'));
+          $rootScope.nombre = userData.get('datosRol').nombre;
         });
     } else if ($rootScope.type === 'alumno') {
         alumnoService.getAlumnoByUser(userData.get('user')._id)
         .then(function(datosAlumno) {
           userData.set('datosRol', datosAlumno.data[0]);
           $rootScope.bot = userData.get('datosRol').chatbot;
-          console.log($rootScope.bot);
+          $rootScope.nombre = userData.get('datosRol').nombre;
           if(userData.get('datosRol').chatbot == true){
             $state.go('bot_inicio');
           }else{
             $rootScope.alumnoMenu=true;
           }
-          console.log(userData.get('datosRol'));
         });
+    }else{
+      $rootScope.nombre = userData.get('user').username;
     }
   }
 });
