@@ -41,6 +41,7 @@ angular.module('wecareApp')
 
   })
   .controller('especialistaDiagnosticosController', function($auth, $scope, $rootScope,$filter, $window, $state, userData, $log, $http, $translate, config, especialistaService, userService, diagnosticoPrematuroService, alumnoService) {
+
     $scope.informacion = {};
     $scope.diagnosticosPrematuros = [];
     diagnosticoPrematuroService.getAllDiagnosticosPrematuros()
@@ -189,6 +190,32 @@ angular.module('wecareApp')
   .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $rootScope, $state, userData, $document, $log, $http, $translate, config, moment, especialistaService, userService, alumnoService, turnoService) {
       $scope.turno = {};
       var modalMjs = $document.find('#demoModal').modal();
+      $scope.currentYear = new Date().getFullYear();
+      $scope.date = {
+          month: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+          day: [],
+          hour: ['07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'],
+          minute: ['00', '15', '30', '45']
+      };
+      $scope.dateNow = new Date();
+
+      function daysOfAMonth(year, month) {
+        var day = new Date(year, month, 0).getDate();
+        var dayQuantities = Array.from(Array(day).keys()).map(function(val) {
+          return val + 1;
+        });
+
+        return dayQuantities;
+      };
+
+      $scope.$watch('turno.mes', function() {
+          if ($scope.turno.mes) {
+              var month = $scope.turno.mes;
+              var year = $scope.currentYear;
+              $scope.date.day = daysOfAMonth(year, month);
+          }
+      });
+
 
       if ($stateParams.id !== '') {
           alumnoService.getAlumno($stateParams.id)
@@ -198,10 +225,9 @@ angular.module('wecareApp')
       }
 
       $scope.crearTurno = function() {
-        var hora = new Date($scope.turno.hora);
-        var fecha = new Date($scope.turno.fecha.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+        var dataMoment = moment($scope.currentYear.toString() + '-' + $scope.turno.mes + '-' + $scope.turno.dia + ' ' + $scope.turno.hora + ':' + $scope.turno.minutos, "YYYY-MM-DD HH:mm");
+        var turno = new Date(dataMoment);
 
-        var turno = new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate(), hora.getHours(), hora.getMinutes());
         var data = {
           alumno: $scope.alumnoElegido._id,
           horario: turno,

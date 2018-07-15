@@ -44,21 +44,44 @@
                   <br>
 
                   <h5>Seleccionar día y horario del turno</h5>
-
-                  <div class="input-field fechaIngresar center">
-                    <input id="fecha" type="text" class="datepicker" ng-model="turno.fecha">
-                    <label for="fecha">Fecha</label>
-
+                  <div class="select-date">
+                    <div class="input-field sincronica select-type">
+                      <select id="type-request" material-select watch ng-model="turno.mes">
+                        <option value="" option-untranslate="" disabled>Mes</option>
+                        <option value="{{month}}" option-untranslate="" ng-repeat="month in date.month">{{month}}</option>
+                      </select>
+                      <label for="fecha">Mes</label>
+                    </div>
                   </div>
-
-                  <div class="input-field fechaIngresar center">
-                    <p for="lunchtime">Horario</p>
-                    <input id="lunchtime" type="time" class="timepicker" ng-model="turno.hora">
+                  <div class="select-date">
+                    <div class="input-field sincronica select-type">
+                      <select id="type-request" material-select watch ng-model="turno.dia">
+                        <option value="" option-untranslate="" disabled>Día</option>
+                        <option value="{{day}}" option-untranslate="" ng-repeat="day in date.day">{{day}}</option>
+                      </select>
+                      <label for="fecha">Día</label>
+                    </div>
+                  </div>
+                  <div class="select-date">
+                    <div class="input-field sincronica select-type">
+                      <select id="type-request" material-select watch ng-model="turno.hora">
+                        <option value="" option-untranslate="" disabled>Hora</option>
+                        <option value="{{hour}}" option-untranslate="" ng-repeat="hour in date.hour">{{hour}}</option>
+                      </select>
+                      <label for="fecha">Hora</label>
+                    </div>
+                  </div>
+                  <div class="select-date">
+                    <div class="input-field sincronica select-type">
+                      <select id="type-request" material-select watch ng-model="turno.minutos">
+                        <option value="" option-untranslate="" disabled>Minutos</option>
+                        <option value="{{minute}}" option-untranslate="" ng-repeat="minute in date.minute">{{minute}}</option>
+                      </select>
+                      <label for="fecha">Minutos</label>
+                    </div>
                   </div>
                 </center>
                 <div class="step-actions">
-
-
                   <button class="waves-effect waves-dark btn blue next-step">SIGUIENTE</button>
                   <button class="waves-effect waves-dark btn-flat previous-step">ATRÁS</button>
                 </div>
@@ -163,6 +186,5 @@
       labelYearSelect: 'Selecciona un año',
     });
   });
-
 </script>
 </main>
