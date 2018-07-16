@@ -140,12 +140,29 @@ angular.module('wecareApp')
     }
 
   })
-  .controller('alumnoHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService) {
+  .controller('alumnoHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService, turnoService, moment) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
       $rootScope.alumnoMenu=true;
     }
+    function addZero(i) {
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    }
+    $scope.tiempo = {};
+    var dataMoment = moment(new Date, 'DD/MM/YYYY');
+    var date = dataMoment.format();
+
+    turnoService.getProximosTurnosByPaciente(userData.get('datosRol')._id, date, 1)
+    .then(function(resp) {
+      $scope.turnos = resp.data;
+      var time = new Date($scope.turnos[0].horario);
+      $scope.tiempo.hora = time.getHours();
+      $scope.tiempo.minuto = addZero(time.getMinutes());
+    }).catch($log.error);
 
     registrosService.getRegistrosPorPaciente(userData.get('datosRol')._id)
     .then(function(resp) {
