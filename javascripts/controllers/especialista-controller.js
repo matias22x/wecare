@@ -192,7 +192,7 @@ angular.module('wecareApp')
       var modalMjs = $document.find('#demoModal').modal();
       $scope.currentYear = new Date().getFullYear();
       $scope.date = {
-          month: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+          month: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
           day: [],
           hour: ['07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'],
           minute: ['00', '15', '30', '45']
@@ -208,9 +208,10 @@ angular.module('wecareApp')
         return dayQuantities;
       };
 
-      $scope.$watch('turno.mes', function() {
+      $scope.$watch('turno.mes', function(resp) {
           if ($scope.turno.mes) {
-              var month = $scope.turno.mes;
+              var month = $scope.date.month.indexOf(resp+1);
+              $scope.turno.mesNumero = $scope.date.month.indexOf(resp+1);
               var year = $scope.currentYear;
               $scope.date.day = daysOfAMonth(year, month);
           }
@@ -225,7 +226,7 @@ angular.module('wecareApp')
       }
 
       $scope.crearTurno = function() {
-        var dataMoment = moment($scope.currentYear.toString() + '-' + $scope.turno.mes + '-' + $scope.turno.dia + ' ' + $scope.turno.hora + ':' + $scope.turno.minutos, "YYYY-MM-DD HH:mm");
+        var dataMoment = moment($scope.currentYear.toString() + '-' + $scope.turno.mesNumero + '-' + $scope.turno.dia + ' ' + $scope.turno.hora + ':' + $scope.turno.minutos, "YYYY-MM-DD HH:mm");
         var turno = new Date(dataMoment);
 
         var data = {
@@ -234,7 +235,7 @@ angular.module('wecareApp')
           nota_previa: $scope.turno.nota_previa,
           especialista: userData.get('datosRol')._id,
         }
-
+console.log(data);return;
         turnoService.postTurno(data)
         .then(function(resp) {
           modalMjs.modal('open');
