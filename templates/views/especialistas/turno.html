@@ -4,9 +4,9 @@
   <div class="container">
 
     <div class="col s12">
-      <div class="card">
+      <div class="card estaCard">
         <div class="card-contentDos">
-          <ul class="stepper horizontal" id="horizontal">
+          <ul class="stepper horizontal  stepbystep" id="horizontal">
             <li class="step active">
               <div class="step-title waves-effect waves-dark">Buscador</div>
               <div class="step-content">
@@ -15,8 +15,8 @@
                     <br>
                     <br>
 
-                    <h5>Buscar Alumno</h5>
-                    <div class="buscador01">
+                   
+                    <div class="buscador01 infoStep">
                       <div class="input-field buscador00">
                         <div class="itemsBuscador">
                           <h5>Nombre y apellido</h5>
@@ -44,6 +44,7 @@
                   <br>
 
                   <h5>Seleccionar día y horario del turno</h5>
+                  <div class="estiloTurno">
                   <div class="select-date">
                     <div class="input-field sincronica select-type">
                       <select id="type-request" material-select watch ng-model="turno.mes">
@@ -80,6 +81,7 @@
                       <label for="fecha">Minutos</label>
                     </div>
                   </div>
+                  </div>
                 </center>
                 <div class="step-actions">
                   <button class="waves-effect waves-dark btn blue next-step">SIGUIENTE</button>
@@ -94,14 +96,14 @@
                   <br>
                   <br>
 
-                  <h5>Anotaciones previas del alumno</h5>
+                  <h5>Anotaciones previas sobre el alumno</h5>
                   <div class="input-field col s12">
                     <div class="row">
                       <form class="col s12">
-
+                        <div class="estiloTurno">
                         <div class="input-field col s12">
                           <textarea id="textarea1" class="materialize-textarea" ng-model="turno.nota_previa"></textarea>
-
+                          </div>
                         </div>
 
                       </form>

@@ -62,7 +62,7 @@
         <span class="titNar"><b>Fecha de ingreso</b></span><br>
         <span>{{informacion.diagnostico.createdAt | date: "EEEE d 'de' LLLL 'de' yyyy" }}</span><br>
         <span class="titNar"><b>Diagnostico</b></span><br>
-        <span>{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
+        <span class="tituloDestaca">{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
 
           <!-- HTML5 -->
 
@@ -82,7 +82,7 @@
          </div>
          <br>
          <div ng-if="informacion.diagnostico">
-          <a class="waves-effect waves-light btn btn-small botonGeneral bagregar" ng-if="!informacion.diagnostico.visto" ng-click="cambiarDiagnosticoAVisto(informacion.diagnostico._id)">marcar como visto</a>
+          <a class="waves-effect waves-light btn btn-small botonGeneral bagregar bisBoton" ng-if="!informacion.diagnostico.visto" ng-click="cambiarDiagnosticoAVisto(informacion.diagnostico._id)">marcar como visto</a>
           </div>
         </div></td>
           </tr>

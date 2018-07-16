@@ -48,10 +48,11 @@
               <div class="step-title waves-effect waves-dark">Actividades</div>
               <div class="step-content">
                 <center>
-                  <br>
-                  <br>
+               
+                
 
-                  <h5>¿Cuáles de las siguientes actividades describen tu día?</h5>
+                  <h5>¿Cuáles de las siguientes actividades realizaste en el día?</h5>
+                  <p class="seleccionmas">Puedes seleccionar más de una</p>
                   <form action="#" class="actividades">
                     <ul>
                       <li><input type="checkbox" id="cb5" ng-model="registro.actividades.estudio" />
@@ -61,6 +62,10 @@
                       <li><input type="checkbox" id="cb6" ng-model="registro.actividades.fiesta" />
                         <label for="cb6"><img src="img/disco.png" /></label>
                         <p>fiesta</p>
+                      </li>
+                        <li><input type="checkbox" id="cb10" ng-model="registro.actividades.descanso" />
+                        <label for="cb10"><img src="img/cama01.png" /></label>
+                        <p>en cama</p>
                       </li>
                       <li><input type="checkbox" id="cb9" ng-model="registro.actividades.juego" />
                         <label for="cb9"><img src="img/consola-de-juegos.png" /></label>
@@ -75,10 +80,52 @@
                         <p>salida</p>
                       </li>
 
-                      <li><input type="checkbox" id="cb10" ng-model="registro.actividades.descanso" />
-                        <label for="cb10"><img src="img/dormir.png" /></label>
-                        <p>descanso</p>
+                    
+
+                      <li><input type="checkbox" id="cb10"  />
+                        <label for="cb25"><img src="img/chica02.png" /></label>
+                        <p>nada</p>
                       </li>
+
+                    </ul>
+                  </form>
+               
+                </center>
+                <div class="step-actions">
+
+
+                  <button class="waves-effect waves-dark btn blue next-step">CONTINUAR</button>
+                  <button class="waves-effect waves-dark btn-flat previous-step">ATRÁS</button>
+                </div>
+              </div>
+            </li>
+                <li class="step">
+              <div class="step-title waves-effect waves-dark">Lugares</div>
+              <div class="step-content">
+                <center>
+
+                  
+
+                  <h5>¿Dónde estuviste el día de hoy?</h5>
+                  <form action="#" class="actividades">
+                    <ul>
+                      <li><input type="checkbox" id="cb5"  />
+                        <label for="cb26"><img src="img/casa.png" /></label>
+                        <p>escuela</p>
+                      </li>
+                      <li><input type="checkbox" id="cb6"  />
+                        <label for="cb27"><img src="img/escuela.png" /></label>
+                        <p>mi casa</p>
+                      </li>
+                      <li><input type="checkbox" id="cb9"  />
+                        <label for="cb28"><img src="img/parque.png" /></label>
+                        <p>plaza</p>
+                      </li>
+                      <li><input type="checkbox" id="cb8"  />
+                        <label for="cb29"><img src="img/casa2.png" /></label>
+                        <p>casa de un amigo</p>
+                      </li>
+                     
 
                     </ul>
                   </form>
@@ -95,8 +142,7 @@
               <div class="step-title waves-effect waves-dark">Social</div>
               <div class="step-content">
                 <center>
-                  <br>
-                  <br>
+                
 
                   <h5>¿Con quiénes pasaste el día?</h5>
                   <form action="#" class="actividades">
@@ -134,16 +180,16 @@
               <div class="step-title waves-effect waves-dark">Cuentanos más</div>
               <div class="step-content textoAlumno4">
                 <center>
-                  <br>
-                  <br>
+                 
                   <h5>Si deseas contarnos algo más de tu día puedes hacerlo a continuación:</h5>
                   <div class="input-field col s12">
                     <div class="row">
                       <form class="col s12">
-
+                        <div class="estiloTurnoDos">
                         <div class="input-field col s12">
                           <textarea id="textarea1" class="materialize-textarea" ng-model="registro.cuentanosmas"></textarea>
-                          <label for="textarea1">¿Deseas contarnos algo mas?</label>
+                          
+                        </div>
                         </div>
 
                       </form>

@@ -1044,7 +1044,15 @@ label img {
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/zzz.png);
+   content: url(../img/cama02.png);
+}
+
+#cb22:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+  border-radius: 50px;
+   content: url(../img/cama02.png);
 }
 
 #cb11:checked + label img {
@@ -1079,6 +1087,9 @@ label img {
 
 .estadoAnimo p { text-align: center;
 }
+
+.estadoAnimo {     margin-top: -40px;
+ }
 
 .textoAlumno h5{ text-align: center }
 
@@ -1857,7 +1868,7 @@ ul.stepper.horizontal .step-content {     overflow-y: hidden !important; }
 
 .conjDiagBis { margin-top: 60px; }
 
-.gravBot { margin-top: 10px; }
+
 
 .bisF th{ text-align: center; }
 
@@ -2160,7 +2171,7 @@ progress[value] {
   color: royalblue;
   
   position: relative;
-  margin: 0 0 1.5em; 
+ margin-bottom: 5px;
 }
 
 /*
@@ -2305,3 +2316,38 @@ span.estiloPart2 {color: #ff8500;
 
 
   textarea.opcionDos { resize: none; }
+
+
+  .estiloTurno { width: 40%;     padding-top: 10px; }
+  @media screen and (max-width: 999px)
+  {   .estiloTurno { width: 80% !important; } }
+
+
+  .estiloTurnoDos { width: 50%;     padding-top: 10px; }
+  @media screen and (max-width: 999px) { 
+   .estiloTurnoDos { width: 80% !important;     } }
+
+
+  .estaCard { margin-top: -10px;  }
+
+  .stepbystep { height: 500px; }
+
+  .infoStep{     margin-top: 20px; }
+
+  .tituloDestaca {font-weight: bold; text-transform: uppercase;}
+
+
+  .gravBot {
+    margin-top: -10px; }
+  @media screen and (max-width: 999px)
+  {
+    .gravBot { margin-top: 10px; }  }
+
+.bisBoton {     margin-top: -10px; }
+
+.seleccionmas { color: grey;
+    text-align: center;
+    font-size: 12px;
+    margin-top: -5px; }
+
+.acomodoMargen {     margin-top: -30px; }
