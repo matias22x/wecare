@@ -48,8 +48,8 @@
               <div class="step-title waves-effect waves-dark">Actividades</div>
               <div class="step-content">
                 <center>
-               
-                
+
+
 
                   <h5>¿Cuáles de las siguientes actividades realizaste en el día?</h5>
                   <p class="seleccionmas">Puedes seleccionar más de una</p>
@@ -79,17 +79,13 @@
                         <label for="cb7"><img src="img/paisaje-urbano.png" /></label>
                         <p>salida</p>
                       </li>
-
-                    
-
-                      <li><input type="checkbox" id="cb10"  />
-                        <label for="cb25"><img src="img/chica02.png" /></label>
-                        <p>nada</p>
+                      <li><input type="checkbox" id="c101" ng-model="registro.actividades.nada" />
+                        <label for="c101"><img src="img/chica02.png" /></label>
+                        <p>salida</p>
                       </li>
-
                     </ul>
                   </form>
-               
+
                 </center>
                 <div class="step-actions">
 
@@ -104,29 +100,27 @@
               <div class="step-content">
                 <center>
 
-                  
+
 
                   <h5>¿Dónde estuviste el día de hoy?</h5>
                   <form action="#" class="actividades">
                     <ul>
-                      <li><input type="checkbox" id="cb5"  />
+                      <li><input type="checkbox" id="cb26"  ng-model="registro.lugares.escuela"  />
                         <label for="cb26"><img src="img/casa.png" /></label>
                         <p>escuela</p>
                       </li>
-                      <li><input type="checkbox" id="cb6"  />
-                        <label for="cb27"><img src="img/escuela.png" /></label>
+                      <li><input type="checkbox" id="cb27"  />
+                        <label for="cb27"><img src="img/escuela.png"  ng-model="registro.lugares.casa" /></label>
                         <p>mi casa</p>
                       </li>
-                      <li><input type="checkbox" id="cb9"  />
+                      <li><input type="checkbox" id="cb28"  ng-model="registro.lugares.plaza"  />
                         <label for="cb28"><img src="img/parque.png" /></label>
                         <p>plaza</p>
                       </li>
-                      <li><input type="checkbox" id="cb8"  />
+                      <li><input type="checkbox" id="cb29"  ng-model="registro.lugares.casa_amigo"  />
                         <label for="cb29"><img src="img/casa2.png" /></label>
                         <p>casa de un amigo</p>
                       </li>
-                     
-
                     </ul>
                   </form>
                 </center>
@@ -142,7 +136,7 @@
               <div class="step-title waves-effect waves-dark">Social</div>
               <div class="step-content">
                 <center>
-                
+
 
                   <h5>¿Con quiénes pasaste el día?</h5>
                   <form action="#" class="actividades">
@@ -180,7 +174,7 @@
               <div class="step-title waves-effect waves-dark">Cuentanos más</div>
               <div class="step-content textoAlumno4">
                 <center>
-                 
+
                   <h5>Si deseas contarnos algo más de tu día puedes hacerlo a continuación:</h5>
                   <div class="input-field col s12">
                     <div class="row">
@@ -188,7 +182,7 @@
                         <div class="estiloTurnoDos">
                         <div class="input-field col s12">
                           <textarea id="textarea1" class="materialize-textarea" ng-model="registro.cuentanosmas"></textarea>
-                          
+
                         </div>
                         </div>
 

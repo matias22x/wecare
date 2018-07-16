@@ -69,6 +69,13 @@ angular.module('wecareApp')
         fiesta: false,
         juego: false,
         salida: false,
+        nada: false,
+      },
+      lugares: {
+        escuela: false,
+        casa: false,
+        plaza: false,
+        casa_amigo: false
       },
       animo: {
         contento: false,
