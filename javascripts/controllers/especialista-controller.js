@@ -235,7 +235,7 @@ angular.module('wecareApp')
           nota_previa: $scope.turno.nota_previa,
           especialista: userData.get('datosRol')._id,
         }
-console.log(data);return;
+
         turnoService.postTurno(data)
         .then(function(resp) {
           modalMjs.modal('open');
