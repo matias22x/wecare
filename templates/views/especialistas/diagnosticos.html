@@ -1,5 +1,3 @@
-
-
 <main>
   <div class="section"></div>
   <div class="container">
@@ -12,7 +10,7 @@
           <div class="row claseImportante">
 
             <div class="col s12 l3 m12">
-            <h5 class="center titulo03 titAparte show-on-small hide-on-med-and-up">Diagnósticos</h5>
+              <h5 class="center titulo03 titAparte show-on-small hide-on-med-and-up">Diagnósticos</h5>
               <table class="centered tablaMarg">
                 <thead>
                   <tr class="fondoOne">
@@ -33,68 +31,70 @@
             </div>
             <div class="col s12 m12 l9">
 
-            <h5 class="center titulo03 titAparte hide-on-med-and-down">Diagnósticos</h5>
+              <h5 class="center titulo03 titAparte hide-on-med-and-down">Diagnósticos</h5>
 
 
-        <div class="row">
-        <div class="col s12 m12 l12">
-        <table class="tablaGeneralBis">
-        <thead class="centered">
-          <tr class="fondoOne">
-          <th class="tituloDiag">Detalles</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-        <div class="col s12 m4 l4 conjDiag">
-          <span class="titNar"><b>Nombre y apellido</b></span><br>
-          <span>{{informacion.diagnostico.alumno.nombre}}</span><br>
-          <span class="titNar"><b>DNI</b></span><br>
-          <span>{{informacion.diagnostico.alumno.dni}}</span><br>
-          <span class="titNar"><b>Direccion</b></span><br>
-          <span>{{informacion.diagnostico.alumno.direccion}}</span><br>
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <table class="tablaGeneralBis">
+                    <thead class="centered">
+                      <tr class="fondoOne">
+                        <th class="tituloDiag">Detalles</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="col s12 m4 l4 conjDiag">
+                            <span class="titNar"><b>Nombre y apellido</b></span><br>
+                            <span>{{informacion.diagnostico.alumno.nombre}}</span><br>
+                            <span class="titNar"><b>DNI</b></span><br>
+                            <span>{{informacion.diagnostico.alumno.dni}}</span><br>
+                            <span class="titNar"><b>Direccion</b></span><br>
+                            <span>{{informacion.diagnostico.alumno.direccion}}</span><br>
 
-        </div>
+                          </div>
 
-        <div class="col s12 m4 l4 conjDiag">
-        <span class="titNar"><b>Curso</b></span><br>
-        <span class="titNar"><b>Fecha de ingreso</b></span><br>
-        <span>{{informacion.diagnostico.createdAt | date: "EEEE d 'de' LLLL 'de' yyyy" }}</span><br>
-        <span class="titNar"><b>Diagnostico</b></span><br>
-        <span class="tituloDestaca">{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
+                          <div class="col s12 m4 l4 conjDiag">
+                            <span class="titNar"><b>Curso</b></span><br>
+                            <span>{{informacion.diagnostico.alumno.curso}}</span><br>
+                            <span class="titNar"><b>Fecha de ingreso</b></span><br>
+                            <span>{{informacion.diagnostico.createdAt | date: "EEEE d 'de' LLLL 'de' yyyy" }}</span><br>
+                            <span class="titNar"><b>Diagnostico</b></span><br>
+                            <span class="tituloDestaca">{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
 
-          <!-- HTML5 -->
+                            <!-- HTML5 -->
 
 
 
-        </div>
+                          </div>
 
-        <div class="col s12 m4 l4 conjDiagBis gravBot center">
-        <span class="titNar"><b>Gravedad</b></span><br>
+                          <div class="col s12 m4 l4 conjDiagBis gravBot center">
+                            <span class="titNar"><b>Gravedad</b></span><br>
 
-    <progress  max="22" value="{{informacion.diagnostico.gravedad}}" class="html5">
+                            <progress max="22" value="{{informacion.diagnostico.gravedad}}" class="html5">
     <div class="progress-bar">
       </div>
     </progress>
-        <div ng-if="informacion.diagnostico">
-         <a class="waves-effect waves-light btn btn-small botonGeneral bagregar" ng-if="!informacion.diagnostico.asignado" ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id)">agregar a mis pacientes</a>
-         </div>
-         <br>
-         <div ng-if="informacion.diagnostico">
-          <a class="waves-effect waves-light btn btn-small botonGeneral bagregar bisBoton" ng-if="!informacion.diagnostico.visto" ng-click="cambiarDiagnosticoAVisto(informacion.diagnostico._id)">marcar como visto</a>
-          </div>
-        </div></td>
-          </tr>
-        </tbody>
+                            <div ng-if="informacion.diagnostico">
+                              <a class="waves-effect waves-light btn btn-small botonGeneral bagregar" ng-if="!informacion.diagnostico.asignado" data-target='demoModal' ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id, informacion.diagnostico.alumno.nombre)" modal>agregar a mis pacientes</a>
+                            </div>
+                            <br>
+                            <div ng-if="informacion.diagnostico">
+                              <a class="waves-effect waves-light btn btn-small botonGeneral bagregar bisBoton" ng-if="!informacion.diagnostico.visto" ng-click="cambiarDiagnosticoAVisto(informacion.diagnostico._id)">marcar como visto</a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
 
-        </table>
+                  </table>
 
 
-        </div>
+                </div>
 
-        </div>
-         <table class="tablaGeneral">
+              </div>
+              <table class="tablaGeneral">
                 <thead>
                   <tr class="fondoOne bisF">
                     <th>DIAGNÓSTICO ENTRANTE DE WEBOT</th>
@@ -106,8 +106,10 @@
                       <div class="row">
                         <div class="col s12 botScroll">
                           <ul ng-if="informacion.diagnostico.diagnostico" ng-repeat="diagnostico in informacion.diagnostico.diagnostico">
-                            <span class="estiloPart">Pregunta:</span>&nbsp &nbsp<li class="pregunta">{{diagnostico.pregunta}}</li><br>
-                            <span class="estiloPart2">Respuesta:</span>&nbsp &nbsp<li class="respuesta">{{diagnostico.respuesta}}</li>
+                            <span class="estiloPart">Pregunta:</span>&nbsp &nbsp
+                            <li class="pregunta">{{diagnostico.pregunta}}</li><br>
+                            <span class="estiloPart2">Respuesta:</span>&nbsp &nbsp
+                            <li class="respuesta">{{diagnostico.respuesta}}</li>
                           </ul>
                           <p ng-if="!informacion.diagnostico.diagnostico">Webot no ha recaudado datos.</p>
                         </div>
@@ -117,8 +119,23 @@
                 </tbody>
               </table>
             </div>
-            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div id="demoModal" class="modal">
+    <div class="modal-content modalTitulo center">
+      <h4>Esta seguro que desea agregar a {{datos.nombre}}</h4>
+    </div>
+    <div class="modal-footer">
+      <div class="row sinEspacio center">
+        <div class="col s6 m6 l6 ">
+          <a class="modal-action modal-close btn botonGeneral">No agregar</a>
+        </div>
+        <div class="col s6 m6 l6 ">
+          <a ng-click="guardarAMisPacientes(datos.idAlumno, datos.idDiagnostico, datos.nombre)" class="modal-action modal-close btn botonGeneral">Agregar a mis pacientes</a>
         </div>
       </div>
     </div>

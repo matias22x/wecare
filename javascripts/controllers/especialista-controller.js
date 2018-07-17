@@ -72,7 +72,15 @@ angular.module('wecareApp')
           }
         }).catch($log.error);
     }
-    $scope.agregarAMisPacientes = function(idAlumno, idDiagnostico) {
+    $scope.agregarAMisPacientes = function(idAlumno, idDiagnostico, datosNombre) {
+      $scope.datos = {
+        nombre: datosNombre,
+        idAlumno: idAlumno,
+        idDiagnostico: idDiagnostico
+      }
+    };
+
+    $scope.guardarAMisPacientes = function(idAlumno, idDiagnostico, datosNombre) {
       diagnosticoPrematuroService.getDiagnosticoPrematuro(idDiagnostico)
       .then(function(diagnostico){
         diagnostico.data.asignado = true;
@@ -80,17 +88,15 @@ angular.module('wecareApp')
         $scope.informacion.diagnostico.alumno.especialistaAsociado = userData.get('datosRol')._id;
         diagnosticoPrematuroService.putDiagnosticoPrematuroById(idDiagnostico, diagnostico.data)
         .then(function(diagnosticoPrematuro) {
-            return alumnoService.putAlumnoById(idAlumno, $scope.informacion.diagnostico.alumno);
+          return alumnoService.putAlumnoById(idAlumno, $scope.informacion.diagnostico.alumno);
         })
         .then(function() {
-            $state.go('especialista_pacientes');
+          $state.go('especialista_pacientes');
         }).catch($log.error);
       }).catch($log.error);
+    }
 
-
-    };
-
-    $scope.cambiarDiagnosticoAVisto = function(idDiagnostico) {
+    $scope.cambiarDiagnosticoAVisto = function(idAlumno, idDiagnostico, datosNombre) {
       diagnosticoPrematuroService.getDiagnosticoPrematuro(idDiagnostico)
       .then(function(diagnostico){
         diagnostico.data.visto = true;
@@ -225,7 +231,6 @@ angular.module('wecareApp')
             $scope.alumnoElegido = dataAlumno.data;
           }).catch($log.error);
       }
-      // var dateEnd = dataMoment.add(1, 'day');
 
       $scope.crearTurno = function() {
         var dataMoment = moment($scope.currentYear.toString() + '-' + $scope.turno.mesNumero + '-' + $scope.turno.dia + ' ' + $scope.turno.hora + ':' + $scope.turno.minutos, "YYYY-MM-DD HH:mm");
