@@ -189,6 +189,7 @@ angular.module('wecareApp')
   })
   .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $rootScope, $state, userData, $document, $log, $http, $translate, config, moment, especialistaService, userService, alumnoService, turnoService) {
       $scope.turno = {};
+      $scope.selector = {};
       var modalMjs = $document.find('#demoModal').modal();
       $scope.currentYear = new Date().getFullYear();
       $scope.date = {
@@ -224,21 +225,61 @@ angular.module('wecareApp')
             $scope.alumnoElegido = dataAlumno.data;
           }).catch($log.error);
       }
+      // var dateEnd = dataMoment.add(1, 'day');
 
       $scope.crearTurno = function() {
         var dataMoment = moment($scope.currentYear.toString() + '-' + $scope.turno.mesNumero + '-' + $scope.turno.dia + ' ' + $scope.turno.hora + ':' + $scope.turno.minutos, "YYYY-MM-DD HH:mm");
         var turno = new Date(dataMoment);
+        if ($scope.selector.mensual === true) {
+          console.log('que empieze la fiesta');
+            var data = {
+              alumno: $scope.alumnoElegido._id,
+              horario: turno,
+              nota_previa: $scope.turno.nota_previa,
+              especialista: userData.get('datosRol')._id,
+            }
+            turnoService.postTurno(data)
+            .then(function(resp) {
+              var data2 = {
+                alumno: $scope.alumnoElegido._id,
+                horario: turno.setDate(turno.getDate()+7),
+                nota_previa: $scope.turno.nota_previa,
+                especialista: userData.get('datosRol')._id,
+              }
+              return turnoService.postTurno(data2);
+            }).then(function(resp) {
+              var data3 = {
+                alumno: $scope.alumnoElegido._id,
+                horario: turno.setDate(turno.getDate()+7),
+                nota_previa: $scope.turno.nota_previa,
+                especialista: userData.get('datosRol')._id,
+              }
+              return turnoService.postTurno(data3);
+            }).then(function(resp) {
+              var data4 = {
+                alumno: $scope.alumnoElegido._id,
+                horario: turno.setDate(turno.getDate()+7),
+                nota_previa: $scope.turno.nota_previa,
+                especialista: userData.get('datosRol')._id,
+              }
+              return turnoService.postTurno(data4);
+            }).then(function(resp) {
+              modalMjs.modal('open');
+            })
+            .catch($log.error);
+        } else {
+          var data = {
+            alumno: $scope.alumnoElegido._id,
+            horario: turno,
+            nota_previa: $scope.turno.nota_previa,
+            especialista: userData.get('datosRol')._id,
+          }
 
-        var data = {
-          alumno: $scope.alumnoElegido._id,
-          horario: turno,
-          nota_previa: $scope.turno.nota_previa,
-          especialista: userData.get('datosRol')._id,
+          turnoService.postTurno(data)
+          .then(function(resp) {
+            modalMjs.modal('open');
+          }).catch($log.error);
         }
 
-        turnoService.postTurno(data)
-        .then(function(resp) {
-          modalMjs.modal('open');
-        }).catch($log.error);
       }
   });
