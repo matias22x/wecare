@@ -1,10 +1,10 @@
-<main>
+<main class="fondoBlanco01 ">
   <div class="section"></div>
   <div class="container center">
     <div class="col s12">
-      <div class="card">
-        <div class="card-content misPac">
-          <div class="contenidoBorde">
+      <div class="card margenDebajo">
+        <div class="card-content fondoConColor misPac">
+          <div class="contenidoBordeGris">
             <h4>ALUMNOS</h4>
 
             <div class="wrap">
@@ -58,7 +58,7 @@
                         <td>
                           <a tooltipped data-position="left" data-tooltip="Ver Alumno" class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_alumno({id: alumno._id})"><i class="material-icons">visibility</i></a>
                           <a tooltipped data-position="left" data-tooltip="Editar Alumno" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
-                          <a tooltipped data-position="left" data-tooltip="Deshabilitar Alumno" ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">clear</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Deshabilitar Alumno" ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">block</i></a>
                           <a tooltipped data-position="left" data-tooltip="Habilitar Alumno" ng-if="!alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">add</i></a>
                         </td>
                       </tr>
