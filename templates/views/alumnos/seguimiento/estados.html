@@ -16,22 +16,23 @@
                     <br>
                     <p>Jueves 21 de Junio de 2018</p>
                     <h5>¿Cómo te sientes el día de hoy?</h5>
+                    <p class="seleccionmas">Puedes seleccionar más de una opción</p>
                     <form action="#" class="actividades">
                       <ul>
                         <li><input type="checkbox" id="cb1" ng-model="registro.animo.contento" />
-                          <label for="cb1"><img src="img/happy.png" /></label>
+                          <label class="sinCheck" for="cb1"><img src="img/happy.png" /></label>
                           <p>contento</p>
                         </li>
                         <li><input type="checkbox" id="cb2" ng-model="registro.animo.neutral" />
-                          <label for="cb2"><img src="img/confused.png" /></label>
+                          <label class="sinCheck" for="cb2"><img src="img/confused.png" /></label>
                           <p>neutral</p>
                         </li>
                         <li><input type="checkbox" id="cb3" ng-model="registro.animo.triste" />
-                          <label for="cb3"><img src="img/sad.png" /></label>
+                          <label class="sinCheck" for="cb3"><img src="img/sad.png" /></label>
                           <p>triste</p>
                         </li>
                         <li><input type="checkbox" id="cb4" ng-model="registro.animo.enojado" />
-                          <label for="cb4"><img src="img/angry.png" /></label>
+                          <label class="sinCheck" for="cb4"><img src="img/angry.png" /></label>
                           <p>enojado</p>
                         </li>
 
@@ -52,37 +53,39 @@
 
 
                   <h5>¿Cuáles de las siguientes actividades realizaste en el día?</h5>
-                  <p class="seleccionmas">Puedes seleccionar más de una</p>
+                  <p class="seleccionmas">Puedes seleccionar más de una opción</p>
                   <form action="#" class="actividades">
                     <ul>
                       <li><input type="checkbox" id="cb5" ng-model="registro.actividades.estudio" />
-                        <label for="cb5"><img src="img/libro-abierto.png" /></label>
+                        <label class="sinCheck" for="cb5"><img src="img/libro.png" /></label>
                         <p>estudio/tarea</p>
                       </li>
                       <li><input type="checkbox" id="cb6" ng-model="registro.actividades.fiesta" />
-                        <label for="cb6"><img src="img/disco.png" /></label>
+                        <label class="sinCheck" for="cb6"><img src="img/fiesta.png" /></label>
                         <p>fiesta</p>
                       </li>
                         <li><input type="checkbox" id="cb10" ng-model="registro.actividades.descanso" />
-                        <label for="cb10"><img src="img/cama01.png" /></label>
+                        <label class="sinCheck" for="cb10"><img src="img/dormir.png" /></label>
                         <p>en cama</p>
                       </li>
+                      <li><input type="checkbox" id="cb101" ng-model="registro.actividades.nada" />
+                        <label class="sinCheck" for="cb101"><img src="img/nada.png" /></label>
+                        <p>nada</p>
+                      </li>
                       <li><input type="checkbox" id="cb9" ng-model="registro.actividades.juego" />
-                        <label for="cb9"><img src="img/consola-de-juegos.png" /></label>
+                        <label class="sinCheck" for="cb9"><img src="img/juego.png" /></label>
                         <p>juego</p>
                       </li>
-                      <li><input type="checkbox" id="cb8" ng-model="registro.actividades.deporte" />
-                        <label for="cb8"><img src="img/bicicleta.png" /></label>
+                     
+                      <li><input type="checkbox" id="cb7" ng-model="registro.actividades.salida" />
+                        <label class="sinCheck" for="cb7"><img src="img/bosque.png" /></label>
+                        <p>salida</p>
+                      </li>
+                       <li><input type="checkbox" id="cb8" ng-model="registro.actividades.deporte" />
+                        <label class="sinCheck" for="cb8"><img src="img/gimnasio.png" /></label>
                         <p>deporte</p>
                       </li>
-                      <li><input type="checkbox" id="cb7" ng-model="registro.actividades.salida" />
-                        <label for="cb7"><img src="img/paisaje-urbano.png" /></label>
-                        <p>salida</p>
-                      </li>
-                      <li><input type="checkbox" id="c101" ng-model="registro.actividades.nada" />
-                        <label for="c101"><img src="img/chica02.png" /></label>
-                        <p>salida</p>
-                      </li>
+                      
                     </ul>
                   </form>
 
@@ -103,22 +106,28 @@
 
 
                   <h5>¿Dónde estuviste el día de hoy?</h5>
+                  <p class="seleccionmas">Puedes seleccionar más de una opción</p>
                   <form action="#" class="actividades">
                     <ul>
-                      <li><input type="checkbox" id="cb26"  ng-model="registro.lugares.escuela"  />
-                        <label for="cb26"><img src="img/casa.png" /></label>
-                        <p>escuela</p>
-                      </li>
-                      <li><input type="checkbox" id="cb27"  />
-                        <label for="cb27"><img src="img/escuela.png"  ng-model="registro.lugares.casa" /></label>
+                    <li><input type="checkbox" id="cb27"  />
+                        <label class="sinCheck" for="cb27"><img src="img/casa.png"  ng-model="registro.lugares.casa" /></label>
                         <p>mi casa</p>
                       </li>
+                      <li><input type="checkbox" id="cb26"  ng-model="registro.lugares.escuela"  />
+                        <label class="sinCheck" for="cb26"><img src="img/colegio.png" /></label>
+                        <p>escuela</p>
+                      </li>
+                      
                       <li><input type="checkbox" id="cb28"  ng-model="registro.lugares.plaza"  />
-                        <label for="cb28"><img src="img/parque.png" /></label>
-                        <p>plaza</p>
+                        <label class="sinCheck" for="cb28"><img src="img/urbano.png" /></label>
+                        <p>fuera de casa</p>
+                      </li>
+                      <li><input type="checkbox" id="cb30"    />
+                        <label class="sinCheck" for="cb30"><img src="img/gim.png" /></label>
+                        <p>gimnasio</p>
                       </li>
                       <li><input type="checkbox" id="cb29"  ng-model="registro.lugares.casa_amigo"  />
-                        <label for="cb29"><img src="img/casa2.png" /></label>
+                        <label class="sinCheck" for="cb29"><img src="img/casaamigo.png" /></label>
                         <p>casa de un amigo</p>
                       </li>
                     </ul>
@@ -134,28 +143,30 @@
             </li>
             <li class="step">
               <div class="step-title waves-effect waves-dark">Social</div>
+
               <div class="step-content">
                 <center>
 
 
                   <h5>¿Con quiénes pasaste el día?</h5>
+                  <p class="seleccionmas">Puedes seleccionar más de una opción</p>
                   <form action="#" class="actividades">
                     <ul>
 
                       <li><input type="checkbox" id="cb12" ng-model="registro.social.pareja" />
-                        <label for="cb12"><img src="img/pareja.png" /></label>
+                        <label class="sinCheck" for="cb12"><img src="img/pareja.png" /></label>
                         <p>pareja</p>
                       </li>
                       <li><input type="checkbox" id="cb11" ng-model="registro.social.solo" />
-                        <label for="cb11"><img src="img/chico.png" /></label>
+                        <label class="sinCheck" for="cb11"><img src="img/chico.png" /></label>
                         <p>solo</p>
                       </li>
                       <li><input type="checkbox" id="cb13" ng-model="registro.social.familia" />
-                        <label for="cb13"><img src="img/familia.png" /></label>
+                        <label class="sinCheck" for="cb13"><img src="img/familia.png" /></label>
                         <p>familia</p>
                       </li>
                       <li><input type="checkbox" id="cb14" ng-model="registro.social.amigos" />
-                        <label for="cb14"><img src="img/pareja2.png" /></label>
+                        <label class="sinCheck" for="cb14"><img src="img/amigos.png" /></label>
                         <p>amigos</p>
                       </li>
 

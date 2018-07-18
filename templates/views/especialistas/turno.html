@@ -5,17 +5,17 @@
 
     <div class="col s12">
       <div class="card estaCard">
-        <div class="card-contentDos">
-          <ul class="stepper horizontal  stepbystep" id="horizontal">
+        <div class="card-contentDos contenidoAlarga">
+          <ul class="stepper steper01 horizontal  stepbystep" id="horizontal">
             <li class="step active">
-              <div class="step-title waves-effect waves-dark">Buscador</div>
+              <div class="step-title waves-effect waves-dark">Datos del alumno</div>
               <div class="step-content">
                 <div class="col s12 m12 l12 buscarAl">
                   <center>
                     <br>
                     <br>
 
-
+                    <h5>Datos del alumno</h5>
                     <div class="buscador01 infoStep">
                       <div class="input-field buscador00">
                         <div class="itemsBuscador">
@@ -25,6 +25,10 @@
                           <span>{{alumnoElegido.dni}}</span>
                           <h5>Curso</h5>
                           <span>{{alumnoElegido.curso || '1ro A'}}</span>
+                          <h5>Teléfono</h5>
+                          <span>1534687008</span>
+                          <h5>Dirección</h5>
+                          <span>Av rivadavia 778</span>
                         </div>
                       </div>
                     </div>
@@ -45,7 +49,16 @@
 
                   <h5>Seleccionar día y horario del turno</h5>
                   <div class="estiloTurno">
-                  <div class="select-date">
+                 
+                    <div class="select-date">
+                    <div class="input-field sincronica select-type">
+
+                      <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" value="value4"   ng-model="selector.mensual"/>
+                      <label  for="styled-checkbox-4">Una vez por semana (Durante un mes)</label>
+                    </div>
+                  </div>
+                  
+                  <div class="select-date claseAparte">
                     <div class="input-field sincronica select-type">
                       <select id="type-request" material-select watch ng-model="turno.mes">
                         <option value="" option-untranslate="" disabled>Mes</option>
@@ -72,12 +85,7 @@
                       <label for="fecha">Hora</label>
                     </div>
                   </div>
-                  <div class="select-date">
-                    <div class="input-field sincronica select-type">
-                      <input type="checkbox" id="test5" ng-model="selector.mensual"/>
-                      <label for="test5">Semanal (a 1 mes)</label>
-                    </div>
-                  </div>
+                 
                   <div class="select-date">
                     <div class="input-field sincronica select-type">
                       <select id="type-request" material-select watch ng-model="turno.minutos">
@@ -87,6 +95,7 @@
                       <label for="fecha">Minutos</label>
                     </div>
                   </div>
+
                   </div>
                 </center>
                 <div class="step-actions">
@@ -194,5 +203,6 @@
       labelYearSelect: 'Selecciona un año',
     });
   });
+
 </script>
 </main>

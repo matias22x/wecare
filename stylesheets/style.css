@@ -767,6 +767,7 @@ h5.estado { color:#000; }
   }
 }
 
+
 [type="radio"]:not(:checked) + label, [type="radio"]:checked + label { padding-left: 24px !important; }
 
 [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after { background-color: #00a9ff; }
@@ -928,7 +929,8 @@ li {
   display: inline-block;
 }
 
-input[type="checkbox"][id^="cb"] {
+
+input[type="checkbox"][id="cb"] {
   display: none;
 }
 
@@ -944,32 +946,43 @@ input[type="checkbox"][id^="cb"] {
 .actividades p { text-transform: uppercase;
 text-align: center;}
 
-label:before {
-  background-color: white;
-  color: white;
-  content: " ";
-  display: block;
-  border-radius: 50%;
-  border: 1px solid grey;
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  line-height: 28px;
-  transition-duration: 0.4s;
-  transform: scale(0);
-}
 
 label img {
   height: 100px;
   width: 100px;
   transition-duration: 0.2s;
   transform-origin: 50% 50%;
-      float: left;
+  float: left;
 }
 
+  @media screen and (max-width: 460px) {
+label img {
+height: 50px !important;
+    width: 50px !important;}
+  }
+
+#cb26:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+  border-radius: 50px;
+   content: url("../img/colegiobis.png");
+}
+#cb28:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+  border-radius: 50px;
+   content: url("../img/fueradecasa.png");
+}
+
+#cb30:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+  border-radius: 50px;
+   content: url("../img/gimbis.png");
+}
 
 #cb1:checked + label img {
   transform: scale(0.9);
@@ -1005,7 +1018,15 @@ label img {
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/libros.png);
+   content: url(../img/librobis.png);
+}
+
+#cb101:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+  border-radius: 50px;
+   content: url(../img/nadabis.png);
 }
 
 #cb6:checked + label img {
@@ -1013,7 +1034,7 @@ label img {
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/temblor.png);
+   content: url(../img/fiestabis.png);
 }
 
 #cb7:checked + label img {
@@ -1021,7 +1042,7 @@ label img {
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/pueblo.png);
+   content: url(../img/bosquebis.png);
 }
 
 #cb8:checked + label img {
@@ -1029,7 +1050,7 @@ label img {
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/futbol.png);
+   content: url(../img/deportebis.png);
 }
 
 #cb9:checked + label img {
@@ -1037,14 +1058,14 @@ label img {
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/dispositivo-de-juego.png);
+   content: url(../img/juegobis.png);
 }
 #cb10:checked + label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/cama02.png);
+   content: url(../img/dormirbis.png);
 }
 
 #cb22:checked + label img {
@@ -1054,34 +1075,48 @@ label img {
   border-radius: 50px;
    content: url(../img/cama02.png);
 }
+#cb27:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+  border-radius: 50px;
+   content: url(../img/casabis.png);
+}
+#cb29:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+  border-radius: 50px;
+   content: url(../img/casaamigobis.png);
+}
 
 #cb11:checked + label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/chica.png);
+   content: url(../img/chicobis.png);
 }
 #cb12:checked + label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/padres.png);
+   content: url(../img/parejabis.png);
 }
 #cb13:checked + label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/familia.png);
+   content: url(../img/familiabis.png);
 }
 #cb14:checked + label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
   border-radius: 50px;
-   content: url(../img/ninos.png);
+   content: url(../img/amigosbis.png);
 }
 /*****************************************/
 
@@ -1807,11 +1842,12 @@ background-color: #fafafa !important; }
 
 
 
-.itemsBuscador h5 { font-size: 18px;
+.itemsBuscador h5 { font-size: 17px;
                       color: #ff8500; 
+                      text-transform: uppercase;
                       font-weight: bold;
                       padding-top: 5px;
-                      padding-bottom: 5px;}
+                          margin-bottom: 0px;}
 
 
 .btn01 {
@@ -2318,7 +2354,7 @@ span.estiloPart2 {color: #ff8500;
   textarea.opcionDos { resize: none; }
 
 
-  .estiloTurno { width: 40%;     padding-top: 10px; }
+  .estiloTurno { width: 50%;      }
   @media screen and (max-width: 999px)
   {   .estiloTurno { width: 80% !important; } }
 
@@ -2328,11 +2364,11 @@ span.estiloPart2 {color: #ff8500;
    .estiloTurnoDos { width: 80% !important;     } }
 
 
-  .estaCard { margin-top: -10px;  }
+  .estaCard { margin-top: -10px;     margin-bottom: 30px; }
 
   .stepbystep { height: 500px; }
 
-  .infoStep{     margin-top: 20px; }
+  .infoStep{     margin-top: 0px; }
 
   .tituloDestaca {font-weight: bold; text-transform: uppercase;}
 
@@ -2351,3 +2387,36 @@ span.estiloPart2 {color: #ff8500;
     margin-top: -5px; }
 
 .acomodoMargen {     margin-top: -30px; }
+
+
+
+.dropdown-content {
+  
+    max-height: 100px !important;
+}
+.contenidoAlarga, .steper01 { height: 570px; }
+
+
+
+label.sinCheck:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+ 
+  border: 1px solid grey;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+.claseAparte { padding-top: 15px; }
+
+
+
