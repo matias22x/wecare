@@ -1,5 +1,5 @@
 'use strict';
-angular.module('turnoService', []).service('turnoService', function($http, config) {
+angular.module('turnoService', []).service('turnoService', function($http, config, moment) {
 
     return {
         getTurno: function(requestId) {
@@ -19,7 +19,18 @@ angular.module('turnoService', []).service('turnoService', function($http, confi
         },
         deleteTurnoById: function(requestId) {
             return $http.delete(config.api_url + '/api/turnos/' + requestId);
-        }
+        },
+        getTurnosdeHoyEspecialista: function(especialistaId) {
+            var fechaInicio = new Date();
+            fechaInicio.setHours(0,0,0,0);
+            var fechaFin = new Date();
+            fechaFin.setDate(fechaInicio.getDate() + 1);
+
+            return $http.get(config.api_url + '/api/turnos?conditions={"$and":[{"especialista":"' + especialistaId + '"},{"horario":{"$gte": "' + fechaInicio + '"}},{"horario":{"$lte": "' + fechaFin + '"}}]}');
+        },
+        getTurnosEspecialista: function(especialistaId) {
+            return $http.get(config.api_url + '/api/turnos?conditions={"especialista":"' + especialistaId + '"}');
+        },
     };
 
 });
