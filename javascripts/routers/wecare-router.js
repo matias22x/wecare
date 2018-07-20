@@ -274,7 +274,7 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
         })
         .state('especialista_sesion', {
             cache: false,
-            url: '/especialista_sesion', // url que va arriba
+            url: '/especialista_sesion/:id?', // url que va arriba
             templateUrl: 'templates/views/especialistas/sesion.html', //ubicacion del html
             controller: 'especialistaSesionController' //nombre controller
         })

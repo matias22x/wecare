@@ -7,24 +7,36 @@
 
           <div class="contenidoBordeGris">
 
-            <div class="row spaciado">
+            <div class="row spaciado" >
               <div class="col s12 m12 l12">
                 <div class="card">
                   <div class="card-content center">
                     <span class="card-title">Sesiones de hoy</span>
-                    <div class="row">
-                      <div class="col s6 m6 l6">
-                        <h5 class="titulosAparte center contenidoUsuario">Fecha</h5>
-                        <span>{{turnos[0].horario | date: "EEEE d 'de' LLLL" }}</span>
+                    <div class="row" ng-repeat="turnoDeHoy in turnosDeHoy">
+                      <div class="col s2 m2 l2">
+                        <h5 class="titulosAparte center contenidoUsuario">DNI</h5>
+                        <span>{{turnoDeHoy.alumnoDelTurno.dni}}</span>
                       </div>
-                      <div class="col s6 m6 l6">
+                      <div class="col s2 m2 l2">
+                        <h5 class="titulosAparte center contenidoUsuario">Nombre</h5>
+                        <span>{{turnoDeHoy.alumnoDelTurno.nombre}}</span>
+                      </div>
+                      <div class="col s2 m2 l2">
+                        <h5 class="titulosAparte center contenidoUsuario">Curso</h5>
+                        <span>{{turnoDeHoy.alumnoDelTurno.curso}}</span>
+                      </div>
+                      <div class="col s2 m2 l2">
+                        <h5 class="titulosAparte center contenidoUsuario">Fecha</h5>
+                        <span>{{turnoDeHoy.horario | date: "EEEE d 'de' LLLL" }}</span>
+                      </div>
+                      <div class="col s2 m2 l2">
                         <h5 class="titulosAparte center contenidoUsuario">Hora</h5>
-                        <span>{{turnos[0].horario | date: "H:mm"}}</span>
+                        <span>{{turnoDeHoy.horario | date: "H:mm"}}</span>
+                      </div>
+                      <div class="card-action center">
+                        <a ui-sref="especialista_sesion({id: turnoDeHoy._id})">Comenzar sesión</a>
                       </div>
                     </div>
-                  </div>
-                  <div class="card-action center">
-                    <a href="#">Comenzar sesión</a>
                   </div>
                 </div>
               </div>

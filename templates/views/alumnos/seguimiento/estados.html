@@ -14,7 +14,7 @@
                   <center>
                     <br>
                     <br>
-                    <p>Jueves 21 de Junio de 2018</p>
+                    <p>{{fechaDeHoy | date: "EEEE d 'de' LLLL 'de' yyyy" }}</p>
                     <h5>¿Cómo te sientes el día de hoy?</h5>
                     <p class="seleccionmas">Puedes seleccionar más de una opción</p>
                     <form action="#" class="actividades">
@@ -76,7 +76,7 @@
                         <label class="sinCheck" for="cb9"><img src="img/juego.png" /></label>
                         <p>juego</p>
                       </li>
-                     
+
                       <li><input type="checkbox" id="cb7" ng-model="registro.actividades.salida" />
                         <label class="sinCheck" for="cb7"><img src="img/bosque.png" /></label>
                         <p>salida</p>
@@ -85,7 +85,7 @@
                         <label class="sinCheck" for="cb8"><img src="img/gimnasio.png" /></label>
                         <p>deporte</p>
                       </li>
-                      
+
                     </ul>
                   </form>
 
@@ -117,12 +117,12 @@
                         <label class="sinCheck" for="cb26"><img src="img/colegio.png" /></label>
                         <p>escuela</p>
                       </li>
-                      
+
                       <li><input type="checkbox" id="cb28"  ng-model="registro.lugares.plaza"  />
                         <label class="sinCheck" for="cb28"><img src="img/urbano.png" /></label>
                         <p>fuera de casa</p>
                       </li>
-                      <li><input type="checkbox" id="cb30"    />
+                      <li><input type="checkbox" id="cb30"  ng-model="registro.lugares.gimnasio"  />
                         <label class="sinCheck" for="cb30"><img src="img/gim.png" /></label>
                         <p>gimnasio</p>
                       </li>

@@ -61,6 +61,7 @@ angular.module('wecareApp')
     }else{
       $rootScope.alumnoMenu=true;
     }
+    $scope.fechaDeHoy = new Date();
     $scope.registro = {
       actividades: {
         deporte: false,
@@ -75,7 +76,8 @@ angular.module('wecareApp')
         escuela: false,
         casa: false,
         plaza: false,
-        casa_amigo: false
+        casa_amigo: false,
+        gimnasio: false,
       },
       animo: {
         contento: false,

@@ -205,9 +205,24 @@ angular.module('wecareApp')
       $scope.registroSeleccionado = registro;
     }
   })
-  .controller('especialistaObservacionesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
+  .controller('especialistaObservacionesController', function($auth, $scope, $rootScope, turnoService, alumnoService, $state, userData, $log, $http, $translate, config, especialistaService, userService, $stateParams) {
+    turnoService.getTurnosAlumno($stateParams.id)
+      .then(function(turno) {
+        $scope.turnos = turno.data;
+      })
+      .catch($log.error);
 
+      alumnoService.getAlumno($stateParams.id)
+      .then(function(alumno) {
+        $scope.alumno = alumno.data;
+        console.log($scope.alumno);
+      })
+      .catch($log.error);
 
+      $scope.verDatos = function(datos) {
+        $scope.datos = datos;
+        console.log($scope.datos);
+      }
   })
   .controller('especialistaPacientesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, alumnoService) {
     alumnoService.getAlumnoByEspecialistaId(userData.get('datosRol')._id)
@@ -216,8 +231,27 @@ angular.module('wecareApp')
       }).catch($log.error);
 
   })
-  .controller('especialistaSesionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
+  .controller('especialistaSesionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, turnoService, alumnoService, $stateParams, $document) {
+    var modalMjs = $document.find('#demoModal').modal();
 
+    turnoService.getTurno($stateParams.id)
+      .then(function(turno) {
+        $scope.turno = turno.data;
+        console.log($scope.turno);
+        return alumnoService.getAlumno($scope.turno.alumno);
+      })
+      .then(function(alumno) {
+        $scope.alumno = alumno.data;
+      })
+      .catch($log.error);
+
+      $scope.finalizarSesion = function() {
+        console.log($scope.turno);
+        turnoService.putTurnoById($scope.turno._id, $scope.turno)
+        .then(function(turnoModificado) {
+            modalMjs.modal('open');
+        }).catch($log.error);
+      }
 
   })
   .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $rootScope, $state, userData, $document, $log, $http, $translate, config, moment, especialistaService, userService, alumnoService, turnoService) {
