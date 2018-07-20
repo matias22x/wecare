@@ -23,8 +23,17 @@
                       <a ui-sref="especialista_diagnosticosTmp" class="btn waves-effect waves-light botonGeneralBis b02">Ver anteriores</a>
                     </td>
                   </tr>
-                  <tr ng-repeat="diagnosticosEntrantes in diagnosticosPrematuros">
+                  <tr ng-repeat="diagnosticosEntrantes in page">
                     <td class="resgitro00" ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt | date: "EEEE d 'de' LLLL" }}</td>
+                  </tr>
+                  <tr>
+                  <td>
+                  <ul class="pagination">
+                    <li class="waves-effect"><a ng-click='antPag(diagnosticosPrematuros);'><i class="material-icons">chevron_left</i></a></li>
+                    <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, diagnosticosPrematuros);'>{{$index+1}}</a></li>
+                    <li class="waves-effect"><a ng-click='sigPag(diagnosticosPrematuros);'><i class="material-icons">chevron_right</i></a></li>
+                  </ul>
+                  </td>
                   </tr>
                 </tbody>
               </table>

@@ -5,108 +5,131 @@
       <div class="card fondoConColor margenBot">
         <div class="card-content">
 
- <div class="contenidoBordeGris">
-          <div class="row claseImportante">
-            <div class="col s12 l3 m12">
-              <table class="centered tablaMarg">
-                <thead>
-                  <tr class="fondoOne">
-                    <th>DIAGNOSTICOS POR FECHA</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="buscador">
-                    <td>
-                    <div class="input-field center">
-                      <input id="buscadorDesde" type="date" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
-                      <label for="buscadorDesde">Fecha desde</label>
-                    </div>
-                      <div class="input-field center">
-                      <input id="buscadorHasta" type="date" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorHasta" placeholder="">
-                      <label for="buscadorHasta">Hasta</label>
-                      </div>
-                      <br>
-                      <a class="btn botonGeneralBis b02 butonComp" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta)">Buscar</a>  <a class="btn butonComp botonGeneralBis b02" ui-sref="especialista_diagnosticos">Ver nuevos</a>
-                    </td>
-                  </tr>
-                  <tr ng-repeat="diagnosticosEntrantes in diagnosticosPrematuros">
-                    <td class="resgitro00" ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt | date: "EEEE d 'de' LLLL" }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="col s12 m12 l9">
-
-            <h5 class="center titulo03 titAparte">Diagnósticos</h5>
-
-        <div class="row">
-        <div class="col s12 m12 l12">
-        <table class="tablaGeneralBis">
-        <thead class="centered">
-          <tr class="fondoOne">
-          <th class="tituloDiag">Detalles</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-        <div class="col s12 m4 l4 conjDiag">
-          <span class="titNar"><b>Nombre y apellido</b></span><br>
-          <span>{{informacion.diagnostico.alumno.nombre}}</span><br>
-          <span class="titNar"><b>DNI</b></span><br>
-          <span>{{informacion.diagnostico.alumno.dni}}</span><br>
-          <span class="titNar"><b>Direccion</b></span><br>
-          <span>{{informacion.diagnostico.alumno.direccion}}</span><br>
-          <span class="titNar"><b>Curso</b></span><br>
-        </div>
-
-        <div class="col s12 m4 l4 conjDiag">
-        <span class="titNar"><b>Fecha de ingreso</b></span><br>
-        <span>{{informacion.diagnostico.createdAt | date: "EEEE d 'de' LLLL 'de' yyyy" }}</span><br>
-        <span class="titNar"><b>Diagnostico</b></span><br>
-        <span>{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
-        <span class="titNar"><b>Puntuación de gravedad</b></span><br>
-        <span>{{informacion.diagnostico.gravedad}}</span><br>
-        </div>
-
-        <div class="col s12 m4 l4 conjDiagBis center">
-
-        <div ng-if="informacion.diagnostico">
-         <a class="waves-effect waves-light btn btn-small botonGeneral bagregar" ng-if="!informacion.diagnostico.asignado" ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id)">agregar a mis pacientes</a>
-         </div>
-        </div></td>
-          </tr>
-        </tbody>
-
-        </table>
-
-
-        </div>
-
-        </div>
-         <table class="tablaGeneral">
-                <thead>
-                  <tr class="fondoOne bisF">
-                    <th>DIAGNÓSTICO ENTRANTE DE WEBOT</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="detalles">
-                    <td>
-                      <div class="row">
-                        <div class="col s12 botScroll">
-                          <ul ng-if="informacion.diagnostico.diagnostico" ng-repeat="diagnostico in informacion.diagnostico.diagnostico">
-                            <span class="estiloPart">Pregunta:</span>&nbsp &nbsp<li class="pregunta">{{diagnostico.pregunta}}</li><br>
-                            <span class="estiloPart2">Respuesta:</span>&nbsp &nbsp<li class="respuesta">{{diagnostico.respuesta}}</li>
-                          </ul>
-                          <p ng-if="!informacion.diagnostico.diagnostico">Webot no ha recaudado datos.</p>
+          <div class="contenidoBordeGris">
+            <div class="row claseImportante">
+              <div class="col s12 l3 m12">
+                <table class="centered tablaMarg">
+                  <thead>
+                    <tr class="fondoOne">
+                      <th>DIAGNOSTICOS POR FECHA</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="buscador">
+                      <form name="form">
+                      <td>
+                        <div class="input-field center">
+                          <input id="buscadorDesde" name="buscadorDesde" type="text" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
+                          <label for="buscadorDesde">Fecha desde</label>
                         </div>
-                      </div>
+                        <div class="input-field center">
+                          <input id="buscadorHasta" name="buscadorHasta" type="text" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorHasta" placeholder="">
+                          <label for="buscadorHasta">Hasta</label>
+                        </div>
+                        <br>
+                        <a class="btn botonGeneralBis b02 butonComp" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta)">Buscar</a> <a class="btn butonComp botonGeneralBis b02" ui-sref="especialista_diagnosticos">Ver nuevos</a>
+                      </td>
+                    </form>
+                    </tr>
+                    <tr ng-repeat="diagnosticosEntrantes in page">
+                      <td class="resgitro00" ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt | date: "EEEE d 'de' LLLL" }}</td>
+                    </tr>
+                    <tr>
+                    <td>
+                    <ul class="pagination">
+                      <li class="waves-effect"><a ng-click='antPag(diagnosticosPrematuros);'><i class="material-icons">chevron_left</i></a></li>
+                      <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, diagnosticosPrematuros);'>{{$index+1}}</a></li>
+                      <li class="waves-effect"><a ng-click='sigPag(diagnosticosPrematuros);'><i class="material-icons">chevron_right</i></a></li>
+                    </ul>
                     </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col s12 m12 l9">
+
+                <h5 class="center titulo03 titAparte">Diagnósticos</h5>
+
+                <div class="row">
+                  <div class="col s12 m12 l12">
+                    <table class="tablaGeneralBis">
+                      <thead class="centered">
+                        <tr class="fondoOne">
+                          <th class="tituloDiag">Detalles</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="col s12 m4 l4 conjDiag">
+                              <span class="titNar"><b>Nombre y apellido</b></span><br>
+                              <span>{{informacion.diagnostico.alumno.nombre}}</span><br>
+                              <span class="titNar"><b>DNI</b></span><br>
+                              <span>{{informacion.diagnostico.alumno.dni}}</span><br>
+                              <span class="titNar"><b>Direccion</b></span><br>
+                              <span>{{informacion.diagnostico.alumno.direccion}}</span><br>
+                              <span class="titNar"><b>Curso</b></span><br>
+                              <span>{{informacion.diagnostico.alumno.curso}}</span><br>
+                            </div>
+
+                            <div class="col s12 m4 l4 conjDiag">
+                              <span class="titNar"><b>Fecha de ingreso</b></span><br>
+                              <span>{{informacion.diagnostico.createdAt | date: "EEEE d 'de' LLLL 'de' yyyy" }}</span><br>
+                              <span class="titNar"><b>Diagnostico</b></span><br>
+                              <span>{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
+                              <span class="titNar"><b>Puntuación de gravedad</b></span><br>
+                              <span>{{informacion.diagnostico.gravedad}}</span><br>
+                            </div>
+
+                            <div class="col s12 m4 l4 conjDiagBis gravBot center">
+                              <span class="titNar"><b>Gravedad</b></span><br>
+
+                              <progress max="22" value="{{informacion.diagnostico.gravedad}}" class="html5">
+                                <div class="progress-bar">
+                                </div>
+                              </progress>
+                              <div ng-if="informacion.diagnostico">
+                                <a class="waves-effect waves-light btn btn-small botonGeneral bagregar" ng-if="!informacion.diagnostico.asignado" data-target='demoModal' ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id, informacion.diagnostico.alumno.nombre)"
+                                  modal>agregar a mis pacientes</a>
+                              </div>
+                              <br>
+
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+
+                    </table>
+
+
+                  </div>
+
+                </div>
+                <table class="tablaGeneral">
+                  <thead>
+                    <tr class="fondoOne bisF">
+                      <th>DIAGNÓSTICO ENTRANTE DE WEBOT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="detalles">
+                      <td>
+                        <div class="row">
+                          <div class="col s12 botScroll">
+                            <ul ng-if="informacion.diagnostico.diagnostico" ng-repeat="diagnostico in informacion.diagnostico.diagnostico">
+                              <span class="estiloPart">Pregunta:</span>&nbsp &nbsp
+                              <li class="pregunta">{{diagnostico.pregunta}}</li><br>
+                              <span class="estiloPart2">Respuesta:</span>&nbsp &nbsp
+                              <li class="respuesta">{{diagnostico.respuesta}}</li>
+                            </ul>
+                            <p ng-if="!informacion.diagnostico.diagnostico">Webot no ha recaudado datos.</p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -115,23 +138,23 @@
   </div>
   </div>
 
-   <script>
-$(function(){
-  $('.datepicker').pickadate({
-      monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-      monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-      weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-      weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+  <script>
+    $(function() {
+      $('.datepicker').pickadate({
+        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
         selectMonths: true,
         selectYears: 100, // Puedes cambiarlo para mostrar más o menos años
         today: 'Hoy',
         clear: 'Limpiar',
         close: 'Ok',
         labelMonthNext: 'Siguiente mes',
-      labelMonthPrev: 'Mes anterior',
-      labelMonthSelect: 'Selecciona un mes',
-      labelYearSelect: 'Selecciona un año',
+        labelMonthPrev: 'Mes anterior',
+        labelMonthSelect: 'Selecciona un mes',
+        labelYearSelect: 'Selecciona un año',
       });
-});
-</script>
+    });
+  </script>
 </main>

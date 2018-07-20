@@ -62,12 +62,84 @@ angular.module('wecareApp')
               $scope.turnos[key].alumnoDelTurno = alumno.data;
             }).catch($log.error);
         });
-        console.log('todos los turnos', turnos.data);
       })
       .catch($log.error);
 
   })
   .controller('especialistaDiagnosticosController', function($auth, $scope, $rootScope, $filter, $window, $state, userData, $log, $http, $translate, config, especialistaService, userService, diagnosticoPrematuroService, alumnoService) {
+    $scope.paginInit = function(lista) {
+
+      if (!$scope.cantRegistros) {
+        $scope.cantRegistros = 10;
+      }
+
+      if (!$scope.pagActual) {
+        $scope.pagActual = 1;
+      }
+
+      $scope.paginas = Math.ceil(lista.length / $scope.cantRegistros);
+
+      $scope.getNumber = function(num) {
+        return new Array($scope.paginas);
+      }
+
+      $scope.page = [];
+
+      for (var i = 0; i < $scope.cantRegistros; i++) {
+        if (lista[i] != null) {
+          $scope.page.push(lista[i]);
+        }
+      }
+    }
+
+    $scope.cambiarPag = function(pag, lista) {
+      $scope.pagActual = pag + 1;
+      var hasta = $scope.pagActual * $scope.cantRegistros;
+      var desde = hasta - $scope.cantRegistros;
+      $scope.page = [];
+
+      for (var i = desde; i < hasta; i++) {
+        if (lista[i] != null) {
+          $scope.page.push(lista[i]);
+        }
+
+      }
+    }
+
+    $scope.sigPag = function(lista) {
+      if ($scope.pagActual + 1 <= $scope.paginas) {
+        $scope.pagActual = $scope.pagActual + 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+
+        }
+      }
+
+    }
+
+    $scope.antPag = function(lista) {
+      if ($scope.pagActual - 1 > 0) {
+        $scope.pagActual = $scope.pagActual - 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+
+        }
+      }
+
+    }
+
 
     $scope.informacion = {};
     $scope.diagnosticosPrematuros = [];
@@ -79,6 +151,7 @@ angular.module('wecareApp')
           };
         })
         $scope.diagnosticosPrematuros = $filter('orderBy')($scope.diagnosticosPrematuros, "gravedad", true);
+        $scope.paginInit($scope.diagnosticosPrematuros);
       }).catch($log.error);
 
 
@@ -135,18 +208,99 @@ angular.module('wecareApp')
         }).catch($log.error);
     };
 
-  }).controller('especialistaDiagnosticosViejosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, diagnosticoPrematuroService, alumnoService) {
+  }).controller('especialistaDiagnosticosViejosController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, config, especialistaService, userService, diagnosticoPrematuroService, alumnoService) {
+    $scope.paginInit = function(lista) {
+
+      if (!$scope.cantRegistros) {
+        $scope.cantRegistros = 10;
+      }
+
+      if (!$scope.pagActual) {
+        $scope.pagActual = 1;
+      }
+
+      $scope.paginas = Math.ceil(lista.length / $scope.cantRegistros);
+
+      $scope.getNumber = function(num) {
+        return new Array($scope.paginas);
+      }
+
+      $scope.page = [];
+
+      for (var i = 0; i < $scope.cantRegistros; i++) {
+        if (lista[i] != null) {
+          $scope.page.push(lista[i]);
+        }
+      }
+    }
+
+    $scope.cambiarPag = function(pag, lista) {
+      $scope.pagActual = pag + 1;
+      var hasta = $scope.pagActual * $scope.cantRegistros;
+      var desde = hasta - $scope.cantRegistros;
+      $scope.page = [];
+
+      for (var i = desde; i < hasta; i++) {
+        if (lista[i] != null) {
+          $scope.page.push(lista[i]);
+        }
+
+      }
+    }
+
+    $scope.sigPag = function(lista) {
+      if ($scope.pagActual + 1 <= $scope.paginas) {
+        $scope.pagActual = $scope.pagActual + 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+
+        }
+      }
+
+    }
+
+    $scope.antPag = function(lista) {
+      if ($scope.pagActual - 1 > 0) {
+        $scope.pagActual = $scope.pagActual - 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+
+        }
+      }
+
+    }
+
     $scope.informacion = {};
     diagnosticoPrematuroService.getAllDiagnosticosPrematurosVistos()
       .then(function(resp) {
         $scope.diagnosticosPrematuros = resp.data;
+        $scope.diagnosticosPrematuros = $filter('orderBy')($scope.diagnosticosPrematuros, "createdAt", true);
+        $scope.paginInit($scope.diagnosticosPrematuros);
       }).catch($log.error);
 
+
     $scope.filtrarFecha = function(desde, hasta) {
-      diagnosticoPrematuroService.getAllDiagnosticosPrematurosPorFecha(desde, hasta)
+      $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      diagnosticoPrematuroService.getAllDiagnosticosPrematurosVistosPorFecha(desde, hasta)
         .then(function(resp) {
           $scope.diagnosticosPrematuros = resp.data;
+          $scope.diagnosticosPrematuros = $filter('orderBy')($scope.diagnosticosPrematuros, "createdAt", true);
+          $scope.paginInit($scope.diagnosticosPrematuros);
         }).catch($log.error);
+
     }
 
     $scope.informacionAlumno = function(diagnostico) {
