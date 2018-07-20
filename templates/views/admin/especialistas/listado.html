@@ -41,6 +41,7 @@
                         <th>NOMBRE</th>
                         <th>DIRECCION</th>
                         <th>FECHA DE NACIMIENTO</th>
+                        <th>ESTADO</th>
                         <th>ACCIONES</th>
                       </tr>
                     </thead>
@@ -51,6 +52,7 @@
                         <td>{{especialista.nombre}}</td>
                         <td>{{especialista.direccion}}</td>
                         <td>{{especialista.fecha_nacimiento | date:'dd-MM-yyyy'}}</td>
+                        <td><span ng-if="especialista.habilitado">Habilitado</span><span ng-if="!especialista.habilitado">Desabilitado</span></td>
                         <td>
                           <a tooltipped data-position="left" data-tooltip="Ver especialista" class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_especialista({id: especialista._id})"><i class="material-icons">visibility</i></a>
                           <a tooltipped data-position="left" data-tooltip="Editar especialista" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_especialista({id: especialista._id})"><i class="material-icons">edit</i></a>
