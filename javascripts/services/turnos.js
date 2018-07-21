@@ -34,6 +34,9 @@ angular.module('turnoService', []).service('turnoService', function($http, confi
         getTurnosAlumno: function(alumnoId) {
             return $http.get(config.api_url + '/api/turnos?conditions={"alumno":"' + alumnoId + '"}');
         },
+        getTurnoPorFecha: function(turno) {
+            return $http.get(config.api_url + '/api/turnos?conditions={"horario":"' + turno + '"}');
+        },
     };
 
 });

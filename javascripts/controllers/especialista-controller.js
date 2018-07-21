@@ -442,10 +442,12 @@ angular.module('wecareApp')
       }
 
   })
-  .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $rootScope, $state, userData, $document, $log, $http, $translate, config, moment, especialistaService, userService, alumnoService, turnoService) {
+  .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $q, $rootScope, $state, userData, $document, $log, $http, $translate, config, moment, especialistaService, userService, alumnoService, turnoService) {
     $scope.turno = {};
     $scope.selector = {};
     var modalMjs = $document.find('#demoModal').modal();
+    var modalError = $document.find('#errorModal').modal();
+    var modalTurnoError = $document.find('#turnoErrorModal').modal();
     $scope.currentYear = new Date().getFullYear();
     $scope.date = {
       month: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -481,58 +483,51 @@ angular.module('wecareApp')
     }
 
     $scope.crearTurno = function() {
-      var dataMoment = moment($scope.currentYear.toString() + '-' + $scope.turno.mesNumero + '-' + $scope.turno.dia + ' ' + $scope.turno.hora + ':' + $scope.turno.minutos, "YYYY-MM-DD HH:mm");
-      var turno = new Date(dataMoment);
-      if ($scope.selector.mensual === true) {
-        console.log('que empieze la fiesta');
-        var data = {
-          alumno: $scope.alumnoElegido._id,
-          horario: turno,
-          nota_previa: $scope.turno.nota_previa,
-          especialista: userData.get('datosRol')._id,
+      if ($scope.turno.mes && $scope.turno.dia) {
+        var dataMoment = moment($scope.currentYear.toString() + '-' + $scope.turno.mesNumero + '-' + $scope.turno.dia + ' ' + $scope.turno.hora + ':' + $scope.turno.minutos, "YYYY-MM-DD HH:mm");
+        var turno = new Date(dataMoment);
+        var listadoTurnos = [new Date(dataMoment)];
+        var turnosEncontrados = [];
+
+        if ($scope.selector.mensual === true) {
+          for (var i = 1; i < 4; i++) {
+            listadoTurnos.push(new Date(turno.setDate(turno.getDate() + 7)));
+          }
         }
-        turnoService.postTurno(data)
+
+        var TurnosPromises = listadoTurnos.map(function(item) {
+          return turnoService.getTurnoPorFecha(item)
           .then(function(resp) {
-            var data2 = {
-              alumno: $scope.alumnoElegido._id,
-              horario: turno.setDate(turno.getDate() + 7),
-              nota_previa: $scope.turno.nota_previa,
-              especialista: userData.get('datosRol')._id,
+            if (resp.data.length > 0) {
+              return resp.data[0];
             }
-            return turnoService.postTurno(data2);
-          }).then(function(resp) {
-            var data3 = {
-              alumno: $scope.alumnoElegido._id,
-              horario: turno.setDate(turno.getDate() + 7),
-              nota_previa: $scope.turno.nota_previa,
-              especialista: userData.get('datosRol')._id,
+            return false;
+          });
+        });
+
+        $q.all(TurnosPromises).then(function(dataReceived) {
+          if (dataReceived.indexOf(false) !== -1) {
+            for (var i = 0; i < listadoTurnos.length; i++) {
+              var data = {
+                alumno: $scope.alumnoElegido._id,
+                horario: listadoTurnos[i],
+                nota_previa: $scope.turno.nota_previa,
+                especialista: userData.get('datosRol')._id,
+              }
+
+              turnoService.postTurno(data)
+              .then(function(resp) {
+                if (i === listadoTurnos.length) {
+                  modalMjs.modal('open');
+                }
+              }).catch($log.error);
             }
-            return turnoService.postTurno(data3);
-          }).then(function(resp) {
-            var data4 = {
-              alumno: $scope.alumnoElegido._id,
-              horario: turno.setDate(turno.getDate() + 7),
-              nota_previa: $scope.turno.nota_previa,
-              especialista: userData.get('datosRol')._id,
-            }
-            return turnoService.postTurno(data4);
-          }).then(function(resp) {
-            modalMjs.modal('open');
-          })
-          .catch($log.error);
+          } else {
+            modalTurnoError.modal('open');
+          }
+        });
       } else {
-        var data = {
-          alumno: $scope.alumnoElegido._id,
-          horario: turno,
-          nota_previa: $scope.turno.nota_previa,
-          especialista: userData.get('datosRol')._id,
-        }
-
-        turnoService.postTurno(data)
-          .then(function(resp) {
-            modalMjs.modal('open');
-          }).catch($log.error);
+        modalError.modal('open');
       }
-
     }
   });
