@@ -59,10 +59,10 @@
                             </br>
                             </br>
                             <span class="textUp">Estado de ánimo: &nbsp</span>
-                            <img ng-if="datos.sesion.estado_de_animo.neutral" src="img/confused.png" />
-                            <img ng-if="datos.sesion.estado_de_animo.enojado" src="img/angry.png" />
-                            <img ng-if="datos.sesion.estado_de_animo.feliz" src="img/happy.png" />
-                            <img ng-if="datos.sesion.estado_de_animo.triste" src="img/sad.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Neutral" ng-if="datos.sesion.estado_de_animo.neutral" src="img/confused.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Enojado" ng-if="datos.sesion.estado_de_animo.enojado" src="img/angry.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Contento" ng-if="datos.sesion.estado_de_animo.contento" src="img/happy.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Triste" ng-if="datos.sesion.estado_de_animo.triste" src="img/sad.png" />
                             </br>
                             </br>
                           </div>

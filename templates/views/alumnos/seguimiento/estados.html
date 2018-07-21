@@ -109,8 +109,8 @@
                   <p class="seleccionmas">Puedes seleccionar más de una opción</p>
                   <form action="#" class="actividades">
                     <ul>
-                    <li><input type="checkbox" id="cb27"  />
-                        <label class="sinCheck" for="cb27"><img src="img/casa.png"  ng-model="registro.lugares.casa" /></label>
+                    <li><input type="checkbox" id="cb27" ng-model="registro.lugares.casa" />
+                        <label class="sinCheck" for="cb27"><img src="img/casa.png" /></label>
                         <p>mi casa</p>
                       </li>
                       <li><input type="checkbox" id="cb26"  ng-model="registro.lugares.escuela"  />
@@ -213,7 +213,22 @@
       </div>
     </div>
   </div>
+  <div id="demoModal" class="modal">
+    <div class="modal-content modalTitulo center">
+      <h4>Gracias por dejarnos un registro, tu especialista asignado lo va a estar revisando.</h4>
+    </div>
+    <div class="modal-footer">
+      <div class="row sinEspacio center">
+        <div class="col s6 m6 l6 ">
+          <a ui-sref="alumno_informacion" class="modal-action modal-close btn botonGeneral">Ver Información</a>
+        </div>
+        <div class="col s6 m6 l6 ">
+          <a ui-sref="alumno_historial" class="modal-action modal-close btn botonGeneral">Ver mi historial</a>
+        </div>
 
+      </div>
+    </div>
+  </div>
 
   <script>
     $(function() {

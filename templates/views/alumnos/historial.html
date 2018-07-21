@@ -4,127 +4,127 @@
       <div class="card carta fondoConColor">
         <div class="card-content">
 
-        <div class="contenidoBordeGris">
+          <div class="contenidoBordeGris">
 
- 
-  <div class="row spaciado">
-    <div class="col s12 m12 l12">
-      <div class="card">
-        <div class="card-content">
-          <span class="card-title">Próxima sesión</span>
-          <div class="row">
-                  <div class="col s6 m6 l6">
-                    <h5 class="titulosAparte center contenidoUsuario">Fecha</h5>
-                    <span>{{turnos[0].horario | date: "EEEE d 'de' LLLL" }}</span>
+
+            <div class="row spaciado">
+              <div class="col s12 m12 l12">
+                <div class="card">
+                  <div class="card-content">
+                    <span class="card-title">Próxima sesión</span>
+                    <div class="row">
+                      <div class="col s6 m6 l6">
+                        <h5 class="titulosAparte center contenidoUsuario">Fecha</h5>
+                        <span>{{turnos.horario | date: "EEEE d 'de' LLLL" }}</span>
+                      </div>
+                      <div class="col s6 m6 l6">
+                        <h5 class="titulosAparte center contenidoUsuario">Hora</h5>
+                        <span>{{turnos.horario | date: "H:mm"}}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col s6 m6 l6">
-                    <h5 class="titulosAparte center contenidoUsuario">Hora</h5>
-                    <span>{{tiempo.hora}}:{{tiempo.minuto}} hs</span>
-                  </div>
+
                 </div>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-
-
-          <div class="row cuadro01 cuadro02">
-            <div class="col s12 l3 m3">
-              <table class="centered tablaIzq tablaGeneral">
-                <thead>
-                  <tr class="fondo">
-                    <th>HISTORIAL DE REGISTROS</th>
-                  </tr>
-                  <tr class="buscador">
-                    <td>
-                      <input id="buscadorDesde" type="date" class="datepicker validate buscadorFechas placeholderclass" placeholder="">
-                      <label for="buscadorDesde" class="textBlack">Fecha desde</label>
-                      <br>
-                      <input id="buscadorHasta" type="date" class="datepicker validate buscadorFechas placeholderclass" placeholder="">
-                      <label for="buscadorHasta" class="textBlack">Fecha hasta</label>
-                      <br>
-                      <div class="center-align">
-                        <a class="btn botonBuscar">Buscar</a>
-                      </div>
-                    </td>
-                  </tr>
-                </thead>
-                <tbody ng-repeat="registro in registros">
-                  <tr>
-                    <td class="resgitro00" ng-click="verRegistro(registro)">{{registro.createdAt | date: "EEEE d 'de' LLLL" }}</td>
-                  </tr>
-                </tbody>
-              </table>
+              </div>
             </div>
-            <div class="col s12 l9 m9">
-              <table class="centered tablaGeneral">
-                <thead>
-                  <tr class="fondo">
-                    <th>DETALLE DE ESTADOS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="detalles">
-                    <td>
-                      <div class="row estadoResumen">
-                        <div class="col s12 iconos">
-                          <span class="textUp">Estado de ánimo: &nbsp</span>
-                          <img ng-if="registroSeleccionado.animo.neutral" src="img/confused.png" />
-                          <img ng-if="registroSeleccionado.animo.enojado" src="img/angry.png" />
-                          <img ng-if="registroSeleccionado.animo.contento" src="img/happy.png" />
-                          <img ng-if="registroSeleccionado.animo.triste" src="img/sad.png" />
-                          </br>
-                          </br>
+
+
+            <div class="row cuadro01 cuadro02">
+              <div class="col s12 l3 m3">
+                <table class="centered tablaIzq tablaGeneral">
+                  <thead>
+                    <tr class="fondo">
+                      <th>HISTORIAL DE REGISTROS</th>
+                    </tr>
+                    <tr class="buscador">
+                      <td>
+                        <input id="buscadorDesde" type="date" class="datepicker validate buscadorFechas placeholderclass" placeholder="">
+                        <label for="buscadorDesde" class="textBlack">Fecha desde</label>
+                        <br>
+                        <input id="buscadorHasta" type="date" class="datepicker validate buscadorFechas placeholderclass" placeholder="">
+                        <label for="buscadorHasta" class="textBlack">Fecha hasta</label>
+                        <br>
+                        <div class="center-align">
+                          <a class="btn botonBuscar">Buscar</a>
                         </div>
-                        <div class="col s12 iconos">
-                          <span class="textUp">Actividades: &nbsp</span>
-                          <img ng-if="registroSeleccionado.actividades.deporte" src="img/gimnasio.png" />
-                          <img ng-if="registroSeleccionado.actividades.descanso" src="img/dormir.png" />
-                          <img ng-if="registroSeleccionado.actividades.juego" src="img/juego.png" />
-                          <img ng-if="registroSeleccionado.actividades.estudio" src="img/libro.png" />
-                          <img ng-if="registroSeleccionado.actividades.fiesta" src="img/fiesta.png" />
-                          <img ng-if="registroSeleccionado.actividades.salida" src="img/bosque.png" />
-                          <img src="img/nada.png" />
-                          </br>
-                          </br>
-                        </div>
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody ng-repeat="registro in registros">
+                    <tr>
+                      <td class="resgitro00" ng-click="verRegistro(registro)">{{registro.createdAt | date: "EEEE d 'de' LLLL" }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col s12 l9 m9">
+                <table class="centered tablaGeneral">
+                  <thead>
+                    <tr class="fondo">
+                      <th>DETALLE DE ESTADOS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="detalles">
+                      <td>
+                        <div class="row estadoResumen">
                           <div class="col s12 iconos">
-                          <span class="textUp">Lugares: &nbsp</span>
-                         <img src="img/casa.png" />
-                          <img src="img/colegio.png" />
-                          <img src="img/urbano.png" />
-                          <img src="img/gim.png" />
-                          <img src="img/casaamigo.png" />
-                          </br>
-                          </br>
+                            <span class="textUp">Estado de ánimo: &nbsp</span>
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Neutral" ng-if="registroSeleccionado.animo.neutral" src="img/confused.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Enojado" ng-if="registroSeleccionado.animo.enojado" src="img/angry.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Contento" ng-if="registroSeleccionado.animo.contento" src="img/happy.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Triste" ng-if="registroSeleccionado.animo.triste" src="img/sad.png" />
+                            </br>
+                            </br>
+                          </div>
+                          <div class="col s12 iconos">
+                            <span class="textUp">Actividades: &nbsp</span>
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Haciendo deporte" ng-if="registroSeleccionado.actividades.deporte" src="img/gimnasio.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Descansando" ng-if="registroSeleccionado.actividades.descanso" src="img/dormir.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Jugando" ng-if="registroSeleccionado.actividades.juego" src="img/juego.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Estudiando" ng-if="registroSeleccionado.actividades.estudio" src="img/libro.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="De Fiesta" ng-if="registroSeleccionado.actividades.fiesta" src="img/fiesta.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="De salida" ng-if="registroSeleccionado.actividades.salida" src="img/bosque.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Nada" ng-if="registroSeleccionado.actividades.nada" src="img/nada.png" />
+                            </br>
+                            </br>
+                          </div>
+                          <div class="col s12 iconos">
+                            <span class="textUp">Lugares: &nbsp</span>
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En casa" ng-if="registroSeleccionado.lugares.casa" src="img/casa.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En la escuela" ng-if="registroSeleccionado.lugares.escuela" src="img/colegio.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En la plaza" ng-if="registroSeleccionado.lugares.plaza" src="img/urbano.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En el gimnasio" ng-if="registroSeleccionado.lugares.gimnasio" src="img/gim.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En lo de un amigo" ng-if="registroSeleccionado.lugares.casa_amigo" src="img/casaamigo.png" />
+                            </br>
+                            </br>
+                          </div>
+                          <div class="col s12 iconos">
+                            <span class="textUp">Con quien estuvo: &nbsp</span>
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Solo" ng-if="registroSeleccionado.social.solo" src="img/chico.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En familia" ng-if="registroSeleccionado.social.familia" src="img/familia.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En pareja" ng-if="registroSeleccionado.social.pareja" src="img/pareja.png" />
+                            <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Con amigos" ng-if="registroSeleccionado.social.amigos" src="img/amigos.png" />
+                            </br>
+                            </br>
+                          </div>
+
                         </div>
-                        <div class="col s12 iconos">
-                          <span class="textUp">Con quien estuvo: &nbsp</span>
-                          <img ng-if="registroSeleccionado.social.solo" src="img/chico.png" />
-                          <img ng-if="registroSeleccionado.social.familia" src="img/familia.png" />
-                          <img ng-if="registroSeleccionado.social.pareja" src="img/pareja.png" />
-                          <img ng-if="registroSeleccionado.social.amigos" src="img/amigos.png" />
-                          </br>
-                          </br>
-                        </div>
-                      
-                      </div>
-                      <div class="row">
-                        <div class="col s12 textoPersonal">
-                          <span class="textUp">Texto personal: </span>
-                          <br>
-                          <span class="materialize-textarea textoPersonal">
+                        <div class="row">
+                          <div class="col s12 textoPersonal">
+                            <span class="textUp">Texto personal: </span>
+                            <br>
+                            <span class="materialize-textarea textoPersonal">
                           {{registroSeleccionado.cuentanosmas}}
                           </span>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </div>

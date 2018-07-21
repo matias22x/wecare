@@ -55,7 +55,9 @@ angular.module('wecareApp')
     console.log("alumnoHomeController");
 
   })
-  .controller('alumnoEstadosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService) {
+  .controller('alumnoEstadosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService, $document) {
+    var modalMjs = $document.find('#demoModal').modal();
+
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -99,7 +101,7 @@ angular.module('wecareApp')
 
       registrosService.postRegistros($scope.registro)
       .then(function(resp) {
-        $state.go('alumno_informacion');
+        modalMjs.modal('open');
       }).catch($log.error);
 
     }
@@ -155,22 +157,13 @@ angular.module('wecareApp')
     }else{
       $rootScope.alumnoMenu=true;
     }
-    function addZero(i) {
-      if (i < 10) {
-        i = "0" + i;
-      }
-      return i;
-    }
-    $scope.tiempo = {};
+
     var dataMoment = moment(new Date, 'DD/MM/YYYY');
     var date = dataMoment.format();
 
     turnoService.getProximosTurnosByPaciente(userData.get('datosRol')._id, date, 1)
     .then(function(resp) {
-      $scope.turnos = resp.data;
-      var time = new Date($scope.turnos[0].horario);
-      $scope.tiempo.hora = time.getHours();
-      $scope.tiempo.minuto = addZero(time.getMinutes());
+      $scope.turnos = resp.data[0];
     }).catch($log.error);
 
     registrosService.getRegistrosPorPaciente(userData.get('datosRol')._id)
