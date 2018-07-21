@@ -3,7 +3,7 @@
 body {
   display: flex;
   min-height: 100vh;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 main {
@@ -12,14 +12,14 @@ main {
 .plantilla { margin-bottom: 40px;
  }
 
-.tabs01 { padding-bottom: 25px; 
+.tabs01 { padding-bottom: 25px;
 padding-bottom: 40px;}
 
 body {
   background-image: url('../img/fondo.jpg');
-  
+
    }
-.fondoBlanco01 { background-color: #fff; 
+.fondoBlanco01 { background-color: #fff;
     height: 100%;}
 
     .fondoBlanco02 {
@@ -35,7 +35,7 @@ body {
 
 
 
-   
+
 .margenDebajo {margin-bottom: 45px;}
 
     .fondoConColor
@@ -96,7 +96,7 @@ footer.page-footer {
 background-color: #fff;
     padding: 25px !important;
 
-  
+
     /* height: 50px; */
 }
 
@@ -126,7 +126,7 @@ width: 100%; }
 .estadoResumen {  }
 
 .iconos img { width: 30px;
-    float: left; 
+    float: left;
     padding-right: 5px;
    }
 
@@ -146,10 +146,10 @@ td, th {
 .fondo {
   background-color: #00a9ff; }
 
-  .tablaIzq { margin-top: 0px; 
+  .tablaIzq { margin-top: 0px;
 }
 
-   
+
 
 .fondo th {
   color: #fff; }
@@ -159,7 +159,7 @@ td, th {
   float: right;
   margin-bottom: 20px; }
 
-.textoPersonal span { float: left; 
+.textoPersonal span { float: left;
 text-align: left;
 margin-left: 15px;
 margin-right: 15px;}
@@ -167,7 +167,7 @@ margin-right: 15px;}
 .textUp { text-transform: uppercase;
 font-weight: bold; }
 
-.cuadro01 { margin-top: 25px; 
+.cuadro01 { margin-top: 25px;
 padding: 25px;}
 
 /******************************************/
@@ -234,7 +234,7 @@ table { background-color: #fafafa; }
 margin: 20px;
     padding: 30px; }
 
-.tablaGeneral { background-color: #fff; 
+.tablaGeneral { background-color: #fff;
 box-sizing: border-box;
 border: 1px solid #d5d3d3 ;}
 
@@ -273,7 +273,7 @@ border: 1px solid #d5d3d3 ;}
 
 .bot {
   float: left;
- 
+
     margin-top: -25px;
 }
 
@@ -457,7 +457,7 @@ width: 100% !important; }
   justify-content: space-between;
   margin: 0px 0px;
   height: calc(100% - 50px);
- 
+
  padding-bottom: 15px;
   background: var(--msger-bg);
 
@@ -1205,7 +1205,7 @@ margin-right: 32px;}
 
 /*******************************************/
 
-.button-collapse { color: #00a9ff; 
+.button-collapse { color: #00a9ff;
 cursor: pointer;}
 
 
@@ -1257,7 +1257,7 @@ nav.nav-center ul li { letter-spacing: 0.5px; }
 
 
 
-.carta { margin-top:38px !important; 
+.carta { margin-top:38px !important;
   margin-bottom: 40px !important;
 }
 
@@ -1293,24 +1293,24 @@ padding-left: 15px;
   }
  }
 
-.titulo01 { 
+.titulo01 {
 text-transform: uppercase;
 padding: 25px;
 
 letter-spacing: 2px;
 padding-bottom: 25px; }
 
-.tabs01 ul li a {    
+.tabs01 ul li a {
  color: #000 !important;
     font-size: 15px !important;
     }
 
 .tabs .indicator {
     position: absolute;
-    bottom: 0;  
+    bottom: 0;
     height: 2px;
     background-color: #ff8500;
-    
+
 }
 
 .tabs .tab a:hover, .tabs .tab a.active {
@@ -1322,7 +1322,7 @@ padding-bottom: 25px; }
  }
 
 
-.tablaDeTres { margin-top: 40px; 
+.tablaDeTres { margin-top: 40px;
   margin-bottom: 40px;
 }
 
@@ -1337,12 +1337,12 @@ font-weight: bold;
 
 
   @media screen and (max-width: 600px) {
-.tabs01 ul li a {    
+.tabs01 ul li a {
     font-size: 11px !important;
     }
 }
 
-.titulo02 h4, .titulo02 h5 { 
+.titulo02 h4, .titulo02 h5 {
   text-transform: uppercase;
 font-weight: bold;
  }
@@ -1362,12 +1362,12 @@ margin-right: 10%;
 
  /*****************************************************/
 
- .titulo03 { text-transform: uppercase; 
-  color:#ff8500; 
+ .titulo03 { text-transform: uppercase;
+  color:#ff8500;
   font-weight: bold;
 }
 
-.botonBuscar { background-color:  #ff8500; 
+.botonBuscar { background-color:  #ff8500;
   margin-top: 20px !important;
       margin-bottom: 10px;
 }
@@ -1376,13 +1376,13 @@ margin-right: 10%;
 
  cursor: pointer;
   background-color: rgba(0, 169, 255, 0.5);;
- 
+
 }
 
 /**************************************************/
 
-.misPac h4 {  
-  color:#ff8500; 
+.misPac h4 {
+  color:#ff8500;
   font-weight: bold;
       padding-bottom: 15px;
     border-bottom: 1px solid #d5d3d3; }
@@ -1395,7 +1395,7 @@ margin-right: 10%;
 .botonAgregar01 {
   display: inline-block;
   margin: 0.3em;
- 
+
   overflow: hidden;
   position: relative;
   text-decoration: none;
@@ -1407,7 +1407,7 @@ margin-right: 10%;
   -o-transition: 0.3s;
   transition: 0.3s;
   box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  border: none; 
+  border: none;
   font-size: 15px;
   text-align: center;
 }
@@ -1460,16 +1460,16 @@ margin-right: 10%;
     background-color: #ff8500 !important;
 }
 
-.boton01 { 
+.boton01 {
 margin-top: 25px; }
 
 
 
 
 
-.iconos .bistext { text-align: center !important; 
+.iconos .bistext { text-align: center !important;
 text-transform: uppercase;
-font-weight: bold; 
+font-weight: bold;
 }
 
 
@@ -1516,7 +1516,7 @@ height: 395px;
 }
 
 .mdl-tabs__panel {
- 
+
   position: relative;
 }
 .mdl-tabs__panel .close {
@@ -1526,8 +1526,8 @@ height: 395px;
 }
 .mdl-tabs__panel .messages {
   height: 16rem;
- 
- 
+
+
 }
 .mdl-tabs__panel ul {
   padding: 1rem;
@@ -1696,7 +1696,7 @@ h5.tituloCard
 border-radius: 33px;
     width: 39px;
     height: 27px;
-    float: left; 
+    float: left;
   margin-right: 10px;}
 
 .circuloFondo img {     width: 35px;
@@ -1744,7 +1744,7 @@ border-radius: 33px;
    transform: rotate(45deg);
    left: 10px;
 }
-   
+
 .next
    {border-bottom: 6px solid #fff;
    border-left: 6px solid #fff;
@@ -1773,7 +1773,7 @@ hr { width: 40%;
     font-size: 10px;
   }
   h4 .title-bg { font-size: 25px; }
-  .titulo01 h4 { 
+  .titulo01 h4 {
   padding-left: 20px;
     padding-right: 20px;
     font-size: 26px; }
@@ -1801,7 +1801,7 @@ input.buscadorFechas{ margin-bottom: 2px; }
   -webkit-transition: all 400ms ease-out;
 }
 
-.titulosAparte { 
+.titulosAparte {
   font-size: 16px !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
@@ -1858,7 +1858,7 @@ background-color: #fafafa !important; }
  }
 
   @media screen and (max-width: 600px)
-  { 
+  {
   .tablaIzq {
     margin-bottom: 20px;
     } }
@@ -1894,7 +1894,7 @@ background-color: #fafafa !important; }
 
 .buscador01 input[type=text]:focus:not([readonly]),
 .buscador01 input-field input[type=text]:focus {
-  border-bottom: none; 
+  border-bottom: none;
     box-shadow: none !important;
 }
 
@@ -1911,7 +1911,7 @@ background-color: #fafafa !important; }
 
 
 .itemsBuscador h5 { font-size: 17px;
-                      color: #ff8500; 
+                      color: #ff8500;
                       text-transform: uppercase;
                       font-weight: bold;
                       padding-top: 5px;
@@ -1923,7 +1923,7 @@ background-color: #fafafa !important; }
   margin-left: 25px;
 }
 
-.btn02 { 
+.btn02 {
 margin-right: 25px;
 float: right; }
 
@@ -2041,23 +2041,23 @@ input[type=text].invalid { border-bottom: 1px solid #b0b0b0;
 .buscador05 {
     display: inline-block;
     width: 230px;
-      
+
 }
 }
 
 
 .buscador05 input {
-    
+
         font-size: 13px !important;
 }
 
 
 
-.titulo04 { 
+.titulo04 {
     text-transform: uppercase;
     color: #00a9ff;
     font-weight: bold;
-} 
+}
 
 
 .cajaAlumno:after {
@@ -2106,7 +2106,7 @@ input[type=text].invalid { border-bottom: 1px solid #b0b0b0;
     border-radius: 50px;
     padding: 9px 15px;
     color: #000;
-} 
+}
 
 
 @media only screen and (max-width: 992px)
@@ -2125,7 +2125,7 @@ input[type=text].invalid { border-bottom: 1px solid #b0b0b0;
     border: 0;
     border-right: 1px solid #d0d0d0;
     height: 290px !important;
-} 
+}
 }
 
 .espacioNo { margin-bottom: 0px !important;  }
@@ -2152,13 +2152,13 @@ input[type=text].invalid { border-bottom: 1px solid #b0b0b0;
 
 }
 
-.separaCostado input, .separaCostado label { 
+.separaCostado input, .separaCostado label {
       text-align: left; }
 
 
 
   .cardBorderNo {
-    margin-top: 30px; 
+    margin-top: 30px;
    }
 
 .espacioYBorde {     padding-left: 30px !important;
@@ -2198,14 +2198,14 @@ margin-bottom: 40px !important;  }
 }
 
 .card .card-content {     padding: 23px !important;
-/*margin-bottom: 40px !important;*/ 
-/*background-image: url("../img/fondo03.jpg"); 
+/*margin-bottom: 40px !important;*/
+/*background-image: url("../img/fondo03.jpg");
 background-repeat: repeat-x repeat-y;*/}
 
-.card {border: 1px solid #d5d3d3;} 
+.card {border: 1px solid #d5d3d3;}
 
 
-.claseImportante {     
+.claseImportante {
 
     background-color: #fff;
     /* padding-bottom: 25px; */
@@ -2220,7 +2220,7 @@ background-repeat: repeat-x repeat-y;*/}
     font-size: 22px;
     font-weight: 400;
     letter-spacing: 1px;
-    line-height: 30px !important; 
+    line-height: 30px !important;
 }
 
 nav { z-index: 33; }
@@ -2235,7 +2235,7 @@ font-size: 25px; }
 padding: 25px; }
 
 .modalTitulo { text-align: center;
-    
+
     font-weight: bold; }
 
 .flotarIzq { float: left !important; }
@@ -2263,21 +2263,21 @@ progress:not(value) {
 progress[value] {
   /* Get rid of the default appearance */
   appearance: none;
-  
+
   /* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
   border: none;
-  
+
   /* Add dimensions */
   width: 100%; height: 20px;
-  
+
   /* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
     background-color: whiteSmoke;
     border-radius: 3px;
     box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
-  
+
   /* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
   color: royalblue;
-  
+
   position: relative;
  margin-bottom: 5px;
 }
@@ -2296,10 +2296,10 @@ progress[value]::-webkit-progress-bar {
 
 progress[value]::-webkit-progress-value {
   position: relative;
-  
+
   background-size: 35px 20px, 100% 100%, 100% 100%;
   border-radius:3px;
-  
+
   /* Let's animate this */
   animation: animate-stripes 5s linear infinite;
 }
@@ -2312,10 +2312,10 @@ progress[value]::-webkit-progress-value:after {
   /* Only webkit/blink browsers understand pseudo elements on pseudo classes. A rare phenomenon! */
   content: '';
   position: absolute;
-  
+
   width:5px; height:5px;
   top:7px; right:7px;
-  
+
   background-color: white;
   border-radius: 100%;
 }
@@ -2335,10 +2335,10 @@ progress[value]::-moz-progress-bar {
                             rgba(255, 255, 255, .25),
                             rgba(0,0,0,.2)),
      -moz-linear-gradient( left, #40bf43, #dd0000);
-  
+
   background-size: 35px 20px, 100% 100%, 100% 100%;
   border-radius:3px;
-  
+
   /* Firefox doesn't support CSS3 keyframe animations on progress element. Hence, we did not include animate-stripes in this code block */
 }
 
@@ -2413,7 +2413,7 @@ p[data-value]:after {
 span.estiloPart { color: #00a9ff;
     font-weight: bold;
     letter-spacing: 1px;
-    text-transform: uppercase; 
+    text-transform: uppercase;
     padding-left: 10px;}
 
 span.estiloPart2 {color: #ff8500;
@@ -2432,7 +2432,7 @@ span.estiloPart2 {color: #ff8500;
 
 
   .estiloTurnoDos { width: 50%;     padding-top: 10px; }
-  @media screen and (max-width: 999px) { 
+  @media screen and (max-width: 999px) {
    .estiloTurnoDos { width: 80% !important;     } }
 
 
@@ -2463,7 +2463,7 @@ span.estiloPart2 {color: #ff8500;
 
 
 .dropdown-content {
-  
+
     max-height: 100px !important;
 }
 .contenidoAlarga, .steper01 { height: 570px; }
@@ -2475,7 +2475,7 @@ label.sinCheck:before {
   color: white;
   content: " ";
   display: block;
- 
+
   border: 1px solid grey;
   position: absolute;
   top: -5px;
@@ -2525,4 +2525,18 @@ h5.tituloCard {  margin-top: 0px;}
 .fondoBlanco04 {
     background-color: #fff;
     height: 550px !important;
+}
+
+.preloader-background {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color:rgba(0, 0, 0, 0.5);
+
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }
