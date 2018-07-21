@@ -6,7 +6,7 @@ angular.module('diagnosticoPrematuroService', []).service('diagnosticoPrematuroS
             return $http.get(config.api_url + '/api/diagnosticoprematuros/' + requestId);
         },
         getAllDiagnosticosPrematuros: function() {
-            return $http.get(config.api_url + '/api/diagnosticoprematuros?conditions={"asignado": "false"}');
+            return $http.get(config.api_url + '/api/diagnosticoprematuros');
         },
         getAllDiagnosticosPrematurosVistos: function() {
             return $http.get(config.api_url + '/api/diagnosticoprematuros?conditions={"visto": "true"}');
