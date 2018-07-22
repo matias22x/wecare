@@ -1,19 +1,19 @@
 <main class="fondoBlanco01">
-  <div ng-show="loader" class="preloader-background" >
-	<div class="preloader-wrapper big active">
-		<div class="spinner-layer spinner-blue-only">
-			<div class="circle-clipper left">
-				<div class="circle"></div>
-			</div>
-			<div class="gap-patch">
-				<div class="circle"></div>
-			</div>
-			<div class="circle-clipper right">
-				<div class="circle"></div>
-			</div>
-		</div>
-	</div>
-</div>
+  <div ng-show="loader" class="preloader-background">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="section"></div>
   <div class="container">
     <div class="col s12">
@@ -32,31 +32,31 @@
                   <tbody>
                     <tr class="buscador">
                       <form name="form">
-                      <td>
-                        <div class="input-field center">
-                          <input id="buscadorDesde" name="buscadorDesde" type="text" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
-                          <label for="buscadorDesde">Fecha desde</label>
-                        </div>
-                        <div class="input-field center">
-                          <input id="buscadorHasta" name="buscadorHasta" type="text" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorHasta" placeholder="">
-                          <label for="buscadorHasta">Hasta</label>
-                        </div>
-                        <br>
-                        <a class="btn botonGeneralBis b02 butonComp" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta)">Buscar</a> <a class="btn butonComp botonGeneralBis b02" ui-sref="especialista_diagnosticos">Ver nuevos</a>
-                      </td>
-                    </form>
+                        <td>
+                          <div class="input-field center">
+                            <input id="buscadorDesde" name="buscadorDesde" type="text" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
+                            <label for="buscadorDesde">Fecha desde</label>
+                          </div>
+                          <div class="input-field center">
+                            <input id="buscadorHasta" name="buscadorHasta" type="text" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorHasta" placeholder="">
+                            <label for="buscadorHasta">Hasta</label>
+                          </div>
+                          <br>
+                          <a class="btn botonGeneralBis b02 butonComp" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta)">Buscar</a> <a class="btn butonComp botonGeneralBis b02" ui-sref="especialista_diagnosticos">Ver nuevos</a>
+                        </td>
+                      </form>
                     </tr>
                     <tr ng-repeat="diagnosticosEntrantes in page">
                       <td class="resgitro00" ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt | date: "EEEE d 'de' LLLL" }}</td>
                     </tr>
                     <tr>
-                    <td>
-                    <ul class="pagination">
-                      <li class="waves-effect"><a ng-click='antPag(diagnosticosPrematuros);'><i class="material-icons">chevron_left</i></a></li>
-                      <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, diagnosticosPrematuros);'>{{$index+1}}</a></li>
-                      <li class="waves-effect"><a ng-click='sigPag(diagnosticosPrematuros);'><i class="material-icons">chevron_right</i></a></li>
-                    </ul>
-                    </td>
+                      <td>
+                        <ul class="pagination">
+                          <li class="waves-effect"><a ng-click='antPag(diagnosticosPrematuros);'><i class="material-icons">chevron_left</i></a></li>
+                          <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, diagnosticosPrematuros);'>{{$index+1}}</a></li>
+                          <li class="waves-effect"><a ng-click='sigPag(diagnosticosPrematuros);'><i class="material-icons">chevron_right</i></a></li>
+                        </ul>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -65,7 +65,7 @@
 
                 <h5 class="center titulo03 titAparte">Diagnósticos</h5>
 
-                <div class="row">
+                <div ng-if="informacion.diagnostico" class="row">
                   <div class="col s12 m12 l12">
                     <table class="tablaGeneralBis">
                       <thead class="centered">
@@ -120,7 +120,7 @@
                   </div>
 
                 </div>
-                <table class="tablaGeneral">
+                <table ng-if="informacion.diagnostico" class="tablaGeneral">
                   <thead>
                     <tr class="fondoOne bisF">
                       <th>DIAGNÓSTICO ENTRANTE DE WEBOT</th>
@@ -144,6 +144,27 @@
                     </tr>
                   </tbody>
                 </table>
+                <div ng-if="!informacion.diagnostico" class="row">
+                  <div class="col s12 m12 l12">
+                    <div class="mdl-tabs__panel" id="botchat">
+                      <div class="messages">
+                        <ul>
+                          <li class="placeholder"></li>
+                          <li class="in">
+                            <div class="avatar" class="col s12 l12 m12">
+                              <img class="responsive-img" src="img/bot-2.gif" />
+                            </div>
+                            <div class="col s12 l12 m12">
+                              <p>En esta sección podrás ver los diagnosticos entrantes que recaudé de los alumnos, ordenados por fecha.<br>
+                                Aquí puedes agregar al alumno a tu listado de pacientes, o bien seguir revisando otros diagnosticos.
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

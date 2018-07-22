@@ -1,153 +1,175 @@
 <main class="fondoBlanco01">
-  <div ng-show="loader" class="preloader-background" >
-	<div class="preloader-wrapper big active">
-		<div class="spinner-layer spinner-blue-only">
-			<div class="circle-clipper left">
-				<div class="circle"></div>
-			</div>
-			<div class="gap-patch">
-				<div class="circle"></div>
-			</div>
-			<div class="circle-clipper right">
-				<div class="circle"></div>
-			</div>
-		</div>
-	</div>
-</div>
+  <div ng-show="loader" class="preloader-background">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="section"></div>
   <div class="container">
     <div class="col s12">
       <div class="card fondoConColor margenBot">
         <div class="card-content">
 
- <div class="contenidoBordeGris">
+          <div class="contenidoBordeGris">
 
-          <div class="row claseImportante">
+            <div class="row claseImportante">
 
-            <div class="col s12 l3 m12">
-              <h5 class="center titulo03 titAparte show-on-small hide-on-med-and-up">Diagnósticos</h5>
-              <table class="centered tablaMarg">
-                <thead>
-                  <tr class="fondoOne">
-                    <th>DIAGNOSTICOS NUEVOS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="buscador">
-                    <td>
-                      <a ui-sref="especialista_diagnosticosTmp" class="btn waves-effect waves-light botonGeneralBis b02">Ver anteriores</a>
-                    </td>
-                  </tr>
-                  <tr ng-repeat="diagnosticosEntrantes in page">
-                    <td class="resgitro00" ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt | date: "EEEE d 'de' LLLL" }}</td>
-                  </tr>
-                  <tr>
-                  <td>
-                  <ul class="pagination">
-                    <li class="waves-effect"><a ng-click='antPag(diagnosticosPrematuros);'><i class="material-icons">chevron_left</i></a></li>
-                    <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, diagnosticosPrematuros);'>{{$index+1}}</a></li>
-                    <li class="waves-effect"><a ng-click='sigPag(diagnosticosPrematuros);'><i class="material-icons">chevron_right</i></a></li>
-                  </ul>
-                  </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="col s12 m12 l9">
+              <div class="col s12 l3 m12">
+                <h5 class="center titulo03 titAparte show-on-small hide-on-med-and-up">Diagnósticos</h5>
+                <table class="centered tablaMarg">
+                  <thead>
+                    <tr class="fondoOne">
+                      <th>DIAGNOSTICOS NUEVOS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="buscador">
+                      <td>
+                        <a ui-sref="especialista_diagnosticosTmp" class="btn waves-effect waves-light botonGeneralBis b02">Ver anteriores</a>
+                      </td>
+                    </tr>
+                    <tr ng-repeat="diagnosticosEntrantes in page">
+                      <td class="resgitro00" ng-click="informacionAlumno(diagnosticosEntrantes)">{{diagnosticosEntrantes.nombreAlumno}} - {{diagnosticosEntrantes.dniAlumno}} - {{diagnosticosEntrantes.createdAt | date: "EEEE d 'de' LLLL" }}</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <ul class="pagination">
+                          <li class="waves-effect"><a ng-click='antPag(diagnosticosPrematuros);'><i class="material-icons">chevron_left</i></a></li>
+                          <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, diagnosticosPrematuros);'>{{$index+1}}</a></li>
+                          <li class="waves-effect"><a ng-click='sigPag(diagnosticosPrematuros);'><i class="material-icons">chevron_right</i></a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col s12 m12 l9">
 
-              <h5 class="center titulo03 titAparte hide-on-med-and-down">Diagnósticos</h5>
-
-
-              <div class="row">
-                <div class="col s12 m12 l12">
-                  <table class="tablaGeneralBis">
-                    <thead class="centered">
-                      <tr class="fondoOne">
-                        <th class="tituloDiag">Detalles</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="col s12 m4 l4 conjDiag">
-                            <span class="titNar"><b>Nombre y apellido</b></span><br>
-                            <span>{{informacion.diagnostico.alumno.nombre}}</span><br>
-                            <span class="titNar"><b>DNI</b></span><br>
-                            <span>{{informacion.diagnostico.alumno.dni}}</span><br>
-                            <span class="titNar"><b>Direccion</b></span><br>
-                            <span>{{informacion.diagnostico.alumno.direccion}}</span><br>
-
-                          </div>
-
-                          <div class="col s12 m4 l4 conjDiag">
-                            <span class="titNar"><b>Curso</b></span><br>
-                            <span>{{informacion.diagnostico.alumno.curso}}</span><br>
-                            <span class="titNar"><b>Fecha de ingreso</b></span><br>
-                            <span>{{informacion.diagnostico.createdAt | date: "EEEE d 'de' LLLL 'de' yyyy" }}</span><br>
-                            <span class="titNar"><b>Diagnostico</b></span><br>
-                            <span class="tituloDestaca">{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
-
-                            <!-- HTML5 -->
+                <h5 class="center titulo03 titAparte hide-on-med-and-down">Diagnósticos</h5>
 
 
+                <div ng-if="informacion.diagnostico" class="row">
+                  <div class="col s12 m12 l12">
+                    <table class="tablaGeneralBis">
+                      <thead class="centered">
+                        <tr class="fondoOne">
+                          <th class="tituloDiag">Detalles</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="col s12 m4 l4 conjDiag">
+                              <span class="titNar"><b>Nombre y apellido</b></span><br>
+                              <span>{{informacion.diagnostico.alumno.nombre}}</span><br>
+                              <span class="titNar"><b>DNI</b></span><br>
+                              <span>{{informacion.diagnostico.alumno.dni}}</span><br>
+                              <span class="titNar"><b>Direccion</b></span><br>
+                              <span>{{informacion.diagnostico.alumno.direccion}}</span><br>
 
-                          </div>
+                            </div>
 
-                          <div class="col s12 m4 l4 conjDiagBis gravBot center">
-                            <span class="titNar"><b>Gravedad</b></span><br>
+                            <div class="col s12 m4 l4 conjDiag">
+                              <span class="titNar"><b>Curso</b></span><br>
+                              <span>{{informacion.diagnostico.alumno.curso}}</span><br>
+                              <span class="titNar"><b>Fecha de ingreso</b></span><br>
+                              <span>{{informacion.diagnostico.createdAt | date: "EEEE d 'de' LLLL 'de' yyyy" }}</span><br>
+                              <span class="titNar"><b>Diagnostico</b></span><br>
+                              <span class="tituloDestaca">{{informacion.diagnostico.puntuacionDeGravedad}}</span><br>
 
-                            <progress max="22" value="{{informacion.diagnostico.gravedad}}" class="html5">
+                              <!-- HTML5 -->
+
+
+
+                            </div>
+
+                            <div class="col s12 m4 l4 conjDiagBis gravBot center">
+                              <span class="titNar"><b>Gravedad</b></span><br>
+
+                              <progress max="22" value="{{informacion.diagnostico.gravedad}}" class="html5">
     <div class="progress-bar">
       </div>
     </progress>
-                            <div ng-if="informacion.diagnostico">
-                              <a class="waves-effect waves-light btn btn-small botonGeneral bagregar" ng-if="!informacion.diagnostico.asignado" data-target='demoModal' ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id, informacion.diagnostico.alumno.nombre)" modal>agregar a mis pacientes</a>
+                              <div ng-if="informacion.diagnostico">
+                                <a class="waves-effect waves-light btn btn-small botonGeneral bagregar" ng-if="!informacion.diagnostico.asignado" data-target='demoModal' ng-click="agregarAMisPacientes(informacion.diagnostico.alumno._id, informacion.diagnostico._id, informacion.diagnostico.alumno.nombre)"
+                                  modal>agregar a mis pacientes</a>
+                              </div>
+                              <br>
+                              <div ng-if="informacion.diagnostico">
+                                <a class="waves-effect waves-light btn btn-small botonGeneral bagregar bisBoton" ng-click="cambiarDiagnosticoAVisto(informacion.diagnostico._id)">marcar como visto</a>
+                              </div>
                             </div>
-                            <br>
-                            <div ng-if="informacion.diagnostico">
-                              <a class="waves-effect waves-light btn btn-small botonGeneral bagregar bisBoton"  ng-click="cambiarDiagnosticoAVisto(informacion.diagnostico._id)">marcar como visto</a>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
+                          </td>
+                        </tr>
+                      </tbody>
 
-                  </table>
+                    </table>
 
+
+                  </div>
 
                 </div>
-
-              </div>
-              <table class="tablaGeneral">
-                <thead>
-                  <tr class="fondoOne bisF">
-                    <th>DIAGNÓSTICO ENTRANTE DE WEBOT</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="detalles">
-                    <td>
-                      <div class="row">
-                        <div class="col s12 botScroll">
-                          <ul ng-if="informacion.diagnostico.diagnostico" ng-repeat="diagnostico in informacion.diagnostico.diagnostico">
-                            <span class="estiloPart">Pregunta:</span>&nbsp &nbsp
-                            <li class="pregunta">{{diagnostico.pregunta}}</li><br>
-                            <span class="estiloPart2">Respuesta:</span>&nbsp &nbsp
-                            <li class="respuesta">{{diagnostico.respuesta}}</li>
-                          </ul>
-                          <p ng-if="!informacion.diagnostico.diagnostico">Webot no ha recaudado datos.</p>
+                <table  ng-if="informacion.diagnostico"  class="tablaGeneral">
+                  <thead>
+                    <tr class="fondoOne bisF">
+                      <th>DIAGNÓSTICO ENTRANTE DE WEBOT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="detalles">
+                      <td>
+                        <div class="row">
+                          <div class="col s12 botScroll">
+                            <ul ng-if="informacion.diagnostico.diagnostico" ng-repeat="diagnostico in informacion.diagnostico.diagnostico">
+                              <span class="estiloPart">Pregunta:</span>&nbsp &nbsp
+                              <li class="pregunta">{{diagnostico.pregunta}}</li><br>
+                              <span class="estiloPart2">Respuesta:</span>&nbsp &nbsp
+                              <li class="respuesta">{{diagnostico.respuesta}}</li>
+                            </ul>
+                            <p ng-if="!informacion.diagnostico.diagnostico">Webot no ha recaudado datos.</p>
+                          </div>
                         </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div ng-if="!informacion.diagnostico" class="row">
+                  <div class="col s12 m12 l12">
+                    <div class="mdl-tabs__panel" id="botchat">
+                      <div class="messages">
+                        <ul>
+                          <li class="placeholder"></li>
+                          <li class="in">
+                            <div class="avatar" class="col s12 l12 m12">
+                              <img class="responsive-img" src="img/bot-2.gif" />
+                            </div>
+                            <div class="col s12 l12 m12">
+                              <p>Hola! En esta sección podrás ver los diagnosticos entrantes que recaudé de los alumnos, ordenados por gravedad.<br>
+                                Puedes marcalos como visto, para que pasen a los listados por fecha, o puedes agregar al alumno a tu listado de pacientes.
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
                       </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
   <div id="demoModal" class="modal">
     <div class="modal-content modalTitulo center">
