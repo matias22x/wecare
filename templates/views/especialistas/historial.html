@@ -19,22 +19,31 @@
                     <tr class="buscador">
                       <td>
                         <div class="input-field center">
-                          <input id="buscadorDesde" type="date" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
+                          <input id="buscadorDesde" type="text" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
                           <label for="buscadorDesde">Fecha desde</label>
                         </div>
                         <div class="input-field center">
-                          <input id="buscadorHasta" type="date" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorHasta" placeholder="">
+                          <input id="buscadorHasta" type="text" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorHasta" placeholder="">
                           <label for="buscadorHasta">Hasta</label>
                         </div>
                         <br>
-                        <a class="btn botonBuscar">Buscar</a>
+                        <a class="btn botonGeneralBis b02 butonComp" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta, alumno._id)">Buscar</a>
                       </td>
                     </tr>
                   </thead>
 
-                  <tbody ng-repeat="registro in registros">
-                    <tr>
+                  <tbody >
+                    <tr ng-repeat="registro in registros">
                       <td class="resgitro00" ng-click="verRegistro(registro)">{{registro.createdAt | date: "EEEE d 'de' LLLL" }}</td>
+                    </tr>
+                    <tr>
+                    <td>
+                    <ul class="pagination">
+                      <li class="waves-effect"><a ng-click='antPag(registros);'><i class="material-icons">chevron_left</i></a></li>
+                      <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, registros);'>{{$index+1}}</a></li>
+                      <li class="waves-effect"><a ng-click='sigPag(registros);'><i class="material-icons">chevron_right</i></a></li>
+                    </ul>
+                    </td>
                     </tr>
                   </tbody>
                 </table>

@@ -8,6 +8,9 @@ angular.module('registrosService', []).service('registrosService', function($htt
         getRegistrosPorPaciente: function(pacienteId) {
             return $http.get(config.api_url + '/api/registros?conditions={"pacienteId": "' + pacienteId + '"}');
         },
+        getRegistrosPorPacientePorFecha: function(desde, hasta, pacienteId) {
+            return $http.get(config.api_url + '/api/registros?conditions={"$and":[{"pacienteId": "' + pacienteId + '"},{"createdAt":{"$gte": "' + desde + '"}},{"createdAt":{"$lte": "' + hasta + '"}}]}');
+        },
         getAllRegistross: function() {
             return $http.get(config.api_url + '/api/registros');
         },

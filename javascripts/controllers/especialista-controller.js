@@ -229,76 +229,59 @@ angular.module('wecareApp')
   }).controller('especialistaDiagnosticosViejosController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, config, especialistaService, userService, diagnosticoPrematuroService, alumnoService) {
     $scope.loader=false;
     $scope.paginInit = function(lista) {
-
       if (!$scope.cantRegistros) {
         $scope.cantRegistros = 10;
       }
-
       if (!$scope.pagActual) {
         $scope.pagActual = 1;
       }
-
       $scope.paginas = Math.ceil(lista.length / $scope.cantRegistros);
-
       $scope.getNumber = function(num) {
         return new Array($scope.paginas);
       }
-
       $scope.page = [];
-
       for (var i = 0; i < $scope.cantRegistros; i++) {
         if (lista[i] != null) {
           $scope.page.push(lista[i]);
         }
       }
     }
-
     $scope.cambiarPag = function(pag, lista) {
       $scope.pagActual = pag + 1;
       var hasta = $scope.pagActual * $scope.cantRegistros;
       var desde = hasta - $scope.cantRegistros;
       $scope.page = [];
-
       for (var i = desde; i < hasta; i++) {
         if (lista[i] != null) {
           $scope.page.push(lista[i]);
         }
-
       }
     }
-
     $scope.sigPag = function(lista) {
       if ($scope.pagActual + 1 <= $scope.paginas) {
         $scope.pagActual = $scope.pagActual + 1;
         var hasta = $scope.pagActual * $scope.cantRegistros;
         var desde = hasta - $scope.cantRegistros;
         $scope.page = [];
-
         for (var i = desde; i < hasta; i++) {
           if (lista[i] != null) {
             $scope.page.push(lista[i]);
           }
-
         }
       }
-
     }
-
     $scope.antPag = function(lista) {
       if ($scope.pagActual - 1 > 0) {
         $scope.pagActual = $scope.pagActual - 1;
         var hasta = $scope.pagActual * $scope.cantRegistros;
         var desde = hasta - $scope.cantRegistros;
         $scope.page = [];
-
         for (var i = desde; i < hasta; i++) {
           if (lista[i] != null) {
             $scope.page.push(lista[i]);
           }
-
         }
       }
-
     }
 
     $scope.especialista = userData.get('datosRol');
@@ -379,6 +362,75 @@ angular.module('wecareApp')
 
   })
   .controller('especialistaHistorialController', function($auth, $scope, $rootScope, $state, userData, $stateParams, $log, $http, $translate, config, especialistaService, userService, registrosService, alumnoService) {
+    $scope.paginInit = function(lista) {
+      if (!$scope.cantRegistros) {
+        $scope.cantRegistros = 10;
+      }
+      if (!$scope.pagActual) {
+        $scope.pagActual = 1;
+      }
+
+      if(lista && lista.length>0){
+        $scope.paginas = Math.ceil(lista.length / $scope.cantRegistros);
+      }else{
+        $scope.paginas = 1;
+      }
+      $scope.getNumber = function(num) {
+        return new Array($scope.paginas);
+      }
+      $scope.page = [];
+      if(lista){
+        for (var i = 0; i < $scope.cantRegistros; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+        }
+      }
+    }
+    $scope.cambiarPag = function(pag, lista) {
+      $scope.pagActual = pag + 1;
+      var hasta = $scope.pagActual * $scope.cantRegistros;
+      var desde = hasta - $scope.cantRegistros;
+      $scope.page = [];
+      if(lista){
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+        }
+      }
+    }
+    $scope.sigPag = function(lista) {
+      if ($scope.pagActual + 1 <= $scope.paginas) {
+        $scope.pagActual = $scope.pagActual + 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+        if(lista){
+          for (var i = desde; i < hasta; i++) {
+            if (lista[i] != null) {
+              $scope.page.push(lista[i]);
+            }
+          }
+        }
+      }
+    }
+    $scope.antPag = function(lista) {
+      if ($scope.pagActual - 1 > 0) {
+        $scope.pagActual = $scope.pagActual - 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+        if(lista){
+          for (var i = desde; i < hasta; i++) {
+            if (lista[i] != null) {
+              $scope.page.push(lista[i]);
+            }
+          }
+        }
+      }
+    }
+
     alumnoService.getAlumno($stateParams.id)
       .then(function(resp) {
         $scope.alumno = resp.data;
@@ -387,35 +439,205 @@ angular.module('wecareApp')
     registrosService.getRegistrosPorPaciente($stateParams.id)
       .then(function(resp) {
         $scope.registros = resp.data;
+        $scope.paginInit($scope.registros)
       }).catch($log.error);
 
     $scope.verRegistro = function(registro) {
       $scope.registroSeleccionado = registro;
     }
+
+    $scope.filtrarFecha = function(desde, hasta, alumnoId) {
+      $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      registrosService.getRegistrosPorPacientePorFecha($scope.desde, $scope.hasta, alumnoId)
+        .then(function(resp) {
+          $scope.registros = resp.data;
+          $scope.paginInit($scope.registros)
+        }).catch($log.error);
+    }
+
   })
   .controller('especialistaObservacionesController', function($auth, $scope, $rootScope, turnoService, alumnoService, $state, userData, $log, $http, $translate, config, especialistaService, userService, $stateParams) {
+    $scope.paginInit = function(lista) {
+      if (!$scope.cantRegistros) {
+        $scope.cantRegistros = 10;
+      }
+      if (!$scope.pagActual) {
+        $scope.pagActual = 1;
+      }
+
+      if(lista && lista.length>0){
+        $scope.paginas = Math.ceil(lista.length / $scope.cantRegistros);
+      }else{
+        $scope.paginas = 1;
+      }
+      $scope.getNumber = function(num) {
+        return new Array($scope.paginas);
+      }
+      $scope.page = [];
+      if(lista){
+        for (var i = 0; i < $scope.cantRegistros; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+        }
+      }
+    }
+    $scope.cambiarPag = function(pag, lista) {
+      $scope.pagActual = pag + 1;
+      var hasta = $scope.pagActual * $scope.cantRegistros;
+      var desde = hasta - $scope.cantRegistros;
+      $scope.page = [];
+      if(lista){
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+        }
+      }
+    }
+    $scope.sigPag = function(lista) {
+      if ($scope.pagActual + 1 <= $scope.paginas) {
+        $scope.pagActual = $scope.pagActual + 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+        if(lista){
+          for (var i = desde; i < hasta; i++) {
+            if (lista[i] != null) {
+              $scope.page.push(lista[i]);
+            }
+          }
+        }
+      }
+    }
+    $scope.antPag = function(lista) {
+      if ($scope.pagActual - 1 > 0) {
+        $scope.pagActual = $scope.pagActual - 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+        if(lista){
+          for (var i = desde; i < hasta; i++) {
+            if (lista[i] != null) {
+              $scope.page.push(lista[i]);
+            }
+          }
+        }
+      }
+    }
+
     turnoService.getTurnosAlumno($stateParams.id)
       .then(function(turno) {
-        $scope.turnos = turno.data;
+        $scope.turnos = [];
+        angular.forEach(turno.data, function(value, key) {
+          if (value.sesion) {
+            $scope.turnos.push(value);
+          };
+          $scope.paginInit($scope.turnos);
+        })
       })
       .catch($log.error);
 
       alumnoService.getAlumno($stateParams.id)
       .then(function(alumno) {
         $scope.alumno = alumno.data;
-        console.log($scope.alumno);
       })
       .catch($log.error);
 
       $scope.verDatos = function(datos) {
         $scope.datos = datos;
-        console.log($scope.datos);
+      }
+
+      $scope.filtrarFecha = function(desde, hasta, alumnoId) {
+        $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+        $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+        turnoService.getTurnosAlumnoPorFecha($scope.desde, $scope.hasta, alumnoId)
+          .then(function(resp) {
+            $scope.turnos = [];
+            angular.forEach(resp.data, function(value, key) {
+              if (value.sesion) {
+                $scope.turnos.push(value);
+              };
+              })
+              $scope.paginInit($scope.turnos);
+          }).catch($log.error);
       }
   })
   .controller('especialistaPacientesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, alumnoService) {
+    $scope.paginInit = function(lista) {
+      if (!$scope.cantRegistros) {
+        $scope.cantRegistros = 10;
+      }
+      if (!$scope.pagActual) {
+        $scope.pagActual = 1;
+      }
+
+      if(lista && lista.length>0){
+        $scope.paginas = Math.ceil(lista.length / $scope.cantRegistros);
+      }else{
+        $scope.paginas = 1;
+      }
+      $scope.getNumber = function(num) {
+        return new Array($scope.paginas);
+      }
+      $scope.page = [];
+      if(lista){
+        for (var i = 0; i < $scope.cantRegistros; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+        }
+      }
+    }
+    $scope.cambiarPag = function(pag, lista) {
+      $scope.pagActual = pag + 1;
+      var hasta = $scope.pagActual * $scope.cantRegistros;
+      var desde = hasta - $scope.cantRegistros;
+      $scope.page = [];
+      if(lista){
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+        }
+      }
+    }
+    $scope.sigPag = function(lista) {
+      if ($scope.pagActual + 1 <= $scope.paginas) {
+        $scope.pagActual = $scope.pagActual + 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+        if(lista){
+          for (var i = desde; i < hasta; i++) {
+            if (lista[i] != null) {
+              $scope.page.push(lista[i]);
+            }
+          }
+        }
+      }
+    }
+    $scope.antPag = function(lista) {
+      if ($scope.pagActual - 1 > 0) {
+        $scope.pagActual = $scope.pagActual - 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+        if(lista){
+          for (var i = desde; i < hasta; i++) {
+            if (lista[i] != null) {
+              $scope.page.push(lista[i]);
+            }
+          }
+        }
+      }
+    }
+
     alumnoService.getAlumnoByEspecialistaId(userData.get('datosRol')._id)
       .then(function(dataAlumnos) {
         $scope.alumnosEspecialista = dataAlumnos.data;
+        $scope.paginInit($scope.alumnosEspecialista);
       }).catch($log.error);
 
   })

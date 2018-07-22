@@ -41,7 +41,7 @@
                       </tr>
                     </thead>
 
-                    <tbody ng-repeat="alumno in alumnosEspecialista">
+                    <tbody ng-repeat="alumno in page">
                       <tr>
                         <td>{{alumno.dni}}</td>
                         <td>{{alumno.nombre}}</td>
@@ -57,6 +57,11 @@
                 </div>
               </div>
             </div>
+            <ul class="pagination">
+              <li class="waves-effect"><a ng-click='antPag(alumnosEspecialista);'><i class="material-icons">chevron_left</i></a></li>
+              <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, alumnosEspecialista);'>{{$index+1}}</a></li>
+              <li class="waves-effect"><a ng-click='sigPag(alumnosEspecialista);'><i class="material-icons">chevron_right</i></a></li>
+            </ul>
           </div>
         </div>
       </div>
