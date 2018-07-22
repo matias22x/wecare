@@ -16,7 +16,7 @@
                     <br>
                     <p>{{fechaDeHoy | date: "EEEE d 'de' LLLL 'de' yyyy" }}</p>
                     <h5>¿Cómo te sientes el día de hoy?</h5>
-                    <p class="seleccionmas">Puedes seleccionar más de una opción</p>
+                    <p class="seleccionmas" style="color:red">Debes seleccionar, al menos una opción</p>
                     <form action="#" class="actividades">
                       <ul>
                         <li><input type="checkbox" id="cb1" ng-model="registro.animo.contento" />
@@ -229,7 +229,20 @@
       </div>
     </div>
   </div>
-
+  <div id="errorModal" class="modal">
+    <div class="modal-content modalTitulo center">
+      <h4>Debes ingresar al menos 1 estado de animo.</h4>
+    </div>
+    <div class="modal-footer">
+      <div class="row sinEspacio center">
+        <div class="col s6 m6 l6 ">
+        </div>
+        <div class="col s6 m6 l6 ">
+          <a class="modal-action modal-close btn botonGeneral">Ok, entiendo</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <script>
     $(function() {
       $('.stepper').activateStepper();

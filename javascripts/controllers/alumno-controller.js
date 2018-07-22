@@ -57,6 +57,8 @@ angular.module('wecareApp')
   })
   .controller('alumnoEstadosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService, $document) {
     var modalMjs = $document.find('#demoModal').modal();
+    var errorMjs = $document.find('#errorModal').modal();
+
 
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
@@ -97,7 +99,19 @@ angular.module('wecareApp')
       pacienteId: userData.get('datosRol')._id
     }
 
+    function checkRegistro() {
+      if (!$scope.registro.animo.contento && !$scope.registro.animo.enojado && !$scope.registro.animo.neutral && !$scope.registro.animo.triste) {
+        return false;
+      }
+      return true;
+    }
+
     $scope.enviarRegistro = function() {
+      var checkeandoRegistro = checkRegistro();
+      if (!checkeandoRegistro) {
+        errorMjs.modal('open');
+        return;
+      }
 
       registrosService.postRegistros($scope.registro)
       .then(function(resp) {

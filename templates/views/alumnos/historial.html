@@ -12,15 +12,18 @@
                 <div class="card">
                   <div class="card-content">
                     <span class="card-title">Próxima sesión</span>
-                    <div class="row">
+                    <div ng-if="turnos" class="row">
                       <div class="col s6 m6 l6">
                         <h5 class="titulosAparte center contenidoUsuario">Fecha</h5>
-                        <span>{{turnos.horario | date: "EEEE d 'de' LLLL" }}</span>
+                        <span>{{turnos.horario | date: "EEEE d 'de' LLLL"}}</span>
                       </div>
                       <div class="col s6 m6 l6">
                         <h5 class="titulosAparte center contenidoUsuario">Hora</h5>
                         <span>{{turnos.horario | date: "H:mm"}}</span>
                       </div>
+                    </div>
+                    <div ng-if="!turnos" class="row">
+                      <span>No tenes un turno asignado.</span>
                     </div>
                   </div>
 
@@ -50,14 +53,36 @@
                       </td>
                     </tr>
                   </thead>
-                  <tbody ng-repeat="registro in registros">
+                  <tbody ng-if="registros" ng-repeat="registro in registros">
                     <tr>
                       <td class="resgitro00" ng-click="verRegistro(registro)">{{registro.createdAt | date: "EEEE d 'de' LLLL" }}</td>
                     </tr>
                   </tbody>
+                  <tbody ng-if="!registros">
+                    <tr>
+                      <td class="resgitro00">No se encontraron registros.</td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
-              <div class="col s12 l9 m9">
+              <div ng-if="!registroSeleccionado" class="col s12 l9 m9">
+                <div class="mdl-tabs__panel" id="botchat">
+                  <div class="messages">
+                    <ul>
+                      <li class="placeholder"></li>
+                      <li class="in">
+                        <div class="avatar" class="col s12 l12 m12">
+                          <img class="responsive-img" src="img/bot-2.gif" />
+                        </div>
+                        <div class="col s12 l12 m12">
+                          <p>Hola! en esta sección podras ver tu proximo turno y ademas podras consultar tu historial para ver como va tu avance!</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div ng-if="registroSeleccionado" class="col s12 l9 m9">
                 <table class="centered tablaGeneral">
                   <thead>
                     <tr class="fondo">
@@ -77,7 +102,8 @@
                             </br>
                             </br>
                           </div>
-                          <div class="col s12 iconos">
+                          <div ng-if="registroSeleccionado.actividades.deporte || registroSeleccionado.actividades.descanso || registroSeleccionado.actividades.juego || registroSeleccionado.actividades.estudio || registroSeleccionado.actividades.fiesta || registroSeleccionado.actividades.salida || registroSeleccionado.actividades.nada"
+                            class="col s12 iconos">
                             <span class="textUp">Actividades: &nbsp</span>
                             <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Haciendo deporte" ng-if="registroSeleccionado.actividades.deporte" src="img/gimnasio.png" />
                             <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Descansando" ng-if="registroSeleccionado.actividades.descanso" src="img/dormir.png" />
@@ -89,7 +115,13 @@
                             </br>
                             </br>
                           </div>
-                          <div class="col s12 iconos">
+                          <div ng-if="!registroSeleccionado.actividades.deporte && !registroSeleccionado.actividades.descanso && !registroSeleccionado.actividades.juego && !registroSeleccionado.actividades.estudio && !registroSeleccionado.actividades.fiesta && !registroSeleccionado.actividades.salida && !registroSeleccionado.actividades.nada"
+                            class="col s12 iconos">
+                            <span class="textUp">Actividades: </span>No se registraron actividades.
+                            </br>
+                            </br>
+                          </div>
+                          <div ng-if="registroSeleccionado.lugares.casa || registroSeleccionado.lugares.escuela || registroSeleccionado.lugares.plaza || registroSeleccionado.lugares.gimnasio || registroSeleccionado.lugares.casa_amigo" class="col s12 iconos">
                             <span class="textUp">Lugares: &nbsp</span>
                             <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En casa" ng-if="registroSeleccionado.lugares.casa" src="img/casa.png" />
                             <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En la escuela" ng-if="registroSeleccionado.lugares.escuela" src="img/colegio.png" />
@@ -99,8 +131,13 @@
                             </br>
                             </br>
                           </div>
-                          <div class="col s12 iconos">
-                            <span class="textUp">Con quien estuvo: &nbsp</span>
+                          <div ng-if="!registroSeleccionado.lugares.casa && !registroSeleccionado.lugares.escuela && !registroSeleccionado.lugares.plaza && !registroSeleccionado.lugares.gimnasio && !registroSeleccionado.lugares.casa_amigo" class="col s12 iconos">
+                            <span class="textUp">Lugares: </span>No se registraron lugares.
+                            </br>
+                            </br>
+                          </div>
+                          <div ng-if="registroSeleccionado.social.solo || registroSeleccionado.social.familia || registroSeleccionado.social.pareja || registroSeleccionado.social.amigos" class="col s12 iconos">
+                            <span class="textUp">Con quién estuvo: &nbsp</span>
                             <img tooltipped data-position="bottom" data-delay="50" data-tooltip="Solo" ng-if="registroSeleccionado.social.solo" src="img/chico.png" />
                             <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En familia" ng-if="registroSeleccionado.social.familia" src="img/familia.png" />
                             <img tooltipped data-position="bottom" data-delay="50" data-tooltip="En pareja" ng-if="registroSeleccionado.social.pareja" src="img/pareja.png" />
@@ -108,15 +145,22 @@
                             </br>
                             </br>
                           </div>
-
+                          <div ng-if="!registroSeleccionado.social.solo && !registroSeleccionado.social.familia && !registroSeleccionado.social.pareja && !registroSeleccionado.social.amigos" class="col s12 iconos">
+                            <span class="textUp">Con quién estuvo: </span>No se registró con quién estuvo.
+                            </br>
+                            </br>
+                          </div>
                         </div>
                         <div class="row">
                           <div class="col s12 textoPersonal">
                             <span class="textUp">Texto personal: </span>
                             <br>
-                            <span class="materialize-textarea textoPersonal">
-                          {{registroSeleccionado.cuentanosmas}}
-                          </span>
+                            <span ng-if="registroSeleccionado.cuentanosmas" class="materialize-textarea textoPersonal">
+                              {{registroSeleccionado.cuentanosmas}}
+                            </span>
+                            <span ng-if="!registroSeleccionado.cuentanosmas" class="materialize-textarea textoPersonal">
+                              No hay registro.
+                            </span>
                           </div>
                         </div>
                       </td>
