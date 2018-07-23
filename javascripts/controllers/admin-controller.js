@@ -680,6 +680,7 @@ angular.module('wecareApp')
 
         userService.getUser($scope.especialista.user)
           .then(function(user) {
+            console.log(user);
             $scope.user = user.data;
             $scope.user.createdAt = $filter('date')(new Date($scope.user.createdAt), "EEEE d 'de' LLLL 'de' yyyy");
             $scope.user.updatedAt = $filter('date')(new Date($scope.user.updatedAt), "EEEE d 'de' LLLL 'de' yyyy");

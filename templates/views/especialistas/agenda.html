@@ -54,7 +54,7 @@
                     <div class="input-field buscador03">
 
                       <div class="card-input">
-                        <input id="busca" class="validate" ng-model="name" placeholder="" ng-change="filtrar(name)">
+                        <input id="busca" class="validate" ng-model="name"  placeholder="">
                         <label for="busca">Busque por DNI, nombre o turno</label>
                       </div>
                     </div>
@@ -65,7 +65,7 @@
                 <div class="col l3 m12 s12">
 
                   <div class="input-field center">
-                    <input id="buscadorDesde" type="date" class="validate datepicker" ng-model="name" ng-change="filtrar(name)" ng-model="tiempo.buscadorDesde" placeholder="">
+                    <input id="buscadorDesde" type="text" class="validate datepicker"  ng-model="tiempo.buscadorDesde" placeholder="">
                     <label for="buscadorDesde">Fecha desde</label>
                   </div>
 
@@ -74,7 +74,7 @@
 
 
                   <div class="input-field center">
-                    <input id="buscadorHasta" type="date" class="validate datepicker" ng-model="name" ng-change="filtrar(name)" ng-model="tiempo.buscadorHasta " placeholder=" ">
+                    <input id="buscadorHasta" type="text" class="validate datepicker"  ng-model="tiempo.buscadorHasta " placeholder=" ">
                     <label for="buscadorHasta ">Hasta</label>
                   </div>
 
@@ -85,7 +85,7 @@
 
 
                   <div class="input-field inline ">
-                    <a class="waves-effect waves-light btn btn-small botonAgregar ">Buscar</a>
+                    <a class="btn botonGeneralBis b02 butonComp" ng-click="filtrar(tiempo.buscadorDesde, tiempo.buscadorHasta, name)">Buscar</a>
                   </div>
                 </div>
               </div>
@@ -102,13 +102,22 @@
                     </tr>
                   </thead>
 
-                  <tbody ng-repeat="turno in turnos">
-                    <tr>
+                  <tbody >
+                    <tr ng-repeat="turno in page">
                       <td>{{turno.alumnoDelTurno.dni}}</td>
                       <td>{{turno.alumnoDelTurno.nombre}}</td>
                       <td>{{turno.alumnoDelTurno.curso}}</td>
                       <td>{{turno.horario | date: "EEEE d 'de' LLLL" }}</td>
                       <td>{{turno.horario | date: "H:mm"}}</td>
+                    </tr>
+                    <tr>
+                      <td  colspan="5">
+                        <ul class="pagination">
+                          <li class="waves-effect"><a ng-click='antPag(turnos);'><i class="material-icons">chevron_left</i></a></li>
+                          <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, turnos);'>{{$index+1}}</a></li>
+                          <li class="waves-effect"><a ng-click='sigPag(turnos);'><i class="material-icons">chevron_right</i></a></li>
+                        </ul>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
