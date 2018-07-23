@@ -32,8 +32,11 @@ angular.module('wecareApp')
       }
     }
   })
-  .controller('especialistaHomeController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
-
+  .controller('especialistaHomeController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, consejosService, userService) {
+    consejosService.getAllConsejos()
+    .then(function(resp) {
+      $scope.consejos = resp.data;
+    }).catch($log.error);
 
   })
   .controller('especialistaAgendaController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, turnoService, alumnoService) {
