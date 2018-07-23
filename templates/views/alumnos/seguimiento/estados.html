@@ -1,11 +1,11 @@
-<main class="fondoBlanco01 ">
+<main>
   <div class="section"></div>
 
   <div class="container">
 
     <div class="col s12">
-      <div class="card fondoConColor margenDebajo">
-        <div class="card-contentDos margenL">
+      <div class="card margenDebajo">
+        <div class="card-contentDos margenL paddminimo">
           <ul class="stepper horizontal" id="horizontal">
             <li class="step active">
               <div class="step-title waves-effect waves-dark">Estado de animo</div>
@@ -111,6 +111,7 @@
                     <ul>
                     <li><input type="checkbox" id="cb27" ng-model="registro.lugares.casa" />
                         <label class="sinCheck" for="cb27"><img src="img/casa.png" /></label>
+                        <br>
                         <p>mi casa</p>
                       </li>
                       <li><input type="checkbox" id="cb26"  ng-model="registro.lugares.escuela"  />
@@ -128,7 +129,7 @@
                       </li>
                       <li><input type="checkbox" id="cb29"  ng-model="registro.lugares.casa_amigo"  />
                         <label class="sinCheck" for="cb29"><img src="img/casaamigo.png" /></label>
-                        <p>casa de un amigo</p>
+                        <p>casa de amigo</p>
                       </li>
                     </ul>
                   </form>
@@ -219,11 +220,11 @@
     </div>
     <div class="modal-footer">
       <div class="row sinEspacio center">
-        <div class="col s6 m6 l6 ">
-          <a ui-sref="alumno_informacion" class="modal-action modal-close btn botonGeneral">Ver Información</a>
+        <div class="col s12 m6 l6 ">
+          <button ui-sref="alumno_informacion" class="modal-action modal-close btn botonGeneral flotarIzq">Ver Información</button>
         </div>
-        <div class="col s6 m6 l6 ">
-          <a ui-sref="alumno_historial" class="modal-action modal-close btn botonGeneral">Ver mi historial</a>
+        <div class="col s12 m6 l6 ">
+          <button ui-sref="alumno_historial" class="modal-action modal-close btn botonGeneral">Ver mi historial</button>
         </div>
 
       </div>

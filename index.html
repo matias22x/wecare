@@ -86,6 +86,8 @@
         <li ng-if="isAuthenticated && type === 'alumno'" class="link" ><a ui-sref="alumno_user"><i class="material-icons">account_circle</i>{{nombre}}</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'" class="link" ><a ui-sref="especialista_user"><i class="material-icons">account_circle</i>{{nombre}}</a></li>
       </ul>
+
+       <a ng-if="isAuthenticated && type === 'especialista'" ui-sref="especialista_home" class="brand-logo right show-on-med-and-down"> <img class="responsive-img" style="width: 10%;" src="img/isologo.png" /></a>
       <ul id="main-menu-mobile" class="side-nav">
         <div class="user-view">
           <a ui-sref="#"><i class="material-icons">account_circle</i></a>
@@ -105,6 +107,7 @@
         <li><a ui-sref="logout">Cerrar sesion</a></li>
       </ul>
       <a data-activates="main-menu-mobile" class="button-collapse"><i class="large material-icons">menu</i></a>
+      
     </div>
   </nav>
 
