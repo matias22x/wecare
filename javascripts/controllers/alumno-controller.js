@@ -10,11 +10,9 @@ angular.module('wecareApp')
       $rootScope.alumnoMenu=true;
     }
   }
-  console.log('user');
+
   $scope.usuario = userData.get('user');
-  console.log($scope.usuario);
   $scope.alumno = userData.get('datosRol');
-  console.log($scope.alumno);
   $scope.alumno.fecha_nacimiento = $filter('date')($scope.alumno.fecha_nacimiento, "dd-MM-yyyy");
   $scope.contraseniaNueva= "";
   $scope.contraseniaNuevaBis= "";
@@ -26,7 +24,6 @@ angular.module('wecareApp')
       $scope.usuario.updatedAt = new Date();
       userService.putUserById($scope.usuario._id, $scope.usuario)
         .then(function(resp) {
-          console.log('LISTO', resp);
           $scope.passwordCorrecto = true;
           $scope.contraseniaCorrectoMensaje = "Las contraseñas cambio satisfactoriamente";
         }).catch($log.error);
@@ -43,7 +40,7 @@ angular.module('wecareApp')
 
   }
 })
-  .controller('alumnoHomeController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+  .controller('alumnoHomeController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, consejosService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -53,7 +50,11 @@ angular.module('wecareApp')
         $rootScope.alumnoMenu=true;
       }
     }
-    console.log("alumnoHomeController");
+
+    consejosService.getAllConsejos()
+    .then(function(resp) {
+      $scope.consejos = resp.data;
+    }).catch($log.error);
 
   })
   .controller('alumnoActividadesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
@@ -66,7 +67,6 @@ angular.module('wecareApp')
         $rootScope.alumnoMenu=true;
       }
     }
-    console.log("alumnoHomeController");
 
   })
   .controller('alumnoEstadosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService, $document) {
@@ -149,7 +149,6 @@ angular.module('wecareApp')
         $rootScope.alumnoMenu=true;
       }
     }
-    console.log("alumnoLugaresController");
 
   })
   .controller('alumnoContarController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
@@ -162,7 +161,6 @@ angular.module('wecareApp')
         $rootScope.alumnoMenu=true;
       }
     }
-    console.log("alumnoContarController");
 
   })
   .controller('alumnoSumarioController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
@@ -175,7 +173,6 @@ angular.module('wecareApp')
         $rootScope.alumnoMenu=true;
       }
     }
-    console.log("alumnoSumarioController");
 
   })
   .controller('alumnoFinalizacionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
@@ -188,7 +185,6 @@ angular.module('wecareApp')
         $rootScope.alumnoMenu=true;
       }
     }
-    console.log("alumnoFinalizacionController");
 
   })
   .controller('alumnoAgendaController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService) {
