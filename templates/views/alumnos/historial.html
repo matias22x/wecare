@@ -41,21 +41,30 @@
                     </tr>
                     <tr class="buscador">
                       <td>
-                        <input id="buscadorDesde" type="date" class="datepicker validate buscadorFechas placeholderclass" placeholder="">
+                        <input id="buscadorDesde" type="text" class="datepicker validate buscadorFechas placeholderclass" ng-model="tiempo.buscadorDesde" placeholder="">
                         <label for="buscadorDesde" class="textBlack">Fecha desde</label>
                         <br>
-                        <input id="buscadorHasta" type="date" class="datepicker validate buscadorFechas placeholderclass" placeholder="">
+                        <input id="buscadorHasta" type="text" class="datepicker validate buscadorFechas placeholderclass" ng-model="tiempo.buscadorHasta" placeholder="">
                         <label for="buscadorHasta" class="textBlack">Fecha hasta</label>
                         <br>
                         <div class="center-align">
-                          <a class="btn botonBuscar">Buscar</a>
+                          <a class="btn botonGeneralBis b02 butonComp" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta)">Buscar</a>
                         </div>
                       </td>
                     </tr>
                   </thead>
-                  <tbody ng-if="registros" ng-repeat="registro in registros">
-                    <tr>
+                  <tbody ng-if="registros" >
+                    <tr ng-repeat="registro in page">
                       <td class="resgitro00" ng-click="verRegistro(registro)">{{registro.createdAt | date: "EEEE d 'de' LLLL" }}</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <ul class="pagination">
+                          <li class="waves-effect"><a ng-click='antPag(registros);'><i class="material-icons">chevron_left</i></a></li>
+                          <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, registros);'>{{$index+1}}</a></li>
+                          <li class="waves-effect"><a ng-click='sigPag(registros);'><i class="material-icons">chevron_right</i></a></li>
+                        </ul>
+                      </td>
                     </tr>
                   </tbody>
                   <tbody ng-if="!registros">
@@ -214,7 +223,7 @@
     });
 
 
-    $(document).ready(function() {
+    /*$(document).ready(function() {
       const input = $('#lunchtime');
       // initialize timepicker
       input.pickatime();
@@ -222,6 +231,6 @@
       const picker = input.pickatime('picker');
       // set initial value using arrays formatted as [HOUR,MINUTE].
       picker.set('select', [3, 0]); // <-- picker.set is not a function
-    });
+    });*/
   </script>
 </main>

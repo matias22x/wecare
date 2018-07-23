@@ -4,7 +4,11 @@ angular.module('wecareApp')
   if(userData.get('datosRol').chatbot){
     $state.go('bot_inicio');
   }else{
-    $rootScope.alumnoMenu=true;
+    if(!userData.get('datosRol').especialistaAsociado){
+        $state.go('bot_final');
+    }else{
+      $rootScope.alumnoMenu=true;
+    }
   }
   console.log('user');
   $scope.usuario = userData.get('user');
@@ -43,7 +47,11 @@ angular.module('wecareApp')
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
-      $rootScope.alumnoMenu=true;
+      if(!userData.get('datosRol').especialistaAsociado){
+          $state.go('bot_final');
+      }else{
+        $rootScope.alumnoMenu=true;
+      }
     }
     console.log("alumnoHomeController");
 
@@ -51,6 +59,12 @@ angular.module('wecareApp')
   .controller('alumnoActividadesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
+    }else{
+      if(!userData.get('datosRol').especialistaAsociado){
+          $state.go('bot_final');
+      }else{
+        $rootScope.alumnoMenu=true;
+      }
     }
     console.log("alumnoHomeController");
 
@@ -63,7 +77,11 @@ angular.module('wecareApp')
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
-      $rootScope.alumnoMenu=true;
+      if(!userData.get('datosRol').especialistaAsociado){
+          $state.go('bot_final');
+      }else{
+        $rootScope.alumnoMenu=true;
+      }
     }
     $scope.fechaDeHoy = new Date();
     $scope.registro = {
@@ -125,7 +143,11 @@ angular.module('wecareApp')
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
-      $rootScope.alumnoMenu=true;
+      if(!userData.get('datosRol').especialistaAsociado){
+          $state.go('bot_final');
+      }else{
+        $rootScope.alumnoMenu=true;
+      }
     }
     console.log("alumnoLugaresController");
 
@@ -134,7 +156,11 @@ angular.module('wecareApp')
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
-      $rootScope.alumnoMenu=true;
+      if(!userData.get('datosRol').especialistaAsociado){
+          $state.go('bot_final');
+      }else{
+        $rootScope.alumnoMenu=true;
+      }
     }
     console.log("alumnoContarController");
 
@@ -143,7 +169,11 @@ angular.module('wecareApp')
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
-      $rootScope.alumnoMenu=true;
+      if(!userData.get('datosRol').especialistaAsociado){
+          $state.go('bot_final');
+      }else{
+        $rootScope.alumnoMenu=true;
+      }
     }
     console.log("alumnoSumarioController");
 
@@ -152,7 +182,11 @@ angular.module('wecareApp')
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
-      $rootScope.alumnoMenu=true;
+      if(!userData.get('datosRol').especialistaAsociado){
+          $state.go('bot_final');
+      }else{
+        $rootScope.alumnoMenu=true;
+      }
     }
     console.log("alumnoFinalizacionController");
 
@@ -161,7 +195,11 @@ angular.module('wecareApp')
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
-      $rootScope.alumnoMenu=true;
+      if(!userData.get('datosRol').especialistaAsociado){
+          $state.go('bot_final');
+      }else{
+        $rootScope.alumnoMenu=true;
+      }
     }
 
   })
@@ -169,7 +207,80 @@ angular.module('wecareApp')
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
-      $rootScope.alumnoMenu=true;
+      if(!userData.get('datosRol').especialistaAsociado){
+          $state.go('bot_final');
+      }else{
+        $rootScope.alumnoMenu=true;
+      }
+    }
+
+    $scope.paginInit = function(lista) {
+      if (!$scope.cantRegistros) {
+        $scope.cantRegistros = 5;
+      }
+      if (!$scope.pagActual) {
+        $scope.pagActual = 1;
+      }
+
+      if(lista && lista.length>0){
+        $scope.paginas = Math.ceil(lista.length / $scope.cantRegistros);
+      }else{
+        $scope.paginas = 1;
+      }
+      $scope.getNumber = function(num) {
+        return new Array($scope.paginas);
+      }
+      $scope.page = [];
+      if(lista){
+        for (var i = 0; i < $scope.cantRegistros; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+        }
+      }
+    }
+    $scope.cambiarPag = function(pag, lista) {
+      $scope.pagActual = pag + 1;
+      var hasta = $scope.pagActual * $scope.cantRegistros;
+      var desde = hasta - $scope.cantRegistros;
+      $scope.page = [];
+      if(lista){
+        for (var i = desde; i < hasta; i++) {
+          if (lista[i] != null) {
+            $scope.page.push(lista[i]);
+          }
+        }
+      }
+    }
+    $scope.sigPag = function(lista) {
+      if ($scope.pagActual + 1 <= $scope.paginas) {
+        $scope.pagActual = $scope.pagActual + 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+        if(lista){
+          for (var i = desde; i < hasta; i++) {
+            if (lista[i] != null) {
+              $scope.page.push(lista[i]);
+            }
+          }
+        }
+      }
+    }
+    $scope.antPag = function(lista) {
+      if ($scope.pagActual - 1 > 0) {
+        $scope.pagActual = $scope.pagActual - 1;
+        var hasta = $scope.pagActual * $scope.cantRegistros;
+        var desde = hasta - $scope.cantRegistros;
+        $scope.page = [];
+        if(lista){
+          for (var i = desde; i < hasta; i++) {
+            if (lista[i] != null) {
+              $scope.page.push(lista[i]);
+            }
+          }
+        }
+      }
     }
 
     var dataMoment = moment(new Date, 'DD/MM/YYYY');
@@ -183,7 +294,18 @@ angular.module('wecareApp')
     registrosService.getRegistrosPorPaciente(userData.get('datosRol')._id)
     .then(function(resp) {
       $scope.registros = resp.data;
+      $scope.paginInit($scope.registros);
     }).catch($log.error);
+
+    $scope.filtrarFecha = function(desde, hasta) {
+      $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      registrosService.getRegistrosPorPacientePorFecha($scope.desde, $scope.hasta, userData.get('datosRol')._id)
+        .then(function(resp) {
+          $scope.registros = resp.data;
+          $scope.paginInit($scope.registros)
+        }).catch($log.error);
+    }
 
     $scope.verRegistro = function(registro) {
       $scope.registroSeleccionado = registro;
@@ -194,7 +316,11 @@ angular.module('wecareApp')
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
-      $rootScope.alumnoMenu=true;
+      if(!userData.get('datosRol').especialistaAsociado){
+          $state.go('bot_final');
+      }else{
+        $rootScope.alumnoMenu=true;
+      }
     }
 
     noticiasService.getAllNoticias()

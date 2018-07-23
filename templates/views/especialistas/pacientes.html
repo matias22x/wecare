@@ -17,7 +17,7 @@
                     <div class="input-field buscador05">
 
                       <div class="card card-input">
-                        <input placeholder="Busque por DNI, Turno o Nombre" id="buscador" type="text" class="validate" ng-model="name" ng-change="filtrar(name)">
+                        <input placeholder="Busque por DNI, Curso o Nombre" id="buscador" type="text" class="validate" ng-model="name" ng-change="filtrar(name)">
                         <i class="material-icons grey-text">search</i>
                       </div>
                     </div>
@@ -45,7 +45,7 @@
                       <tr>
                         <td>{{alumno.dni}}</td>
                         <td>{{alumno.nombre}}</td>
-                        <td>{{alumno.grado || '-'}}</td>
+                        <td>{{alumno.curso || '-'}}</td>
                         <td>
                           <button tooltipped data-position="left" data-delay="250" data-tooltip="Ver observaciones del alumno durante las sesiones" class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="especialista_observaciones({id: alumno._id})"><i class="material-icons">visibility</i></button>
                           <button tooltipped data-position="left" data-delay="250" data-tooltip="Ver historial del alumno" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="especialista_historial({id: alumno._id})"><i class="material-icons">insert_drive_file</i></button>

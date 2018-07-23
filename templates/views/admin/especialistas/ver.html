@@ -2,8 +2,8 @@
   <div class="section"></div>
   <div class="container center">
 
-      
-     
+
+
       <div class="card margenDebajo">
         <div class="card-content fondoConColor">
 
@@ -17,65 +17,65 @@
 
           <div class="col s12 m4 l4">
            <h5 class="titulosAparte center contenidoUsuario">Nombre de usuario</h5>
-          
-          <span>{{usuario.username}}</span>
+
+          <span>{{user.username}}</span>
            </div>
 
            <div class="col s12 m4 l4">
           <h5 class="titulosAparte center contenidoUsuario">Nombre y Apellido</h5>
-          
+
           <span>{{especialista.nombre}}</span>
           </div>
 
           <div class="col s12 m4 l4">
           <h5 class="titulosAparte center contenidoUsuario">Nro de Documento</h5>
-          
+
           <span>{{especialista.dni}}</span>
           </div>
 
-          
+
           </div>
 
            <div class="row">
 
            <div class="col s12 m4 l4">
           <h5 class="titulosAparte center contenidoUsuario">Fecha de nacimiento</h5>
-          
+
           <span>{{especialista.fecha_nacimiento}}</span>
           </div>
-          
+
           <div class="col s12 m4 l4">
           <h5 class="titulosAparte center contenidoUsuario">Dirección</h5>
-          
+
           <span>{{especialista.direccion}}</span>
           </div>
 
           <div class="col s12 m4 l4">
           <h5 class="titulosAparte center contenidoUsuario">Teléfono</h5>
-          
+
           <span>{{user.telefono}}</span>
           </div>
 
-         
+
           </div>
 
            <div class="row linea00">
 
           <div class="col s12 m4 l4">
            <h5 class="titulosAparte center contenidoUsuario">Correo electrónico</h5>
-          
+
           <span>{{user.email}}</span>
            </div>
 
            <div class="col s12 m4 l4">
           <h5 class="titulosAparte center contenidoUsuario">Creado el</h5>
-          
+
           <span>{{user.createdAt}}</span>
           </div>
 
            <div class="col s12 m4 l4">
            <h5 class="titulosAparte center contenidoUsuario">Última modificación</h5>
-          
+
           <span>{{user.updatedAt}}</span>
            </div>
            </div>
@@ -84,16 +84,16 @@
            <div class="card-action cardBorder">
 
 
-           
+
            <div class="row">
 
 
            <div class="input-field col s6 m6 l6">
            <button class="waves-effect waves-light btn btn-small botonGeneral" ui-sref="admin_listado_especialistas">volver</button>
-          
+
           </div>
 
-          
+
 
           <div class="input-field col s6 m6 l6">
          <button class="waves-effect waves-light btn btn-small botonGeneral" ui-sref="admin_editar_especialista({id: especialista._id})">editar</button>
@@ -110,6 +110,3 @@
           </div>
             </div>
           </main>
-
-
-
