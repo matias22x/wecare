@@ -549,6 +549,34 @@ angular.module('wecareApp')
     }
 
   })
+  .controller('especialistaEstadisticasController', function($auth, $scope, $rootScope, $state, userData, $stateParams, $log, $http, $translate, config, especialistaService, userService, registrosService, alumnoService) {
+
+
+    alumnoService.getAlumno($stateParams.id)
+      .then(function(resp) {
+        $scope.alumno = resp.data;
+      }).catch($log.error);
+      var dateInicio = new Date('01-01-1970');
+      var dateFin = new Date('12-12-2099');
+      var data =JSON.stringify({alumno:$stateParams.id, inicio:dateInicio, fin:dateFin}) ;
+
+
+      $http.post(config.api_url + '/estadisticaspaciente', data).success(function(data, status, headers, config) {
+        $scope.estadisticas = data.data;
+      })
+
+    $scope.filtrarFecha = function(desde, hasta, alumnoId) {
+      $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      var data =JSON.stringify({alumno:alumnoId, inicio:$scope.desde, fin:$scope.hasta}) ;
+
+      $http.post(config.api_url + '/estadisticaspaciente', data).success(function(data, status, headers, config) {
+        $scope.estadisticas = data.data;
+        console.log($scope.estadisticas);
+      })
+    }
+
+  })
   .controller('especialistaObservacionesController', function($auth, $scope, $rootScope, turnoService, alumnoService, $state, userData, $log, $http, $translate, config, especialistaService, userService, $stateParams) {
     $scope.paginInit = function(lista) {
       if (!$scope.cantRegistros) {

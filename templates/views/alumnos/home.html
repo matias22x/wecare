@@ -7,7 +7,7 @@
         <div class="card-content">
 
         <div class="contenidoBordeAzul">
-        <div class="slider">
+        <div class="slider" id="slider">
     <ul class="slides">
       <li ng-repeat="consejo in consejos">
       <img src="img/fondo02.jpg">
@@ -21,8 +21,8 @@
       </li>
 
      </ul>
-      <div class="arrows prev"></div>
-<div class="arrows next"></div>
+      <div class="arrows prev" onclick="sliderAnt()"></div>
+<div class="arrows next" onclick="sliderSig()"></div>
   </div>
   </div>
   </div>
@@ -136,6 +136,17 @@ setTimeout(
         swipeable : true,
         responsiveThreshold : 1920
       });
+
   }, 2000);
+
+  function sliderSig(){
+    $('.slider').slider('pause');
+    $('.slider').slider('next');
+  }
+
+  function sliderAnt(){
+    $('.slider').slider('pause');
+    $('.slider').slider('prev');
+  }
 </script>
 </main>

@@ -260,6 +260,12 @@ angular.module('wecareRouter', []).config(function($stateProvider) {
             templateUrl: 'templates/views/especialistas/historial.html', //ubicacion del html
             controller: 'especialistaHistorialController' //nombre controller
         })
+        .state('especialista_estadisticas', {
+            cache: false,
+            url: '/especialista_estadisticas/:id?', // url que va arriba
+            templateUrl: 'templates/views/especialistas/estadisticas.html', //ubicacion del html
+            controller: 'especialistaEstadisticasController' //nombre controller
+        })
         .state('especialista_observaciones', {
             cache: false,
             url: '/especialista_observaciones/:id?', // url que va arriba
