@@ -1,12 +1,12 @@
- <main class="fondoBlanco01">
+ <main>
   <div class="container center cuadro02 paddsetenta margenBot">
     <div class="col s12">
       <div class="card">
-        <div class="card-content fondoConColor">
+        <div class="card-content">
 
           <div class="contenidoBordeGris">
 
-            <h5 class="center titulo03 titAparte">Estadiscas del Paciente {{alumno.nombre}}</h5>
+            <h5 class="center titulo03 titAparte otroTitBis">Estadísticas del Paciente {{alumno.nombre}}</h5>
             <div class="row cuadro01 claseImportante">
               <div class="col s12 l3 m3">
 
@@ -39,19 +39,78 @@
 
               </div>
 
-              <div class="col s12 l9 m9"  >
+              <div class="col s12 l9 m9">
 
 
-                <table class="centered tablaGeneral">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <table class=" tablaGeneral">
                   <thead>
                     <tr class="fondo">
-                      <th>Estadisticas</th>
+                      <th>ESTADÍSTICAS</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     <tr class="detalles">
                       <td>
+<div class="wrap">
+  <h1 class="pen-title">Horizontal Bar Chart - Animated</h1>
+  <p class="pen-description">Bar chart that animates in from side, includes mixin that allows for staggering timing of appearance</p>
+  <!-- Begin Your Code -->
+  <section class="chart-wrapper">
+    <ul class="chart-horizontal">
+      <li class="chart-bar" data-skill="10"><span class="chart-bar-label">Test Skill #1</span></li> <!--/.chart-bar-->
+      <li class="chart-bar" data-skill="20"><span class="chart-bar-label">Test Skill #2</span></li> <!--/.chart-bar-->
+      <li class="chart-bar" data-skill="30"><span class="chart-bar-label">Test Skill #3</span></li> <!--/.chart-bar-->
+      <li class="chart-bar" data-skill="40"><span class="chart-bar-label">Test Skill #4</span></li> <!--/.chart-bar-->
+      <li class="chart-bar" data-skill="50"><span class="chart-bar-label">Test Skill #5</span></li> <!--/.chart-bar-->
+      <li class="chart-bar" data-skill="60"><span class="chart-bar-label">Test Skill #6</span></li> <!--/.chart-bar-->
+      <li class="chart-bar" data-skill="70"><span class="chart-bar-label">Test Skill #7</span></li> <!--/.chart-bar-->
+      <li class="chart-bar" data-skill="80"><span class="chart-bar-label">Test Skill #8</span></li> <!--/.chart-bar-->
+      <li class="chart-bar" data-skill="90"><span class="chart-bar-label">Test Skill #9</span></li> <!--/.chart-bar-->
+      <li class="chart-bar" data-skill="100"><span class="chart-bar-label">Test Skill #10</span></li> <!--/.chart-bar-->
+    </ul> <!--/chart-horizontal-->
+  </section> <!--/.chart-wrapper-->
+  <!-- End Your Code -->
+</div><!-- .wrap -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <div class="row estadoResumen">
                           <div class="col s6">
                             <span class="textUp">Cantidad de registros diarios: &nbsp {{estadisticas.cantidadRegistros}}</span>
@@ -137,6 +196,26 @@
         labelYearSelect: 'Selecciona un año',
       });
     });
+
+
+    var myConfig = {
+  type: "bar", 
+  series: [
+    {
+      values:[20,40,25,50,15,45,0,0]
+    },
+    {
+      values:[null,null,21,18,59,50,28,33]
+    }
+  ]
+};
+ 
+zingchart.render({ 
+  id : 'myChart', 
+  data : myConfig, 
+  height: "100%", 
+  width: "100%"
+});
   </script>
 
 </main>

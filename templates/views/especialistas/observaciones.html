@@ -1,13 +1,15 @@
-<main class="fondoBlanco01">
+<main>
   <div class="container center cuadro02 paddtop margenBot">
     <div class="col s12">
-      <div class="card fondoConColor espaciadoArriba ">
+      <div class="card espaciadoArriba ">
         <div class="card-content">
 
           <div class="contenidoBordeGris">
 
-            <h5 class="center titulo03 titAparte">Observaciones del Paciente durante la sesión</h5>
-            <div class="row cuadro01 claseImportante">
+            <h5 class="center titulo03 titAparte otroTit">Observaciones del Paciente durante la sesión</h5>
+            <div class="row cuadro01 center claseImportante">
+
+
               <div class="col s12 l3 m3">
 
 
@@ -27,7 +29,7 @@
                           <label for="buscadorHasta">Hasta</label>
                         </div>
                         <br>
-                        <a class="btn botonGeneralBis b02 butonComp" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta, alumno._id)">Buscar</a>
+                        <button class="btn botonGeneralBis b02 butonComp center" ng-click="filtrarFecha(tiempo.buscadorDesde, tiempo.buscadorHasta, alumno._id)">Buscar</button>
                       </td>
                     </tr>
                   </thead>
@@ -49,6 +51,8 @@
                 </table>
 
               </div>
+
+
               <div ng-if="datos.sesion" class="col s12 l9 m9">
 
 
@@ -99,39 +103,46 @@
                 </table>
 
               </div>
-              <div ng-if="!datos.sesion" class="col s12 l9 m9">
-                <div class="mdl-tabs__panel" id="botchat">
-                  <div class="messages">
-                    <ul>
-                      <li class="placeholder"></li>
-                      <li class="in">
-                        <div class="avatar" class="col s12 l12 m12">
-                          <img class="responsive-img" src="img/bot-2.gif" />
-                        </div>
-                        <div class="col s12 l12 m12">
-                          <p>En esta sección podra ver las observaciones que realizó con el paciente en las sesiones, ademas de los registros de sus estados de animo.<br>
-                          </p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              
 
-            </div>
+
+   <div ng-if="!datos.sesion" class="small01" >
+
+               <div class="col s12 l9 m9">
+              
+                        <div class="speech-bubble">
+                        En esta sección podra ver las <span class="colorCeleste">observaciones</span> que realizó con el paciente en las sesiones, ademas de los <span class="colorNaranja">registros de sus estados de ánimo</span>.
+                         </div>
+                        </div>
+               <div class="col s12 l9 m9 center">
+                <div class="mdl-tabs__panel imagenBot" id="botchat">
+                  
+                  
+                        <img class="responsive-img" src="img/bot-2.gif" />
+                        </div>
+                        </div>
+                      
+                       
+                   </div>
+                 </div>
+            
+
+
+              
+
+         
 
             <div class="row">
-              <div class="col s6 l6 m6">
+              <div class="col s12 l6 m6">
                 <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_pacientes"><i class="material-icons left">keyboard_arrow_left</i>Volver</a>
               </div>
-              <div class="col s6 l6 m6">
-                <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons left">add</i>Asignar turno</a>
+              <div class="col s12 l6 m6">
+                <a class="waves-effect waves-light btn botonGeneralBis botonAparteVolver btn-small" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons left">add</i>Asignar turno</a>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+            </div></div></div></div></div>
+
     <script>
       $(function() {
         $('.datepicker').pickadate({

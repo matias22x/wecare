@@ -3,33 +3,38 @@
   <div class="container">
     <div class="col s12">
       <div class="card">
-        <div class="card-contentTres">
+        <div class="card-content">
+<div class="contenidoBordeGris">
+        
+            
+              <div class="row spaciado">
 
-          <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-            <li class="acordeon">
-              <div class="collapsible-header">
+                 <div class="col s12 m12 l12">
+                <div class="card">
+                  <div class="card-content center">
+                    <span class="card-title">Sesión Actual</span>
+               <div class="row" ng-repeat="turnoDeHoy in turnosDeHoy">
+                       <div class="col s12 m4 l4">
+                        <h5 class="titulosAparte center contenidoUsuario">Nro de Documento</h5>
+                       <span>{{alumno.dni}}</span>
+                      </div>
+                       <div class="col s12 m4 l4">
+                        <h5 class="titulosAparte center contenidoUsuario">Nombre</h5>
+                        <span>{{alumno.nombre}}</span>
+                      </div>
+                       <div class="col s12 m4 l4">
+                        <h5 class="titulosAparte center contenidoUsuario">Curso</h5>
+                         <span>{{alumno.curso}}</span>
+                      </div>
+                      
 
-                <h5 class="center titulo04 titAparte">Sesión Actual</h5>
-              </div>
-              <div class="collapsible-body">
-                <div class="row center">
-                  <div class="col s4 m4 l4">
-                    <h5 class="titulosAparte center contenidoUsuario">Nro de Documento</h5>
-                    <span>{{alumno.dni}}</span>
-                  </div>
-                  <div class="col s4 m4 l4">
-                    <h5 class="titulosAparte center contenidoUsuario">Nombre</h5>
-                    <span>{{alumno.nombre}}</span>
-                  </div>
-                  <div class="col s4 m4 l4">
-                    <h5 class="titulosAparte center contenidoUsuario">Curso</h5>
-                    <span>{{alumno.curso}}</span>
-                  </div>
+                     
+                    </div>
+                          </div>
                 </div>
-
               </div>
-            </li>
-          </ul>
+            </div>
+          
 
 
 
@@ -39,24 +44,24 @@
 
               <div class="input-field center tituloTexto">
                 <span>Estado de ánimo durante la sesión:</span>
-                <div class="col s12 center iconosEsp">
+                <div class="col s12 center iconosEsp espComun">
 
                   <form action="#" class="actividades bisAct">
                     <ul>
                       <li><input type="checkbox" id="cb1" ng-model="turno.sesion.estado_de_animo.contento" />
-                        <label for="cb1"><img src="img/happy.png" /></label>
+                        <label  class="sinCheck" for="cb1"><img src="img/happy.png" /></label>
 
                       </li>
                       <li><input type="checkbox" id="cb2" ng-model="turno.sesion.estado_de_animo.neutral" />
-                        <label for="cb2"><img src="img/confused.png" /></label>
+                        <label class="sinCheck" for="cb2"><img src="img/confused.png" /></label>
 
                       </li>
                       <li><input type="checkbox" id="cb3" ng-model="turno.sesion.estado_de_animo.triste" />
-                        <label for="cb3"><img src="img/sad.png" /></label>
+                        <label class="sinCheck" for="cb3"><img src="img/sad.png" /></label>
 
                       </li>
                       <li><input type="checkbox" id="cb4" ng-model="turno.sesion.estado_de_animo.enojado" />
-                        <label for="cb4"><img src="img/angry.png" /></label>
+                        <label class="sinCheck" for="cb4"><img src="img/angry.png" /></label>
 
                       </li>
 
@@ -84,10 +89,10 @@
               </div>
             </div>
             <div class="row sinEspacio center">
-              <div class="col s6 m6 l6 ">
+              <div class="col s12 m6 l6 marArr">
                 <a ui-sref="especialista_agenda" class="modal-action modal-close btn botonGeneral">Volver</a>
               </div>
-              <div class="col s6 m6 l6 ">
+              <div class="col s12 m6 l6 marArr">
               <a class="waves-effect waves-light btn botonGeneral btn-small" style="margin: 0 auto; display:block; text-align: center; width: 250px;" ng-click="finalizarSesion()">Finalizar Sesión</a>
               </div>
 
@@ -105,14 +110,15 @@
     </div>
     <div class="modal-footer">
       <div class="row sinEspacio center">
-        <div class="col s6 m6 l6 ">
-          <a ui-sref="especialista_pacientes" class="modal-action modal-close btn botonGeneral">Ir a listado de pacientes</a>
+        <div class="col s6 m6 l6 butonChico">
+          <button ui-sref="especialista_pacientes" class="modal-action modal-close botonSolo flotarIzq btn botonGeneral">Ir a listado de pacientes</button>
         </div>
-        <div class="col s6 m6 l6 ">
-          <a ui-sref="especialista_agenda" class="modal-action modal-close btn botonGeneral">Ir a agenda</a>
+        <div class="col s6 m6 l6 butonChico">
+          <button ui-sref="especialista_agenda" class="modal-action modal-close  botonSoloBis btn botonGeneral">Ir a agenda</button>
         </div>
 
       </div>
     </div>
   </div>
+   </div>
 </main>

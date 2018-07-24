@@ -1,10 +1,10 @@
-<main class="fondoBlanco01 ">
+<main>
   <div class="section"></div>
 
   <div class="container paddveinte">
 
     <div class="col s12">
-      <div class="card estaCard fondoConColor margenDebajo">
+      <div class="card estaCard  margenDebajo">
         <div class="card-contentDos contenidoAlarga margenL">
           <ul class="stepper steper01 horizontal  stepbystep" id="horizontal">
             <li class="step active">
@@ -143,28 +143,35 @@
       <h4>Turno asignado con éxito.</h4>
     </div>
     <div class="modal-footer">
-      <div class="row sinEspacio center">
-        <div class="col s6 m6 l6 ">
-          <a ui-sref="especialista_pacientes" class="modal-action modal-close btn botonGeneral">Ir a listado de pacientes</a>
+      <div class="row sinEspacio center"">
+        <div class="col s6 m6 l6 butonChico">
+          <button ui-sref="especialista_pacientes" class="modal-action  botonSolo flotarIzq modal-close btn botonGeneral">Ir a listado de pacientes</button>
         </div>
-        <div class="col s6 m6 l6 ">
-          <a ui-sref="especialista_agenda" class="modal-action modal-close btn botonGeneral">Ir a agenda</a>
+        <div class="col s6 m6 l6 butonChico">
+          <button ui-sref="especialista_agenda" class="modal-action modal-close botonSoloBis btn botonGeneral">Ir a agenda</button>
         </div>
 
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
   <div id="turnoErrorModal" class="modal">
     <div class="modal-content modalTitulo center">
       <h4>Turno ocupado, ingrese otra fecha u horario.</h4>
     </div>
     <div class="modal-footer">
       <div class="row sinEspacio center">
-        <div class="col s6 m6 l6 ">
-          <!-- <a ui-sref="especialista_pacientes" class="modal-action modal-close btn botonGeneral">Ir a listado de pacientes</a> -->
-        </div>
-        <div class="col s6 m6 l6 ">
-          <a class="modal-action modal-close btn botonGeneral">Volver a ingresar datos</a>
+        
+        <div class="col s12 m12 l12 center">
+          <a class="modal-action modal-close btn botonModalCenter botonGeneral">Volver a ingresar datos</a>
         </div>
       </div>
     </div>
@@ -173,13 +180,10 @@
     <div class="modal-content modalTitulo center">
       <h4>Falta ingresar mes o día</h4>
     </div>
-    <div class="modal-footer">
-      <div class="row sinEspacio center">
-        <div class="col s6 m6 l6 ">
-          <!-- <a ui-sref="especialista_pacientes" class="modal-action modal-close btn botonGeneral">Ir a listado de pacientes</a> -->
-        </div>
-        <div class="col s6 m6 l6 ">
-          <a class="modal-action modal-close btn botonGeneral">Volver a ingresar datos</a>
+    <div class="modal-footer ">
+      <div class="row sinEspacio ">
+        <div class="col s12 m12 l12 center">
+          <button class="modal-action modal-close botonModalCenter btn botonGeneral">Volver a ingresar datos</button>
         </div>
       </div>
     </div>

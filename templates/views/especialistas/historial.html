@@ -1,12 +1,12 @@
- <main class="fondoBlanco01">
+ <main>
   <div class="container center cuadro02 paddsetenta margenBot">
     <div class="col s12">
       <div class="card">
-        <div class="card-content fondoConColor">
+        <div class="card-content">
 
           <div class="contenidoBordeGris">
 
-            <h5 class="center titulo03 titAparte">Historial del Paciente {{alumno.nombre}}</h5>
+            <h5 class="center titulo03 titAparte otroTitBis">Historial del Paciente {{alumno.nombre}}</h5>
             <div class="row cuadro01 claseImportante">
               <div class="col s12 l3 m3">
 
@@ -33,7 +33,7 @@
                   </thead>
 
                   <tbody >
-                    <tr ng-repeat="registro in registros">
+                    <tr ng-repeat="registro in page">
                       <td class="resgitro00" ng-click="verRegistro(registro)">{{registro.createdAt | date: "EEEE d 'de' LLLL" }}</td>
                     </tr>
                     <tr>
@@ -49,23 +49,28 @@
                 </table>
 
               </div>
-              <div ng-if="!registroSeleccionado" class="col s12 l9 m9">
-                <div class="mdl-tabs__panel" id="botchat">
-                  <div class="messages">
-                    <ul>
-                      <li class="placeholder"></li>
-                      <li class="in">
-                        <div class="avatar" class="col s12 l12 m12">
-                          <img class="responsive-img" src="img/bot-2.gif" />
+          
+   <div ng-if="!registroSeleccionado" class="small01" >
+
+               <div class="col s12 l9 m9">
+              
+                        <div class="speech-bubble">
+                        En esta sección podras ver el historial del paciente, el cual incluye sus <span class="colorNaranja">estados de animo</span>, <span class="colorCeleste">lugares en los que estuvo</span>, <span class="colorNaranja">actividades</span>, <span class="colorCeleste">con quien estuvo</span>, esto te servirá para tener un <span class="negrita">control del estado del paciente</span>, por fuera de las sesiones.
+                         </div>
                         </div>
-                        <div class="col s12 l12 m12">
-                          <p>En esta sección podras ver el historial del paciente, el cual incluye sus estados de animo, lugares en los que estuvo, actividades, con quien estuvo, esto te servirá para tener un control del estado del paciente, por fuera de las sesiones</p>
+               <div class="col s12 l9 m9 center">
+                <div class="mdl-tabs__panel imagenBot" id="botchat">
+                  
+                  
+                        <img class="responsive-img" src="img/bot-2.gif" />
                         </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+                        </div>
+                      
+                       
+                   </div>
+
+
+
               <div class="col s12 l9 m9"  ng-if="registroSeleccionado" >
 
 
@@ -104,7 +109,7 @@
                           </div>
                           <div ng-if="!registroSeleccionado.actividades.deporte && !registroSeleccionado.actividades.descanso && !registroSeleccionado.actividades.juego && !registroSeleccionado.actividades.estudio && !registroSeleccionado.actividades.fiesta && !registroSeleccionado.actividades.salida && !registroSeleccionado.actividades.nada"
                             class="col s12 iconos">
-                            <span class="textUp">Actividades: </span>No se registraron actividades.
+                            <span class="textUp">Actividades: </span> <span class="redtext">No se registraron actividades.</span>
                             </br>
                             </br>
                           </div>
@@ -119,7 +124,7 @@
                             </br>
                           </div>
                           <div ng-if="!registroSeleccionado.lugares.casa && !registroSeleccionado.lugares.escuela && !registroSeleccionado.lugares.plaza && !registroSeleccionado.lugares.gimnasio && !registroSeleccionado.lugares.casa_amigo" class="col s12 iconos">
-                            <span class="textUp">Lugares: </span>No se registraron lugares.
+                            <span class="textUp">Lugares: </span> <span class="redtext">No se registraron lugares.</span>
                             </br>
                             </br>
                           </div>
@@ -133,7 +138,7 @@
                             </br>
                           </div>
                           <div ng-if="!registroSeleccionado.social.solo && !registroSeleccionado.social.familia && !registroSeleccionado.social.pareja && !registroSeleccionado.social.amigos" class="col s12 iconos">
-                            <span class="textUp">Con quién estuvo: </span>No se registró con quién estuvo.
+                            <span class="textUp">Con quién estuvo: </span> <span class="redtext">No se registró con quién estuvo.</span>
                             </br>
                             </br>
                           </div>
@@ -146,7 +151,7 @@
                               {{registroSeleccionado.cuentanosmas}}
                             </span>
                             <span ng-if="!registroSeleccionado.cuentanosmas" class="materialize-textarea textoPersonal">
-                              No hay registro.
+                              <span class="redtext">No hay registro.</span>
                             </span>
                           </div>
                         </div>
@@ -161,10 +166,10 @@
             </div>
 
             <div class="row">
-              <div class="col s6 l6 m6">
+              <div class="col s12 l6 m6">
                 <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_pacientes"><i class="material-icons left">keyboard_arrow_left</i>Volver</a>
               </div>
-              <div class="col s6 l6 m6">
+              <div class="col s12 l6 m6">
                 <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons left">add</i>Asignar turno</a>
               </div>
             </div>

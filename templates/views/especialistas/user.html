@@ -1,11 +1,11 @@
-<main class="fondoBlanco01 ">
+<main>
   <div class="section"></div>
   <div class="container center">
 
       
      
       <div class="card margenDebajo">
-        <div class="card-content fondoConColor">
+        <div class="card-content">
 
         <div class="contenidoBordeGris">
 
@@ -14,25 +14,25 @@
           <h5 class="center titulo03 titLinea">Datos de usuario</h5>
           <hr>
           <div class="row linea00 espacio">
-           <div class="col s3 m3 l3">
+           <div class="col s6 m3 l3">
           <h5 class="titulosAparte center contenidoUsuario">Nombre y apellido</h5>
           
           <span>{{especialista.nombre}}</span>
           </div>
 
-          <div class="col s3 m3 l3">
+          <div class="col s6 m3 l3">
           <h5 class="titulosAparte center contenidoUsuario">Nro de Documento</h5>
           
           <span>{{especialista.dni}}</span>
           </div>
 
-          <div class="col s3 m3 l3">
+          <div class="col s6 m3 l3">
           <h5 class="titulosAparte center contenidoUsuario">Fecha de nacimiento</h5>
           
           <span>{{especialista.fecha_nacimiento}}</span>
           </div>
                    
-          <div class="col s3 m3 l3">
+          <div class="col s6 m3 l3">
           <h5 class="titulosAparte center contenidoUsuario">Dirección</h5>
           
           <span>{{especialista.direccion}}</span>
@@ -40,25 +40,25 @@
           </div>
 
           <div class="row linea00">
-             <div class="col s3 m3 l3">
+             <div class="col s6 m3 l3">
           <h5 class="titulosAparte center contenidoUsuario">Teléfono</h5>
           
           <span>{{usuario.telefono}}</span>
           </div>
 
-             <div class="col s3 m3 l3">
+             <div class="col s6 m3 l3">
            <h5 class="titulosAparte center contenidoUsuario">Correo electrónico</h5>
           
           <span>{{usuario.email}}</span>
            </div>
 
-          <div class="col s3 m3 l3">
+          <div class="col s6 m3 l3">
            <h5 class="titulosAparte center contenidoUsuario">Nombre de usuario</h5>
           
           <span>{{usuario.username}}</span>
            </div>
 
-              <div class="col s3 m3 l3">
+              <div class="col s6 m3 l3">
            <h5 class="titulosAparte center contenidoUsuario">Tipo de usuario</h5>
           
           <span>{{usuario.tipo}}</span>
@@ -69,7 +69,7 @@
    
 
            <div class="card-action cardBorder">
-           <h5 class="center titulo03 cambiContra">Cambiar contraseña</h5>
+           <h5 class="titulo03 cambiContra">Cambiar contraseña</h5>
            <div class="row">
            <div class="input-field col s6 m4 l4">
           <input id="contrasenia" name="contrasenia" type="password" class="validate" ng-model="contraseniaNueva" ng-keypress="passwordError = false; passwordCorrecto = false;" required  oninvalid="return false;" autocomplete="off" />

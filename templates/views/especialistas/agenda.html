@@ -1,8 +1,8 @@
-<main class="fondoBlanco01">
+<main>
   <div class="section"></div>
   <div class="container">
     <div class="col s12">
-      <div class="card fondoConColor ">
+      <div class="card">
         <div class="card-content">
 
           <div class="contenidoBordeGris">
@@ -12,29 +12,29 @@
                 <div class="card">
                   <div class="card-content center">
                     <span class="card-title">Sesiones de hoy</span>
-                    <div class="row" ng-repeat="turnoDeHoy in turnosDeHoy">
-                      <div class="col s2 m2 l2">
+                    <div class="row cadaUna" ng-repeat="turnoDeHoy in turnosDeHoy">
+                       <div class="col s12 m12 l2">
                         <h5 class="titulosAparte center contenidoUsuario">DNI</h5>
                         <span>{{turnoDeHoy.alumnoDelTurno.dni}}</span>
                       </div>
-                      <div class="col s2 m2 l2">
+                       <div class="col s12 m12 l2">
                         <h5 class="titulosAparte center contenidoUsuario">Nombre</h5>
                         <span>{{turnoDeHoy.alumnoDelTurno.nombre}}</span>
                       </div>
-                      <div class="col s2 m2 l2">
+                       <div class="col s12 m12 l2">
                         <h5 class="titulosAparte center contenidoUsuario">Curso</h5>
                         <span>{{turnoDeHoy.alumnoDelTurno.curso}}</span>
                       </div>
-                      <div class="col s2 m2 l2">
+                      <div class="col s12 m12 l2">
                         <h5 class="titulosAparte center contenidoUsuario">Fecha</h5>
                         <span>{{turnoDeHoy.horario | date: "EEEE d 'de' LLLL" }}</span>
                       </div>
-                      <div class="col s2 m2 l2">
+                       <div class="col s12 m12 l2">
                         <h5 class="titulosAparte center contenidoUsuario">Hora</h5>
                         <span>{{turnoDeHoy.horario | date: "H:mm"}}</span>
                       </div>
-                      <div class="card-action center">
-                        <a ui-sref="especialista_sesion({id: turnoDeHoy._id})">Comenzar sesión</a>
+                      <div class="col s12 m12 l2">
+                        <button class="btn botonGeneral b02 butonComp estEsp butonPers" ui-sref="especialista_sesion({id: turnoDeHoy._id})">Comenzar </button>
                       </div>
                     </div>
                   </div>
@@ -51,18 +51,18 @@
                 <div class="col l4 m12 s12">
 
                   <div class="buscador01">
-                    <div class="input-field buscador03">
+                    <div class=" buscador03">
 
-                      <div class="card-input">
-                        <input id="busca" class="validate" ng-model="name"  placeholder="">
-                        <label for="busca">Busque por DNI, nombre o turno</label>
-                      </div>
+                       <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon busca" for="search">Buscar por nombre, DNI o número de turno</label>
+          <i class="material-icons">close</i>
+        </div>
                     </div>
                   </div>
 
-
                 </div>
-                <div class="col l3 m12 s12">
+                <div class="col l3 m12 s12  center">
 
                   <div class="input-field center">
                     <input id="buscadorDesde" type="text" class="validate datepicker"  ng-model="tiempo.buscadorDesde" placeholder="">
@@ -84,16 +84,16 @@
 
 
 
-                  <div class="input-field inline ">
+                  <div class="input-field inline">
                     <a class="btn botonGeneralBis b02 butonComp" ng-click="filtrar(tiempo.buscadorDesde, tiempo.buscadorHasta, name)">Buscar</a>
                   </div>
                 </div>
               </div>
 
-              <div class="contenidoTabla ">
-                <table class="centered bordeado ">
+              <div class="">
+                <table class="centered bordeado responsive-table striped cardd">
                   <thead>
-                    <tr class="fondoOne ">
+                    <tr class="fondo">
                       <th>DNI</th>
                       <th>NOMBRE</th>
                       <th>CURSO</th>
