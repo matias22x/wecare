@@ -802,7 +802,7 @@ angular.module('wecareApp')
   })
   .controller('especialistaSesionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, turnoService, alumnoService, $stateParams, $document) {
     var modalMjs = $document.find('#demoModal').modal();
-
+    var errorMjs = $document.find('#errorModal').modal();
     turnoService.getTurno($stateParams.id)
       .then(function(turno) {
         $scope.turno = turno.data;
@@ -815,7 +815,10 @@ angular.module('wecareApp')
       .catch($log.error);
 
       $scope.finalizarSesion = function() {
-        console.log($scope.turno);
+        if (!$scope.turno.sesion || !$scope.turno.sesion.observaciones) {
+          errorMjs.modal('open');
+          return;
+        }
         turnoService.putTurnoById($scope.turno._id, $scope.turno)
         .then(function(turnoModificado) {
             modalMjs.modal('open');

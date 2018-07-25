@@ -26,7 +26,7 @@ angular.module('turnoService', []).service('turnoService', function($http, confi
             var fechaFin = new Date();
             fechaFin.setDate(fechaInicio.getDate() + 1);
 
-            return $http.get(config.api_url + '/api/turnos?conditions={"$and":[{"especialista":"' + especialistaId + '"},{"horario":{"$gte": "' + fechaInicio + '"}},{"horario":{"$lte": "' + fechaFin + '"}}]}');
+            return $http.get(config.api_url + '/api/turnos?conditions={"$and":[{"especialista":"' + especialistaId + '"},{"horario":{"$gte": "' + fechaInicio + '"}},{"horario":{"$lte": "' + fechaFin + '"}},{"sesion.observaciones":{"$exists": false}}]}');
         },
         getTurnosEspecialista: function(especialistaId) {
             return $http.get(config.api_url + '/api/turnos?conditions={"especialista":"' + especialistaId + '"}');

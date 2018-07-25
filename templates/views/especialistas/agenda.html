@@ -12,7 +12,10 @@
                 <div class="card">
                   <div class="card-content center">
                     <span class="card-title">Sesiones de hoy</span>
-                    <div class="row cadaSesion" ng-repeat="turnoDeHoy in turnosDeHoy">
+                    <div ng-if="turnosDeHoy.length === 0" class="row cadaSesion">
+                      <p>No hay sesiones para el día de hoy.</p>
+                    </div>
+                    <div ng-if="turnosDeHoy.length > 0" class="row cadaSesion" ng-repeat="turnoDeHoy in turnosDeHoy">
                       <div class="col s12 m12 l2">
                         <h5 class="titulosAparte center contenidoUsuario">Nro de Documento</h5>
                         <span>{{turnoDeHoy.alumnoDelTurno.dni}}</span>
@@ -50,11 +53,11 @@
               <div class="row linearBusc">
                 <div class="col l4 m12 s12">
 
-               
+
 <div class="input-field">
           <input id="search" type="search" class="validate" ng-model="name" required>
           <label class="label-icon" for="search">Busque por DNI, nombre o turno</label>
-          
+
         </div>
 
 
