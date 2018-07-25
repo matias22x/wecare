@@ -1,12 +1,12 @@
-<main class="fondoBlanco01">
+<main>
   <div class="container center cuadro02 paddtop margenBot">
     <div class="col s12">
-      <div class="card fondoConColor espaciadoArriba ">
+      <div class="card  espaciadoArriba ">
         <div class="card-content">
 
           <div class="contenidoBordeGris">
 
-            <h5 class="center titulo03 titAparte">Observaciones del Paciente durante la sesión</h5>
+            <h5 class="center tituloConCeleste titAparte">Observaciones del Paciente durante la sesión</h5>
             <div class="row cuadro01 claseImportante">
               <div class="col s12 l3 m3">
 
@@ -49,7 +49,7 @@
                 </table>
 
               </div>
-              <div ng-if="datos.sesion" class="col s12 l9 m9">
+              <div ng-if="datos.sesion" class="col s12 l9 m9 margenTablaRota">
 
 
                 <table class="centered tablaGeneral">
@@ -88,7 +88,7 @@
                             <span ng-if="datos.sesion.observaciones" class="materialize-textarea textoPersonal">
                               {{datos.sesion.observaciones}}
                           </span>
-                          <span ng-if="!datos.sesion.observaciones" class="materialize-textarea textoPersonal">
+                          <span ng-if="!datos.sesion.observaciones" class="materialize-textarea textoPersonal redtext">
                             No hay registro.
                         </span>
                           </div>
@@ -99,24 +99,28 @@
                 </table>
 
               </div>
-              <div ng-if="!datos.sesion" class="col s12 l9 m9">
-                <div class="mdl-tabs__panel" id="botchat">
-                  <div class="messages">
-                    <ul>
-                      <li class="placeholder"></li>
-                      <li class="in">
-                        <div class="avatar" class="col s12 l12 m12">
-                          <img class="responsive-img" src="img/bot-2.gif" />
+   
+
+  <div ng-if="!datos.sesion" class="small01" >       
+  <div class="col s12 l9 m9 margenTablaRota">   
+                <div class="col s12 l12 m12  sp">
+                        <div class="speech-bubble">
+                        En esta sección podra ver las <span class="negrita">observaciones</span> que realizó con el alumno en las sesiones, ademas de los <span class="negrita">registros de sus estados de animo</span>.
+                          </div>
                         </div>
-                        <div class="col s12 l12 m12">
-                          <p>En esta sección podra ver las observaciones que realizó con el paciente en las sesiones, ademas de los registros de sus estados de animo.<br>
-                          </p>
+              <div class="col s12 l12 m12  center">
+                <div class="mdl-tabs__panel imagenBot" id="botchat">
+                  
+                  
+                        <img class="responsive-img" src="img/bot-2.gif" />
+                       
                         </div>
-                      </li>
-                    </ul>
+                      </div>
+                       
+                   </div>
                   </div>
-                </div>
-              </div>
+             
+
 
             </div>
 

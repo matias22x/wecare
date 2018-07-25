@@ -100,7 +100,8 @@ background-color: #fff;
     /* height: 50px; */
 }
 
-
+ @media screen and (max-width: 992px)
+ { .pagination {     flex-direction: column-reverse; } }
 
 
 
@@ -108,6 +109,16 @@ background-color: #fff;
 .contenedorBot {
 
 width: 100%; }
+}
+
+.bordeArrr {     margin-top: 15px; }
+
+
+.espArriba { margin-top: 10px; }
+
+.input-field input[type=search] + label {
+    left: 0px !important;
+    font-size: 15px !important;
 }
 
 /*************************************************************/
@@ -1726,11 +1737,32 @@ border-radius: 33px;
 }
 
 .slider .indicators {
-  bottom: 65px;
-  z-index: 100;
+  bottom: 20px;
+  z-index: 1;
   /* text-align: left; */
 }
 
+
+.colorCeleste { color: #00a9ff; font-weight: bold;}
+.colorNaranja { color: #ff8500; font-weight: bold;}
+
+span.negrita { font-weight: bold; }
+
+.tituloConBorde { padding-top: 15px;
+    border-bottom: 1px solid #d5d3d3;
+    padding-bottom: 15px;
+    letter-spacing: 1px;
+    font-size: 28px; }
+
+.tituloConCeleste {
+  padding-top: 15px;
+    border-bottom: 1px solid #d5d3d3;
+    padding-bottom: 15px;
+    letter-spacing: 1px;
+    font-size: 28px;
+    color: #00a9ff; font-weight: bold;
+    text-transform: uppercase;
+}
 
 
 .arrows {
@@ -1740,7 +1772,7 @@ border-radius: 33px;
    position: absolute;
    top: 50%;
    margin-top: -31px;
-   z-index: 55;
+   z-index: 1;
     }
 
 .prev
@@ -1766,7 +1798,7 @@ hr { width: 40%;
 
  @media screen and (max-width: 660px)
  {  .slider .indicators {
-  bottom: 60px;
+  bottom: 10px !important;
 }
   }
 
@@ -1942,7 +1974,8 @@ float: right; }
 
 
 
-ul.stepper.horizontal .step-content {     overflow-y: hidden !important; }
+
+
 
 .fechHor h5 { margin-top: -35px; }
 
@@ -1985,9 +2018,9 @@ ul.stepper.horizontal .step-content {     overflow-y: hidden !important; }
 
 
 
-.bisF th{ text-align: center; }
+.bisF th{ text-align: center; text-transform: uppercase;}
 
-.tablaMarg { margin-top: 53px;
+.tablaMarg { margin-top: 1px;
   margin-bottom: 30px;
     box-sizing: border-box;
     border: 1px solid #d5d3d3; }
@@ -2029,7 +2062,7 @@ input[type=text].invalid { border-bottom: 1px solid #b0b0b0;
 .contenidoTabla { margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 30px;
-    border: 1px solid #d5d3d3; }
+    /*border: 1px solid #d5d3d3; */}
 
 .iconosEsp img {     width: 50px;
     height: 50px; }
@@ -2189,6 +2222,16 @@ input[type=text].invalid { border-bottom: 1px solid #b0b0b0;
  .container { width: 90% !important; }
  }
 
+
+ @media only screen and (max-width: 992px) { 
+   #turnoErrorModal, #demoModal {  width: 70% !important;
+
+    overflow-y: hidden;
+    height: 35% !important; }
+    .modal-content h4 { font-size: 20px; }
+    .modal-footer button { width: 100%; } }
+
+
  .slider .slides { background-color: #fff !important;
          }
 
@@ -2256,11 +2299,21 @@ padding: 25px; }
 
 .botonEstilado { margin-left: 15px; margin-right:15px; }
 
-#demoModal {     margin-top: 10%;
+#turnoErrorModal, #demoModal {     margin-top: 10%;
     padding-bottom: 10px;
-     width: 45%;
+     width: 50%;
+    height: 30%;
+        padding-left: 10px;
+    padding-right: 10px;
+    overflow-x: hidden !important;
  }
 
+ #turnoErrorModal h4, #demoModal h4 {     padding-top: 10px;
+    font-size: 24px; }
+
+.tituloNo h4 {font-size: 24px; }
+
+.flotarIzq { float: left; }
 
 /**********************************************/
 
@@ -2399,6 +2452,21 @@ p[data-value]:after {
      -moz-linear-gradient( left, #40bf43, #dd0000);
 }
 
+.html5::-moz-progress-barBis{
+  /* Gradient background with Stripes */
+  background-image:
+  -moz-linear-gradient( 135deg,
+                           transparent,
+                           transparent 66%,
+                           rgba(0,0,0,.1) 66%,
+                           rgba(0,0,0,.1) 33%,
+                           transparent 33%),
+    -moz-linear-gradient( top,
+                            rgba(255, 255, 255, .25),
+                            rgba(0,0,0,.2)),
+     -moz-linear-gradient( left, #000, #fff);
+}
+
 
 
 @media screen and (max-width: 600px)
@@ -2453,7 +2521,7 @@ span.estiloPart2 {color: #ff8500;
 
   .infoStep{     margin-top: 0px; }
 
-  .tituloDestaca {font-weight: bold; text-transform: uppercase;}
+  .tituloDestaca {font-weight: bold; text-transform: uppercase; font-size: 17px;}
 
 
   .gravBot {
@@ -2553,12 +2621,27 @@ h5.tituloCard {  margin-top: 0px;}
 }
 
 
+
+
+@media screen and (max-width: 992px)
+{ ul.stepper { padding-left: 10px; } 
+.alargaAlto { height: 100%!important; }
+.step-actions { padding-bottom: 0px !important; }
+ul.stepper .step-actions {
+    padding-top: 25px; } }
+
+
  @media screen and (max-width: 992px){
   .paddminimo { padding: 10px; }
 
 .modal-footer button
   {     font-size: 12px !important; }
  }
+
+ @media screen and (max-width: 992px) 
+ { .contenidoAlarga { height: 100% !important; } }
+
+
 
  .imagenBot img { width: 350px;
  margin-top: 25px; }
@@ -2573,7 +2656,8 @@ h5.tituloCard {  margin-top: 0px;}
 
   padding: 12px;
     color: #000;
-    font-size: 22px;
+  text-align: center;
+    font-size: 20px;
      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
@@ -2606,6 +2690,9 @@ h5.tituloCard {  margin-top: 0px;}
  .esp { margin-top: 15px !important; }
  }
 
+@media screen and (max-width: 999px) and (min-width: 599px)
+{ .margenTablaRota { padding-left: 60px !important; } }
+
 
 span.redtext { color:red; }
 
@@ -2616,6 +2703,539 @@ span.redtext { color:red; }
   .next { right: 10px !important; }
   .prev { left: 10px !important; }
 .indicators { bottom: 33px !important; }}
+
+
+.cadaSesion {     margin-bottom:  1px; }
+
+
+/*********************************************/
+
+@-moz-keyframes bar-scale {
+  0% {
+    -moz-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  100% {
+    -moz-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-webkit-keyframes bar-scale {
+  0% {
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@keyframes bar-scale {
+  0% {
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  100% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+
+span.esp01 {     padding-left: 25px; }
+span.esp02 {     padding-left: 40px; }
+span.esp03 {     padding-left: 50px; }
+span.esp04 {     padding-left: 50px; }
+
+
+.circulos {     margin-top: 65px; }
+
+.barContainer {
+  position: relative;
+  width: 100%;
+  height: 265px;
+
+}
+.barContainer .yaxis {
+  margin-right: 8px;
+  font-size: 11px;
+  padding-top: 8px;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column-reverse;
+  float: left;
+}
+.barContainer .yaxis span {
+  margin: 4px 0;
+}
+.barContainer .bars {
+  display: -webkit-flex;
+  display: flex;
+  height: inherit;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  border-left: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+.barContainer .bars span {
+  display: inline-block;
+  vertical-align: bottom;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  -webkit-flex: 1 0;
+  flex: 1 0;
+  background: #ff8500;
+  margin: 0 4px;
+  -moz-transform-origin: 0% bottom;
+  -ms-transform-origin: 0% bottom;
+  -webkit-transform-origin: 0% bottom;
+  transform-origin: 0% bottom;
+  -moz-transform: scaleY(0);
+  -ms-transform: scaleY(0);
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+}
+.barContainer .bars span i {
+  position: relative;
+  top: -28px;
+  background: #000;
+  color: #fff;
+  font-size: 10px;
+  font-style: normal;
+  padding: 2px 4px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+.barContainer .bars span i:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 30%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 3px 0 3px;
+  border-color: #000000 transparent transparent transparent;
+}
+.barContainer .bars span:nth-child(1) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.1s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.1s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.1s forwards;
+}
+.barContainer .bars span:nth-child(2) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.2s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.2s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.2s forwards;
+}
+.barContainer .bars span:nth-child(3) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.3s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.3s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.3s forwards;
+}
+.barContainer .bars span:nth-child(4) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.4s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.4s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.4s forwards;
+}
+.barContainer .bars span:nth-child(5) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.5s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.5s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.5s forwards;
+}
+.barContainer .bars span:nth-child(6) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.6s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.6s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.6s forwards;
+}
+.barContainer .bars span:nth-child(7) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.7s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.7s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.7s forwards;
+}
+.barContainer .bars span:nth-child(8) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.8s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.8s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.8s forwards;
+}
+.barContainer .bars span:nth-child(9) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.9s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.9s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 0.9s forwards;
+}
+.barContainer .bars span:nth-child(10) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1s forwards;
+}
+.barContainer .bars span:nth-child(11) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.1s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.1s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.1s forwards;
+}
+.barContainer .bars span:nth-child(12) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.2s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.2s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.2s forwards;
+}
+.barContainer .bars span:nth-child(13) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.3s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.3s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.3s forwards;
+}
+.barContainer .bars span:nth-child(14) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.4s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.4s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.4s forwards;
+}
+.barContainer .bars span:nth-child(15) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.5s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.5s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.5s forwards;
+}
+.barContainer .bars span:nth-child(16) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.6s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.6s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.6s forwards;
+}
+.barContainer .bars span:nth-child(17) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.7s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.7s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.7s forwards;
+}
+.barContainer .bars span:nth-child(18) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.8s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.8s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.8s forwards;
+}
+.barContainer .bars span:nth-child(19) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.9s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.9s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 1.9s forwards;
+}
+.barContainer .bars span:nth-child(20) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2s forwards;
+}
+.barContainer .bars span:nth-child(21) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.1s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.1s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.1s forwards;
+}
+.barContainer .bars span:nth-child(22) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.2s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.2s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.2s forwards;
+}
+.barContainer .bars span:nth-child(23) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.3s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.3s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.3s forwards;
+}
+.barContainer .bars span:nth-child(24) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.4s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.4s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.4s forwards;
+}
+.barContainer .bars span:nth-child(25) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.5s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.5s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.5s forwards;
+}
+.barContainer .bars span:nth-child(26) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.6s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.6s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.6s forwards;
+}
+.barContainer .bars span:nth-child(27) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.7s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.7s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.7s forwards;
+}
+.barContainer .bars span:nth-child(28) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.8s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.8s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.8s forwards;
+}
+.barContainer .bars span:nth-child(29) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.9s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.9s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 2.9s forwards;
+}
+.barContainer .bars span:nth-child(30) {
+  -moz-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 3s forwards;
+  -webkit-animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 3s forwards;
+  animation: bar-scale 0.4s cubic-bezier(0.74, 0.62, 0.62, 1.44) 3s forwards;
+}
+.barContainer .xaxis {
+  margin: 8px 0 0 16px;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+}
+.barContainer .xaxis span {
+  margin: 0 18px;
+  font-size: 18px;
+    float: left;
+    font-weight: bold;
+}
+
+
+
+/*************************/
+/**
+ * 1. The `reverse` animation direction plays the animation backwards
+ *    which makes it start at the stroke offset 100 which means displaying
+ *    no stroke at all and animating it to the value defined in the SVG
+ *    via the inline `stroke-dashoffset` attribute.
+ * 2. Rotate by -90 degree to make the starting point of the
+ *    stroke the top of the circle.
+ * 3. Using CSS transforms on SVG elements is not supported by Internet Explorer
+ *    and Edge, use the transform attribute directly on the SVG element as a
+ * .  workaround (https://markus.oberlehner.net/blog/pure-css-animated-svg-circle-chart/#part-4-internet-explorer-strikes-back).
+ */
+.circle-chart__circle {
+  animation: circle-chart-fill 2s reverse; /* 1 */ 
+  transform: rotate(-90deg); /* 2, 3 */
+  transform-origin: center; /* 4 */
+}
+
+/**
+ * 1. Rotate by -90 degree to make the starting point of the
+ *    stroke the top of the circle.
+ * 2. Scaling mirrors the circle to make the stroke move right
+ *    to mark a positive chart value.
+ * 3. Using CSS transforms on SVG elements is not supported by Internet Explorer
+ *    and Edge, use the transform attribute directly on the SVG element as a
+ * .  workaround (https://markus.oberlehner.net/blog/pure-css-animated-svg-circle-chart/#part-4-internet-explorer-strikes-back).
+ */
+.circle-chart__circle--negative {
+  transform: rotate(-90deg) scale(1,-1); /* 1, 2, 3 */
+}
+
+.circle-chart__info {
+  animation: circle-chart-appear 2s forwards;
+  opacity: 0;
+  transform: translateY(0.3em);
+}
+
+@keyframes circle-chart-fill {
+  to { stroke-dasharray: 0 100; }
+}
+
+@keyframes circle-chart-appear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+svg {     height: 100px; }
+
+text.circle-chart__percent { font-size: 20px; }
+
+text.circle-chart__subline { font-size: 15px;
+    text-align: center;
+    margin-left: 15px; } 
+
+
+
+ @media screen and (max-width: 770px)
+{ .chart { margin-bottom: 0px !important;  } }
+
+
+ @media screen and (max-width: 900px)
+{ .chart .skill { font-size: 10px !important; } }
+
+
+.ejemplo h4 {     text-transform: uppercase;
+    font-size: 20px;
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+        padding-bottom: 10px;
+    }
+
+
+
+
+
+.miniEstilo { font-weight: bold;
+    color: #ff8500;
+    /* padding-left: 15px; */
+    /* padding-top: 15px; */
+    /* padding-bottom: 15px; */
+    /* padding-right: 15px; */
+    /* background-color: blue; */
+    padding: 6px;
+    /* font-size: 15px; */
+    /* border-radius: 84px; */
+    /* border: 1px solid; */
+    /* width: 19px; */ }
+
+.titulosEstadisticas {     text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px; }
+
+.separacion { padding-top: 60px; }
+
+
+.s02 { height: 130px !important;  }
+
+
+.chart {
+  clear: both;
+  padding: 0;
+  width: 100%;
+  margin-bottom: -225px;
+}
+@media (min-width: 700px) {
+  .chart {
+    
+    height: 425px;
+    margin: 0 auto emCalc(-32px);
+  }
+}
+.chart li {
+  display: block;
+  height: 125px;
+  padding: emCalc(25px) 0;
+  position: relative;
+  text-align: center;
+  vertical-align: bottom;
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 4px 0 0;
+  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+}
+@media (min-width: 700px) {
+  .chart li {
+    display: inline-block;
+    height: 425px;
+    margin: 0 1.8% 0 0;
+    width: 15%;
+  }
+}
+.chart .axis {
+  display: none;
+  top: emCalc(-45px);
+  width: 8%;
+}
+@media (min-width: 700px) {
+  .chart .axis {
+    display: inline-block;
+  }
+}
+.chart .label {
+  background: #cccccc;
+  margin: -9px 0 71px 0;
+}
+.chart .percent {
+  letter-spacing: -3px;
+  opacity: .4;
+  width: 100%;
+  font-size: 30px;
+     font-size: 1.875rem;
+}
+@media (min-width: 700px) {
+  .chart .percent {
+    position: absolute;
+    font-size: 62px;
+        font-size: 1.875rem;
+  }
+}
+.chart .percent span {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+.chart .skill {
+  font-weight: 800;
+  opacity: .5;
+  overflow: hidden;
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+@media (min-width: 700px) {
+  .chart .skill {
+    bottom: -1px;
+    position: absolute;
+    font-size: 16px;
+    font-size: 1rem;
+  }
+}
+.chart .teal {
+ background: #ff8500;
+    
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76d8d1), color-stop(70%, #4ecdc4));
+    background-image: -moz-linear-gradient(#76d8d1, #4ecdc4 70%);
+    background-image: -webkit-linear-gradient(#76d8d1, #4ecdc4 70%);
+    background-image: linear-gradient(#ff8500, #FFC2A6 70%);
+}
+.chart .salmon {
+ background: #00a9ff;
+    
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76d8d1), color-stop(70%, #4ecdc4));
+    background-image: -moz-linear-gradient(#76d8d1, #4ecdc4 70%);
+    background-image: -webkit-linear-gradient(#76d8d1, #4ecdc4 70%);
+    background-image: linear-gradient(#00a9ff, #b3e6ff 70%);
+}
+.chart .lime {
+ background: #00a9ff;
+    
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76d8d1), color-stop(70%, #4ecdc4));
+    background-image: -moz-linear-gradient(#76d8d1, #4ecdc4 70%);
+    background-image: -webkit-linear-gradient(#76d8d1, #4ecdc4 70%);
+    background-image: linear-gradient(#00a9ff, #b3e6ff 70%);
+}
+.chart .peach {
+ background: #ff8500;
+    
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76d8d1), color-stop(70%, #4ecdc4));
+    background-image: -moz-linear-gradient(#76d8d1, #4ecdc4 70%);
+    background-image: -webkit-linear-gradient(#76d8d1, #4ecdc4 70%);
+    background-image: linear-gradient(#ff8500, #FFC2A6 70%);
+}
+.chart .grape {
+ background: #00a9ff;
+    
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76d8d1), color-stop(70%, #4ecdc4));
+    background-image: -moz-linear-gradient(#76d8d1, #4ecdc4 70%);
+    background-image: -webkit-linear-gradient(#76d8d1, #4ecdc4 70%);
+    background-image: linear-gradient(#00a9ff, #b3e6ff 70%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

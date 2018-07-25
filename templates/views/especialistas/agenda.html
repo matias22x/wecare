@@ -1,8 +1,8 @@
-<main class="fondoBlanco01">
+<main>
   <div class="section"></div>
   <div class="container">
     <div class="col s12">
-      <div class="card fondoConColor ">
+      <div class="card">
         <div class="card-content">
 
           <div class="contenidoBordeGris">
@@ -12,29 +12,29 @@
                 <div class="card">
                   <div class="card-content center">
                     <span class="card-title">Sesiones de hoy</span>
-                    <div class="row" ng-repeat="turnoDeHoy in turnosDeHoy">
-                      <div class="col s2 m2 l2">
-                        <h5 class="titulosAparte center contenidoUsuario">DNI</h5>
+                    <div class="row cadaSesion" ng-repeat="turnoDeHoy in turnosDeHoy">
+                      <div class="col s12 m12 l2">
+                        <h5 class="titulosAparte center contenidoUsuario">Nro de Documento</h5>
                         <span>{{turnoDeHoy.alumnoDelTurno.dni}}</span>
                       </div>
-                      <div class="col s2 m2 l2">
+                     <div class="col s12 m12 l2">
                         <h5 class="titulosAparte center contenidoUsuario">Nombre</h5>
                         <span>{{turnoDeHoy.alumnoDelTurno.nombre}}</span>
                       </div>
-                      <div class="col s2 m2 l2">
+                      <div class="col s12 m12 l2">
                         <h5 class="titulosAparte center contenidoUsuario">Curso</h5>
                         <span>{{turnoDeHoy.alumnoDelTurno.curso}}</span>
                       </div>
-                      <div class="col s2 m2 l2">
+                      <div class="col s12 m12 l2">
                         <h5 class="titulosAparte center contenidoUsuario">Fecha</h5>
                         <span>{{turnoDeHoy.horario | date: "EEEE d 'de' LLLL" }}</span>
                       </div>
-                      <div class="col s2 m2 l2">
+                      <div class="col s12 m12 l2">
                         <h5 class="titulosAparte center contenidoUsuario">Hora</h5>
                         <span>{{turnoDeHoy.horario | date: "H:mm"}}</span>
                       </div>
                       <div class="card-action center">
-                        <a ui-sref="especialista_sesion({id: turnoDeHoy._id})">Comenzar sesión</a>
+                        <button class="btn botonGeneral b02 butonComp" ui-sref="especialista_sesion({id: turnoDeHoy._id})">Comenzar</button>
                       </div>
                     </div>
                   </div>
@@ -50,15 +50,15 @@
               <div class="row linearBusc">
                 <div class="col l4 m12 s12">
 
-                  <div class="buscador01">
-                    <div class="input-field buscador03">
+               
+<div class="input-field">
+          <input id="search" type="search" class="validate" ng-model="name" required>
+          <label class="label-icon" for="search">Busque por DNI, nombre o turno</label>
+          
+        </div>
 
-                      <div class="card-input">
-                        <input id="busca" class="validate" ng-model="name"  placeholder="">
-                        <label for="busca">Busque por DNI, nombre o turno</label>
-                      </div>
-                    </div>
-                  </div>
+
+
 
 
                 </div>
@@ -91,9 +91,9 @@
               </div>
 
               <div class="contenidoTabla ">
-                <table class="centered bordeado ">
+                <table class="responsive-table centered striped cardd">
                   <thead>
-                    <tr class="fondoOne ">
+                    <tr class="fondo">
                       <th>DNI</th>
                       <th>NOMBRE</th>
                       <th>CURSO</th>

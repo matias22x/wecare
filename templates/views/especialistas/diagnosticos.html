@@ -1,4 +1,4 @@
-<main class="fondoBlanco01">
+<main>
   <div ng-show="loader" class="preloader-background">
     <div class="preloader-wrapper big active">
       <div class="spinner-layer spinner-blue-only">
@@ -17,18 +17,18 @@
   <div class="section"></div>
   <div class="container">
     <div class="col s12">
-      <div class="card fondoConColor margenBot">
+      <div class="card margenBot">
         <div class="card-content">
 
           <div class="contenidoBordeGris">
-
+<h5 class="center titulo03 titAparte tituloConBorde">Diagnósticos</h5>
             <div class="row claseImportante">
-
+ 
               <div class="col s12 l3 m12">
-                <h5 class="center titulo03 titAparte show-on-small hide-on-med-and-up">Diagnósticos</h5>
-                <table class="centered tablaMarg">
+                
+                <table class="centered tablaMarg cardd">
                   <thead>
-                    <tr class="fondoOne">
+                    <tr class="fondo">
                       <th>DIAGNOSTICOS NUEVOS</th>
                     </tr>
                   </thead>
@@ -55,15 +55,15 @@
               </div>
               <div class="col s12 m12 l9">
 
-                <h5 class="center titulo03 titAparte hide-on-med-and-down">Diagnósticos</h5>
+               
 
 
                 <div ng-if="informacion.diagnostico" class="row">
                   <div class="col s12 m12 l12">
-                    <table class="tablaGeneralBis">
+                    <table class="tablaGeneralBis cardd">
                       <thead class="centered">
-                        <tr class="fondoOne">
-                          <th class="tituloDiag">Detalles</th>
+                        <tr class="fondo bisF">
+                          <th>Detalles</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -119,9 +119,9 @@
                   </div>
 
                 </div>
-                <table  ng-if="informacion.diagnostico"  class="tablaGeneral">
+                <table  ng-if="informacion.diagnostico"  class="tablaGeneral cardd">
                   <thead>
-                    <tr class="fondoOne bisF">
+                    <tr class="fondo bisF">
                       <th>DIAGNÓSTICO ENTRANTE DE WEBOT</th>
                     </tr>
                   </thead>
@@ -143,27 +143,29 @@
                     </tr>
                   </tbody>
                 </table>
-                <div ng-if="!informacion.diagnostico" class="row">
-                  <div class="col s12 m12 l12">
-                    <div class="mdl-tabs__panel" id="botchat">
-                      <div class="messages">
-                        <ul>
-                          <li class="placeholder"></li>
-                          <li class="in">
-                            <div class="avatar" class="col s12 l12 m12">
-                              <img class="responsive-img" src="img/bot-2.gif" />
-                            </div>
-                            <div class="col s12 l12 m12">
-                              <p>Hola! En esta sección podrás ver los diagnosticos entrantes que recaudé de los alumnos, ordenados por gravedad.<br>
+                
+
+
+                    <div ng-if="!informacion.diagnostico" class="small01" >
+
+               
+                <div class="col s12 l12 m12  sp">
+                        <div class="speech-bubble">
+                          ¡Hola! En esta sección podrás ver los <span class="colorCeleste">diagnosticos entrantes</span> que recaudé de los alumnos, ordenados por gravedad.<br>
                                 Puedes marcalos como visto, para que pasen a los listados por fecha, o puedes agregar al alumno a tu listado de pacientes.
-                              </p>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                          </div>
+                        </div>
+              <div class="col s12 l12 m12  center">
+                <div class="mdl-tabs__panel imagenBot" id="botchat">
+                  
+                  
+                        <img class="responsive-img" src="img/bot-2.gif" />
+                       
+                        </div>
+                      
+                       
+                   </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>

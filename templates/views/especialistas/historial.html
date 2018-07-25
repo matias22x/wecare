@@ -1,12 +1,12 @@
- <main class="fondoBlanco01">
+ <main>
   <div class="container center cuadro02 paddsetenta margenBot">
     <div class="col s12">
       <div class="card">
-        <div class="card-content fondoConColor">
+        <div class="card-content">
 
           <div class="contenidoBordeGris">
 
-            <h5 class="center titulo03 titAparte">Historial del Paciente {{alumno.nombre}}</h5>
+            <h5 class="center tituloConCeleste  titAparte">Historial del Paciente {{alumno.nombre}}</h5>
             <div class="row cuadro01 claseImportante">
               <div class="col s12 l3 m3">
 
@@ -14,7 +14,7 @@
                 <table class="centered tablaIzq tablaGeneral">
                   <thead>
                     <tr class="fondo">
-                      <th>HISTORIAL DE REGISTROS</th>
+                      <th>HISTORIAL DE REGISTROS DIARIOS</th>
                     </tr>
                     <tr class="buscador">
                       <td>
@@ -33,7 +33,7 @@
                   </thead>
 
                   <tbody >
-                    <tr ng-repeat="registro in registros">
+                    <tr ng-repeat="registro in page">
                       <td class="resgitro00" ng-click="verRegistro(registro)">{{registro.createdAt | date: "EEEE d 'de' LLLL" }}</td>
                     </tr>
                     <tr>
@@ -49,24 +49,31 @@
                 </table>
 
               </div>
-              <div ng-if="!registroSeleccionado" class="col s12 l9 m9">
-                <div class="mdl-tabs__panel" id="botchat">
-                  <div class="messages">
-                    <ul>
-                      <li class="placeholder"></li>
-                      <li class="in">
-                        <div class="avatar" class="col s12 l12 m12">
-                          <img class="responsive-img" src="img/bot-2.gif" />
+         
+
+
+
+                <div ng-if="!registroSeleccionado" class="small01" >       
+  <div class="col s12 l9 m9 margenTablaRota">   
+                <div class="col s12 l12 m12  sp">
+                        <div class="speech-bubble">
+                        En esta sección podras ver el <span class="negrita">historial</span> del alumno, el cual incluye sus <span class="colorNaranja">estados de animo</span>, <span class="colorCeleste">lugares en los que estuvo</span>, <span class="colorNaranja">actividades</span>, <span class="colorCeleste">con quién estuvo</span>, esto te servirá para tener un <span class="negrita">control del estado del paciente</span> por fuera de las sesiones, para mejorar su seguimiento.
+                        
+                          </div>
                         </div>
-                        <div class="col s12 l12 m12">
-                          <p>En esta sección podras ver el historial del paciente, el cual incluye sus estados de animo, lugares en los que estuvo, actividades, con quien estuvo, esto te servirá para tener un control del estado del paciente, por fuera de las sesiones</p>
+              <div class="col s12 l12 m12  center">
+                <div class="mdl-tabs__panel imagenBot" id="botchat">
+                  
+                  
+                        <img class="responsive-img" src="img/bot-2.gif" />
+                       
                         </div>
-                      </li>
-                    </ul>
+                      </div>
+                       
+                   </div>
                   </div>
-                </div>
-              </div>
-              <div class="col s12 l9 m9"  ng-if="registroSeleccionado" >
+
+              <div class="col s12 l9 m9 margenTablaRota"  ng-if="registroSeleccionado" >
 
 
                 <table class="centered tablaGeneral">

@@ -1,9 +1,9 @@
-<main class="fondoBlanco04">
+<main>
   <div class="section"></div>
   <div class="container center">
     <div class="col s12">
       <div class="card">
-        <div class="card-content fondoConColor misPac">
+        <div class="card-content misPac">
           <div class="contenidoBordeGris">
             <h4>ESPECIALISTAS</h4>
 
@@ -34,9 +34,9 @@
             <div class="col s12 m12 l12">
               <div class="tabla01">
                 <div class="contenidoTabla tablaSegunda">
-                  <table class="responsive-table centered">
+                  <table class="responsive-table striped cardd centered">
                     <thead class="altoFondo">
-                      <tr class="fondoOne">
+                      <tr class="fondo">
                         <th>DNI</th>
                         <th>NOMBRE</th>
                         <th>DIRECCION</th>
@@ -57,7 +57,7 @@
                           <a tooltipped data-position="left" data-tooltip="Ver especialista" class="waves-effect waves-light btn-small btn-floating botonVer" ui-sref="admin_ver_especialista({id: especialista._id})"><i class="material-icons">visibility</i></a>
                           <a tooltipped data-position="left" data-tooltip="Editar especialista" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_especialista({id: especialista._id})"><i class="material-icons">edit</i></a>
                           <a tooltipped data-position="left" data-tooltip="Deshabilitar especialista" ng-if="especialista.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(especialista)">block</i></a>
-                          <a tooltipped data-position="left" data-tooltip="Habilitar especialista" ng-if="!especialista.habilitado" class="waves-effect waves-light btn-small btn-floating botonEdit " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(especialista)">add</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Habilitar especialista" ng-if="!especialista.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(especialista)">add</i></a>
                         </td>
                       </tr>
 
