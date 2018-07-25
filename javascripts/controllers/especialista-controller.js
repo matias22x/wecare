@@ -563,6 +563,19 @@ angular.module('wecareApp')
 
       $http.post(config.api_url + '/estadisticaspaciente', data).success(function(data, status, headers, config) {
         $scope.estadisticas = data.data;
+        var total = data.data.cantidadRegistrosContento + data.data.cantidadRegistrosNeutral + data.data.cantidadRegistrosEnojado + data.data.cantidadRegistrosTriste;
+        if (total>0){
+          $scope.porcentajeContento = (100 * data.data.cantidadRegistrosContento) / total  ;
+          $scope.porcentajeNeutral = (100 * data.data.cantidadRegistrosNeutral) / total ;
+          $scope.porcentajeEnojado = (100 * data.data.cantidadRegistrosEnojado ) / total;
+          $scope.porcentajeTriste = (100 * data.data.cantidadRegistrosTriste) / total ;
+        }else{
+          $scope.porcentajeContento = 0  ;
+          $scope.porcentajeNeutral = 0 ;
+          $scope.porcentajeEnojado = 0;
+          $scope.porcentajeTriste = 0 ;
+        }
+        console.log('contento '+$scope.porcentajeContento+'% '+'neutral '+$scope.porcentajeNeutral+'% '+'enojado '+$scope.porcentajeEnojado+'% '+'triste '+$scope.porcentajeTriste+'%');
       })
 
     $scope.filtrarFecha = function(desde, hasta, alumnoId) {
@@ -572,7 +585,20 @@ angular.module('wecareApp')
 
       $http.post(config.api_url + '/estadisticaspaciente', data).success(function(data, status, headers, config) {
         $scope.estadisticas = data.data;
-        console.log($scope.estadisticas);
+        var total = data.data.cantidadRegistrosContento + data.data.cantidadRegistrosNeutral + data.data.cantidadRegistrosEnojado + data.data.cantidadRegistrosTriste;
+        if (total>0){
+          $scope.porcentajeContento = (100 * data.data.cantidadRegistrosContento) / total  ;
+          $scope.porcentajeNeutral = (100 * data.data.cantidadRegistrosNeutral) / total ;
+          $scope.porcentajeEnojado = (100 * data.data.cantidadRegistrosEnojado ) / total;
+          $scope.porcentajeTriste = (100 * data.data.cantidadRegistrosTriste) / total ;
+        }else{
+          $scope.porcentajeContento = 0  ;
+          $scope.porcentajeNeutral = 0 ;
+          $scope.porcentajeEnojado = 0;
+          $scope.porcentajeTriste = 0 ;
+        }
+
+        console.log('contento '+$scope.porcentajeContento+'% '+'neutral '+$scope.porcentajeNeutral+'% '+'enojado '+$scope.porcentajeEnojado+'% '+'triste '+$scope.porcentajeTriste+'%');
       })
     }
 
