@@ -199,7 +199,7 @@ angular.module('wecareApp')
     }
 
   })
-  .controller('alumnoHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService, turnoService, moment) {
+  .controller('alumnoHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService, turnoService, moment, especialistaService) {
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -285,7 +285,12 @@ angular.module('wecareApp')
     turnoService.getProximosTurnosByPaciente(userData.get('datosRol')._id, date, 1)
     .then(function(resp) {
       $scope.turnos = resp.data[0];
-    }).catch($log.error);
+      return especialistaService.getEspecialista($scope.turnos.especialista);
+    })
+    .then(function(especialista) {
+      $scope.turnos.nombreEspecialista = especialista.data.nombre;
+    })
+    .catch($log.error);
 
     registrosService.getRegistrosPorPaciente(userData.get('datosRol')._id)
     .then(function(resp) {
