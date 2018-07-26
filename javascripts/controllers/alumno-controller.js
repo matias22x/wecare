@@ -294,8 +294,12 @@ angular.module('wecareApp')
     }).catch($log.error);
 
     $scope.filtrarFecha = function(desde, hasta) {
-      $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
-      $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      if($scope.tiempo && $scope.tiempo.buscadorDesde){
+        $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      }else{ $scope.desde = new Date("01-01-1970") }
+      if($scope.tiempo && $scope.tiempo.buscadorHasta){
+        $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      }else{ $scope.hasta = new Date("12-31-2099") }
       registrosService.getRegistrosPorPacientePorFecha($scope.desde, $scope.hasta, userData.get('datosRol')._id)
         .then(function(resp) {
           $scope.registros = resp.data;

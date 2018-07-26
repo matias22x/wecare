@@ -39,7 +39,7 @@ angular.module('wecareApp')
     }).catch($log.error);
 
   })
-  .controller('especialistaAgendaController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, turnoService, alumnoService) {
+  .controller('especialistaAgendaController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, config, especialistaService, userService, turnoService, alumnoService) {
     $scope.paginInit = function(lista) {
       if (!$scope.cantRegistros) {
         $scope.cantRegistros = 10;
@@ -136,11 +136,15 @@ angular.module('wecareApp')
               $scope.turnosListaCompleta[key].alumnoDelTurno = alumno.data;
             }).catch($log.error);
         });
+        $scope.turnos = $filter('orderBy')($scope.turnos, "horario");
         $scope.paginInit($scope.turnos);
       })
       .catch($log.error);
 
       $scope.filtrar = function(desde, hasta, palabra) {
+        if(!palabra){
+          palabra = "";
+        }
       $scope.turnos = [];
       if($scope.tiempo && $scope.tiempo.buscadorDesde){
         $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
@@ -154,6 +158,7 @@ angular.module('wecareApp')
              || (value.alumnoDelTurno.curso && value.alumnoDelTurno.curso.toLowerCase().includes(palabra.toLowerCase())) ) ) {
           $scope.turnos.push(value);
         }
+        $scope.turnos = $filter('orderBy')($scope.turnos, "horario");
         $scope.paginInit($scope.turnos);
       })
     }
@@ -392,11 +397,21 @@ angular.module('wecareApp')
 
 
     $scope.filtrarFecha = function(desde, hasta) {
-      $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
-      $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
-      diagnosticoPrematuroService.getAllDiagnosticosPrematurosVistosPorFecha($scope.desde, $scope.hasta)
+      if($scope.tiempo && $scope.tiempo.buscadorDesde){
+        $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      }else{ $scope.desde = new Date("01-01-1970") }
+      if($scope.tiempo && $scope.tiempo.buscadorHasta){
+        $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      }else{ $scope.hasta = new Date("12-31-2099") }
+
+      diagnosticoPrematuroService.getAllDiagnosticosPrematurosPorFecha($scope.desde, $scope.hasta)
         .then(function(resp) {
-          $scope.diagnosticosPrematuros = resp.data;
+          $scope.diagnosticosPrematuros = [];
+          angular.forEach(resp.data, function(value, key) {
+            if ($scope.especialista.diagnosticos_vistos.includes(value._id)) {
+              $scope.diagnosticosPrematuros.push(value);
+            };
+          })
           $scope.diagnosticosPrematuros = $filter('orderBy')($scope.diagnosticosPrematuros, "createdAt", true);
           $scope.paginInit($scope.diagnosticosPrematuros);
         }).catch($log.error);
@@ -539,8 +554,12 @@ angular.module('wecareApp')
     }
 
     $scope.filtrarFecha = function(desde, hasta, alumnoId) {
-      $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
-      $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      if($scope.tiempo && $scope.tiempo.buscadorDesde){
+        $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      }else{ $scope.desde = new Date("01-01-1970") }
+      if($scope.tiempo && $scope.tiempo.buscadorHasta){
+        $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      }else{ $scope.hasta = new Date("12-31-2099") }
       registrosService.getRegistrosPorPacientePorFecha($scope.desde, $scope.hasta, alumnoId)
         .then(function(resp) {
           $scope.registros = resp.data;
@@ -579,8 +598,12 @@ angular.module('wecareApp')
       })
 
     $scope.filtrarFecha = function(desde, hasta, alumnoId) {
-      $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
-      $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      if($scope.tiempo && $scope.tiempo.buscadorDesde){
+        $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      }else{ $scope.desde = new Date("01-01-1970") }
+      if($scope.tiempo && $scope.tiempo.buscadorHasta){
+        $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+      }else{ $scope.hasta = new Date("12-31-2099") }
       var data =JSON.stringify({alumno:alumnoId, inicio:$scope.desde, fin:$scope.hasta}) ;
 
       $http.post(config.api_url + '/estadisticaspaciente', data).success(function(data, status, headers, config) {
@@ -696,8 +719,12 @@ angular.module('wecareApp')
       }
 
       $scope.filtrarFecha = function(desde, hasta, alumnoId) {
-        $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
-        $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+        if($scope.tiempo && $scope.tiempo.buscadorDesde){
+          $scope.desde = new Date($scope.tiempo.buscadorDesde.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+        }else{ $scope.desde = new Date("01-01-1970") }
+        if($scope.tiempo && $scope.tiempo.buscadorHasta){
+          $scope.hasta = new Date($scope.tiempo.buscadorHasta.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+        }else{ $scope.hasta = new Date("12-31-2099") }
         turnoService.getTurnosAlumnoPorFecha($scope.desde, $scope.hasta, alumnoId)
           .then(function(resp) {
             $scope.turnos = [];
@@ -806,7 +833,6 @@ angular.module('wecareApp')
     turnoService.getTurno($stateParams.id)
       .then(function(turno) {
         $scope.turno = turno.data;
-        console.log($scope.turno);
         return alumnoService.getAlumno($scope.turno.alumno);
       })
       .then(function(alumno) {
