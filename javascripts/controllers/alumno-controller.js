@@ -1,6 +1,8 @@
 'use strict';
 angular.module('wecareApp')
 .controller('alumnoUserController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {
+  $rootScope.stateIn = "alumno_user";
+
   if(userData.get('datosRol').chatbot){
     $state.go('bot_inicio');
   }else{
@@ -41,6 +43,8 @@ angular.module('wecareApp')
   }
 })
   .controller('alumnoHomeController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, consejosService) {
+    $rootScope.stateIn = "";
+
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -58,6 +62,8 @@ angular.module('wecareApp')
 
   })
   .controller('alumnoActividadesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    $rootScope.stateIn = "registro_diario";
+
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -70,6 +76,8 @@ angular.module('wecareApp')
 
   })
   .controller('alumnoEstadosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService, $document) {
+    $rootScope.stateIn = "registro_diario";
+
     var modalMjs = $document.find('#demoModal').modal();
     var errorMjs = $document.find('#errorModal').modal();
 
@@ -140,6 +148,8 @@ angular.module('wecareApp')
 
   })
   .controller('alumnoLugaresController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    $rootScope.stateIn = "registro_diario";
+
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -152,6 +162,8 @@ angular.module('wecareApp')
 
   })
   .controller('alumnoContarController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    $rootScope.stateIn = "registro_diario";
+
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -164,6 +176,8 @@ angular.module('wecareApp')
 
   })
   .controller('alumnoSumarioController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    $rootScope.stateIn = "registro_diario";
+
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -176,6 +190,8 @@ angular.module('wecareApp')
 
   })
   .controller('alumnoFinalizacionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    $rootScope.stateIn = "registro_diario";
+
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -188,6 +204,8 @@ angular.module('wecareApp')
 
   })
   .controller('alumnoAgendaController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService) {
+    $rootScope.stateIn = "historial_estados";
+
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -200,6 +218,8 @@ angular.module('wecareApp')
 
   })
   .controller('alumnoHistorialController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, registrosService, turnoService, moment, especialistaService) {
+    $rootScope.stateIn = "historial_estados";
+
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{
@@ -314,6 +334,8 @@ angular.module('wecareApp')
 
   })
   .controller('alumnoInformacionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService, noticiasService) {
+    $rootScope.stateIn = "informacion";
+
     if(userData.get('datosRol').chatbot){
       $state.go('bot_inicio');
     }else{

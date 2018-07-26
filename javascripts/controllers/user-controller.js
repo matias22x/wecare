@@ -2,6 +2,7 @@
 angular.module('wecareApp')
     .controller('loginController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, userService, especialistaService, alumnoService) {
       $rootScope.nombre = "";
+      $rootScope.stateIn = "";
       $scope.display=false;
       $scope.login = function() {
         $rootScope.alumnoMenu=false;
@@ -63,5 +64,6 @@ angular.module('wecareApp')
       userData.remove('user');
       userData.remove('datosRol');
       $rootScope.nombre = "";
+      $rootScope.stateIn = "";
       $state.go('home');
   });

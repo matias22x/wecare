@@ -34,7 +34,9 @@ body {
 }
 
 
-
+.menuSeleccionado {
+  color: #ff8500 !important
+}
 
 .margenDebajo {margin-bottom: 45px;}
 
@@ -2223,7 +2225,7 @@ input[type=text].invalid { border-bottom: 1px solid #b0b0b0;
  }
 
 
- @media only screen and (max-width: 992px) { 
+ @media only screen and (max-width: 992px) {
    #turnoErrorModal, #demoModal {  width: 70% !important;
 
     overflow-y: hidden;
@@ -2624,7 +2626,7 @@ h5.tituloCard {  margin-top: 0px;}
 
 
 @media screen and (max-width: 992px)
-{ ul.stepper { padding-left: 10px; } 
+{ ul.stepper { padding-left: 10px; }
 .alargaAlto { height: 100%!important; }
 .step-actions { padding-bottom: 0px !important; }
 ul.stepper .step-actions {
@@ -2638,7 +2640,7 @@ ul.stepper .step-actions {
   {     font-size: 12px !important; }
  }
 
- @media screen and (max-width: 992px) 
+ @media screen and (max-width: 992px)
  { .contenidoAlarga { height: 100% !important; } }
 
 
@@ -2685,7 +2687,7 @@ ul.stepper .step-actions {
 
 
  @media screen and (max-width: 599px)
- { .small01 { padding:5px; 
+ { .small01 { padding:5px;
  }
  .esp { margin-top: 15px !important; }
  }
@@ -3001,7 +3003,7 @@ span.esp04 {     padding-left: 50px; }
  * .  workaround (https://markus.oberlehner.net/blog/pure-css-animated-svg-circle-chart/#part-4-internet-explorer-strikes-back).
  */
 .circle-chart__circle {
-  animation: circle-chart-fill 2s reverse; /* 1 */ 
+  animation: circle-chart-fill 2s reverse; /* 1 */
   transform: rotate(-90deg); /* 2, 3 */
   transform-origin: center; /* 4 */
 }
@@ -3043,7 +3045,7 @@ text.circle-chart__percent { font-size: 20px; }
 
 text.circle-chart__subline { font-size: 15px;
     text-align: center;
-    margin-left: 15px; } 
+    margin-left: 15px; }
 
 
 
@@ -3098,7 +3100,7 @@ text.circle-chart__subline { font-size: 15px;
 }
 @media (min-width: 700px) {
   .chart {
-    
+
     height: 425px;
     margin: 0 auto emCalc(-32px);
   }
@@ -3176,7 +3178,7 @@ text.circle-chart__subline { font-size: 15px;
 }
 .chart .teal {
  background: #ff8500;
-    
+
     background-size: 100%;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76d8d1), color-stop(70%, #4ecdc4));
     background-image: -moz-linear-gradient(#76d8d1, #4ecdc4 70%);
@@ -3185,7 +3187,7 @@ text.circle-chart__subline { font-size: 15px;
 }
 .chart .salmon {
  background: #00a9ff;
-    
+
     background-size: 100%;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76d8d1), color-stop(70%, #4ecdc4));
     background-image: -moz-linear-gradient(#76d8d1, #4ecdc4 70%);
@@ -3194,7 +3196,7 @@ text.circle-chart__subline { font-size: 15px;
 }
 .chart .lime {
  background: #00a9ff;
-    
+
     background-size: 100%;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76d8d1), color-stop(70%, #4ecdc4));
     background-image: -moz-linear-gradient(#76d8d1, #4ecdc4 70%);
@@ -3203,7 +3205,7 @@ text.circle-chart__subline { font-size: 15px;
 }
 .chart .peach {
  background: #ff8500;
-    
+
     background-size: 100%;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76d8d1), color-stop(70%, #4ecdc4));
     background-image: -moz-linear-gradient(#76d8d1, #4ecdc4 70%);
@@ -3212,33 +3214,10 @@ text.circle-chart__subline { font-size: 15px;
 }
 .chart .grape {
  background: #00a9ff;
-    
+
     background-size: 100%;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76d8d1), color-stop(70%, #4ecdc4));
     background-image: -moz-linear-gradient(#76d8d1, #4ecdc4 70%);
     background-image: -webkit-linear-gradient(#76d8d1, #4ecdc4 70%);
     background-image: linear-gradient(#00a9ff, #b3e6ff 70%);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

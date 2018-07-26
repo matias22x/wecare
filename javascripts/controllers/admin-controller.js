@@ -1,6 +1,7 @@
 'use strict';
 angular.module('wecareApp')
     .controller('homeAdminController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {
+      $rootScope.stateIn = "";
       userService.estadisticas()
       .then(function(resp) {
         $scope.datos = resp.data.data;
@@ -13,6 +14,7 @@ angular.module('wecareApp')
 
     })
   .controller('userAdminController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {
+    $rootScope.stateIn = "admin_user";
 
     $scope.usuario = userData.get('user');
     $scope.usuario.createdAt = $filter('date')($scope.usuario.createdAt, "dd-MM-yyyy");
@@ -46,6 +48,7 @@ angular.module('wecareApp')
     }
   })
   .controller('listadoAlumnosController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, alumnoService, userService) {
+    $rootScope.stateIn = "alumnos_abm";
 
     $scope.paginInit = function(lista) {
 
@@ -174,6 +177,7 @@ angular.module('wecareApp')
 
   })
   .controller('agregarAlumnosController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $location, config, alumnoService, userService, moment) {
+    $rootScope.stateIn = "alumnos_abm";
     $scope.alumnoNuevo = {};
     $scope.usuario = {};
     $scope.alumnoDatos = {};
@@ -256,6 +260,7 @@ angular.module('wecareApp')
 
   })
   .controller('editarAlumnosController', function($auth, $scope, $rootScope, $state, userData,$filter, $log, $http, $translate, $stateParams, $location, config, alumnoService, userService) {
+    $rootScope.stateIn = "alumnos_abm";
 
     var id = $stateParams.id;
 
@@ -329,6 +334,7 @@ angular.module('wecareApp')
 
   })
   .controller('verAlumnosController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $stateParams, $location, config, alumnoService, userService) {
+    $rootScope.stateIn = "alumnos_abm";
     var id = $stateParams.id;
 
     alumnoService.getAlumno(id)
@@ -347,6 +353,7 @@ angular.module('wecareApp')
 
   })
   .controller('borrarAlumnosController', function($auth, $scope, $rootScope, $state, userData, $filter,  $log, $http, $translate, $stateParams, $location, config, alumnoService, userService) {
+    $rootScope.stateIn = "alumnos_abm";
 
     var id = $stateParams.id;
 
@@ -370,6 +377,7 @@ angular.module('wecareApp')
     };
   })
   .controller('habilitarAlumnosController', function($auth, $scope, $rootScope, $state, userData, $filter,  $log, $http, $translate, $stateParams, $location, config, alumnoService, userService) {
+    $rootScope.stateIn = "alumnos_abm";
 
     var id = $stateParams.id;
 
@@ -393,6 +401,8 @@ angular.module('wecareApp')
     };
   })
   .controller('listadoEspecialistasController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, especialistaService, userService) {
+    $rootScope.stateIn = "especialistas_abm";
+
     $scope.paginInit = function(lista) {
 
       if (!$scope.cantRegistros) {
@@ -520,6 +530,7 @@ angular.module('wecareApp')
 
   })
   .controller('agregarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $location, config, especialistaService, userService, moment) {
+    $rootScope.stateIn = "especialistas_abm";
     $scope.especialistaNuevo = {};
     $scope.usuario = {};
     $scope.especialistaDatos = {};
@@ -598,6 +609,7 @@ angular.module('wecareApp')
 
   })
   .controller('editarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $filter, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
+    $rootScope.stateIn = "especialistas_abm";
 
     var id = $stateParams.id;
     $scope.hoy = new Date();
@@ -670,6 +682,8 @@ angular.module('wecareApp')
 
   })
   .controller('verEspecialistasController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
+    $rootScope.stateIn = "especialistas_abm";
+
     var id = $stateParams.id;
 
     especialistaService.getEspecialista(id)
@@ -689,6 +703,7 @@ angular.module('wecareApp')
 
   })
   .controller('borrarEspecialistasController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
+    $rootScope.stateIn = "especialistas_abm";
 
     var id = $stateParams.id;
 
@@ -715,6 +730,7 @@ angular.module('wecareApp')
 
     };
   }).controller('listadoConsejosController', function($auth, $scope, $rootScope,$window, $state, $filter, userData, $log, $http, $translate, config, consejosService, userService) {
+    $rootScope.stateIn = "consejos_abm";
 
 
     $scope.cambiarTitulo = function(obj) {
@@ -831,6 +847,8 @@ angular.module('wecareApp')
 
   })
   .controller('agregarConsejosController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $location, config, consejosService, userService, moment) {
+    $rootScope.stateIn = "consejos_abm";
+
     $scope.consejoNuevo = {};
     $scope.consejo = {};
 
@@ -849,6 +867,7 @@ angular.module('wecareApp')
 
   })
   .controller('editarConsejosController', function($auth, $scope, $rootScope, $state, userData, $log, $filter, $http, $translate, $stateParams, $location, config, consejosService, userService) {
+    $rootScope.stateIn = "consejos_abm";
 
     var id = $stateParams.id;
 
@@ -870,6 +889,8 @@ angular.module('wecareApp')
 
   })
   .controller('verConsejosController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, $stateParams, $location, config, consejosService, userService) {
+    $rootScope.stateIn = "consejos_abm";
+
     var id = $stateParams.id;
 
     consejosService.getConsejos(id)
@@ -879,6 +900,7 @@ angular.module('wecareApp')
 
   })
   .controller('borrarConsejosController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, $stateParams, $location, config, consejosService, userService) {
+    $rootScope.stateIn = "consejos_abm";
 
     var id = $stateParams.id;
 
@@ -900,6 +922,7 @@ angular.module('wecareApp')
     };
   })
   .controller('listadoNoticiasController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, config, especialistaService, userService, noticiasService) {
+    $rootScope.stateIn = "noticias_abm";
 
     $scope.paginInit = function(lista) {
 
@@ -999,8 +1022,9 @@ angular.module('wecareApp')
 
   })
   .controller('agregarNoticiasController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $location, config, especialistaService, userService, moment, noticiasService) {
-    $scope.noticiaNueva = {};
+    $rootScope.stateIn = "noticias_abm";
 
+    $scope.noticiaNueva = {};
     $scope.submit = function() {
           noticiasService.postNoticias($scope.noticiaNueva)
             .then(function(user) {
@@ -1012,6 +1036,7 @@ angular.module('wecareApp')
 
   })
   .controller('editarNoticiasController', function($auth, $scope, $rootScope, $state, userData, $log, $filter, $http, $translate, $stateParams, $location, config, especialistaService, userService, noticiasService) {
+    $rootScope.stateIn = "noticias_abm";
 
     var id = $stateParams.id;
     $scope.hoy = new Date();
@@ -1033,6 +1058,8 @@ angular.module('wecareApp')
 
   })
   .controller('verNoticiasController', function($auth, $scope, $rootScope, $state, $filter, userData, $log, $http, $translate, $stateParams, $location, config, especialistaService, userService, noticiasService) {
+    $rootScope.stateIn = "noticias_abm";
+
     var id = $stateParams.id;
 
     noticiasService.getNoticias(id)
