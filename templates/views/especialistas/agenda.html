@@ -2,7 +2,7 @@
   <div class="section"></div>
   <div class="container">
     <div class="col s12">
-      <div class="card">
+      <div class="card margenBot">
         <div class="card-content">
 
           <div class="contenidoBordeGris">
@@ -113,19 +113,17 @@
                       <td>{{turno.horario | date: "EEEE d 'de' LLLL" }}</td>
                       <td>{{turno.horario | date: "H:mm"}}</td>
                     </tr>
-                    <tr>
-                      <td  colspan="5">
-                        <ul class="pagination">
-                          <li class="waves-effect"><a ng-click='antPag(turnos);'><i class="material-icons">chevron_left</i></a></li>
-                          <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect"> <a ng-click='cambiarPag($index, turnos);'>{{$index+1}}</a></li>
-                          <li class="waves-effect"><a ng-click='sigPag(turnos);'><i class="material-icons">chevron_right</i></a></li>
-                        </ul>
-                      </td>
-                    </tr>
+                   
                   </tbody>
                 </table>
               </div>
-
+                <div class="center">
+                    <ul class="pagination">
+                          <li class="waves-effect"><a ng-click='antPag(turnos);'><i class="material-icons">chevron_left</i></a></li>
+                          <li ng-repeat="i in getNumber(number) track by $index" class="waves-effect activo"> <a ng-click='cambiarPag($index, turnos);'>{{$index+1}}</a></li>
+                          <li class="waves-effect"><a ng-click='sigPag(turnos);'><i class="material-icons">chevron_right</i></a></li>
+                        </ul>
+                        </div>
             </div>
           </div>
         </div>

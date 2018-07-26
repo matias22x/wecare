@@ -16,8 +16,8 @@
                     <tr class="fondo">
                       <th>HISTORIAL DE REGISTROS DIARIOS</th>
                     </tr>
-                    <tr class="buscador">
-                      <td>
+                    <tr>
+                      <td class="buscador center">
                         <div class="input-field center">
                           <input id="buscadorDesde" type="text" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
                           <label for="buscadorDesde">Fecha desde</label>
@@ -111,7 +111,7 @@
                           </div>
                           <div ng-if="!registroSeleccionado.actividades.deporte && !registroSeleccionado.actividades.descanso && !registroSeleccionado.actividades.juego && !registroSeleccionado.actividades.estudio && !registroSeleccionado.actividades.fiesta && !registroSeleccionado.actividades.salida && !registroSeleccionado.actividades.nada"
                             class="col s12 iconos">
-                            <span class="textUp">Actividades: </span>No se registraron actividades.
+                            <span class="textUp">Actividades: </span><span class="redtext">No se registraron actividades.</span>
                             </br>
                             </br>
                           </div>
@@ -126,7 +126,7 @@
                             </br>
                           </div>
                           <div ng-if="!registroSeleccionado.lugares.casa && !registroSeleccionado.lugares.escuela && !registroSeleccionado.lugares.plaza && !registroSeleccionado.lugares.gimnasio && !registroSeleccionado.lugares.casa_amigo" class="col s12 iconos">
-                            <span class="textUp">Lugares: </span>No se registraron lugares.
+                            <span class="textUp">Lugares: </span><span class="redtext">No se registraron lugares.</span>
                             </br>
                             </br>
                           </div>
@@ -140,7 +140,7 @@
                             </br>
                           </div>
                           <div ng-if="!registroSeleccionado.social.solo && !registroSeleccionado.social.familia && !registroSeleccionado.social.pareja && !registroSeleccionado.social.amigos" class="col s12 iconos">
-                            <span class="textUp">Con quién estuvo: </span>No se registró con quién estuvo.
+                            <span class="textUp">Con quién estuvo: </span><span class="redtext">No se registró con quién estuvo.</span>
                             </br>
                             </br>
                           </div>
@@ -153,7 +153,7 @@
                               {{registroSeleccionado.cuentanosmas}}
                             </span>
                             <span ng-if="!registroSeleccionado.cuentanosmas" class="materialize-textarea textoPersonal">
-                              No hay registro.
+                              <span class="redtext">No hay registro.</span>
                             </span>
                           </div>
                         </div>
@@ -166,14 +166,15 @@
 
 
             </div>
-
-            <div class="row">
+ <div class="card-action cardBorder">
+            <div class="row center">
               <div class="col s6 l6 m6">
-                <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_pacientes"><i class="material-icons left">keyboard_arrow_left</i>Volver</a>
+                <button class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_pacientes"><i class="material-icons left">keyboard_arrow_left</i>Volver</button>
               </div>
               <div class="col s6 l6 m6">
-                <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons left">add</i>Asignar turno</a>
+                <button class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons left">add</i>Asignar turno</button>
               </div>
+            </div>
             </div>
           </div>
         </div>

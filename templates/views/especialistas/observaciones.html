@@ -16,8 +16,8 @@
                     <tr class="fondo">
                       <th>HISTORIAL DE REGISTROS</th>
                     </tr>
-                    <tr class="buscador">
-                      <td>
+                    <tr>
+                      <td class="buscador">
                         <div class="input-field center">
                           <input id="buscadorDesde" type="text" class="validate placeholderclass datepicker margMenos" ng-model="tiempo.buscadorDesde" placeholder="">
                           <label for="buscadorDesde">Fecha desde</label>
@@ -124,14 +124,19 @@
 
             </div>
 
-            <div class="row">
+
+  <div class="card-action cardBorder">
+            <div class="row center">
               <div class="col s6 l6 m6">
-                <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_pacientes"><i class="material-icons left">keyboard_arrow_left</i>Volver</a>
+                <button class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_pacientes"><i class="material-icons left">keyboard_arrow_left</i>Volver</button>
               </div>
               <div class="col s6 l6 m6">
-                <a class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons left">add</i>Asignar turno</a>
+                <button class="waves-effect waves-light btn botonGeneral botonAparteVolver btn-small" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons left">add</i>Asignar turno</button>
               </div>
             </div>
+</div>
+
+
           </div>
         </div>
       </div>

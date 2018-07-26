@@ -1843,7 +1843,7 @@ input.buscadorFechas{ margin-bottom: 2px; }
 }
 
 .titulosAparte {
-  font-size: 16px !important;
+  font-size: 13px !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
     margin-right: 5px;
@@ -1900,7 +1900,7 @@ background-color: #fafafa !important; }
 .titAparte {     padding-top: 4px; }
 
 
-.buscador td{ padding-left: 25px;
+.buscador { padding-left: 25px;
     padding-right: 25px;
  }
 
@@ -1983,8 +1983,7 @@ float: right; }
 
 .fechHor h5 { margin-top: -35px; }
 
-.picker__date-display, .picker__weekday-display, .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected
- { background-color: #ff8500 !important; }
+
 
 .picker__day.picker__day--today { color:#ff8500 !important ; }
 
@@ -2227,13 +2226,25 @@ input[type=text].invalid { border-bottom: 1px solid #b0b0b0;
  }
 
 
+@media only screen and (max-width: 500px)
+{ .modalConsejo { height: 44% !important; } }
+
  @media only screen and (max-width: 992px) {
-   #turnoErrorModal, #demoModal {  width: 70% !important;
+   #turnoErrorModal, #demoModal {  width: 52% !important;
 
     overflow-y: hidden;
-    height: 35% !important; }
+    height: 33% !important; }
     .modal-content h4 { font-size: 20px; }
-    .modal-footer button { width: 100%; } }
+
+    /*.modal-footer button { width: 100%; }*/
+
+     }
+
+ @media only screen and (max-width: 600px) 
+ { #demoModal
+ { width: 55% !important;
+ height: 42% !important; } }
+
 
 
  .slider .slides { background-color: #fff !important;
@@ -2305,17 +2316,74 @@ padding: 25px; }
 
 #turnoErrorModal, #demoModal {     margin-top: 10%;
     padding-bottom: 10px;
-     width: 50%;
-    height: 30%;
-        padding-left: 10px;
-    padding-right: 10px;
+     width: 42%;
+    height: 32%;
+  
     overflow-x: hidden !important;
  }
 
  #turnoErrorModal h4, #demoModal h4 {     padding-top: 10px;
     font-size: 24px; }
 
+#errorModal {  margin-top: 10%;
+    padding-bottom: 10px;
+     width: 35%;
+    height: 30%;
+    overflow-x: hidden !important; }
+
+ #errorModal h4 {  
+    font-size: 24px;
+        padding-top: 15px;
+    color: red }
+
+    #turnoErrorModal h4 {
+    font-size: 24px;
+    padding-top: 30px;
+    color: red;
+}
+
+
+.footModal {     margin-bottom: 25px;
+    /* margin-top: 10px !important; */
+    padding-top: 15px;
+    padding-left: 15px;
+    /* padding-bottom: 10px !important; */
+    padding-right: 15px;
+ }
+
+
+
+.otroF { height: 107px !important; }
+
+.centrarBoton { float: none !important;
+margin-top: 15px; }
+
+
+@media only screen and (max-width: 999px)
+{ #errorModal { width: 60%;
+  height: 33%;
+ }
+}
+
+@media only screen and (max-width: 992px)
+{ #turnoErrorModal { height:35% !important;}  }
+
+
+
+.modalConsejo { height: 40% !important; }
+
+
+
+
+
+
 .tituloNo h4 {font-size: 24px; }
+
+
+
+
+
+
 
 .flotarIzq { float: left; }
 
@@ -3056,7 +3124,7 @@ text.circle-chart__subline { font-size: 15px;
 
 
  @media screen and (max-width: 900px)
-{ .chart .skill { font-size: 10px !important; } }
+{ .chart .skill { font-size: 15px !important; } }
 
 
 .ejemplo h4 {     text-transform: uppercase;
@@ -3087,6 +3155,8 @@ text.circle-chart__subline { font-size: 15px;
 .titulosEstadisticas {     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px; }
+
+  .estadist { margin-top: 40px; }
 
 .separacion { padding-top: 60px; }
 
@@ -3154,12 +3224,14 @@ text.circle-chart__subline { font-size: 15px;
   .chart .percent {
     position: absolute;
     font-size: 62px;
-        font-size: 1.875rem;
+        font-size: 20px;
+    letter-spacing: 1px;
   }
 }
 .chart .percent span {
   font-size: 30px;
-  font-size: 1.875rem;
+  font-size: 20px;
+       padding-left: 5px;
 }
 .chart .skill {
   font-weight: 800;
@@ -3223,3 +3295,22 @@ text.circle-chart__subline { font-size: 15px;
     background-image: -webkit-linear-gradient(#76d8d1, #4ecdc4 70%);
     background-image: linear-gradient(#00a9ff, #b3e6ff 70%);
 }
+
+
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    border-radius: 50%;
+    transform: scale(0.9);
+  
+    color: #fff !important; }
+
+.picker__date-display, .picker__weekday-display, .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected
+{   
+    
+    background-color: #ff8500 !important;
+    color: #fff;  }
+
+
+
+
+
+
