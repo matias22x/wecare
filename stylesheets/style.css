@@ -34,7 +34,9 @@ body {
 }
 
 
-
+.menuSeleccionado {
+  color: #ff8500 !important
+}
 
 .margenDebajo {margin-bottom: 45px;}
 

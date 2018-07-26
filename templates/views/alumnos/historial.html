@@ -13,11 +13,15 @@
                   <div class="card-content">
                     <span class="card-title">Próxima sesión</span>
                     <div ng-if="turnos" class="row">
-                      <div class="col s6 m6 l6">
+                      <div class="col s4 m4 l4">
+                        <h5 class="titulosAparte center contenidoUsuario">Especialista</h5>
+                        <span>{{turnos.nombreEspecialista}}</span>
+                      </div>
+                      <div class="col s4 m4 l4">
                         <h5 class="titulosAparte center contenidoUsuario">Fecha</h5>
                         <span>{{turnos.horario | date: "EEEE d 'de' LLLL"}}</span>
                       </div>
-                      <div class="col s6 m6 l6">
+                      <div class="col s4 m4 l4">
                         <h5 class="titulosAparte center contenidoUsuario">Hora</h5>
                         <span>{{turnos.horario | date: "H:mm"}}</span>
                       </div>
@@ -31,7 +35,7 @@
               </div>
             </div>
 
-         
+
 
 
             <div class="row cuadro01 cuadro02">
@@ -87,17 +91,17 @@
                         </div>
               <div class="col s12 l12 m12  center">
                 <div class="mdl-tabs__panel imagenBot" id="botchat">
-                  
-                  
+
+
                         <img class="responsive-img" src="img/bot-2.gif" />
                         </div>
                         </div>
-                      
-                       
+
+
                    </div>
                   </div>
-                
-            
+
+
               <div ng-if="registroSeleccionado" class="col s12 l9 m9">
                 <table class="centered tablaGeneral">
                   <thead>
@@ -185,7 +189,7 @@
                 </table>
               </div>
               </div>
-           
+
           </div>
         </div>
       </div>

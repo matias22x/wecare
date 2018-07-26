@@ -1,6 +1,7 @@
 'use strict';
 angular.module('wecareApp')
   .controller('especialistaUserController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, $stateParams, $location, config, userService) {
+    $rootScope.stateIn = "especialista_user";
 
     $scope.usuario = userData.get('user');
     $scope.especialista = userData.get('datosRol');
@@ -33,6 +34,8 @@ angular.module('wecareApp')
     }
   })
   .controller('especialistaHomeController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, consejosService, userService) {
+    $rootScope.stateIn = "";
+
     consejosService.getAllConsejos()
     .then(function(resp) {
       $scope.consejos = resp.data;
@@ -40,6 +43,8 @@ angular.module('wecareApp')
 
   })
   .controller('especialistaAgendaController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, config, especialistaService, userService, turnoService, alumnoService) {
+    $rootScope.stateIn = "agenda";
+
     $scope.paginInit = function(lista) {
       if (!$scope.cantRegistros) {
         $scope.cantRegistros = 10;
@@ -164,6 +169,8 @@ angular.module('wecareApp')
     }
   })
   .controller('especialistaDiagnosticosController', function($auth, $scope, $rootScope, $filter, $window, $state, userData, $log, $http, $translate, config, especialistaService, userService, diagnosticoPrematuroService, alumnoService) {
+    $rootScope.stateIn = "diagnosticos";
+
     $scope.loader=false;
     $scope.paginInit = function(lista) {
 
@@ -324,6 +331,8 @@ angular.module('wecareApp')
     };
 
   }).controller('especialistaDiagnosticosViejosController', function($auth, $scope, $rootScope, $filter, $state, userData, $log, $http, $translate, config, especialistaService, userService, diagnosticoPrematuroService, alumnoService) {
+    $rootScope.stateIn = "diagnosticos";
+
     $scope.loader=false;
     $scope.paginInit = function(lista) {
       if (!$scope.cantRegistros) {
@@ -465,10 +474,13 @@ angular.module('wecareApp')
 
   })
   .controller('especialistaDiagnosticoVerController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService) {
+    $rootScope.stateIn = "diagnosticos";
 
 
   })
   .controller('especialistaHistorialController', function($auth, $scope, $rootScope, $state, userData, $stateParams, $log, $http, $translate, config, especialistaService, userService, registrosService, alumnoService) {
+    $rootScope.stateIn = "mis_pacientes";
+
     $scope.paginInit = function(lista) {
       if (!$scope.cantRegistros) {
         $scope.cantRegistros = 5;
@@ -569,6 +581,7 @@ angular.module('wecareApp')
 
   })
   .controller('especialistaEstadisticasController', function($auth, $scope, $rootScope, $state, userData, $stateParams, $log, $http, $translate, config, especialistaService, userService, registrosService, alumnoService) {
+    $rootScope.stateIn = "mis_pacientes";
 
 
     alumnoService.getAlumno($stateParams.id)
@@ -627,6 +640,8 @@ angular.module('wecareApp')
 
   })
   .controller('especialistaObservacionesController', function($auth, $scope, $rootScope, turnoService, alumnoService, $state, userData, $log, $http, $translate, config, especialistaService, userService, $stateParams) {
+    $rootScope.stateIn = "mis_pacientes";
+
     $scope.paginInit = function(lista) {
       if (!$scope.cantRegistros) {
         $scope.cantRegistros = 5;
@@ -738,6 +753,8 @@ angular.module('wecareApp')
       }
   })
   .controller('especialistaPacientesController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, alumnoService) {
+    $rootScope.stateIn = "mis_pacientes";
+
     $scope.paginInit = function(lista) {
       if (!$scope.cantRegistros) {
         $scope.cantRegistros = 10;
@@ -828,6 +845,8 @@ angular.module('wecareApp')
 
   })
   .controller('especialistaSesionController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, turnoService, alumnoService, $stateParams, $document) {
+    $rootScope.stateIn = "agenda";
+
     var modalMjs = $document.find('#demoModal').modal();
     var errorMjs = $document.find('#errorModal').modal();
     turnoService.getTurno($stateParams.id)
@@ -853,6 +872,8 @@ angular.module('wecareApp')
 
   })
   .controller('especialistaTurnoController', function($auth, $scope, $stateParams, $q, $rootScope, $state, userData, $document, $log, $http, $translate, config, moment, especialistaService, userService, alumnoService, turnoService) {
+    $rootScope.stateIn = "mis_pacientes";
+
     $scope.turno = {};
     $scope.selector = {};
     var modalMjs = $document.find('#demoModal').modal();
