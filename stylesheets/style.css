@@ -1286,7 +1286,8 @@ nav.nav-center ul li { letter-spacing: 0.5px; }
     border: 2px solid #ff8500;
      }
 
-.cajaAlumno h4 { font-size: 25px; }
+.cajaAlumno h4 { font-size: 25px; 
+    line-height: 113%; }
 
 .slider .slides li .caption {
     
