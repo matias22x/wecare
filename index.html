@@ -79,7 +79,7 @@
         <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ng-class="((stateIn) === 'diagnosticos' ? 'menuSeleccionado' : '')" ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ng-class="((stateIn) === 'mis_pacientes' ? 'menuSeleccionado' : '')" ui-sref="especialista_pacientes">Mis pacientes</a></li>
         <li ng-if="isAuthenticated && type === 'especialista'" class="link"><a ng-class="((stateIn) === 'agenda' ? 'menuSeleccionado' : '')" ui-sref="especialista_agenda">Agenda</a></li>
-        <li class="link five"><a ui-sref="logout">Cerrar sesion</a></li>
+        <li class="link five"><a ui-sref="logout">Cerrar sesión</a></li>
 
         <span>|</span>
         <li ng-if="isAuthenticated && type === 'admin'" class="link" ><a ng-class="((stateIn) === 'admin_user' ? 'menuSeleccionado' : '')" ui-sref="admin_user" ><i class="material-icons">account_circle</i>{{nombre}}</a></li>
@@ -95,19 +95,19 @@
           <a ng-if="isAuthenticated && type === 'especialista'" ng-class="((stateIn) === 'especialista_user' ? 'menuSeleccionado' : '')" ui-sref="especialista_user"><i class="material-icons">account_circle</i></a>
           <h5>{{nombre}}</h5>
         </div>
-        <li ng-if="isAuthenticated && type === 'admin'" ><a ng-class="((stateIn) === 'especialistas_abm' ? 'menuSeleccionado' : '')" ui-sref="admin_listado_especialistas">Especialistas</a></li>
-        <li ng-if="isAuthenticated && type === 'admin'" ><a ng-class="((stateIn) === 'alumnos_abm' ? 'menuSeleccionado' : '')" ui-sref="admin_listado_alumnos">Alumnos</a></li>
-        <li ng-if="isAuthenticated && type === 'admin'" ><a ng-class="((stateIn) === 'consejos_abm' ? 'menuSeleccionado' : '')" ui-sref="admin_listado_consejos">Consejos</a></li>
-        <li ng-if="isAuthenticated && type === 'admin'" ><a ng-class="((stateIn) === 'noticias_abm' ? 'menuSeleccionado' : '')" ui-sref="admin_listado_noticias">Noticias</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'" ><a ng-class="((stateIn) === 'especialistas_abm' ? 'menuSeleccionado' : '')" ui-sref="admin_listado_especialistas">ESPECIALISTAS</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'" ><a ng-class="((stateIn) === 'alumnos_abm' ? 'menuSeleccionado' : '')" ui-sref="admin_listado_alumnos">ALUMNOS</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'" ><a ng-class="((stateIn) === 'consejos_abm' ? 'menuSeleccionado' : '')" ui-sref="admin_listado_consejos">CONSEJOS</a></li>
+        <li ng-if="isAuthenticated && type === 'admin'" ><a ng-class="((stateIn) === 'noticias_abm' ? 'menuSeleccionado' : '')" ui-sref="admin_listado_noticias">NOTICIAS</a></li>
 
-        <li ng-if="isAuthenticated && type === 'alumno'  && !bot" ng-show="alumnoMenu" class="link one"><a ng-class="((stateIn) === 'registro_diario' ? 'menuSeleccionado' : '')" ui-sref="alumno_estados">Registro diario</a></li>
-        <li ng-if="isAuthenticated && type === 'alumno'  && !bot" ng-show="alumnoMenu" class="link two"><a ng-class="((stateIn) === 'informacion' ? 'menuSeleccionado' : '')" ui-sref="alumno_informacion">Informacion</a></li>
-        <li ng-if="isAuthenticated && type === 'alumno'  && !bot" ng-show="alumnoMenu" class="link three"><a ng-class="((stateIn) === 'historial_estados' ? 'menuSeleccionado' : '')" ui-sref="alumno_historial">Historial de estados</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'  && !bot" ng-show="alumnoMenu" class="link one"><a ng-class="((stateIn) === 'registro_diario' ? 'menuSeleccionado' : '')" ui-sref="alumno_estados">REGISTO DIARIO</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'  && !bot" ng-show="alumnoMenu" class="link two"><a ng-class="((stateIn) === 'informacion' ? 'menuSeleccionado' : '')" ui-sref="alumno_informacion">INFORMACIÓN</a></li>
+        <li ng-if="isAuthenticated && type === 'alumno'  && !bot" ng-show="alumnoMenu" class="link three"><a ng-class="((stateIn) === 'historial_estados' ? 'menuSeleccionado' : '')" ui-sref="alumno_historial">HISTORIAL DE ESTADOS</a></li>
 
-        <li ng-if="isAuthenticated && type === 'especialista'"><a ng-class="((stateIn) === 'diagnosticos' ? 'menuSeleccionado' : '')" ui-sref="especialista_diagnosticos">Diagnosticos</a></li>
-        <li ng-if="isAuthenticated && type === 'especialista'"><a ng-class="((stateIn) === 'mis_pacientes' ? 'menuSeleccionado' : '')" ui-sref="especialista_pacientes">Mis pacientes</a></li>
-        <li ng-if="isAuthenticated && type === 'especialista'"><a ng-class="((stateIn) === 'agenda' ? 'menuSeleccionado' : '')" ui-sref="especialista_agenda">Agenda</a></li>
-        <li><a ui-sref="logout">Cerrar sesion</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'"><a ng-class="((stateIn) === 'diagnosticos' ? 'menuSeleccionado' : '')" ui-sref="especialista_diagnosticos">DIAGNÓSTICOS</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'"><a ng-class="((stateIn) === 'mis_pacientes' ? 'menuSeleccionado' : '')" ui-sref="especialista_pacientes">MIS PACIENTES</a></li>
+        <li ng-if="isAuthenticated && type === 'especialista'"><a ng-class="((stateIn) === 'agenda' ? 'menuSeleccionado' : '')" ui-sref="especialista_agenda">AGENDA</a></li>
+        <li><a ui-sref="logout">CERRAR SESIÓN</a></li>
       </ul>
       <a data-activates="main-menu-mobile" class="button-collapse"><i class="large material-icons">menu</i></a>
 
