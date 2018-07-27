@@ -87,7 +87,7 @@
     </div>
   </div>
   </div>
-  <div id="demoModal" class="modal" >
+  <div id="demoModal" class="modal modal-fixed-footer modalConsejo" >
     <div class="modal-content modalTitulo center">
         <h4>¿Está seguro que lo desea eliminar?</h4>
         <p>{{objModificar.titulo}}</p>
@@ -95,11 +95,11 @@
     </div>
     <div class="modal-footer">
         <div class="row sinEspacio center">
-        <div class="col s12 m6 l6 ">
-        <a ui-sref="admin_listado_consejos" class="modal-action modal-close btn botonGeneral flotarIzq">Volver</a>
+       <div class="col s6 m6 l6 ">
+        <a ui-sref="admin_listado_consejos" class="modal-action modal-close centrarBoton btn botonGeneral flotarIzq ">Volver</a>
         </div>
-        <div class="col s12 m6 l6 ">
-        <a ng-click="borrarConsejo()" class="modal-action modal-close btn botonGeneral">Aceptar</a>
+       <div class="col s6 m6 l6 ">
+        <a ng-click="borrarConsejo()" class="modal-action modal-close btn centrarBoton botonGeneral ">Aceptar</a>
         </div>
 
         </div>

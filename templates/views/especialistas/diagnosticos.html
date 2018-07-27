@@ -173,17 +173,17 @@
       </div>
     </div>
   </div>
-  <div id="demoModal" class="modal">
+  <div id="demoModal" class="modal modal-fixed-footer">
     <div class="modal-content modalTitulo center">
-      <h4>Esta seguro que desea agregar a {{datos.nombre}}</h4>
+      <h4>¿Está seguro que desea agregar a {{datos.nombre}}?</h4>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer otroF">
       <div class="row sinEspacio center">
-        <div class="col s6 m6 l6 ">
-          <a class="modal-action modal-close btn botonGeneral">No agregar</a>
+        <div class="col s12 m12 l12 ">
+          <a class="modal-action modal-close btn centrarBoton botonGeneral">No agregar</a>
         </div>
-        <div class="col s6 m6 l6 ">
-          <a ng-click="guardarAMisPacientes(datos.idAlumno, datos.idDiagnostico, datos.nombre)" class="modal-action modal-close btn botonGeneral">Agregar a mis pacientes</a>
+        <div class="col s12 m12 l12 ">
+          <a ng-click="guardarAMisPacientes(datos.idAlumno, datos.idDiagnostico, datos.nombre)" class="modal-action modal-close btn botonGeneral centrarBoton">Agregar a mis pacientes</a>
         </div>
       </div>
     </div>
