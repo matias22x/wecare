@@ -155,6 +155,20 @@ angular.module('wecareApp')
       $scope.datosADeshabilitar = objeto;
     }
 
+    $scope.selectParaDesvincular = function(alumno) {
+      $scope.alumnoADesvincular = alumno;
+    }
+
+    $scope.desvincularEspecialistaAsociado = function() {
+      $scope.alumnoADesvincular.especialistaAsociado = "";
+      $scope.alumnoADesvincular.chatbot = true;
+
+      alumnoService.putAlumnoById($scope.alumnoADesvincular._id, $scope.alumnoADesvincular)
+      .then(function() {
+        $state.reload();
+      }).catch($log.error);
+    }
+
     $scope.deshabilitar = function() {
       var cambio;
       userService.getUser($scope.datosADeshabilitar.user)

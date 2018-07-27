@@ -60,6 +60,7 @@
                           <a tooltipped data-position="left" data-tooltip="Editar Alumno" class="waves-effect waves-light btn-small btn-floating botonEdit" ui-sref="admin_editar_alumno({id: alumno._id})"><i class="material-icons">edit</i></a>
                           <a tooltipped data-position="left" data-tooltip="Deshabilitar Alumno" ng-if="alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">block</i></a>
                           <a tooltipped data-position="left" data-tooltip="Habilitar Alumno" ng-if="!alumno.habilitado" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='demoModal' modal><i class="material-icons" ng-click="selectToDisable(alumno)">add</i></a>
+                          <a tooltipped data-position="left" data-tooltip="Desvincular especialista" ng-if="alumno.especialistaAsociado && !alumno.chatbot" class="waves-effect waves-light btn-small btn-floating botonClear " data-target='especialistaAsociadoModal' modal><i class="material-icons" ng-click="selectParaDesvincular(alumno)">lock_open</i></a>
                         </td>
                       </tr>
                     </tbody>
@@ -88,6 +89,22 @@
         </div>
         <div class="col s6 m6 l6 ">
           <a ng-click="deshabilitar()" class="modal-action modal-close btn botonGeneral">Aceptar</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div id="especialistaAsociadoModal" class="modal">
+    <div class="modal-content modalTitulo center">
+      <h4>¿Está seguro que desea desvincular de su especialista asociado a {{alumnoADesvincular.nombre}}?</h4>
+    </div>
+    <div class="modal-footer">
+      <div class="row sinEspacio center">
+        <div class="col s6 m6 l6 ">
+          <a class="modal-action modal-close btn botonGeneral flotarIzq">Volver</a>
+        </div>
+        <div class="col s6 m6 l6 ">
+          <a ng-click="desvincularEspecialistaAsociado()" class="modal-action modal-close btn botonGeneral">Aceptar</a>
         </div>
 
       </div>
