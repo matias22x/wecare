@@ -1286,7 +1286,13 @@ nav.nav-center ul li { letter-spacing: 0.5px; }
     border: 2px solid #ff8500;
      }
 
+.cajaAlumno h4 { font-size: 25px; }
 
+.slider .slides li .caption {
+    
+    top: 11% !important;
+  
+}
 
 
 h4 .title-bg {background-color:  #ff8500;
