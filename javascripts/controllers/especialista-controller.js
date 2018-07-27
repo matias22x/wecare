@@ -853,7 +853,8 @@ angular.module('wecareApp')
 
     var modalMjs = $document.find('#demoModal').modal();
     var errorMjs = $document.find('#errorModal').modal();
-    turnoService.getTurno($stateParams.id)
+    var id = $stateParams.id;
+    turnoService.getTurno(id)
       .then(function(turno) {
         $scope.turno = turno.data;
         alumnoService.getAlumno($scope.turno.alumno)
