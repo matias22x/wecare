@@ -2752,7 +2752,7 @@ ul.stepper .step-actions {
 
 
 @media screen and (max-width: 900px) and (min-width: 599px) {
-.esp { padding-left: 50px !important; }
+.esp { padding-left: 60px !important; }
 }
 
 
@@ -3140,7 +3140,7 @@ text.circle-chart__subline { font-size: 15px;
 
 
 .miniEstilo { font-weight: bold;
-    color: #ff8500;
+    color: #00a9ff;
     /* padding-left: 15px; */
     /* padding-top: 15px; */
     /* padding-bottom: 15px; */
@@ -3170,13 +3170,20 @@ text.circle-chart__subline { font-size: 15px;
   width: 100%;
   margin-bottom: -225px;
 }
-@media (min-width: 700px) {
-  .chart {
+@media (min-width: 700px)
+{ .chart {
+    height: 200px !important;
+   
+} }
 
-    height: 425px;
-    margin: 0 auto emCalc(-32px);
-  }
-}
+
+.esta img { width: 80px; }
+.esta label { font-size: 20px; 
+    font-weight: bold;
+    color: #ff8500;}
+
+
+.est { margin-top: 225px !important; }
 .chart li {
   display: block;
   height: 125px;
