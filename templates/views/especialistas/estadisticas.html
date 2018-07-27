@@ -6,7 +6,7 @@
 
           <div class="contenidoBordeGris">
 
-            <h5 class="center tituloConCeleste titAparte"">Estadísticas del Paciente {{alumno.nombre}}</h5>
+            <h5 class="center tituloConCeleste titAparte">Estadísticas del Paciente {{alumno.nombre}}</h5>
             <div class="row cuadro01 claseImportante">
               <div class="col s12 l3 m3">
 
@@ -58,23 +58,23 @@
     <h4>Estados de ánimo</h4>
 <div class="row">
 <div  class="col l3 m6 s6 esta center">
-<img src="img/happy.png" /><br>
+<img  tooltipped data-position="left" data-delay="250" data-tooltip="Feliz" src="img/happy.png" /><br>
 <label>{{porcentajeContento}} %</label>
 </div>
 <div  class="col l3 m6 s6 esta center">
-<img src="img/confused.png" /><br>
+<img  tooltipped data-position="left" data-delay="250" data-tooltip="Neutral" src="img/confused.png" /><br>
 <label>{{porcentajeNeutral}} %</label>
 </div>
 <div  class="col l3 m6 s6 esta center">
-<img src="img/sad.png" /><br>
+<img  tooltipped data-position="left" data-delay="250" data-tooltip="Triste" src="img/sad.png" /><br>
 <label>{{porcentajeEnojado}} %</label>
 </div>
 <div  class="col l3 m6 s6 esta center">
-<img src="img/angry.png" /><br>
+<img  tooltipped data-position="left" data-delay="250" data-tooltip="Enojado" src="img/angry.png" /><br>
 <label>{{porcentajeTriste}} %</label>
 </div>
 </div>
-   
+
 </div>
 
 <div class="col s12 m12 l12">
@@ -107,7 +107,7 @@
               </div>
   <div class="card-action cardBorder">
             <div class="row center">
-            
+
               <div class="col s12 m6 l6 espArriba">
                 <button ui-sref="especialista_pacientes" class="modal-action modal-close btn botonGeneral"><i class="material-icons left">keyboard_arrow_left</i>Volver</button>
               </div>
@@ -115,14 +115,14 @@
               <button class="waves-effect waves-light btn botonGeneral btn-small" style="margin: 0 auto; display:block; text-align: center; width: 250px;" ui-sref="especialista_turno({id: alumno._id})"><i class="material-icons left">add</i>Asignar turno</button>
               </div>
               </div>
-            
+
 
 
           </div>
 
             </div>
 
-           
+
           </div>
         </div>
       </div>
