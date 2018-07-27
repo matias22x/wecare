@@ -262,7 +262,9 @@ angular.module('wecareApp')
 
 
     $scope.informacionAlumno = function(diagnostico) {
+      console.log(diagnostico);
       $scope.informacion.diagnostico = diagnostico;
+      if(diagnostico && diagnostico.dniAlumno){
       alumnoService.getAlumnoByDni(diagnostico.dniAlumno)
         .then(function(alumno) {
           $scope.informacion.diagnostico.alumno = alumno.data[0];
@@ -276,6 +278,7 @@ angular.module('wecareApp')
             $scope.informacion.diagnostico.puntuacionDeGravedad = 'Urgente'
           }
         }).catch($log.error);
+      }
     }
     $scope.agregarAMisPacientes = function(idAlumno, idDiagnostico, datosNombre) {
       $scope.datos = {
@@ -293,11 +296,13 @@ angular.module('wecareApp')
           $scope.informacion.diagnostico.alumno.especialistaAsociado = userData.get('datosRol')._id;
           diagnosticoPrematuroService.putDiagnosticoPrematuroById(idDiagnostico, diagnostico.data)
             .then(function(diagnosticoPrematuro) {
-              return alumnoService.putAlumnoById(idAlumno, $scope.informacion.diagnostico.alumno);
-            })
-            .then(function() {
-              $scope.cambiarDiagnosticoAVisto(idDiagnostico);
+              alumnoService.putAlumnoById(idAlumno, $scope.informacion.diagnostico.alumno)
+              .then(function() {
+                console.log('llego a cambiar a visto');
+                $scope.cambiarDiagnosticoAVisto(idDiagnostico);
+              }).catch($log.error);
             }).catch($log.error);
+
         }).catch($log.error);
 
     }
@@ -318,6 +323,7 @@ angular.module('wecareApp')
             })
             $scope.diagnosticosPrematuros = $filter('orderBy')($scope.diagnosticosPrematuros, "gravedad", true);
             if($scope.diagnosticosPrematuros){
+              console.log('llego hasta info alumno');
               $scope.informacionAlumno($scope.diagnosticosPrematuros[0]);
             }else{
               $scope.informacion.diagnostico = null;
@@ -851,12 +857,13 @@ angular.module('wecareApp')
     turnoService.getTurno(id)
       .then(function(turno) {
         $scope.turno = turno.data;
-        return alumnoService.getAlumno($scope.turno.alumno);
-      })
-      .then(function(alumno) {
-        $scope.alumno = alumno.data;
-      })
-      .catch($log.error);
+        alumnoService.getAlumno($scope.turno.alumno)
+        .then(function(alumno) {
+          $scope.alumno = alumno.data;
+        })
+        .catch($log.error);
+      }).catch($log.error);
+
 
       $scope.finalizarSesion = function() {
         if (!$scope.turno.sesion || !$scope.turno.sesion.observaciones) {
