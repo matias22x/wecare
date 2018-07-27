@@ -88,11 +88,11 @@
       </ul>
 
 
-      <ul id="main-menu-mobile" class="side-nav">
+      <ul id="main-menu-mobile" class="side-nav" style="z-index:3;">
         <div class="user-view">
-          <li ng-if="isAuthenticated && type === 'admin'" class="link" ><a ng-class="((stateIn) === 'admin_user' ? 'menuSeleccionado' : '')" ui-sref="admin_user" ><i class="material-icons">account_circle</i>{{nombre}}</a></li>
-          <li ng-if="isAuthenticated && type === 'alumno'" class="link" ><a ng-class="((stateIn) === 'alumno_user' ? 'menuSeleccionado' : '')" ui-sref="alumno_user"><i class="material-icons">account_circle</i>{{nombre}}</a></li>
-          <li ng-if="isAuthenticated && type === 'especialista'" class="link" ><a  ng-class="((stateIn) === 'especialista_user' ? 'menuSeleccionado' : '')" ui-sref="especialista_user"><i class="material-icons">account_circle</i>{{nombre}}</a></li>
+          <a ng-if="isAuthenticated && type === 'admin'" ng-class="((stateIn) === 'admin_user' ? 'menuSeleccionado' : '')" ui-sref="admin_user" ><i class="material-icons">account_circle</i></a>
+          <a ng-if="isAuthenticated && type === 'alumno'" ng-class="((stateIn) === 'alumno_user' ? 'menuSeleccionado' : '')" ui-sref="alumno_user"><i class="material-icons">account_circle</i></a>
+          <a ng-if="isAuthenticated && type === 'especialista'" ng-class="((stateIn) === 'especialista_user' ? 'menuSeleccionado' : '')" ui-sref="especialista_user"><i class="material-icons">account_circle</i></a>
           <h5>{{nombre}}</h5>
         </div>
         <li ng-if="isAuthenticated && type === 'admin'" ><a ng-class="((stateIn) === 'especialistas_abm' ? 'menuSeleccionado' : '')" ui-sref="admin_listado_especialistas">Especialistas</a></li>

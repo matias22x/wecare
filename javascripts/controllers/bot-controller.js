@@ -27,7 +27,6 @@ angular.module('wecareApp')
     alumnoService.getAlumnoByUserId(userData.get('user')._id)
       .then(function(resp) {
         $scope.alumno = resp.data[0];
-        console.log($scope.alumno);
         $scope.diagnosticoPrematuro.dniAlumno = resp.data[0].dni;
         $scope.diagnosticoPrematuro.nombreAlumno = resp.data[0].nombre;
       });

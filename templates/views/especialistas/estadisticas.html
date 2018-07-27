@@ -33,7 +33,7 @@
                   </thead>
 
                   <tbody >
-                    
+
                   </tbody>
                 </table>
 
@@ -59,18 +59,18 @@
     <ul class="chart center">
 
   <li class="bar teal" style="height: {{porcentajeContento}}%;" >
-<div class="percent">{{porcentajeContento}}<span>%</span></div>
+<div class="percent">{{porcentajeContento | number: 1}}<span>%</span></div>
 <div class="skill">Contento</div></li>
   <li class="bar salmon" style="height: {{porcentajeNeutral}}%;" >
-<div class="percent"> {{porcentajeNeutral}}<span>%</span></div>
+<div class="percent"> {{porcentajeNeutral | number: 1}}<span>%</span></div>
 <div class="skill">Neutral</div></li>
   <li class="bar peach" style="height: {{porcentajeEnojado}}%;" >
-<div class="percent">{{porcentajeEnojado}}<span>%</span></div>
+<div class="percent">{{porcentajeEnojado | number: 1}}<span>%</span></div>
 <div class="skill">Enojado</div></li>
   <li class="bar lime" style="height: {{porcentajeTriste}}%;">
-<div class="percent">{{porcentajeTriste}}<span>%</span></div>
+<div class="percent">{{porcentajeTriste | number: 1}}<span>%</span></div>
 <div class="skill">Triste</div></li>
- 
+
 </ul>
 </div>
 
@@ -90,7 +90,7 @@
                       </tr>
 
 
-                     
+
                   </thead>
 
                   <tbody>

@@ -229,6 +229,7 @@ font-size: 11px;
 
   #sidenav-overlay {
       background-color: transparent;
+      z-index: 2;
   }
 
 /*****************************************/
@@ -1774,7 +1775,8 @@ span.negrita { font-weight: bold; }
    position: absolute;
    top: 50%;
    margin-top: -31px;
-   z-index: 1;
+   z-index: 2;
+   cursor: pointer;
     }
 
 .prev

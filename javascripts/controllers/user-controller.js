@@ -23,7 +23,6 @@ angular.module('wecareApp')
                 $rootScope.type = userData.get('user').tipo;
                 alumnoService.getAlumnoByUser(userData.get('user')._id)
                 .then(function(datosAlumno) {
-                  console.log(datosAlumno);
                   userData.set('datosRol', datosAlumno.data[0]);
                   $rootScope.bot = userData.get('datosRol').chatbot;
                   $rootScope.nombre = userData.get('datosRol').nombre;
@@ -38,7 +37,6 @@ angular.module('wecareApp')
                     }
 
                   }
-                  //console.log(userData.get('datosRol'));
                 });
 
               }

@@ -6,11 +6,11 @@
         <div class="card-content">
 
         <div class="contenidoBordeAzul">
-    
+
 <div class="slider">
     <ul class="slides">
       <li>
-      <img src="img/fondo02.jpg">
+      <img src="img/fondoPrueba.jpg">
         <div class="caption center-align">
          <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> REGISTROS</span> </h4>
@@ -19,7 +19,7 @@
       </div>
       </li>
       <li>
-      <img src="img/fondo02.jpg">
+      <img src="img/fondoPrueba.jpg">
         <div class="caption center-align">
         <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> REGISTROS</span> </h4>
@@ -28,7 +28,7 @@
       </div>
       </li>
       <li>
-     <img src="img/fondo02.jpg">
+     <img src="img/fondoPrueba.jpg">
         <div class="caption center-align">
          <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> TURNOS</span> </h4>
@@ -38,7 +38,7 @@
       </li>
         </li>
       <li>
-     <img src="img/fondo02.jpg">
+     <img src="img/fondoPrueba.jpg">
         <div class="caption center-align">
          <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> TURNOS</span> </h4>
@@ -47,7 +47,7 @@
       </div>
       </li>
         <li>
-         <img src="img/fondo02.jpg">
+         <img src="img/fondoPrueba.jpg">
           <div class="caption center-align">
             <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> WEBOT</span> </h4>
@@ -56,7 +56,7 @@
           </div>
         </li>
         <li>
-        <img src="img/fondo02.jpg">
+        <img src="img/fondoPrueba.jpg">
           <div class="caption center-align">
             <div class="col s12 cajaAlumno">
               <h4> <span class="title-bg"> WEBOT</span> </h4>
@@ -65,8 +65,8 @@
           </div>
         </li>
      </ul>
-      <div class="arrows prev"></div>
-<div class="arrows next"></div>
+      <div class="arrows prev" onclick="sliderAnt()"></div>
+<div class="arrows next" onclick="sliderSig()"></div>
   </div>
   </div>
   </div>
@@ -176,5 +176,15 @@
 
 
     });
+
+    function sliderSig(){
+      $('.slider').slider('pause');
+      $('.slider').slider('next');
+    }
+
+    function sliderAnt(){
+      $('.slider').slider('pause');
+      $('.slider').slider('prev');
+    }
   </script>
 </main>

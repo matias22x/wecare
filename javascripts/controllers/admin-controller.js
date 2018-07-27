@@ -204,7 +204,6 @@ angular.module('wecareApp')
       if(len != 0){
         for (var first in input.$error) break;
         var error = first;
-        console.log(error);
         switch (error) {
           case 'required':
             $scope[mensaje] = "Este campo es requerido";
@@ -246,7 +245,7 @@ angular.module('wecareApp')
       }else{
         var esp = $scope.alumnoNuevo;
 
-        $scope.usuario.username = esp.username;
+        $scope.usuario.username = $filter('lowercase')(esp.username);
         $scope.usuario.password = esp.password;
         $scope.usuario.email = esp.email;
         $scope.usuario.telefono = esp.telefono;
@@ -336,10 +335,8 @@ angular.module('wecareApp')
           $scope.alumno.fecha_nacimiento = new Date($scope.alumno.fecha_nacimiento.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
           alumnoService.putAlumnoById($scope.alumno._id, $scope.alumno)
             .then(function(resp) {
-                  console.log('LISTO', resp);
                   userService.putUserById($scope.usuario._id, $scope.usuario)
                     .then(function(usuarioModificado) {
-                      console.log('LISTO',usuarioModificado);
                       $location.path("/admin_listado_alumnos");
                     }).catch($log.error);
             }).catch($log.error);
@@ -358,7 +355,6 @@ angular.module('wecareApp')
 
         userService.getUser($scope.alumno.user)
           .then(function(user) {
-            console.log(user);
             $scope.user = user.data;
             $scope.user.createdAt = $filter('date')(new Date($scope.user.createdAt), "EEEE d 'de' LLLL 'de' yyyy");
             $scope.user.updatedAt = $filter('date')(new Date($scope.user.updatedAt), "EEEE d 'de' LLLL 'de' yyyy");
@@ -385,7 +381,6 @@ angular.module('wecareApp')
       $scope.user.habilitado = false;
       userService.putUserById($scope.user._id, $scope.user)
         .then(function(usuarioModificado) {
-          console.log('LISTO',usuarioModificado);
           $location.path("/admin_listado_alumnos");
         }).catch($log.error);
     };
@@ -409,7 +404,6 @@ angular.module('wecareApp')
       $scope.user.habilitado = true;
       userService.putUserById($scope.user._id, $scope.user)
         .then(function(usuarioModificado) {
-          console.log('LISTO',usuarioModificado);
           $location.path("/admin_listado_alumnos");
         }).catch($log.error);
     };
@@ -466,7 +460,6 @@ angular.module('wecareApp')
               $scope.listaCompleta.push(value);
           })
           $scope.listadoEspecialistas = $scope.listaCompleta;
-          console.log($scope.listadoEspecialistas);
           $scope.paginInit($scope.listadoEspecialistas);
         }).catch($log.error);
 
@@ -598,7 +591,7 @@ angular.module('wecareApp')
       }else{
         var esp = $scope.especialistaNuevo;
 
-          $scope.usuario.username = esp.username;
+          $scope.usuario.username = $filter('lowercase')(esp.username);
           $scope.usuario.password = esp.password;
           $scope.usuario.email = esp.email;
           $scope.usuario.telefono = esp.telefono;
@@ -684,10 +677,8 @@ angular.module('wecareApp')
           $scope.especialista.fecha_nacimiento = new Date($scope.especialista.fecha_nacimiento.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
           especialistaService.putEspecialistaById($scope.especialista._id, $scope.especialista)
             .then(function(resp) {
-              console.log('LISTO', resp);
               userService.putUserById($scope.usuario._id, $scope.usuario)
                 .then(function(usuarioModificado) {
-                  console.log('LISTO',usuarioModificado);
                   $location.path("/admin_listado_especialistas");
                 }).catch($log.error);
             }).catch($log.error);
@@ -702,13 +693,11 @@ angular.module('wecareApp')
 
     especialistaService.getEspecialista(id)
       .then(function(especialista) {
-        console.log(especialista);
         $scope.especialista = especialista.data;
         $scope.especialista.fecha_nacimiento = $filter('date')(new Date($scope.especialista.fecha_nacimiento), "EEEE d 'de' LLLL 'de' yyyy");
 
         userService.getUser($scope.especialista.user)
           .then(function(user) {
-            console.log(user);
             $scope.user = user.data;
             $scope.user.createdAt = $filter('date')(new Date($scope.user.createdAt), "EEEE d 'de' LLLL 'de' yyyy");
             $scope.user.updatedAt = $filter('date')(new Date($scope.user.updatedAt), "EEEE d 'de' LLLL 'de' yyyy");
@@ -732,12 +721,9 @@ angular.module('wecareApp')
       var userId = $scope.especialista.user;
       especialistaService.deleteEspecialistaById(id)
         .then(function() {
-          console.log('userId', userId);
           return userService.deleteUserById(userId);
         })
         .then(function(userEliminado) {
-          console.log(userEliminado.data);
-          console.log('LISTO', userEliminado);
           $location.path("/admin_listado_especialistas");
         })
         .catch($log.error);
@@ -801,7 +787,6 @@ angular.module('wecareApp')
 
     consejosService.getAllConsejos()
       .then(function(consejo) {
-        console.log(consejo);
         $scope.listaCompleta = consejo.data;
         $scope.listadoConsejos = consejo.data;
 
@@ -895,7 +880,6 @@ angular.module('wecareApp')
 
           consejosService.putConsejosById($scope.consejo._id, $scope.consejo)
             .then(function(resp) {
-              console.log('LISTO', resp);
               $location.path("/admin_listado_consejos");
             }).catch($log.error);
 
@@ -927,8 +911,6 @@ angular.module('wecareApp')
       var id = $scope.consejo._id;
       consejosService.deleteConsejosById(id)
         .then(function(consejoEliminado) {
-          console.log(consejoEliminado.data);
-          console.log('LISTO', consejoEliminado);
           $location.path("/admin_listado_consejos");
         })
         .catch($log.error);
@@ -1058,9 +1040,7 @@ angular.module('wecareApp')
     noticiasService.getNoticias(id)
       .then(function(noticiaAModificar) {
         $scope.noticia = noticiaAModificar.data;
-        console.log($scope.noticia);
       }).catch($log.error);
-
 
       $scope.submit = function() {
 

@@ -9,7 +9,7 @@ angular.module('turnoService', []).service('turnoService', function($http, confi
             return $http.get(config.api_url + '/api/turnos');
         },
         getProximosTurnosByPaciente: function(userId, fecha, cantidad) {
-            return $http.get(config.api_url + '/api/turnos?conditions={"$and":[{"alumno":"' + userId + '"},{"horario":{"$gte": "' + fecha + '"}}]}&limit=' + cantidad);
+            return $http.get(config.api_url + '/api/turnos?conditions={"$and":[{"alumno":"' + userId + '"},{"horario":{"$gte": "' + fecha + '"}}]}');
         },
         putTurnoById: function(requestId, data) {
             return $http.put(config.api_url + '/api/turnos/' + requestId, data);
