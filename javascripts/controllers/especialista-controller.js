@@ -607,7 +607,6 @@ angular.module('wecareApp')
           $scope.porcentajeEnojado = 0;
           $scope.porcentajeTriste = 0 ;
         }
-        console.log('contento '+$scope.porcentajeContento+'% '+'neutral '+$scope.porcentajeNeutral+'% '+'enojado '+$scope.porcentajeEnojado+'% '+'triste '+$scope.porcentajeTriste+'%');
       })
 
     $scope.filtrarFecha = function(desde, hasta, alumnoId) {
@@ -634,7 +633,7 @@ angular.module('wecareApp')
           $scope.porcentajeTriste = 0 ;
         }
 
-        console.log('contento '+$scope.porcentajeContento+'% '+'neutral '+$scope.porcentajeNeutral+'% '+'enojado '+$scope.porcentajeEnojado+'% '+'triste '+$scope.porcentajeTriste+'%');
+
       })
     }
 
@@ -839,7 +838,6 @@ angular.module('wecareApp')
       .then(function(dataAlumnos) {
         $scope.alumnosEspecialista = dataAlumnos.data;
         $scope.alumnosEspecialistaCompleta = dataAlumnos.data;
-        console.log($scope.alumnosEspecialista);
         $scope.paginInit($scope.alumnosEspecialista);
       }).catch($log.error);
 
