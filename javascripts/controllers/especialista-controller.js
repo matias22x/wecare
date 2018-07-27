@@ -118,6 +118,15 @@ angular.module('wecareApp')
     $scope.turnosDeHoy = {};
     $scope.turnos = {};
 
+    var fechaInicio = new Date();
+    fechaInicio.setHours(0,0,0,0);
+    var fechaFin = new Date();
+    fechaFin.setDate(fechaInicio.getFullYear() + 10);
+    fechaFin.setHours(0,0,0,0);
+    console.log('fechaInicio', fechaInicio);
+    console.log('fechaFin', fechaFin);
+
+
     turnoService.getTurnosdeHoyEspecialista(userData.get('datosRol')._id)
       .then(function(turnosDeHoy) {
         $scope.turnosDeHoy = turnosDeHoy.data;
@@ -130,7 +139,8 @@ angular.module('wecareApp')
       })
       .catch($log.error);
 
-    turnoService.getTurnosEspecialista(userData.get('datosRol')._id)
+
+    turnoService.getTurnosEspecialistaPorFecha(userData.get('datosRol')._id, fechaInicio, fechaFin)
       .then(function(turnos) {
         $scope.turnosListaCompleta = turnos.data
         $scope.turnos = turnos.data;
@@ -933,7 +943,7 @@ angular.module('wecareApp')
         }
 
         var TurnosPromises = listadoTurnos.map(function(item) {
-          return turnoService.getTurnoPorFecha(item)
+          return turnoService.getTurnoPorFechaDeEspecialista(item, userData.get('datosRol')._id)
           .then(function(resp) {
             if (resp.data.length > 0) {
               return resp.data[0];
