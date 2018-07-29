@@ -80,7 +80,6 @@ wecareApp.run(function($rootScope, userData, $state, $log, $auth, especialistaSe
     } else if ($rootScope.type === 'alumno') {
         alumnoService.getAlumnoByUser(userData.get('user')._id)
         .then(function(datosAlumno) {
-          console.log(datosAlumno);
           userData.set('datosRol', datosAlumno.data[0]);
           $rootScope.bot = userData.get('datosRol').chatbot;
           $rootScope.nombre = userData.get('datosRol').nombre;

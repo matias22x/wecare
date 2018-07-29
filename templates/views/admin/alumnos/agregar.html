@@ -1,4 +1,19 @@
 <main>
+  <div ng-show="loader" class="preloader-background">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="section"></div>
   <div class="container center anchoMinimo">
 
@@ -17,31 +32,31 @@
 
 
           <div class="input-field separaCostado">
-             <input id="username" name="username" type="text" class="validate" ng-model="alumnoNuevo.username" required minlength="4" ng-pattern="/^[a-zA-Z0-9_.-]*$/" ng-keypress="usernameError = false" ng-click="usernameError = false" oninvalid="return false;" autocomplete="off" />
+             <input id="username" name="username" type="text" class="validate" ng-model="alumnoNuevo.username" required minlength="4" ng-pattern="/^[a-zA-Z0-9_.-]*$/" ng-keypress="usernameError = false; mostrarMensajeError = false;" ng-click="usernameError = false; mostrarMensajeError = false;" oninvalid="return false;" autocomplete="off" />
         <label for="username">Nombre de Usuario</label>
         <span style=" color:red;" id="usernameErrorSpan" ng-show="usernameError" >{{usernameErrorMensaje}}</span>
           </div>
 
           <div class="input-field separaCostado">
-            <input id="email" name="email" type="email" class="validate" ng-model="alumnoNuevo.email"  required ng-keypress="emailError = false" ng-click="emailError = false" oninvalid="return false;" autocomplete="off" />
+            <input id="email" name="email" type="email" class="validate" ng-model="alumnoNuevo.email"  required ng-keypress="emailError = false; mostrarMensajeError = false;" ng-click="emailError = false; mostrarMensajeError = false;" oninvalid="return false;" autocomplete="off" />
         <label for="email">Correo Electrónico</label>
         <span style=" color:red;" id="emailErrorSpan" ng-show="emailError" >{{emailErrorMensaje}}</span>
           </div>
 
           <div class="input-field separaCostado">
-            <input id="dni" name="dni" type="number" class="validate" ng-model="alumnoNuevo.dni" required min='10000000' max='100000000' ng-keypress="dniError = false" ng-click="dniError = false" oninvalid="return false;" autocomplete="off" />
+            <input id="dni" name="dni" type="number" class="validate" ng-model="alumnoNuevo.dni" required min='10000000' max='100000000' ng-keypress="dniError = false; mostrarMensajeError = false;" ng-click="dniError = false; mostrarMensajeError = false;" oninvalid="return false;" autocomplete="off" />
             <label for="dni">Nro de Documento</label>
             <span style=" color:red;" id="dniErrorSpan" ng-show="dniError" >{{dniErrorMensaje}}</span>
           </div>
 
           <div class="input-field separaCostado">
-            <input id="nombre" name="nombre" type="text" class="validate" ng-model="alumnoNuevo.nombre" required minlength="4" ng-pattern="/^[a-zA-Z\s]*$/" ng-keypress="nombreError = false" ng-click="nombreError = false" oninvalid="return false;" autocomplete="off" />
+            <input id="nombre" name="nombre" type="text" class="validate" ng-model="alumnoNuevo.nombre" required minlength="4" ng-pattern="/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/" ng-keypress="nombreError = false" ng-click="nombreError = false" oninvalid="return false;" autocomplete="off" />
         <label for="nombre">Nombre y Apellido</label>
         <span style=" color:red;" id="nombreErrorSpan" ng-show="nombreError" >{{nombreErrorMensaje}}</span>
           </div>
 
           <div class="input-field separaCostado">
-            <input id="direccion" name="direccion" type="text" class="validate" ng-model="alumnoNuevo.direccion" required minlength="4" ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-keypress="direccionError = false" ng-click="direccionError = false" oninvalid="return false;" autocomplete="off" />
+            <input id="direccion" name="direccion" type="text" class="validate" ng-model="alumnoNuevo.direccion" required minlength="4" ng-pattern="/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s]*$/" ng-keypress="direccionError = false" ng-click="direccionError = false" oninvalid="return false;" autocomplete="off" />
             <label for="direccion">Dirección</label>
             <span style=" color:red;" id="direccionErrorSpan" ng-show="direccionError" >{{direccionErrorMensaje}}</span>
           </div>
@@ -60,7 +75,7 @@
       </div>
 
 
-          <div class="input-field separaCostado">
+          <div class="input-field separaCostado" ng-keypress="fechaNacimientoError = false" ng-click="fechaNacimientoError = false">
             <input id="fechaNacimiento" name="fechaNacimiento" type="text" class="validate datepicker" required ng-model="alumnoNuevo.fecha_nacimiento" ng-keypress="fechaNacimientoError = false" ng-click="fechaNacimientoError = false" oninvalid="return false;" autocomplete="off" />
             <label for="fechaNacimiento">Fecha de Nacimiento</label>
             <span style=" color:red;" id="fechaNacimientoErrorSpan" ng-show="fechaNacimientoError" >{{fechaNacimientoErrorMensaje}}</span>
@@ -94,14 +109,16 @@
           </div>
 
           </form>
-
+          <div ng-show="mostrarMensajeError" class="col s12">
+            <p style="color: red; text-align: center;">{{mensajeError}}</p>
+          </div>
 
 
 
 
               <div ng-show="mensajeErrorIncompleto" class="col s12">
-  <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
-</div>
+                <p style="color: red; text-align: center;">Hay campos incompletos, vuelva a rellenar</p>
+              </div>
 
           </div>
         </div>

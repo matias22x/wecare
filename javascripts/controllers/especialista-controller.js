@@ -123,9 +123,6 @@ angular.module('wecareApp')
     var fechaFin = new Date();
     fechaFin.setDate(fechaInicio.getFullYear() + 10);
     fechaFin.setHours(0,0,0,0);
-    console.log('fechaInicio', fechaInicio);
-    console.log('fechaFin', fechaFin);
-
 
     turnoService.getTurnosdeHoyEspecialista(userData.get('datosRol')._id)
       .then(function(turnosDeHoy) {
@@ -272,7 +269,6 @@ angular.module('wecareApp')
 
 
     $scope.informacionAlumno = function(diagnostico) {
-      console.log(diagnostico);
       $scope.informacion.diagnostico = diagnostico;
       if(diagnostico && diagnostico.dniAlumno){
       alumnoService.getAlumnoByDni(diagnostico.dniAlumno)
@@ -308,7 +304,6 @@ angular.module('wecareApp')
             .then(function(diagnosticoPrematuro) {
               alumnoService.putAlumnoById(idAlumno, $scope.informacion.diagnostico.alumno)
               .then(function() {
-                console.log('llego a cambiar a visto');
                 $scope.cambiarDiagnosticoAVisto(idDiagnostico);
               }).catch($log.error);
             }).catch($log.error);
@@ -333,7 +328,6 @@ angular.module('wecareApp')
             })
             $scope.diagnosticosPrematuros = $filter('orderBy')($scope.diagnosticosPrematuros, "gravedad", true);
             if($scope.diagnosticosPrematuros){
-              console.log('llego hasta info alumno');
               $scope.informacionAlumno($scope.diagnosticosPrematuros[0]);
             }else{
               $scope.informacion.diagnostico = null;

@@ -231,6 +231,7 @@ angular.module('wecareApp')
 
 
     $scope.submit = function() {
+      $scope.loader = true;
       if(!$scope.form.$valid){
         $scope.validadInput($scope.form.username, 'usernameErrorMensaje', 'usernameError', 4, null, 'letras y numeros');
         $scope.validadInput($scope.form.email, 'emailErrorMensaje', 'emailError', null, null, null);
@@ -240,8 +241,8 @@ angular.module('wecareApp')
         $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
         $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
         $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
-        $scope.validadInput($scope.form.password, 'passwordErrorMensaje', 'passwordError', 4, null, 'letras, nuemros, espacios, guion bajo, guion alto y puntos');
-
+        $scope.validadInput($scope.form.password, 'passwordErrorMensaje', 'passwordError', 4, null, 'letras, numeros, espacios, guion bajo, guion alto y puntos');
+        $scope.loader = false;
       }else{
         var esp = $scope.alumnoNuevo;
 
@@ -256,15 +257,37 @@ angular.module('wecareApp')
         $scope.alumnoDatos.direccion = esp.direccion;
         $scope.alumnoDatos.curso = esp.curso;
         $scope.alumnoDatos.fecha_nacimiento = new Date($scope.form.fechaNacimiento.$viewValue.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
-
-        userService.postUser($scope.usuario)
-          .then(function(user) {
-            $scope.alumnoDatos.user = user.data;
-            $scope.alumnoDatos.user = user.data._id;
-            return alumnoService.postAlumno($scope.alumnoDatos);
-          }).then(function(alumno) {
-            $location.path("/admin_listado_alumnos");
-          }).catch($log.error);
+        userService.getUserVerify($scope.usuario.username, $scope.usuario.email)
+        .then(function(verify) {
+          if(verify.data[0]){
+            if($scope.usuario.email==verify.data[0].email){
+              $scope.mensajeError = "el email "+$scope.usuario.email+" ya se encuentra en uso, intente con otro";
+            }
+            if($scope.usuario.username==verify.data[0].username){
+              $scope.mensajeError = "el nombre de usuario "+$scope.usuario.username+" ya se encuentra en uso y no puede repetirse";
+            }
+            $scope.mostrarMensajeError = true;
+            $scope.loader = false;
+          }else{
+            alumnoService.getAlumnoByDni($scope.alumnoDatos.dni)
+            .then(function(verifydni) {
+              if(verifydni.data[0]){
+                $scope.mensajeError = "el dni "+$scope.alumnoDatos.dni+" ya se encuentra en uso y no puede repetirse";
+                $scope.mostrarMensajeError = true;
+                $scope.loader = false;
+              }else{
+                userService.postUser($scope.usuario)
+                  .then(function(user) {
+                    $scope.alumnoDatos.user = user.data;
+                    $scope.alumnoDatos.user = user.data._id;
+                    return alumnoService.postAlumno($scope.alumnoDatos);
+                  }).then(function(alumno) {
+                    $location.path("/admin_listado_alumnos");
+                  }).catch(function() {$scope.loader = false; $log.error;});
+              }
+              }).catch(function() {$scope.loader = false; $log.error; });
+          }
+        }).catch(function() {$scope.loader = false; $log.error;});
 
       }
 
@@ -281,7 +304,7 @@ angular.module('wecareApp')
       .then(function(alumnoAModificar) {
         $scope.alumno = alumnoAModificar.data;
         $scope.alumno.dni= parseInt($scope.alumno.dni);
-        $scope.alumno.fecha_nacimiento = $filter('date')(new Date($scope.alumno.fecha_nacimiento), "dd MMMM, yyyy") ;
+        $scope.fecha_nacimiento = $filter('date')(new Date($scope.alumno.fecha_nacimiento), "dd MMMM, yyyy") ;
         userService.getUser($scope.alumno.user)
           .then(function(usuarioAModificar) {
             $scope.usuario = usuarioAModificar.data;
@@ -324,6 +347,9 @@ angular.module('wecareApp')
       }
 
       $scope.submit = function() {
+        $scope.datoAlumnoRepetido = false;
+        $scope.datoUserRepetido = false;
+        $scope.loader = true;
         if(!$scope.form.$valid){
           $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
           $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
@@ -331,15 +357,64 @@ angular.module('wecareApp')
           $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
           $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
           $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
+          $scope.validadInput($scope.form.password, 'passwordErrorMensaje', 'passwordError', 4, null, 'letras, numeros, espacios, guion bajo, guion alto y puntos');
         }else{
-          $scope.alumno.fecha_nacimiento = new Date($scope.alumno.fecha_nacimiento.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
-          alumnoService.putAlumnoById($scope.alumno._id, $scope.alumno)
-            .then(function(resp) {
-                  userService.putUserById($scope.usuario._id, $scope.usuario)
-                    .then(function(usuarioModificado) {
-                      $location.path("/admin_listado_alumnos");
+          $scope.alumno.fecha_nacimiento = new Date($scope.fecha_nacimiento.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+
+          userService.getUserVerify($scope.usuario.username, $scope.usuario.email)
+          .then(function(verify) {
+            angular.forEach(verify.data, function(value, key) {
+              if(value._id!=$scope.usuario._id){
+                $scope.datoUserRepetido = true;
+              }
+            });
+            if($scope.datoUserRepetido){
+              if($scope.usuario.email==verify.data[0].email){
+                $scope.mensajeError = "el email "+$scope.usuario.email+" ya se encuentra en uso, intente con otro";
+              }
+              if($scope.usuario.username==verify.data[0].username){
+                $scope.mensajeError = "el nombre de usuario "+$scope.usuario.username+" ya se encuentra en uso y no puede repetirse";
+              }
+              $scope.mostrarMensajeError = true;
+              $scope.loader = false;
+            }else{
+              alumnoService.getAlumnoByDni($scope.alumno.dni)
+              .then(function(verifydni) {
+                angular.forEach(verifydni.data, function(value2, key2) {
+                  if(value2._id!=$scope.alumno._id){
+                    $scope.datoAlumnoRepetido = true;
+                  }
+                });
+                if($scope.datoAlumnoRepetido){
+                  $scope.mensajeError = "el dni "+$scope.alumno.dni+" ya se encuentra en uso y no puede repetirse";
+                  $scope.mostrarMensajeError = true;
+                  $scope.loader = false;
+                }else{
+                  alumnoService.putAlumnoById($scope.alumno._id, $scope.alumno)
+                    .then(function(resp) {
+                      if($scope.passwordNuevo && $scope.passwordNuevo!=""){
+                        $scope.usuario.password = $scope.passwordNuevo;
+                      }
+                      userService.putUserById($scope.usuario._id, $scope.usuario)
+                        .then(function(usuarioModificado) {
+                          $location.path("/admin_listado_alumnos");
+                        }).catch($log.error);
                     }).catch($log.error);
-            }).catch($log.error);
+                }
+                }).catch(function() {$scope.loader = false; $log.error; });
+            }
+          }).catch(function() {$scope.loader = false; $log.error;});
+
+          /*alumnoService.putAlumnoById($scope.alumno._id, $scope.alumno)
+            .then(function(resp) {
+              if($scope.passwordNuevo && $scope.passwordNuevo!=""){
+                $scope.usuario.password = $scope.passwordNuevo;
+              }
+              userService.putUserById($scope.usuario._id, $scope.usuario)
+                .then(function(usuarioModificado) {
+                  $location.path("/admin_listado_alumnos");
+                }).catch($log.error);
+            }).catch($log.error);*/
         }
 }
 
@@ -538,6 +613,8 @@ angular.module('wecareApp')
   })
   .controller('agregarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $filter, $log, $http, $translate, $location, config, especialistaService, userService, moment) {
     $rootScope.stateIn = "especialistas_abm";
+    $scope.mostrarMensajeError = false;
+    $scope.loader = false;
     $scope.especialistaNuevo = {};
     $scope.usuario = {};
     $scope.especialistaDatos = {};
@@ -577,6 +654,7 @@ angular.module('wecareApp')
 
 
     $scope.submit = function() {
+      $scope.loader = true;
       if(!$scope.form.$valid){
 
         $scope.validadInput($scope.form.username, 'usernameErrorMensaje', 'usernameError', 4, null, 'letras y numeros');
@@ -586,8 +664,8 @@ angular.module('wecareApp')
         $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
         $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
         $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
-        $scope.validadInput($scope.form.password, 'passwordErrorMensaje', 'passwordError', 4, null, 'letras, nuemros, espacios, guion bajo, guion alto y puntos');
-
+        $scope.validadInput($scope.form.password, 'passwordErrorMensaje', 'passwordError', 4, null, 'letras, numeros, espacios, guion bajo, guion alto y puntos');
+        $scope.loader = false;
       }else{
         var esp = $scope.especialistaNuevo;
 
@@ -601,14 +679,38 @@ angular.module('wecareApp')
           $scope.especialistaDatos.nombre = esp.nombre;
           $scope.especialistaDatos.direccion = esp.direccion;
           $scope.especialistaDatos.fecha_nacimiento = new Date($scope.form.fechaNacimiento.$viewValue.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
-          userService.postUser($scope.usuario)
-            .then(function(user) {
-              $scope.especialistaDatos.user = user.data;
-              $scope.especialistaDatos.user = user.data._id;
-              return especialistaService.postEspecialista($scope.especialistaDatos);
-            }).then(function(especialista) {
-              $location.path("/admin_listado_especialistas");
-            }).catch($log.error);
+          userService.getUserVerify($scope.usuario.username, $scope.usuario.email)
+          .then(function(verify) {
+            if(verify.data[0]){
+              if($scope.usuario.email==verify.data[0].email){
+                $scope.mensajeError = "el email "+$scope.usuario.email+" ya se encuentra en uso, intente con otro";
+              }
+              if($scope.usuario.username==verify.data[0].username){
+                $scope.mensajeError = "el nombre de usuario "+$scope.usuario.username+" ya se encuentra en uso y no puede repetirse";
+              }
+              $scope.mostrarMensajeError = true;
+              $scope.loader = false;
+            }else{
+              especialistaService.getEspecialistaVerify($scope.especialistaDatos.dni)
+              .then(function(verifydni) {
+                if(verifydni.data[0]){
+                  $scope.mensajeError = "el dni "+$scope.especialistaDatos.dni+" ya se encuentra en uso y no puede repetirse";
+                  $scope.mostrarMensajeError = true;
+                  $scope.loader = false;
+                }else{
+                  userService.postUser($scope.usuario)
+                    .then(function(user) {
+                      $scope.especialistaDatos.user = user.data;
+                      $scope.especialistaDatos.user = user.data._id;
+                      return especialistaService.postEspecialista($scope.especialistaDatos);
+                    }).then(function(especialista) {
+                      $location.path("/admin_listado_especialistas");
+                    }).catch(function() {$scope.loader = false; $log.error;});
+                }
+                }).catch(function() {$scope.loader = false; $log.error; });
+            }
+          }).catch(function() {$scope.loader = false; $log.error;});
+
 
       }
 
@@ -625,7 +727,7 @@ angular.module('wecareApp')
       .then(function(especialistaAModificar) {
         $scope.especialista = especialistaAModificar.data;
         $scope.especialista.dni= parseInt($scope.especialista.dni);
-        $scope.especialista.fecha_nacimiento = $filter('date')(new Date($scope.especialista.fecha_nacimiento), "dd MMMM, yyyy") ;
+        $scope.fecha_nacimiento = $filter('date')(new Date($scope.especialista.fecha_nacimiento), "dd MMMM, yyyy") ;
         userService.getUser($scope.especialista.user)
           .then(function(usuarioAModificar) {
             $scope.usuario = usuarioAModificar.data;
@@ -667,21 +769,65 @@ angular.module('wecareApp')
       }
 
       $scope.submit = function() {
+        $scope.loader = true;
+        $scope.datoUserRepetido = false;
+        $scope.datoEspecialistaRepetido = false;
         if(!$scope.form.$valid){
+          $scope.validadInput($scope.form.email, 'emailErrorMensaje', 'emailError', null, null, null);
           $scope.validadInput($scope.form.dni, 'dniErrorMensaje', 'dniError', 1000000, 100000000);
           $scope.validadInput($scope.form.nombre, 'nombreErrorMensaje', 'nombreError', 4, null, 'letras y espacios');
           $scope.validadInput($scope.form.direccion, 'direccionErrorMensaje', 'direccionError', 4, null, 'letras, espacios y numeros');
           $scope.validadInput($scope.form.telefono, 'telefonoErrorMensaje', 'telefonoError', 10000000, 10000000000000, 'numeros');
           $scope.validadInput($scope.form.fechaNacimiento, 'fechaNacimientoErrorMensaje', 'fechaNacimientoError', "01-01-1900", $filter('date')($scope.hoy, "dd-MM-yyyy"));
+          $scope.validadInput($scope.form.password, 'passwordErrorMensaje', 'passwordError', 4, null, 'letras, numeros, espacios, guion bajo, guion alto y puntos');
+          $scope.loader = false;
         }else{
-          $scope.especialista.fecha_nacimiento = new Date($scope.especialista.fecha_nacimiento.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
-          especialistaService.putEspecialistaById($scope.especialista._id, $scope.especialista)
-            .then(function(resp) {
-              userService.putUserById($scope.usuario._id, $scope.usuario)
-                .then(function(usuarioModificado) {
-                  $location.path("/admin_listado_especialistas");
-                }).catch($log.error);
-            }).catch($log.error);
+          $scope.especialista.fecha_nacimiento = new Date($scope.fecha_nacimiento.replace("Diciembre", "Dec").replace("Enero", "Jan").replace("Abril", "Apr").replace("Agosto", "Aug").replace("diciembre", "Dec").replace("enero", "Jan").replace("abril", "Apr").replace("agosto", "Aug"));
+
+          userService.getUserVerify($scope.usuario.username, $scope.usuario.email)
+          .then(function(verify) {
+            angular.forEach(verify.data, function(value, key) {
+              if(value._id!=$scope.usuario._id){
+                $scope.datoUserRepetido = true;
+              }
+            });
+            if($scope.datoUserRepetido){
+              if($scope.usuario.email==verify.data[0].email){
+                $scope.mensajeError = "el email "+$scope.usuario.email+" ya se encuentra en uso, intente con otro";
+              }
+              if($scope.usuario.username==verify.data[0].username){
+                $scope.mensajeError = "el nombre de usuario "+$scope.usuario.username+" ya se encuentra en uso y no puede repetirse";
+              }
+              $scope.mostrarMensajeError = true;
+              $scope.loader = false;
+            }else{
+              especialistaService.getEspecialistaVerify($scope.especialista.dni)
+              .then(function(verifydni) {
+                angular.forEach(verifydni.data, function(value2, key2) {
+                  if(value2._id!=$scope.especialista._id){
+                    $scope.datoEspecialistaRepetido = true;
+                  }
+                });
+                if($scope.datoEspecialistaRepetido){
+                  $scope.mensajeError = "el dni "+$scope.especialista.dni+" ya se encuentra en uso y no puede repetirse";
+                  $scope.mostrarMensajeError = true;
+                  $scope.loader = false;
+                }else{
+                  especialistaService.putEspecialistaById($scope.especialista._id, $scope.especialista)
+                    .then(function(resp) {
+                      if($scope.passwordNuevo && $scope.passwordNuevo!=""){
+                        $scope.usuario.password = $scope.passwordNuevo;
+                      }
+                      userService.putUserById($scope.usuario._id, $scope.usuario)
+                        .then(function(usuarioModificado) {
+                          $location.path("/admin_listado_especialistas");
+                        }).catch($log.error);
+                    }).catch($log.error);
+                }
+                }).catch(function() {$scope.loader = false; $log.error; });
+            }
+          }).catch(function() {$scope.loader = false; $log.error;});
+
         }
 }
 

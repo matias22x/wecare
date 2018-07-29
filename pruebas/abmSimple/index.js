@@ -8,7 +8,6 @@ app.controller('abmControlador', function($scope,$window){
 			$scope.usuarios=[];
 		}
 
-		console.log($scope.usuarios);
 
 		$scope.index = 0;
 
@@ -33,7 +32,7 @@ app.controller('abmControlador', function($scope,$window){
 				}else{
 					 	$window.alert('faltan datos');
 				}
-			
+
 		}
 
 		$scope.eliminarUsuario = function(codigo){
@@ -63,5 +62,5 @@ app.controller('abmControlador', function($scope,$window){
 
 
 
-	
+
 });

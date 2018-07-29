@@ -8,6 +8,9 @@ angular.module('userService', []).service('userService', function($http, config)
         getUserByUserName: function(username) {
             return $http.get(config.api_url + '/api/users?conditions={"username":"' + username +'"}');
         },
+        getUserVerify: function(username, email) {
+            return $http.get(config.api_url + '/api/users?conditions={"$or":[{"username":"' + username + '"},{"email":"' + email + '"}]}');
+        },
         getAllUsers: function() {
             return $http.get(config.api_url + '/api/users');
         },

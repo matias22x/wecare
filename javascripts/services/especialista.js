@@ -8,6 +8,9 @@ angular.module('especialistaService', []).service('especialistaService', functio
         getEspecialistaByUser: function(id) {
           return $http.get(config.api_url + '/api/especialistas?conditions={"user":"' + id +'"}');
         },
+        getEspecialistaVerify: function(dni) {
+            return $http.get(config.api_url + '/api/especialistas?conditions={"dni":"' + dni +'"}');
+        },
         getAllEspecialistas: function() {
             return $http.get(config.api_url + '/api/especialistas');
         },
