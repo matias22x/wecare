@@ -1,8 +1,7 @@
 'use strict';
 angular.module('wecareApp')
   .controller('botInicioController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService) {
-    responsiveVoice.speak('Hola! bienvenido a WeCare, antes de comenzar te voy a hacer una serie de preguntas para que puedas ser asignado a un especialista.', "Spanish Latin American Male");
-
+    responsiveVoice.speak('Bienvenido a WeCare, para comenzar te voy a hacer una serie de preguntas para que puedas ser asignado a un especialista', "Spanish Latin American Male");
   })
   .controller('botFinalController', function($auth, $scope, $rootScope, $state, userData, $log, $http, $translate, config, especialistaService, userService, botService, alumnoService) {
     responsiveVoice.speak('Gracias por tomarte tu tiempo para contestarme las preguntas! un especialista va a ver tus respuestas y te ayudará con tus problemas.', "Spanish Latin American Male");
