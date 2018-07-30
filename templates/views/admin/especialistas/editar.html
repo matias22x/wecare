@@ -72,7 +72,7 @@
               </div>
 
               <div class="input-field separaCostado">
-                <input id="password" name="password" type="password" class="validate" ng-model="passwordNuevo" minlength="4" ng-pattern="/^[a-zA-Z0-9_.-\s]*$/" ng-keypress="passwordError = false" ng-click="passwordError = false" oninvalid="return false;" autocomplete="off" />
+                <input id="password" name="password" type="password" class="validate" ng-model="passwordNuevo" minlength="4" ng-pattern="/^[a-zA-Z0-9_.-\s]*$/" ng-keypress="passwordError = false" ng-click="passwordError = false" oninvalid="return false;" autocomplete="new-password" />
                 <label for="password">Contraseña (ingrese una si desea reemplazar la actual)</label>
                 <span style=" color:red;" id="passwordErrorSpan" ng-show="passwordError" >{{passwordErrorMensaje}}</span>
               </div>
