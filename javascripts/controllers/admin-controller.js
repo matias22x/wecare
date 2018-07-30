@@ -297,7 +297,7 @@ angular.module('wecareApp')
   })
   .controller('editarAlumnosController', function($auth, $scope, $rootScope, $state, userData,$filter, $log, $http, $translate, $stateParams, $location, config, alumnoService, userService) {
     $rootScope.stateIn = "alumnos_abm";
-
+    $scope.passwordNuevo = "";
     var id = $stateParams.id;
 
     alumnoService.getAlumno(id)
@@ -719,7 +719,7 @@ angular.module('wecareApp')
   })
   .controller('editarEspecialistasController', function($auth, $scope, $rootScope, $state, userData, $log, $filter, $http, $translate, $stateParams, $location, config, especialistaService, userService) {
     $rootScope.stateIn = "especialistas_abm";
-
+    $scope.passwordNuevo = "";
     var id = $stateParams.id;
     $scope.hoy = new Date();
 

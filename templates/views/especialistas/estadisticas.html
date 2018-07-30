@@ -55,23 +55,24 @@
 
 <div class="row">
 <div class="col s12 m12 l12 ejemplo">
-    <h4>Estados de ánimo</h4>
+    <h4>Estados de ánimo</h4><br>
+    <span class="seleccionmas">(En base a la cantidad de registros ingresados)</span><br>
 <div class="row">
 <div  class="col l3 m6 s6 esta center">
 <img  tooltipped data-position="left" data-delay="250" data-tooltip="Feliz" src="img/happy.png" /><br>
-<label>{{porcentajeContento}} %</label>
+<label>{{porcentajeContento | number:2}} %</label>
 </div>
 <div  class="col l3 m6 s6 esta center">
 <img  tooltipped data-position="left" data-delay="250" data-tooltip="Neutral" src="img/confused.png" /><br>
-<label>{{porcentajeNeutral}} %</label>
+<label>{{porcentajeNeutral | number:2}} %</label>
 </div>
 <div  class="col l3 m6 s6 esta center">
 <img  tooltipped data-position="left" data-delay="250" data-tooltip="Triste" src="img/sad.png" /><br>
-<label>{{porcentajeTriste}} %</label>
+<label>{{porcentajeTriste | number:2}} %</label>
 </div>
 <div  class="col l3 m6 s6 esta center">
 <img  tooltipped data-position="left" data-delay="250" data-tooltip="Enojado" src="img/angry.png" /><br>
-<label>{{porcentajeEnojado}} %</label>
+<label>{{porcentajeEnojado | number:2}} %</label>
 </div>
 </div>
 

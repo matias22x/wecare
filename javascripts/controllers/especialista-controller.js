@@ -606,11 +606,11 @@ angular.module('wecareApp')
       $http.post(config.api_url + '/estadisticaspaciente', data).success(function(data, status, headers, config) {
         $scope.estadisticas = data.data;
         var total = data.data.cantidadRegistrosContento + data.data.cantidadRegistrosNeutral + data.data.cantidadRegistrosEnojado + data.data.cantidadRegistrosTriste;
-        if (total>0){
-          $scope.porcentajeContento = (100 * data.data.cantidadRegistrosContento) / total  ;
-          $scope.porcentajeNeutral = (100 * data.data.cantidadRegistrosNeutral) / total ;
-          $scope.porcentajeEnojado = (100 * data.data.cantidadRegistrosEnojado ) / total;
-          $scope.porcentajeTriste = (100 * data.data.cantidadRegistrosTriste) / total ;
+        if ($scope.estadisticas.cantidadRegistros>0){
+          $scope.porcentajeContento = (100 * data.data.cantidadRegistrosContento) / $scope.estadisticas.cantidadRegistros  ;
+          $scope.porcentajeNeutral = (100 * data.data.cantidadRegistrosNeutral) / $scope.estadisticas.cantidadRegistros ;
+          $scope.porcentajeEnojado = (100 * data.data.cantidadRegistrosEnojado ) / $scope.estadisticas.cantidadRegistros;
+          $scope.porcentajeTriste = (100 * data.data.cantidadRegistrosTriste) / $scope.estadisticas.cantidadRegistros ;
         }else{
           $scope.porcentajeContento = 0  ;
           $scope.porcentajeNeutral = 0 ;
